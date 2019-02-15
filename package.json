@@ -1,0 +1,40 @@
+{
+	"name": "@appnest/readme",
+	"version": "1.0.0",
+	"description": "A readme generator",
+	"license": "MIT",
+	"scripts": {
+		"b:lib": "node build.js",
+		"readme": "npm run b:lib && node dist/index.cjs.js"
+	},
+	"contributors": [
+		{
+			"name": "Andreas Mehlsen",
+			"email": "andmehlsen@gmail.com",
+			"url": "https://flaviocopes.com",
+			"img": ""
+		}
+	],
+	"bin": {
+		"readme": "index.cjs.js"
+	},
+	"dependencies": {
+		"colors": "^1.3.3",
+		"fs-extra": "^7.0.1",
+		"minimist": "^1.2.0",
+		"path": "^0.12.7"
+	},
+	"devDependencies": {
+		"rimraf": "^2.6.3",
+		"rollup": "^1.1.2"
+	},
+	"readme": {
+		"text": "Use this readme generator to easily generate pretty readme's like this one! Simply extend your <code>package.json</code>.",
+		"sections": [
+			{
+				"title": "Usage",
+				"content": "readme/usage.md"
+			}
+		]
+	}
+}

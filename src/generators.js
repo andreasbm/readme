@@ -1,152 +1,186 @@
-import fse from "fs-extra";
 import path from "path";
-import {CONFIG} from "./config.js";
+import {fileExists, placeholderRegex, readFile} from "./helpers";
 import {getBadges, getValue, interpolate} from "./helpers.js";
+import {lineTemplate, titleTemplate} from "./templates";
 import {
 	badgesTemplate,
 	bulletsTemplate,
+	contributorsTemplate,
 	descriptionTemplate,
 	licenseTemplate,
 	logoTemplate,
-	readmeTitleTemplate,
-	sectionTemplate,
-	tocTemplate,
-	contributorsTemplate
+	mainTitleTemplate,
+	tocTemplate
 } from "./templates.js";
 
 /**
- * Generates the logo.
- * @param pkg
- * @returns {*}
+ * Loads markdown.
+ * @type {{name: string, regex: RegExp, template: (function({content: *}): *), params: Function}}
  */
-export function generateLogo (pkg) {
-	const logo = getValue(pkg, "readme.logo");
-	if (logo == null) {
-		return null;
-	}
+export const generateMarkdown = {
+	name: "markdown",
+	regex: placeholderRegex("readme:(.*.md)"),
+	template: (({content}) => content),
+	params: (({pkg, matches}) => {
+		const absolutePath = path.resolve(matches[1]);
 
-	return logoTemplate(logo);
-}
-
-/**
- * Generates the title.
- * @param pkg
- * @returns {*}
- */
-export function generateTitle (pkg) {
-	const name = getValue(pkg, "name");
-	if (name == null) {
-		return null;
-	}
-
-	return readmeTitleTemplate(name);
-}
-
-/**
- * Generates the badges.
- * @param pkg
- * @returns {*}
- */
-export function generateBadges (pkg) {
-	const badges = getBadges(pkg);
-	if (badges.length === 0) {
-		return null;
-	}
-
-	return badgesTemplate({badges, pkg});
-}
-
-/**
- * Generates the description.
- * @param pkg
- * @returns {*}
- */
-export function generateDescription (pkg) {
-	const description = getValue(pkg, "description");
-	const demo = getValue(pkg, "readme.demo");
-	const text = getValue(pkg, "readme.text");
-
-	if (description == null && demo === null && text == null) {
-		return null;
-	}
-
-	return descriptionTemplate({description, text, demo});
-}
-
-/**
- * Generates the bullets.
- * @param pkg
- * @returns {*}
- */
-export function generateBullets (pkg) {
-	const bullets = getValue(pkg, "readme.bullets") || [];
-	if (bullets.length === 0) {
-		return null;
-	}
-
-	return bulletsTemplate(bullets);
-}
-
-/**
- * Generates the table of contents.
- * @param pkg
- * @returns {string}
- */
-export function generateTableOfContents (pkg) {
-	const toc = getValue(pkg, "readme.toc");
-	const titles = (getValue(pkg, "readme.sections") || [])
-		.map(({title}) => title)
-		.filter(title => title != null)
-		.map(title => interpolate(title, pkg));
-
-	if (!toc || titles.length === 0) {
-		return null;
-	}
-
-	return tocTemplate({titles});
-}
-
-/**
- * Generates the sections.
- * @param pkg
- * @returns {string}
- */
-export function generateSections (pkg) {
-	const sections = (getValue(pkg, "readme.sections") || []).map(({content, title}) => {
-		const absolutePath = path.resolve(content);
-		if (fse.existsSync(absolutePath)) {
-			content = fse.readFileSync(absolutePath).toString("utf8");
+		// Check if file exists
+		if (!fileExists(absolutePath)) {
+			return {error: `the file "${absolutePath}" doesn't exist.`};
 		}
-		return {content: interpolate(content, pkg), title: interpolate(title || "", pkg)};
-	});
 
-	return sections.map(sectionTemplate).join(`${CONFIG.LINE_BREAK}${CONFIG.LINE_BREAK}`);
-}
-
-/**
- * Generates the license.
- * @param pkg
- * @returns {*}
- */
-export function generateLicense (pkg) {
-	const license = getValue(pkg, "license");
-	if (license == null) {
-		return null;
-	}
-
-	return licenseTemplate(license);
-}
+		// Read the file
+		const content = readFile(absolutePath);
+		return {content};
+	})
+};
 
 /**
- * Generates the authors.
- * @param pkg
- * @returns {null}
+ * Generates a logo.
+ * @type {{name: string, regex: RegExp, template: logoTemplate, params: {logo: string}}}
  */
-export function generateContributors (pkg) {
-	const contributors = getValue(pkg, "contributors");
-	if (contributors == null) {
-		return null;
+export const generateLogo = {
+	name: "logo",
+	regex: placeholderRegex("readme:logo"),
+	template: logoTemplate,
+	params: {
+		logo: "readme.logo"
 	}
+};
 
-	return contributorsTemplate({contributors});
-}
+/**
+ * Generates a title.
+ * @type {{name: string, regex: RegExp, template: mainTitleTemplate, params: {name: string}}}
+ */
+export const generateMainTitle = {
+	name: "main-title",
+	regex: placeholderRegex("readme:title"),
+	template: mainTitleTemplate,
+	params: {
+		name: "name"
+	}
+};
+
+/**
+ * Generates badges.
+ * @type {{name: string, regex: RegExp, template: badgesTemplate, params: Function}}
+ */
+export const generateBadges = {
+	name: "badges",
+	regex: placeholderRegex("readme:badges"),
+	template: badgesTemplate,
+	params: (({pkg}) => {
+		const badges = getBadges(pkg);
+		if (badges.length === 0) return null;
+		return {badges};
+	})
+};
+
+/**
+ * Generates a description.
+ * @type {{name: string, regex: RegExp, template: descriptionTemplate, params: {description: string, optional: {demo: string, text: string}}}}
+ */
+export const generateDescription = {
+	name: "description",
+	regex: placeholderRegex("readme:description"),
+	template: descriptionTemplate,
+	params: {
+		description: "description",
+		optional: {
+			demo: "readme.demo",
+			text: "readme.text"
+		}
+	}
+};
+
+/**
+ * Generates bullets.
+ * @type {{name: string, regex: RegExp, template: bulletsTemplate, params: {bullets: string}}}
+ */
+export const generateBullets = {
+	name: "bullets",
+	regex: placeholderRegex("readme:bullets"),
+	template: bulletsTemplate,
+	params: {
+		bullets: "readme.bullets"
+	}
+};
+
+/**
+ * Generates a line.
+ * @type {{name: string, regex: RegExp, template: lineTemplate}}
+ */
+export const generateLine = {
+	name: "line",
+	regex: placeholderRegex("readme:line"),
+	template: lineTemplate
+};
+
+/**
+ * Generates contributors.
+ * @type {{name: string, regex: RegExp, template: contributorsTemplate, params: {contributors: string}}}
+ */
+export const generateContributors = {
+	name: "contributors",
+	regex: placeholderRegex("readme:contributors"),
+	template: contributorsTemplate,
+	params: {
+		contributors: "contributors"
+	}
+};
+
+/**
+ * Generates license.
+ * @type {{name: string, regex: RegExp, template: licenseTemplate, params: {license: string}}}
+ */
+export const generateLicense = {
+	name: "license",
+	regex: placeholderRegex("readme:license"),
+	template: licenseTemplate,
+	params: {
+		license: "license"
+	}
+};
+
+/**
+ * Generates the titles.
+ * @type {{name: string, regex: RegExp, template: titleTemplate, params: (function({pkg: *, input: *, matches: *}): {title: *, level: *})}}
+ */
+export const generateTitle = {
+	name: "title",
+	regex: /^([#]{1,2}) (.*)$/gm,
+	template: titleTemplate,
+	params: (({pkg, input, matches}) => {
+		const hashes = matches[0];
+		const title = matches[1];
+		return {title, level: hashes.length};
+	})
+};
+
+/**
+ * Generates the interpolation.
+ * @type {{name: string, regex: RegExp, template: (function({pkg?: *, text: *}): *), params: (function({pkg: *, matches: *}): {pkg: *, text: *})}}
+ */
+export const generateInterpolate = {
+	name: "interpolate",
+	regex: placeholderRegex("[^:]*"),
+	template: ({pkg, text}) => getValue(pkg, text.trim()),
+	params: (({pkg, matches}) => {
+		const text = matches[0];
+		return {pkg, text};
+	})
+};
+
+/**
+ * Generates the toc.
+ * @type {{name: string, regex: RegExp, template: tocTemplate, params: (function({pkg: *, input: *}): {titles: RegExpMatchArray | Promise<Response | undefined> | *})}}
+ */
+export const generateToc = {
+	name: "toc",
+	regex: placeholderRegex("readme:toc"),
+	template: tocTemplate,
+	params: (({pkg, input}) => {
+		const titles = input.match(/^[#]{1,6} .*$/gm);
+		return {titles};
+	})
+};

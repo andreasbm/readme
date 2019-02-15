@@ -1,7 +1,11 @@
-export const CONFIG = {
+export const config = {
 	LINE_BREAK: "\r\n",
-	INPUT: "package.json",
+	TAB: "\t",
+	INPUT: "README_BLUEPRINT.md",
+	PACKAGE: "package.json",
 	OUTPUT: "README.md",
+	VALUE_INTERPOLATION_REGEX: /{{[ ]*(.+?)[ ]*}}/g,
+	TEMPLATE_INTERPOLATION_REGEX: /{{[ ]*(.+?)readme:[ ]*}}/g,
 	DRY: false,
 	SILENT: false,
 	GITHUB_BADGES: [
@@ -36,4 +40,5 @@ export const CONFIG = {
 		}
 	]
 };
+
 

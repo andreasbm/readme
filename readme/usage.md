@@ -1,3 +1,3 @@
-### Extend your `package.json`
+## Extend your `package.json`
 
 Documentation coming soon

@@ -11,8 +11,7 @@
 		{
 			"name": "Andreas Mehlsen",
 			"email": "andmehlsen@gmail.com",
-			"url": "https://flaviocopes.com",
-			"img": ""
+			"url": "https://twitter.com/andreasmehlsen"
 		}
 	],
 	"bin": {
@@ -30,11 +29,24 @@
 	},
 	"readme": {
 		"text": "Use this readme generator to easily generate pretty readme's like this one! Simply extend your <code>package.json</code>.",
-		"sections": [
+		"input": "README_BLUEPRINT.md",
+		"output": "README.md",
+		"ids": {
+			"github": "andreasbm/lit-translate",
+			"npm": "@appnest/lit-translate",
+			"webcomponents": "@appnest/lit-translate"
+		},
+		"badges": [
 			{
-				"title": "Usage",
-				"content": "readme/usage.md"
+				"text": "Awesome",
+				"url": "https://github.com/web-padawan/awesome-lit-html",
+				"img": "https://awesome.re/badge.svg"
 			}
+		],
+		"bullets": [
+			"Bullet 1",
+			"Bullet 2",
+			"Bullet 3"
 		]
 	}
 }

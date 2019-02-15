@@ -1,57 +1,68 @@
 import colors from "colors";
 import argv from "minimist";
 import path from "path";
-import {CONFIG} from "./config.js";
+import {config} from "./config.js";
 import {
 	generateBadges,
 	generateBullets,
-	generateDescription, generateLicense,
-	generateLogo, generateSections,
-	generateTableOfContents,
+	generateContributors,
+	generateDescription,
+	generateInterpolate,
+	generateLicense,
+	generateLine,
+	generateLogo, generateMainTitle,
+	generateMarkdown,
 	generateTitle,
-	generateContributors
+	generateToc
 } from "./generators";
-import {generateReadme, getValue, readJSONFile, writeFile} from "./helpers.js";
+import {generateReadme, readFile, writeFile} from "./helpers";
+import {getValue, readJSONFile} from "./helpers.js";
 
-/**
- * Generators for the readme.
- * @type {*[]}
- */
-const GENERATORS = [
+const generators = [
+	generateMarkdown,
 	generateLogo,
-	generateTitle,
+	generateMainTitle,
 	generateBadges,
 	generateDescription,
 	generateBullets,
-	generateTableOfContents,
-	generateSections,
+	generateLine,
 	generateContributors,
-	generateLicense
+	generateLicense,
+	generateTitle,
+	generateInterpolate,
+	generateToc
 ];
-
 
 // Extract the package
 const userArgs = argv(process.argv.slice(2));
-const pkgName = path.resolve(userArgs["input"] || CONFIG.INPUT);
+
+// Grab package
+const pkgName = path.resolve(userArgs["package"] || config.PACKAGE);
 const pkg = readJSONFile(pkgName);
 
+// Grab input
+const inputName = path.resolve(userArgs["input"] || getValue(pkg, "readme.input") || config.INPUT);
+const input = readFile(inputName);
 
-// Grab the user arguments with defaults
-const target = path.resolve(userArgs["output"] || getValue(pkg, "readme.output") || CONFIG.OUTPUT);
-const silent = (userArgs["silent"] != null ? userArgs["silent"] : getValue(pkg, "readme.silent")) || CONFIG.SILENT;
-const dry = (userArgs["dry"] != null ? userArgs["dry"] : getValue(pkg, "readme.dry")) || CONFIG.DRY;
+// Grab output
+const output = path.resolve(userArgs["output"] || getValue(pkg, "readme.output") || config.OUTPUT);
 
-// Generate readme
-const readme = generateReadme({pkg, pkgName, generators: GENERATORS});
+// Grab additional user arguments with defaults
+const silent = (userArgs["silent"] != null ? userArgs["silent"] : getValue(pkg, "readme.silent")) || config.SILENT;
+const dry = (userArgs["dry"] != null ? userArgs["dry"] : getValue(pkg, "readme.dry")) || config.DRY;
+
+// Generate the readme
+const readme = generateReadme({pkg, input, generators, silent, inputName, pkgName});
 
 // Write the file
 if (!dry) {
-	writeFile({target, content: readme});
+	writeFile({target: output, content: readme});
 
 	// Print the success messsage if not silent
 	if (!silent) {
-		console.log(colors.green(`[readme] - Readme was successfully generated at "${target}".`));
+		console.log(colors.green(`[readme] - Readme was successfully generated at "${output}".`));
 	}
+
 } else {
 	console.log(colors.green(`[readme] - Created the following readme but did not write it to any files".`), colors.green(readme));
 }

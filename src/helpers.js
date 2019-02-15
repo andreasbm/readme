@@ -1,6 +1,7 @@
+import colors from "colors";
 import fse from "fs-extra";
 import path from "path";
-import {CONFIG} from "./config";
+import {config} from "./config";
 
 /**
  * Determines whether an object has the specified key.
@@ -39,15 +40,14 @@ export function getValue (obj, key) {
 
 /**
  * Validates the package.
- * @param pkg
- * @param requiredFields
+ * @param obj
  * @param fileName
  * @returns {boolean}
  */
-export function validateObject (pkg, requiredFields, fileName) {
+export function validateObject ({obj, requiredFields}) {
 	for (const key of requiredFields) {
-		if (!hasKey(pkg, key)) {
-			throw new Error(`"${fileName}" requires the field "${key}".`);
+		if (!hasKey(obj, key)) {
+			return false;
 		}
 	}
 
@@ -55,15 +55,38 @@ export function validateObject (pkg, requiredFields, fileName) {
 }
 
 /**
- * Replaces the placeholders with content from the package.
+ * Replaces the placeholders with content from the obj.
  * @param text
- * @param pkg
+ * @param obj
  * @returns {*}
  */
-export function interpolate (text, pkg) {
-	return text.replace(/{{[ ]*(.+?)[ ]*}}/g, (string, match) => {
-		return getValue(pkg, match.trim());
-	})
+export function interpolate (text, obj) {
+	return text.replace(config.VALUE_INTERPOLATION_REGEX, (string, match) => {
+		return getValue(obj, match.trim());
+	});
+}
+
+/**
+ * Returns whether the func is a function.
+ * @param func
+ * @returns {boolean}
+ */
+export function isFunction (func) {
+	return typeof func === "function";
+}
+
+/**
+ * Extracts values from an object.
+ * @param map
+ * @param obj
+ */
+export function extractValues ({map, obj}) {
+	const newObj = {};
+	for (const [k, v] of Object.entries(map)) {
+		newObj[k] = getValue(obj, v);
+	}
+
+	return newObj;
 }
 
 /**
@@ -76,20 +99,29 @@ export function getBadges (pkg) {
 
 	// Add NPM badges
 	if (hasKey(pkg, "readme.ids.npm")) {
-		badges.push(...CONFIG.NPM_BADGES);
+		badges.push(...config.NPM_BADGES);
 	}
 
 	// Add Github badges
 	if (hasKey(pkg, "readme.ids.github")) {
-		badges.push(...CONFIG.GITHUB_BADGES);
+		badges.push(...config.GITHUB_BADGES);
 	}
 
 	// Add webcomponents badges
 	if (hasKey(pkg, "readme.ids.webcomponents")) {
-		badges.push(...CONFIG.WEBCOMPONENTS_BADGES);
+		badges.push(...config.WEBCOMPONENTS_BADGES);
 	}
 
 	return badges
+}
+
+/**
+ * Reads a file.
+ * @param name
+ * @returns {string}
+ */
+export function readFile (name) {
+	return fse.readFileSync(path.resolve(name)).toString("utf8");
 }
 
 /**
@@ -98,27 +130,17 @@ export function getBadges (pkg) {
  * @returns {any}
  */
 export function readJSONFile (name) {
-	// Read the content from the package.json file
-	const pkgContent = fse.readFileSync(path.resolve(name)).toString("utf8");
-
-	// Parse the package and validate it
-	return JSON.parse(pkgContent);
+	return JSON.parse(readFile(name));
 }
 
 /**
- * Generates a readme.
- * @param pkg
- * @param pkgName
- * @param generators
- * @returns {*}
+ * Returns a placeholder regex.
+ * @param text
+ * @returns {RegExp}
  */
-export function generateReadme ({pkg, pkgName, generators}) {
-	// Generate the readme string
-	return generators.map(generator => generator(pkg))
-		.filter(res => res != null)
-		.join(`${CONFIG.LINE_BREAK}${CONFIG.LINE_BREAK}`);
+export function placeholderRegex (text = ".+?") {
+	return new RegExp(`{{[ ]*(${text})[ ]*}}`, "g");
 }
-
 
 /**
  * Writes a file to a path.
@@ -156,4 +178,84 @@ export function cleanTitle(title) {
  */
 export function getTitleLink (title) {
 	return `#${cleanTitle(title).replace(/ /g, "-").toLowerCase()}`;
+}
+
+/**
+ * Determines whether the file at the path exists.
+ * @param absolutePath
+ * @returns {boolean}
+ */
+export function fileExists (absolutePath) {
+	return fse.existsSync(absolutePath)
+}
+
+/**
+ * Generates a readme.
+ * @param pkg
+ * @param input
+ * @param generators
+ * @param silent
+ * @param pkgName
+ * @param inputName
+ * @returns {*}
+ */
+export function generateReadme ({pkg, input, generators, silent, pkgName, inputName}) {
+
+	// Go through all of the generators and replace with the template
+	for (const generator of generators) {
+		input = input.replace(generator.regex, (string, ...matches) => {
+			let params = null;
+
+			// If the params are required we extract them from the package.
+			if (generator.params != null) {
+				let errorReason;
+				if (isFunction(generator.params)) {
+
+					// Extract the params using the function
+					params = generator.params({
+						pkg,
+						input,
+						string,
+						matches,
+						generators,
+						generateReadme,
+						pkgName,
+						inputName
+					});
+
+					// Validate the params
+					if (params == null || params.error) {
+						errorReason = (params || {}).error || `the params couldn't not be generated`;
+					}
+
+				} else {
+
+					// Get the required and optional parameters
+					const optionalParams = generator.params["optional"] || [];
+					const requiredParams = {...generator.params};
+					delete requiredParams["optional"];
+
+					// Validate the params
+					if (!validateObject({obj: pkg, requiredFields: Object.values(requiredParams)})) {
+						errorReason = `"${pkgName}" is missing the keys "${Object.values(requiredParams).join(", ")}"`;
+					} else {
+						params = extractValues({map: {...optionalParams, ...requiredParams}, obj: pkg});
+					}
+				}
+
+				// If an error occurred print it and continue
+				if (errorReason != null) {
+					if (!silent) {
+						console.log(colors.yellow(`The readme generator "${generator.name}" matched "${string}" but was skipped because ${errorReason}.`));
+					}
+
+					return string;
+				}
+			}
+
+			return generator.template(params);
+		})
+	}
+
+	return input;
 }

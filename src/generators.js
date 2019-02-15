@@ -1,5 +1,5 @@
 import path from "path";
-import {fileExists, placeholderRegexCallback, readFile} from "./helpers";
+import {fileExists, isObject, placeholderRegexCallback, readFile} from "./helpers";
 import {getBadges, getValue} from "./helpers.js";
 import {lineTemplate, titleTemplate} from "./templates";
 import {
@@ -164,9 +164,24 @@ export const generateTitle = {
 export const generateInterpolate = {
 	name: "interpolate",
 	regex: placeholderRegexCallback(`[^\\s:]*`),
-	template: ({pkg, text}) => {
-		const value = getValue(pkg, text);
-		return value || text;
+	template: ({pkg, text, config}) => {
+		let value = getValue(pkg, text);
+		if (value == null) return text;
+
+		// If object, turn it into an array
+		if (isObject(value)) {
+			value = Object.entries(value).map(([k, v]) => `**${k}**: ${v}`);
+		}
+
+		// Turn arrays into bullets if its an array!
+		if (Array.isArray(value)) {
+			value = bulletsTemplate({bullets: value, config});
+		}
+
+
+
+
+		return value;
 	},
 	params: ({pkg, matches}) => {
 		const text = matches[0];

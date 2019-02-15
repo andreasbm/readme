@@ -14,8 +14,10 @@
 [[ readme:readme/2-create-blueprint.md ]]
 [[ readme:readme/3-templates.md ]]
 
+Here are the dependencies:
+[[ dependencies ]]
+
 [[ readme:contributors ]]
 
 [[ readme:license ]]
 
-[[ readme.vars.cool ]]

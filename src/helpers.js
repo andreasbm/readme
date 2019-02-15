@@ -64,6 +64,19 @@ export function isFunction (func) {
 }
 
 /**
+ * Returns whether the obj is an object.
+ * @param obj
+ * @returns {boolean}
+ */
+export function isObject (obj) {
+	if (obj == null) {
+		return false;
+	}
+
+	return typeof obj === "object";
+}
+
+/**
  * Extracts values from an object.
  * @param map
  * @param obj

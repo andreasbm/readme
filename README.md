@@ -80,6 +80,12 @@ The most simple template you can use is the title template. The way to generate 
 The important thing to note here is that the template automatically reads your `package.json` file and inserts the `name` from the package.
 
 
+Here are the dependencies:
+* **colors**: ^1.3.3
+* **fs-extra**: ^7.0.1
+* **minimist**: ^1.2.0
+* **path**: ^0.12.7
+
 ![line](https://github.com/andreasbm/readme/blob/master/assets/line.png)
 
 ## ❯ Contributors
@@ -92,4 +98,3 @@ The important thing to note here is that the template automatically reads your `
 	
 Licensed under [MIT](https://opensource.org/licenses/MIT).
 
-readme.vars.cool

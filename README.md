@@ -1,4 +1,5 @@
 {{ readme:logo }}
+
 <h1 align="center">@appnest/readme</h1>
 <p align="center">
 		<a href="https://github.com/web-padawan/awesome-lit-html"><img alt="Awesome" src="https://awesome.re/badge.svg" height="20"/></a>
@@ -14,6 +15,7 @@
 </p>
 
 <br />
+
 * Bullet 1
 * Bullet 2
 * Bullet 3
@@ -31,13 +33,13 @@
 	* [❯ Contributors](#--contributors)
 	* [❯ License](#--license)
 
-![line](https://github.com/andreasbm/readme/assets/raw/master/line.png)
+![line](https://github.com/andreasbm/readme/blob/master/assets/line.png)
 
 ## ❯ Extend your `package.json`
 
 Documentation coming soon
 
-![line](https://github.com/andreasbm/readme/assets/raw/master/line.png)
+![line](https://github.com/andreasbm/readme/blob/master/assets/line.png)
 
 ## ❯ Section 1
 
@@ -47,7 +49,7 @@ Documentation coming soon
 
 Blah blah blah
 
-![line](https://github.com/andreasbm/readme/assets/raw/master/line.png)
+![line](https://github.com/andreasbm/readme/blob/master/assets/line.png)
 
 ## ❯ Section 2
 
@@ -55,12 +57,13 @@ Blah blah blah
 
 Blah blah blah
 
-![line](https://github.com/andreasbm/readme/assets/raw/master/line.png)
+![line](https://github.com/andreasbm/readme/blob/master/assets/line.png)
 
 ## ❯ Contributors
 	
 * <a href="https://twitter.com/andreasmehlsen">Andreas Mehlsen</a> (<a href="mailto:andmehlsen@gmail.com">andmehlsen@gmail.com</a>)
-![line](https://github.com/andreasbm/readme/assets/raw/master/line.png)
+
+![line](https://github.com/andreasbm/readme/blob/master/assets/line.png)
 
 ## ❯ License
 	

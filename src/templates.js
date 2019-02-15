@@ -21,7 +21,7 @@ export function mainTitleTemplate ({name}) {
  * @returns {string}
  */
 export function lineTemplate () {
-	return `![line](https://github.com/andreasbm/readme/assets/raw/master/line.png)`;
+	return `![line](https://github.com/andreasbm/readme/blob/master/assets/line.png)`;
 }
 
 /**

@@ -30,7 +30,7 @@
 	"readme": {
 		"logo": {
 			"url": "https://avatars1.githubusercontent.com/u/6267397?s=460&v=4",
-			"width": 500
+			"width": 100
 		},
 		"text": "Use this readme generator to easily generate pretty readme's like this one! Simply extend your <code>package.json</code>.",
 		"input": "readme/blueprint.md",

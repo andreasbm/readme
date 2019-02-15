@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="undefined" alt="Logo" width="auto" height="auto" />
+  <img src="https://avatars1.githubusercontent.com/u/6267397?s=460&v=4" alt="Logo" width="100" height="auto" />
 </p>
 
 <h1 align="center">@appnest/readme</h1>

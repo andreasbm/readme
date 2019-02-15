@@ -1,7 +1,8 @@
 import {config} from "./config";
 import {getLicenseUrl, getTitle, getTitleLink} from "./helpers.js";
 
-export function logoTemplate ({url, width = "auto", height = "auto", alt = "Logo"}) {
+export function logoTemplate ({logo}) {
+	const {url, width = "auto", height = "auto", alt = "Logo"} = logo;
 	return `<p align="center">
   <img src="${url}" alt="${alt}" width="${width}" height="${height}" />
 </p>`;

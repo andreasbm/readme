@@ -35,6 +35,7 @@
 		"text": "Use this readme generator to easily generate pretty readme's like this one! Simply extend your <code>package.json</code> and create a readme blueprint.",
 		"input": "blueprint.md",
 		"output": "README.md",
+		"placeholders": ["[[", "]]"],
 		"ids": {
 			"github": "andreasbm/readme",
 			"npm": "@appnest/readme"

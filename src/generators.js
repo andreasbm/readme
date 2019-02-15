@@ -1,6 +1,6 @@
 import path from "path";
-import {fileExists, placeholderRegex, readFile} from "./helpers";
-import {getBadges, getValue, interpolate} from "./helpers.js";
+import {fileExists, placeholderRegexCallback, readFile} from "./helpers";
+import {getBadges, getValue} from "./helpers.js";
 import {lineTemplate, titleTemplate} from "./templates";
 import {
 	badgesTemplate,
@@ -19,9 +19,9 @@ import {
  */
 export const generateMarkdown = {
 	name: "markdown",
-	regex: placeholderRegex("readme:(.*.md)"),
+	regex: placeholderRegexCallback("readme:(.*.md)"),
 	template: (({content}) => content),
-	params: (({pkg, matches}) => {
+	params: ({pkg, matches}) => {
 		const absolutePath = path.resolve(matches[1]);
 
 		// Check if file exists
@@ -32,7 +32,7 @@ export const generateMarkdown = {
 		// Read the file
 		const content = readFile(absolutePath);
 		return {content};
-	})
+	}
 };
 
 /**
@@ -41,7 +41,7 @@ export const generateMarkdown = {
  */
 export const generateLogo = {
 	name: "logo",
-	regex: placeholderRegex("readme:logo"),
+	regex: placeholderRegexCallback("readme:logo"),
 	template: logoTemplate,
 	params: {
 		logo: "readme.logo"
@@ -54,7 +54,7 @@ export const generateLogo = {
  */
 export const generateMainTitle = {
 	name: "main-title",
-	regex: placeholderRegex("readme:title"),
+	regex: placeholderRegexCallback("readme:title"),
 	template: mainTitleTemplate,
 	params: {
 		name: "name"
@@ -67,13 +67,13 @@ export const generateMainTitle = {
  */
 export const generateBadges = {
 	name: "badges",
-	regex: placeholderRegex("readme:badges"),
+	regex: placeholderRegexCallback("readme:badges"),
 	template: badgesTemplate,
-	params: (({pkg}) => {
-		const badges = getBadges(pkg);
+	params: ({pkg, config}) => {
+		const badges = getBadges({pkg, config});
 		if (badges.length === 0) return null;
 		return {badges};
-	})
+	}
 };
 
 /**
@@ -82,7 +82,7 @@ export const generateBadges = {
  */
 export const generateDescription = {
 	name: "description",
-	regex: placeholderRegex("readme:description"),
+	regex: placeholderRegexCallback("readme:description"),
 	template: descriptionTemplate,
 	params: {
 		description: "description",
@@ -99,7 +99,7 @@ export const generateDescription = {
  */
 export const generateBullets = {
 	name: "bullets",
-	regex: placeholderRegex("readme:bullets"),
+	regex: placeholderRegexCallback("readme:bullets"),
 	template: bulletsTemplate,
 	params: {
 		bullets: "readme.bullets"
@@ -112,7 +112,7 @@ export const generateBullets = {
  */
 export const generateLine = {
 	name: "line",
-	regex: placeholderRegex("readme:line"),
+	regex: placeholderRegexCallback("readme:line"),
 	template: lineTemplate
 };
 
@@ -122,7 +122,7 @@ export const generateLine = {
  */
 export const generateContributors = {
 	name: "contributors",
-	regex: placeholderRegex("readme:contributors"),
+	regex: placeholderRegexCallback("readme:contributors"),
 	template: contributorsTemplate,
 	params: {
 		contributors: "contributors"
@@ -135,7 +135,7 @@ export const generateContributors = {
  */
 export const generateLicense = {
 	name: "license",
-	regex: placeholderRegex("readme:license"),
+	regex: placeholderRegexCallback("readme:license"),
 	template: licenseTemplate,
 	params: {
 		license: "license"
@@ -148,13 +148,13 @@ export const generateLicense = {
  */
 export const generateTitle = {
 	name: "title",
-	regex: /^([#]{1,2}) (.*)$/gm,
+	regex: () => /^([#]{1,2}) (.*)$/gm,
 	template: titleTemplate,
-	params: (({pkg, input, matches}) => {
+	params: ({pkg, input, matches}) => {
 		const hashes = matches[0];
 		const title = matches[1];
 		return {title, level: hashes.length};
-	})
+	}
 };
 
 /**
@@ -163,27 +163,27 @@ export const generateTitle = {
  */
 export const generateInterpolate = {
 	name: "interpolate",
-	regex: placeholderRegex("[^: ]*"),
+	regex: placeholderRegexCallback(`[^\\s:]*`),
 	template: ({pkg, text}) => {
 		const value = getValue(pkg, text);
 		return value || text;
 	},
-	params: (({pkg, matches}) => {
+	params: ({pkg, matches}) => {
 		const text = matches[0];
 		return {pkg, text: text.trim()};
-	})
+	}
 };
 
 /**
  * Generates the toc.
- * @type {{name: string, regex: RegExp, template: tocTemplate, params: (function({pkg: *, input: *}): {titles: RegExpMatchArray | Promise<Response | undefined> | *})}}
+ * @type {{name: string, regex: RegExp, template: tocTemplate, params: (function({pkg: *, input: *, config: *}): {titles: RegExpMatchArray | Promise<Response | undefined> | *, config: *})}}
  */
 export const generateToc = {
 	name: "toc",
-	regex: placeholderRegex("readme:toc"),
+	regex: placeholderRegexCallback("readme:toc"),
 	template: tocTemplate,
-	params: (({pkg, input}) => {
+	params: ({pkg, input, config}) => {
 		const titles = input.match(/^[#]{1,6} .*$/gm);
-		return {titles};
-	})
+		return {titles, config};
+	}
 };

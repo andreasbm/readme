@@ -1,18 +1,18 @@
-{{ readme:logo }}
+[[ readme:logo ]]
 
-{{ readme:title }}
-{{ readme:badges }}
-{{ readme:description }}
+[[ readme:title ]]
+[[ readme:badges ]]
+[[ readme:description ]]
 
-{{ readme:bullets }}
+[[ readme:bullets ]]
 
 <p>IMAGE</p>
 
-{{ readme:toc }}
+[[ readme:toc ]]
 
-{{ readme:readme/installation.md }}
-{{ readme:readme/create-blueprint.md }}
+[[ readme:readme/1-installation.md ]]
+[[ readme:readme/2-create-blueprint.md ]]
 
-{{ readme:contributors }}
+[[ readme:contributors ]]
 
-{{ readme:license }}
+[[ readme:license ]]

@@ -1,7 +1,7 @@
 import colors from "colors";
 import fse from "fs-extra";
 import path from "path";
-import {config} from "./config";
+import {defaultConfig} from "./config";
 
 /**
  * Determines whether an object has the specified key.
@@ -55,18 +55,6 @@ export function validateObject ({obj, requiredFields}) {
 }
 
 /**
- * Replaces the placeholders with content from the obj.
- * @param text
- * @param obj
- * @returns {*}
- */
-export function interpolate (text, obj) {
-	return text.replace(config.VALUE_INTERPOLATION_REGEX, (string, match) => {
-		return getValue(obj, match.trim());
-	});
-}
-
-/**
  * Returns whether the func is a function.
  * @param func
  * @returns {boolean}
@@ -92,24 +80,25 @@ export function extractValues ({map, obj}) {
 /**
  * Returns available badges.
  * @param pkg
- * @returns {Array}
+ * @param config
+ * @returns {*|Array}
  */
-export function getBadges (pkg) {
+export function getBadges ({pkg, config}) {
 	const badges = getValue(pkg, "readme.badges") || [];
 
 	// Add NPM badges
 	if (hasKey(pkg, "readme.ids.npm")) {
-		badges.push(...config.NPM_BADGES);
+		badges.push(...defaultConfig.npmBadges);
 	}
 
 	// Add Github badges
 	if (hasKey(pkg, "readme.ids.github")) {
-		badges.push(...config.GITHUB_BADGES);
+		badges.push(...defaultConfig.githubBadges);
 	}
 
 	// Add webcomponents badges
 	if (hasKey(pkg, "readme.ids.webcomponents")) {
-		badges.push(...config.WEBCOMPONENTS_BADGES);
+		badges.push(...defaultConfig.webcomponentBadges);
 	}
 
 	return badges
@@ -134,12 +123,24 @@ export function readJSONFile (name) {
 }
 
 /**
+ * Escapes a regex.
+ * @param text
+ * @returns {void | string | *}
+ */
+export function escapeRegex (text) {
+	return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
+}
+
+/**
  * Returns a placeholder regex.
  * @param text
- * @returns {RegExp}
+ * @returns {function({config: *}): RegExp}
  */
-export function placeholderRegex (text = ".+?") {
-	return new RegExp(`{{[ ]*(${text})[ ]*}}`, "g");
+export function placeholderRegexCallback (text) {
+	return (({config}) => {
+		const {placeholders} = config;
+		return new RegExp(`${escapeRegex(placeholders[0])}\\s*(${text})\\s*${escapeRegex(placeholders[1])}`, "gm");
+	});
 }
 
 /**
@@ -167,7 +168,7 @@ export function getTitle ({title, level}) {
  * Cleans the title from weird symbols.
  * @param title
  */
-export function cleanTitle(title) {
+export function cleanTitle (title) {
 	return title.replace(/[^a-zA-Z0-9-_ ]/g, "");
 }
 
@@ -191,19 +192,17 @@ export function fileExists (absolutePath) {
 
 /**
  * Generates a readme.
- * @param pkg
- * @param input
- * @param generators
- * @param silent
- * @param pkgName
- * @param inputName
- * @returns {*}
+ * @param info
+ * @returns {info.input}
  */
-export function generateReadme ({pkg, input, generators, silent, pkgName, inputName}) {
+export function generateReadme ({pkg, input, config}) {
+
+	const {generators, silent, pkgName} = config;
 
 	// Go through all of the generators and replace with the template
 	for (const generator of generators) {
-		input = input.replace(generator.regex, (string, ...matches) => {
+		input = input.replace(generator.regex({pkg, input, config}), (string, ...matches) => {
+
 			let params = null;
 
 			// If the params are required we extract them from the package.
@@ -212,16 +211,7 @@ export function generateReadme ({pkg, input, generators, silent, pkgName, inputN
 				if (isFunction(generator.params)) {
 
 					// Extract the params using the function
-					params = generator.params({
-						pkg,
-						input,
-						string,
-						matches,
-						generators,
-						generateReadme,
-						pkgName,
-						inputName
-					});
+					params = generator.params({pkg, input, config, matches, string});
 
 					// Validate the params
 					if (params == null || params.error) {
@@ -253,7 +243,7 @@ export function generateReadme ({pkg, input, generators, silent, pkgName, inputN
 				}
 			}
 
-			return generator.template(params);
+			return generator.template({pkg, input, config, ...params});
 		})
 	}
 

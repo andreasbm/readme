@@ -1,4 +1,3 @@
-import {config} from "./config";
 import {getLicenseUrl, getTitle, getTitleLink} from "./helpers.js";
 
 export function logoTemplate ({logo}) {
@@ -29,21 +28,23 @@ export function lineTemplate () {
  * Creates a template for the title.
  * @param title
  * @param level
+ * @param config
  * @returns {string}
  */
-export function titleTemplate ({title, level}) {
-	const beforeTitleContent = level <= 2 ? `${lineTemplate()}${config.LINE_BREAK}${config.LINE_BREAK}` : "";
+export function titleTemplate ({title, level, config}) {
+	const beforeTitleContent = level <= 2 ? `${lineTemplate()}${config.lineBreak}${config.lineBreak}` : "";
 	return `${beforeTitleContent}${Array(level).fill("#").join("")} ${getTitle({title, level})}`;
 }
 
 /**
  * Creates a template for the badges.
  * @param badges
+ * @param config
  * @returns {string}
  */
-export function badgesTemplate ({badges}) {
+export function badgesTemplate ({badges, config}) {
 	return `<p align="center">
-		${badges.map(badge => `<a href="${badge.url}"><img alt="${badge.text}" src="${badge.img}" height="20"/></a>`).join(config.LINE_BREAK)}
+		${badges.map(badge => `<a href="${badge.url}"><img alt="${badge.text}" src="${badge.img}" height="20"/></a>`).join(config.lineBreak)}
 	</p>`;
 }
 
@@ -86,24 +87,27 @@ export function descriptionTemplate ({description, text, demo}) {
 /**
  * Creates a bullets template.
  * @param bullets
+ * @param config
+ * @returns {string | *}
  */
-export function bulletsTemplate ({bullets}) {
-	return bullets.map(bullet => `* ${bullet}`).join(config.LINE_BREAK);
+export function bulletsTemplate ({bullets, config}) {
+	return bullets.map(bullet => `* ${bullet}`).join(config.lineBreak);
 }
 
 /**
  * Creates the table of contents.
- * @param sections
+ * @param titles
+ * @param config
  * @returns {string}
  */
-export function tocTemplate ({titles}) {
+export function tocTemplate ({titles, config}) {
 	return `## Table of Contents
 
 ${titles.map(title => {
-		const tabs = Array(Math.max((title.match(/#/g) || []).length - 2, 0)).fill(config.TAB).join("");
+		const tabs = Array(Math.max((title.match(/#/g) || []).length - 2, 0)).fill(config.tab).join("");
 		const cleanedTitle = title.replace(/^[# ]*/gm, "");
 		return `${tabs}* [${cleanedTitle}](${getTitleLink(cleanedTitle)})`;
-	}).join(config.LINE_BREAK)}`
+	}).join(config.lineBreak)}`
 
 }
 
@@ -112,9 +116,9 @@ ${titles.map(title => {
  * @param authors
  * @returns {string}
  */
-export function contributorsTemplate ({contributors}) {
+export function contributorsTemplate ({contributors, config}) {
 	return `## Contributors
 	
-${contributors.map(({name, email, url}) => `* <a href="${url}">${name}</a> ${email != null ? `(<a href="mailto:${email}">${email}</a>` : ""})`).join(config.LINE_BREAK)}`;
+${contributors.map(({name, email, url}) => `* <a href="${url}">${name}</a> ${email != null ? `(<a href="mailto:${email}">${email}</a>` : ""})`).join(config.lineBreak)}`;
 }
 

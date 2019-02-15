@@ -17,13 +17,15 @@ import {
  * Creates a simple template.
  * @param name
  * @param template
- * @returns {{name: *, regex: (function({config: *}): RegExp), template: (function(): *)}}
+ * @param params
+ * @returns {{name: *, regex: (function({config: *}): RegExp), template: (function(): *), params: *}}
  */
-export function simpleTemplateGenerator ({name, template}) {
+export function simpleTemplateGenerator ({name, template, params}) {
 	return {
 		name,
 		regex: placeholderRegexCallback(`template:${name}`),
-		template: () => template
+		template: () => template,
+		params
 	}
 }
 

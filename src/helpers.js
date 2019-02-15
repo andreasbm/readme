@@ -243,7 +243,7 @@ export function generateReadme ({pkg, input, config}) {
 				}
 			}
 
-			return generator.template({pkg, input, config, ...params});
+			return generator.template({pkg, input, config, ...params, generateReadme});
 		})
 	}
 

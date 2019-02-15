@@ -20,7 +20,7 @@ import {
 export const generateMarkdown = {
 	name: "markdown",
 	regex: placeholderRegexCallback("readme:(.*.md)"),
-	template: (({content}) => content),
+	template: ({content}) => content,
 	params: ({pkg, matches}) => {
 		const absolutePath = path.resolve(matches[1]);
 

@@ -23,3 +23,5 @@ When running `node node_modules/.bin/readme --input=blueprint.md --output=README
 Welcome to [[ name ]]. This is version [[ version ]].
 ```
 
+Great. Let's continue and see how you can use templates!
+

@@ -1,7 +1,7 @@
 export const config = {
 	LINE_BREAK: "\r\n",
 	TAB: "\t",
-	INPUT: "README_BLUEPRINT.md",
+	INPUT: "blueprint.md",
 	PACKAGE: "package.json",
 	OUTPUT: "README.md",
 	VALUE_INTERPOLATION_REGEX: /{{[ ]*(.+?)[ ]*}}/g,

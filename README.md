@@ -1,4 +1,6 @@
-{{ readme:logo }}
+<p align="center">
+  <img src="undefined" alt="Logo" width="auto" height="auto" />
+</p>
 
 <h1 align="center">@appnest/readme</h1>
 <p align="center">

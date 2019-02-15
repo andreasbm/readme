@@ -1,0 +1,10 @@
+[
+	{
+		"name": "my-awesome-template",
+		"template": "This is a cool template :D Please install [[ readme.ids.npm ]]!"
+	},
+	{
+		"name": "break",
+		"template": "<p>This is a template!</p>"
+	}
+]

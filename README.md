@@ -86,6 +86,9 @@ Here are the dependencies:
 * **minimist**: ^1.2.0
 * **path**: ^0.12.7
 
+This is a cool template :D Please install @appnest/readme!
+<p>This is a template!</p>
+
 ![line](https://github.com/andreasbm/readme/blob/master/assets/line.png)
 
 ## ❯ Contributors

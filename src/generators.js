@@ -14,6 +14,20 @@ import {
 } from "./templates.js";
 
 /**
+ * Creates a simple template.
+ * @param name
+ * @param template
+ * @returns {{name: *, regex: (function({config: *}): RegExp), template: (function(): *)}}
+ */
+export function simpleTemplateGenerator ({name, template}) {
+	return {
+		name,
+		regex: placeholderRegexCallback(`template:${name}`),
+		template: () => template
+	}
+}
+
+/**
  * Loads markdown.
  * @type {{name: string, regex: RegExp, template: (function({content: *}): *), params: Function}}
  */

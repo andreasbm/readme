@@ -15,7 +15,7 @@ import {
 	generateMainTitle,
 	generateMarkdown,
 	generateTitle,
-	generateToc
+	generateToc, simpleTemplateGenerator
 } from "./generators";
 import {fileExists, generateReadme, readFile, writeFile} from "./helpers";
 import {readJSONFile} from "./helpers.js";
@@ -52,7 +52,7 @@ function generate (userArgs) {
 
 	// Construct the configuration object
 	const config = constructConfig({pkg, pkgName, userArgs, generators});
-	const {inputName, outputName, dry, silent} = config;
+	const {inputName, outputName, dry, silent, templatesName} = config;
 
 	// Grab input
 	if (!fileExists(inputName)) {
@@ -61,6 +61,14 @@ function generate (userArgs) {
 	}
 
 	const input = readFile(inputName);
+
+	// Grab templates
+	if (templatesName != null) {
+		const templates = readJSONFile(templatesName);
+		const simpleTemplateGenerators = templates.map(simpleTemplateGenerator);
+		config.generators.unshift(...simpleTemplateGenerators);
+	}
+
 
 	// Generate the readme
 	const readme = generateReadme({pkg, input, config});

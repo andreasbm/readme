@@ -4,16 +4,14 @@
 
 <h1 align="center">@appnest/readme</h1>
 <p align="center">
-		<a href="https://github.com/web-padawan/awesome-lit-html"><img alt="Awesome" src="https://awesome.re/badge.svg" height="20"/></a>
-<a href="https://npmcharts.com/compare/@appnest/lit-translate?minimal=true"><img alt="Downloads per month" src="https://img.shields.io/npm/dm/@appnest/lit-translate.svg" height="20"/></a>
-<a href="https://www.npmjs.com/package/@appnest/lit-translate"><img alt="NPM Version" src="https://img.shields.io/npm/v/@appnest/lit-translate.svg" height="20"/></a>
-<a href="https://david-dm.org/andreasbm/lit-translate"><img alt="Dependencies" src="https://img.shields.io/david/andreasbm/lit-translate.svg" height="20"/></a>
-<a href="https://github.com/andreasbm/lit-translate/graphs/contributors"><img alt="Contributors" src="https://img.shields.io/github/contributors/andreasbm/lit-translate.svg" height="20"/></a>
-<a href="https://www.webcomponents.org/element/@appnest/lit-translate"><img alt="Published on webcomponents.org" src="https://img.shields.io/badge/webcomponents.org-published-blue.svg" height="20"/></a>
+		<a href="https://npmcharts.com/compare/@appnest/readme?minimal=true"><img alt="Downloads per month" src="https://img.shields.io/npm/dm/@appnest/readme.svg" height="20"/></a>
+<a href="https://www.npmjs.com/package/@appnest/readme"><img alt="NPM Version" src="https://img.shields.io/npm/v/@appnest/readme.svg" height="20"/></a>
+<a href="https://david-dm.org/andreasbm/readme"><img alt="Dependencies" src="https://img.shields.io/david/andreasbm/readme.svg" height="20"/></a>
+<a href="https://github.com/andreasbm/readme/graphs/contributors"><img alt="Contributors" src="https://img.shields.io/github/contributors/andreasbm/readme.svg" height="20"/></a>
 	</p>
 <p align="center">
-  <b>A readme generator</b></br>
-  <sub>Use this readme generator to easily generate pretty readme's like this one! Simply extend your <code>package.json</code>.<sub>
+  <b>Generate pretty README.md files with your new superpowers!</b></br>
+  <sub>Use this readme generator to easily generate pretty readme's like this one! Simply extend your <code>package.json</code> and create a readme blueprint.<sub>
 </p>
 
 <br />
@@ -26,38 +24,46 @@
 
 ## Table of Contents
 
-* [❯ Extend your `package.json`](#-extend-your-packagejson)
-* [❯ Section 1](#-section-1)
-	* [Hello!](#hello)
-		* [THIS IS AWESOME :D](#this-is-awesome-d)
-* [❯ Section 2](#-section-2)
-	* [WOW!](#wow)
+* [❯ Installation](#-installation)
+* [❯ Create a blueprint](#-create-a-blueprint)
 * [❯ Contributors](#-contributors)
 * [❯ License](#-license)
 
 ![line](https://github.com/andreasbm/readme/blob/master/assets/line.png)
 
-## ❯ Extend your `package.json`
+## ❯ Installation
 
-Documentation coming soon
-
+```javascript
+npm install @appnest/readme
+```
 ![line](https://github.com/andreasbm/readme/blob/master/assets/line.png)
 
-## ❯ Section 1
+## ❯ Create a blueprint
 
-### Hello!
+First you need to create a `blueprint.md` file (name it whatever you like). This blueprint is going to be the blueprint for the `README.md` file we are going to generate later.
 
-#### THIS IS AWESOME :D
+Let's start simple. In order to get values from your `package.json` file injected into the readme we use the `..` syntax. Let's say your `package.json` file looks like this:
 
-Blah blah blah
+```json
+{
+  "name": "my-project",
+  "version": "1.0.0"
+}
+```
 
-![line](https://github.com/andreasbm/readme/blob/master/assets/line.png)
+To get the `name` and `version` into your readme you will need to write `{{ <!-- -->name }}` and `1.0.0` in your `blueprint.md` file like this:
 
-## ❯ Section 2
+```markdown
+Welcome to @appnest/readme. This is version 1.0.0!
+```
 
-### WOW!
+When running `node node_modules/.bin/readme --input=blueprint.md --output=README.md` the file `README.md` will be generated with the following contents:
 
-Blah blah blah
+```markdown
+Welcome to my-project. This is version 1.0.0.
+```
+
+
 
 ![line](https://github.com/andreasbm/readme/blob/master/assets/line.png)
 

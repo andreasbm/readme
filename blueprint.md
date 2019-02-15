@@ -10,21 +10,8 @@
 
 {{ readme:toc }}
 
-{{ readme:readme/usage.md }}
-
-## Section 1
-
-### Hello!
-
-#### THIS IS AWESOME :D
-
-Blah blah blah
-
-## Section 2
-
-### WOW!
-
-Blah blah blah
+{{ readme:readme/installation.md }}
+{{ readme:readme/create-blueprint.md }}
 
 {{ readme:contributors }}
 

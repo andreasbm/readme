@@ -163,11 +163,14 @@ export const generateTitle = {
  */
 export const generateInterpolate = {
 	name: "interpolate",
-	regex: placeholderRegex("[^:]*"),
-	template: ({pkg, text}) => getValue(pkg, text.trim()),
+	regex: placeholderRegex("[^: ]*"),
+	template: ({pkg, text}) => {
+		const value = getValue(pkg, text);
+		return value || text;
+	},
 	params: (({pkg, matches}) => {
 		const text = matches[0];
-		return {pkg, text};
+		return {pkg, text: text.trim()};
 	})
 };
 

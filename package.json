@@ -1,7 +1,7 @@
 {
 	"name": "@appnest/readme",
 	"version": "1.0.0",
-	"description": "A readme generator",
+	"description": "Generate pretty README.md files with your new superpowers!",
 	"license": "MIT",
 	"scripts": {
 		"b:lib": "node build.js",
@@ -32,21 +32,13 @@
 			"url": "https://avatars1.githubusercontent.com/u/6267397?s=460&v=4",
 			"width": 100
 		},
-		"text": "Use this readme generator to easily generate pretty readme's like this one! Simply extend your <code>package.json</code>.",
-		"input": "readme/blueprint.md",
+		"text": "Use this readme generator to easily generate pretty readme's like this one! Simply extend your <code>package.json</code> and create a readme blueprint.",
+		"input": "blueprint.md",
 		"output": "README.md",
 		"ids": {
-			"github": "andreasbm/lit-translate",
-			"npm": "@appnest/lit-translate",
-			"webcomponents": "@appnest/lit-translate"
+			"github": "andreasbm/readme",
+			"npm": "@appnest/readme"
 		},
-		"badges": [
-			{
-				"text": "Awesome",
-				"url": "https://github.com/web-padawan/awesome-lit-html",
-				"img": "https://awesome.re/badge.svg"
-			}
-		],
 		"bullets": [
 			"Bullet 1",
 			"Bullet 2",

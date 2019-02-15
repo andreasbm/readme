@@ -86,6 +86,13 @@ Here are the dependencies:
 * **minimist**: ^1.2.0
 * **path**: ^0.12.7
 
+This is the contributors
+* This
+* is
+* my
+* **AWESOME**
+* LIST!
+
 This is a cool template :D Please install @appnest/readme!
 <p>This is a template!</p>
 

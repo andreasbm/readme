@@ -194,9 +194,6 @@ export const generateInterpolate = {
 			value = bulletsTemplate({bullets: value, config});
 		}
 
-
-
-
 		return value;
 	},
 	params: ({pkg, matches}) => {

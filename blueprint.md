@@ -17,6 +17,9 @@
 Here are the dependencies:
 [[ dependencies ]]
 
+This is the contributors
+[[ readme.list ]]
+
 [[ template:my-awesome-template ]]
 [[ template:break ]]
 

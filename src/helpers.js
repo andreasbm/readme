@@ -73,7 +73,7 @@ export function isObject (obj) {
 		return false;
 	}
 
-	return typeof obj === "object";
+	return typeof obj === "object" && !Array.isArray(obj);
 }
 
 /**

@@ -17,3 +17,5 @@
 [[ readme:contributors ]]
 
 [[ readme:license ]]
+
+[[ readme.vars.cool ]]

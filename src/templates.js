@@ -1,5 +1,5 @@
 import {config} from "./config";
-import {cleanTitle, getLicenseUrl, getTitle, getTitleLink} from "./helpers.js";
+import {getLicenseUrl, getTitle, getTitleLink} from "./helpers.js";
 
 export function logoTemplate ({url, width = "auto", height = "auto", alt = "Logo"}) {
 	return `<p align="center">
@@ -99,10 +99,10 @@ export function tocTemplate ({titles}) {
 	return `## Table of Contents
 
 ${titles.map(title => {
-	const tabs = Array(Math.max((title.match(/#/g) || []).length - 2, 0)).fill(config.TAB).join("");
-	const cleanedTitle = title.replace(/^[# ]*/gm, "");
-	return `${tabs}* [${cleanedTitle}](${getTitleLink(cleanedTitle)})`;
-}).join(config.LINE_BREAK)}`
+		const tabs = Array(Math.max((title.match(/#/g) || []).length - 2, 0)).fill(config.TAB).join("");
+		const cleanedTitle = title.replace(/^[# ]*/gm, "");
+		return `${tabs}* [${cleanedTitle}](${getTitleLink(cleanedTitle)})`;
+	}).join(config.LINE_BREAK)}`
 
 }
 

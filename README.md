@@ -24,14 +24,14 @@
 
 ## Table of Contents
 
-* [❯ Extend your `package.json`](#--extend-your-packagejson)
-* [❯ Section 1](#--section-1)
-	* [Hello!](#-hello)
-		* [THIS IS AWESOME :D](#-this-is-awesome-d)
-* [❯ Section 2](#--section-2)
-	* [WOW!](#-wow)
-* [❯ Contributors](#--contributors)
-* [❯ License](#--license)
+* [❯ Extend your `package.json`](#-extend-your-packagejson)
+* [❯ Section 1](#-section-1)
+	* [Hello!](#hello)
+		* [THIS IS AWESOME :D](#this-is-awesome-d)
+* [❯ Section 2](#-section-2)
+	* [WOW!](#wow)
+* [❯ Contributors](#-contributors)
+* [❯ License](#-license)
 
 ![line](https://github.com/andreasbm/readme/blob/master/assets/line.png)
 

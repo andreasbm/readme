@@ -99,9 +99,9 @@ export function tocTemplate ({titles}) {
 	return `## Table of Contents
 
 ${titles.map(title => {
-	const tabs = Array(Math.max((title.match(/#/g) || []).length - 1, 0)).fill(config.TAB).join("");
+	const tabs = Array(Math.max((title.match(/#/g) || []).length - 2, 0)).fill(config.TAB).join("");
 	const cleanedTitle = title.replace(/^[# ]*/gm, "");
-	return `${tabs}* [${cleanedTitle}](${getTitleLink(title)})`;
+	return `${tabs}* [${cleanedTitle}](${getTitleLink(cleanedTitle)})`;
 }).join(config.LINE_BREAK)}`
 
 }

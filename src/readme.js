@@ -60,7 +60,7 @@ if (!dry) {
 
 	// Print the success messsage if not silent
 	if (!silent) {
-		console.log(colors.green(`[readme] - Readme was successfully generated at "${output}".`));
+		console.log(colors.green(`[readme] - A readme file was successfully generated at "${output}".`));
 	}
 
 } else {

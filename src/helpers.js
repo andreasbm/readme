@@ -246,7 +246,7 @@ export function generateReadme ({pkg, input, generators, silent, pkgName, inputN
 				// If an error occurred print it and continue
 				if (errorReason != null) {
 					if (!silent) {
-						console.log(colors.yellow(`The readme generator "${generator.name}" matched "${string}" but was skipped because ${errorReason}.`));
+						console.log(colors.yellow(`[readme] - The readme generator "${generator.name}" matched "${string}" but was skipped because ${errorReason}.`));
 					}
 
 					return string;

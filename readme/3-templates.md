@@ -2,7 +2,7 @@
 
 If you have come this far you are probably interested to figure out how to use readme templates. This library comes with a set of pre-defined templates to make your readme awesome, but you can of course create your own. More about that later, let's not get ahead of our self just yet.
 
-The most simple template you can use is the title template. The way to generate a title is by writing `{{ readme:title }}` in your blueprint. When you run the readme command the template will generate the following:
+The most simple template you can use is the title template. The way to generate a title is by writing `{{ readme:title }}` in your blueprint. When you run the `readme` command the template will generate the following:
 
 [[ readme:title ]]
 
@@ -10,9 +10,11 @@ The important thing to note here is that the template automatically reads your `
 
 ### Logo
 
+The template looks like this:
+
 [[ readme:logo ]]
 
-The logo template adds a logo to your readme. Use the syntax `{{ readme:logo }}` to stamp it. You will need to add the "readme.logo" field to your `package.json`. The logo field requires an `url` field and the fields `width`, `height` and `alt` are optional. Below is an example on how to add a logo.
+The logo template adds a logo to your readme. Use the syntax `{{ readme:logo }}` to stamp it. You will need to add the `readme.logo` field to your `package.json`. The logo field requires an `url` field and the fields `width`, `height` and `alt` are optional. Below is an example on how to add a logo.
 
 ```json
 {
@@ -29,6 +31,8 @@ The logo template adds a logo to your readme. Use the syntax `{{ readme:logo }}`
 
 
 ### Badges
+
+The template looks like this:
 
 [[ readme:badges ]]
 
@@ -56,6 +60,8 @@ The badges template adds badges to your readme. Use the `{{ readme:badges }}` sy
 
 ### Description
 
+The template looks like this:
+
 [[ readme:description ]]
 
 The description template adds a description to your readme. Use the `{{ readme.description }}` syntax to stamp it. To use this template you are required to add the field `description` to your `package.json` file. Optionally you can also add the fields `readme.text` and `readme.demo` which will be presented below the description.
@@ -74,9 +80,11 @@ The description template adds a description to your readme. Use the `{{ readme.d
 
 ### Bullets
 
+The template looks like this:
+
 [[ readme:bullets ]]
 
-The bullets template adds bullets to your readme. Use the `{{ readme.bullets }}` syntax to stamp it. To use this template you are required to add the `readme.bullets` array to your `package.json` file. This array has to be an array of strings as presented below.
+The bullets template adds bullets to your readme. Use the `{{ readme.bullets }}` syntax to stamp it. To use this template you are required to add the `readme.bullets` array to your `package.json` file. This array has to be an array of strings as shown below.
 
 
 ```json
@@ -93,3 +101,14 @@ The bullets template adds bullets to your readme. Use the `{{ readme.bullets }}`
   ...
 }
 ```
+
+### Table of Contents
+
+The template looks like this:
+
+[[ readme:toc ]]
+
+The table of contents template adds a table of contents. Use the `{{ readme.toc }}` syntax to stamp it.
+
+
+This template will save you approximately 392.3 hours during your life-time.

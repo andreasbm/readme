@@ -1,5 +1,5 @@
 ## 1. Installation
 
 ```javascript
-npm install [[ readme.ids.npm ]]
+npm install [[ readme.ids.npm ]] -D
 ```

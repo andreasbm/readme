@@ -44,14 +44,14 @@
 * [❯ Contributors](#-contributors)
 * [❯ License](#-license)
 
-![line](https://github.com/andreasbm/readme/blob/master/assets/line.png)
+![line](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line.png)
 
 ## ❯ 1. Installation
 
 ```javascript
-npm install @appnest/readme
+npm install @appnest/readme -D
 ```
-![line](https://github.com/andreasbm/readme/blob/master/assets/line.png)
+![line](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line.png)
 
 ## ❯ 2. Create a blueprint
 
@@ -62,7 +62,7 @@ Let's start simple. In order to get values from your `package.json` file injecte
 ```json
 {
   "name": "@appnest/readme",
-  "version": "1.0.0"
+  "version": "1.0.1"
 }
 ```
 
@@ -75,13 +75,13 @@ Welcome to {{ name }}. This is version {{ version }}!
 When running `node node_modules/.bin/readme --input=blueprint.md --output=README.md` the file `README.md` will be generated with the following contents:
 
 ```markdown
-Welcome to @appnest/readme. This is version 1.0.0.
+Welcome to @appnest/readme. This is version 1.0.1.
 ```
 
 Great. Let's continue and see how you can use templates!
 
 
-![line](https://github.com/andreasbm/readme/blob/master/assets/line.png)
+![line](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line.png)
 
 ## ❯ 3. Templates
 
@@ -226,7 +226,7 @@ Use the `{{ template:toc }}` placeholder to stamp it. It has been scientifically
 
 The contributors template adds the list of contributors and looks like this:
 
-![line](https://github.com/andreasbm/readme/blob/master/assets/line.png)
+![line](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line.png)
 
 ## ❯ Contributors
 	
@@ -250,7 +250,7 @@ Use the `{{ template:contributors }}` placeholder to stamp it. To use this templ
 
 The license template adds a license section and looks like this:
 
-![line](https://github.com/andreasbm/readme/blob/master/assets/line.png)
+![line](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line.png)
 
 ## ❯ License
 	
@@ -263,14 +263,14 @@ Use the `{{ template:license }}` placeholder to stamp it. To use this template y
   "license": "MIT"
 }
 ```
-![line](https://github.com/andreasbm/readme/blob/master/assets/line.png)
+![line](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line.png)
 
 ## ❯ Load markdown files
 
 What? You heard right. You can split the contents of your readme into multiple different files to make your life easier. Let's say you have a file called `my-section.md`. To stamp it you'll need to add `{{ load:my-section.md }}`.
 
 
-![line](https://github.com/andreasbm/readme/blob/master/assets/line.png)
+![line](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line.png)
 
 ## ❯ Custom templates
 
@@ -297,7 +297,7 @@ Then you can stamp your custom template using the `{{ template:install }}` synta
 
 
 
-![line](https://github.com/andreasbm/readme/blob/master/assets/line.png)
+![line](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line.png)
 
 ## ❯ Advanced!
 
@@ -328,19 +328,19 @@ If you have an array or an object you want to stamp to your readme as a list jus
 
 
 
-![line](https://github.com/andreasbm/readme/blob/master/assets/line.png)
+![line](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line.png)
 
 ## ❯ Future work
 
 That's it for now! Lot's of exiting features a going to be added in the future. If you stumble upon an issue or have a feature request you can open a github issue. Also, if you use this generator for one of your projects I would love to hear about it so I can feature it. Have a great day!
 
-![line](https://github.com/andreasbm/readme/blob/master/assets/line.png)
+![line](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line.png)
 
 ## ❯ Contributors
 	
 * <a href="https://twitter.com/andreasmehlsen">Andreas Mehlsen</a> (<a href="mailto:andmehlsen@gmail.com">andmehlsen@gmail.com</a>)
 
-![line](https://github.com/andreasbm/readme/blob/master/assets/line.png)
+![line](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line.png)
 
 ## ❯ License
 	

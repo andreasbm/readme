@@ -12,7 +12,7 @@
 	</p>
 
 <p align="center">
-  <b>Generate pretty README.md files with your new superpowers!</b></br>
+  <b>Generate pretty best-practice and easy-to-maintain README files</b></br>
   <sub>Use this readme generator to easily generate pretty readme's like this one! Simply extend your <code>package.json</code> and create a readme blueprint.<sub>
 </p>
 
@@ -63,7 +63,7 @@ Let's start simple. In order to get values from your `package.json` file injecte
 ```json
 {
   "name": "@appnest/readme",
-  "version": "1.0.5"
+  "version": "1.0.6"
 }
 ```
 
@@ -76,7 +76,7 @@ Welcome to {{ name }}. This is version {{ version }}!
 When running `node node_modules/.bin/readme --input=blueprint.md --output=README.md` the file `README.md` will be generated with the following contents:
 
 ```markdown
-Welcome to @appnest/readme. This is version 1.0.5.
+Welcome to @appnest/readme. This is version 1.0.6.
 ```
 
 Great. Let's continue and see how you can use templates!
@@ -154,7 +154,7 @@ Use the `{{ template:badges }}` placeholder to stamp it. You will need to add th
 The description template adds a description to your readme and looks like this:
 
 <p align="center">
-  <b>Generate pretty README.md files with your new superpowers!</b></br>
+  <b>Generate pretty best-practice and easy-to-maintain README files</b></br>
   <sub>Use this readme generator to easily generate pretty readme's like this one! Simply extend your <code>package.json</code> and create a readme blueprint.<sub>
 </p>
 

@@ -35,7 +35,7 @@
 		"text": "Use this readme generator to easily generate pretty readme's like this one! Simply extend your <code>package.json</code> and create a readme blueprint.",
 		"input": "blueprint.md",
 		"output": "README.md",
-		"placeholders": ["[[", "]]"],
+		"placeholder": ["[[", "]]"],
 		"ids": {
 			"github": "andreasbm/readme",
 			"npm": "@appnest/readme"
@@ -48,25 +48,14 @@
 			}
 		],
 		"bullets": [
-			"**Simple:** Extremely simple to use",
-			"**Extensible:** Add your own templates and variables",
+			"**Simple:** Extremely simple to use - so simple that it almost feels like magic!",
+			"**Powerful:** Customize almost everything - add your own templates and variables if you like",
 			"**Awesome:** The tool you don't know you need before you have many different repositories that all need maintanence"
-		],
-		"list": [
-			"This",
-			"is",
-			"my",
-			"**AWESOME**",
-			"LIST!"
 		],
 		"templates":[
 			{
-				"name": "my-awesome-template",
-				"template": "This is a cool template :D Please install [[ readme.ids.npm ]]!"
-			},
-			{
-				"name": "break",
-				"template": "<p>This is a template!</p>"
+				"name": "install",
+				"template": "Run `npm install [[ readme.ids.npm ]] to install this library!"
 			}
 		]
 	}

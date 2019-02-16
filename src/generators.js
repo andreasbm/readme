@@ -33,11 +33,15 @@ export function simpleTemplateGenerator ({name, template, params}) {
  * Loads markdown.
  * @type {{name: string, regex: RegExp, template: (function({content: *}): *), params: Function}}
  */
-export const generateMarkdown = {
+export const generateLoad = {
 	name: "markdown",
-	regex: placeholderRegexCallback("readme:(.*.md)"),
-	template: ({content}) => content,
-	params: ({pkg, matches}) => {
+	regex: placeholderRegexCallback("load:(.*.md)"),
+	template: ({content, generateReadme, config, pkg}) => {
+		// Recursively generate the readme for all the files that are being loaded, but only add the load generator
+		// since all of the generators should only run once.
+		return generateReadme({pkg, input: content, config: {...config, generators: [generateLoad]}});
+	},
+	params: ({pkg, matches, generateReadme, config}) => {
 		const absolutePath = path.resolve(matches[1]);
 
 		// Check if file exists
@@ -47,7 +51,7 @@ export const generateMarkdown = {
 
 		// Read the file
 		const content = readFile(absolutePath);
-		return {content};
+		return {content, generateReadme, config, pkg};
 	}
 };
 
@@ -57,7 +61,7 @@ export const generateMarkdown = {
  */
 export const generateLogo = {
 	name: "logo",
-	regex: placeholderRegexCallback("readme:logo"),
+	regex: placeholderRegexCallback("template:logo"),
 	template: logoTemplate,
 	params: {
 		logo: "readme.logo"
@@ -70,7 +74,7 @@ export const generateLogo = {
  */
 export const generateMainTitle = {
 	name: "main-title",
-	regex: placeholderRegexCallback("readme:title"),
+	regex: placeholderRegexCallback("template:title"),
 	template: mainTitleTemplate,
 	params: {
 		name: "name"
@@ -83,7 +87,7 @@ export const generateMainTitle = {
  */
 export const generateBadges = {
 	name: "badges",
-	regex: placeholderRegexCallback("readme:badges"),
+	regex: placeholderRegexCallback("template:badges"),
 	template: badgesTemplate,
 	params: ({pkg, config}) => {
 		const badges = getBadges({pkg, config});
@@ -98,7 +102,7 @@ export const generateBadges = {
  */
 export const generateDescription = {
 	name: "description",
-	regex: placeholderRegexCallback("readme:description"),
+	regex: placeholderRegexCallback("template:description"),
 	template: descriptionTemplate,
 	params: {
 		description: "description",
@@ -115,7 +119,7 @@ export const generateDescription = {
  */
 export const generateBullets = {
 	name: "bullets",
-	regex: placeholderRegexCallback("readme:bullets"),
+	regex: placeholderRegexCallback("template:bullets"),
 	template: bulletsTemplate,
 	params: {
 		bullets: "readme.bullets"
@@ -128,7 +132,7 @@ export const generateBullets = {
  */
 export const generateLine = {
 	name: "line",
-	regex: placeholderRegexCallback("readme:line"),
+	regex: placeholderRegexCallback("template:line"),
 	template: lineTemplate
 };
 
@@ -138,7 +142,7 @@ export const generateLine = {
  */
 export const generateContributors = {
 	name: "contributors",
-	regex: placeholderRegexCallback("readme:contributors"),
+	regex: placeholderRegexCallback("template:contributors"),
 	template: contributorsTemplate,
 	params: {
 		contributors: "contributors"
@@ -151,7 +155,7 @@ export const generateContributors = {
  */
 export const generateLicense = {
 	name: "license",
-	regex: placeholderRegexCallback("readme:license"),
+	regex: placeholderRegexCallback("template:license"),
 	template: licenseTemplate,
 	params: {
 		license: "license"
@@ -208,7 +212,7 @@ export const generateInterpolate = {
  */
 export const generateToc = {
 	name: "toc",
-	regex: placeholderRegexCallback("readme:toc"),
+	regex: placeholderRegexCallback("template:toc"),
 	template: tocTemplate,
 	params: ({pkg, input, config}) => {
 		const titles = input.match(/^[#]{1,6} .*$/gm);

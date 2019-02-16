@@ -13,7 +13,7 @@ import {
 	generateLine,
 	generateLogo,
 	generateMainTitle,
-	generateMarkdown,
+	generateLoad,
 	generateTitle,
 	generateToc, simpleTemplateGenerator
 } from "./generators";
@@ -21,7 +21,7 @@ import {fileExists, generateReadme, readFile, writeFile} from "./helpers";
 import {readJSONFile} from "./helpers.js";
 
 const generators = [
-	generateMarkdown,
+	generateLoad,
 	generateLogo,
 	generateMainTitle,
 	generateBadges,

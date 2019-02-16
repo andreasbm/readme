@@ -156,8 +156,8 @@ export function escapeRegex (text) {
  */
 export function placeholderRegexCallback (text) {
 	return (({config}) => {
-		const {placeholders} = config;
-		return new RegExp(`${escapeRegex(placeholders[0])}\\s*(${text})\\s*${escapeRegex(placeholders[1])}`, "gm");
+		const {placeholder} = config;
+		return new RegExp(`${escapeRegex(placeholder[0])}\\s*(${text})\\s*${escapeRegex(placeholder[1])}`, "gm");
 	});
 }
 

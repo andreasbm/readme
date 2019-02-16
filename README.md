@@ -17,8 +17,8 @@
 
 <br />
 
-* **Simple:** Extremely simple to use
-* **Extensible:** Add your own templates and variables
+* **Simple:** Extremely simple to use - so simple that it almost feels like magic!
+* **Powerful:** Customize almost everything - add your own templates and variables if you like
 * **Awesome:** The tool you don't know you need before you have many different repositories that all need maintanence
 
 ## Table of Contents
@@ -31,6 +31,16 @@
 	* [Description](#description)
 	* [Bullets](#bullets)
 	* [Table of Contents](#table-of-contents)
+	* [Contributors](#contributors)
+* [❯ Contributors](#-contributors)
+	* [License](#license)
+* [❯ License](#-license)
+* [❯ Load markdown files](#-load-markdown-files)
+* [❯ Custom templates](#-custom-templates)
+* [❯ Advanced!](#-advanced)
+	* [New template syntax](#new-template-syntax)
+	* [Arrays and objects](#arrays-and-objects)
+* [❯ Future work](#-future-work)
 * [❯ Contributors](#-contributors)
 * [❯ License](#-license)
 
@@ -77,7 +87,7 @@ Great. Let's continue and see how you can use templates!
 
 If you have come this far you are probably interested to figure out how to use readme templates. This library comes with a set of pre-defined templates to make your readme awesome, but you can of course create your own. More about that later, let's not get ahead of our self just yet.
 
-The most simple template you can use is the title template. The way to generate a title is by writing `{{ readme:title }}` in your blueprint. When you run the `readme` command the template will generate the following:
+The most simple template you can use is the title template. The way to generate a title is by writing `{{ template:title }}` in your blueprint. When you run the `readme` command the template will generate the following:
 
 <h1 align="center">@appnest/readme</h1>
 
@@ -91,18 +101,16 @@ The logo template adds a logo to your readme and looks like this:
   <img src="https://avatars1.githubusercontent.com/u/6267397?s=460&v=4" alt="Logo" width="100" height="auto" />
 </p>
 
-Use the syntax `{{ readme:logo }}` to stamp it. You will need to add the `readme.logo` field to your `package.json`. The logo field requires an `url` field and the fields `width`, `height` and `alt` are optional. Below is an example on how to add a logo.
+Use the placeholder `{{ template:logo }}` to stamp it. You will need to add the `readme.logo` field to your `package.json`. The logo field requires an `url` field and the fields `width`, `height` and `alt` are optional. Below is an example on how to add a logo.
 
 ```json
 {
-  ...
   "readme": {
     "logo": {
       "url": "https://avatars1.githubusercontent.com/u/6267397?s=460&v=4",
       "width": 100
     }
   }
-  ...
 }
 ```
 
@@ -119,11 +127,10 @@ The badges template adds badges to your readme and looks like this:
 <a href="https://github.com/andreasbm/readme/graphs/contributors"><img alt="Contributors" src="https://img.shields.io/github/contributors/andreasbm/readme.svg" height="20"/></a>
 	</p>
 
-Use the `{{ readme:badges }}` syntax to stamp it. You will need to add the information about how the badges should be generated. For that you can extend the "readme.ids" property in your `package.json` add the `npm` and `github` ids (both are optional). If you want to add your own badges you can use the `readme.badges` field.
+Use the `{{ template:badges }}` placeholder to stamp it. You will need to add the information about how the badges should be generated. For that you can extend the "readme.ids" property in your `package.json` add the `npm` and `github` ids (both are optional). If you want to add your own badges you can use the `readme.badges` field.
 
 ```json
 {
-  ...
   "readme": {
     "ids": {
       "github": "andreasbm/readme",
@@ -137,7 +144,6 @@ Use the `{{ readme:badges }}` syntax to stamp it. You will need to add the infor
       }
     ]
   }
-  ...
 }
 ```
 
@@ -152,17 +158,15 @@ The description template adds a description to your readme and looks like this:
 
 <br />
 
-Use the `{{ readme.description }}` syntax to stamp it. To use this template you are required to add the field `description` to your `package.json` file. Optionally you can also add the fields `readme.text` and `readme.demo` which will be presented below the description.
+Use the `{{ template:description }}` placeholder to stamp it. To use this template you are required to add the field `description` to your `package.json` file. Optionally you can also add the fields `readme.text` and `readme.demo` which will be presented below the description.
 
 ```json
 {
-  ...
   "description": "Generate pretty README.md files with your new superpowers!",
   "readme": {
     "text": "Use this readme generator to easily generate pretty readme's like this one! Simply extend your <code>package.json</code> and create a readme blueprint.",
     "demo": "https://my-demo-url.com"
   }
-  ...
 }
 ```
 
@@ -170,25 +174,22 @@ Use the `{{ readme.description }}` syntax to stamp it. To use this template you 
 
 The bullets template adds bullets to your readme and looks like this:
 
-* **Simple:** Extremely simple to use
-* **Extensible:** Add your own templates and variables
+* **Simple:** Extremely simple to use - so simple that it almost feels like magic!
+* **Powerful:** Customize almost everything - add your own templates and variables if you like
 * **Awesome:** The tool you don't know you need before you have many different repositories that all need maintanence
 
-Use the `{{ readme.bullets }}` syntax to stamp it. To use this template you are required to add the `readme.bullets` array to your `package.json` file. This array has to be an array of strings as shown below.
-
+Use the `{{ template:bullets }}` placeholder to stamp it. To use this template you are required to add the `readme.bullets` array to your `package.json` file. This array has to be an array of strings as shown below.
 
 ```json
 {
-  ...
   "description": "Generate pretty README.md files with your new superpowers!",
   "readme": {
     "bullets": [
-      "**Simple:** Extremely simple to use",
-      "**Extensible:** Add your own templates and variables",
+      "**Simple:** Extremely simple to use - so simple that it almost feels like magic!",
+      "**Powerful:** Customize almost everything - add your own templates and variables if you like",
       "**Awesome:** The tool you don't know you need before you have many different repositories that all need maintanence"
     ]
   }
-  ...
 }
 ```
 
@@ -206,27 +207,132 @@ The table of contents template adds a table of contents and looks like this:
 	* [Description](#description)
 	* [Bullets](#bullets)
 	* [Table of Contents](#table-of-contents)
+	* [Contributors](#contributors)
+* [❯ Contributors](#-contributors)
+	* [License](#license)
+* [❯ License](#-license)
+* [❯ Load markdown files](#-load-markdown-files)
+* [❯ Custom templates](#-custom-templates)
+* [❯ Advanced!](#-advanced)
+	* [New template syntax](#new-template-syntax)
+	* [Arrays and objects](#arrays-and-objects)
+* [❯ Future work](#-future-work)
 * [❯ Contributors](#-contributors)
 * [❯ License](#-license)
 
-Use the `{{ readme.toc }}` syntax to stamp it. It has been scientifically proven that this template will save you approximately 392.3 hours during your life-time.
+Use the `{{ template:toc }}` placeholder to stamp it. It has been scientifically proven that this template will save you approximately 392.3 hours during your life-time.
+
+### Contributors
+
+The contributors template adds the list of contributors and looks like this:
+
+![line](https://github.com/andreasbm/readme/blob/master/assets/line.png)
+
+## ❯ Contributors
+	
+* <a href="https://twitter.com/andreasmehlsen">Andreas Mehlsen</a> (<a href="mailto:andmehlsen@gmail.com">andmehlsen@gmail.com</a>)
+
+Use the `{{ template:contributors }}` placeholder to stamp it. To use this template your are required to add the `contributors` array to your `package.json` file like this.
+
+```json
+{
+  "contributors": [
+    {
+      "name": "Andreas Mehlsen",
+      "email": "andmehlsen@gmail.com",
+      "url": "https://twitter.com/andreasmehlsen"
+    }
+  ]
+}
+```
+
+### License
+
+The license template adds a license section and looks like this:
+
+![line](https://github.com/andreasbm/readme/blob/master/assets/line.png)
+
+## ❯ License
+	
+Licensed under [MIT](https://opensource.org/licenses/MIT).
+
+Use the `{{ template:license }}` placeholder to stamp it. To use this template you are required to add the `license` field to your `package.json` file like this.
+
+```json
+{
+  "license": "MIT"
+}
+```
+![line](https://github.com/andreasbm/readme/blob/master/assets/line.png)
+
+## ❯ Load markdown files
+
+What? You heard right. You can split the contents of your readme into multiple different files to make your life easier. Let's say you have a file called `my-section.md`. To stamp it you'll need to add `{{ load:my-section.md }}`.
 
 
-Here are the dependencies:
+![line](https://github.com/andreasbm/readme/blob/master/assets/line.png)
+
+## ❯ Custom templates
+
+To create your own templates you'll first need to add the `readme.templates` array to your `package.json` file like this.
+
+```json
+{
+  "readme": {
+    "templates":[
+      {
+        "name": "install",
+        "template": "Run `npm install @appnest/readme to install this library!"
+      }
+    ]
+  }
+}
+```
+
+Then you can stamp your custom template using the `{{ template:install }}` syntax ('install' here referencing the name of the custom template).
+
+[[ template:install ]]
+
+
+
+
+
+![line](https://github.com/andreasbm/readme/blob/master/assets/line.png)
+
+## ❯ Advanced!
+
+Oh! So are you ready to open Pandora's box? Let's do it.
+
+### New template syntax
+
+If you are in the mood you can change the syntax used for matching with the templates. Let's say you want your placeholders to look like this instead `{[ template:title }]` you'll need to add the `readme.placeholder` array with the new syntax being `["{[", "}]"]` like this.
+
+
+```json
+{
+  "readme": {
+    "placeholder": ["{[", "}]"]
+  }
+}
+```
+
+### Arrays and objects
+
+If you have an array or an object you want to stamp to your readme as a list just use the `{{ ... }}` syntax as usual. If you for example want to stamp the `dependencies` from your `package.json` file you write `{{ dependencies }}` and the dependencies will be stamped in a nice formatted way.
+
 * **colors**: ^1.3.3
 * **fs-extra**: ^7.0.1
 * **minimist**: ^1.2.0
 * **path**: ^0.12.7
 
-This is the contributors
-* This
-* is
-* my
-* **AWESOME**
-* LIST!
 
-This is a cool template :D Please install @appnest/readme!
-<p>This is a template!</p>
+
+
+![line](https://github.com/andreasbm/readme/blob/master/assets/line.png)
+
+## ❯ Future work
+
+That's it for now! Lot's of exiting features a going to be added in the future. If you stumble upon an issue or have a feature request you can open a github issue. Also, if you use this generator for one of your projects I would love to hear about it so I can feature it. Have a great day!
 
 ![line](https://github.com/andreasbm/readme/blob/master/assets/line.png)
 
@@ -239,4 +345,3 @@ This is a cool template :D Please install @appnest/readme!
 ## ❯ License
 	
 Licensed under [MIT](https://opensource.org/licenses/MIT).
-

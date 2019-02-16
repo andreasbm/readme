@@ -7,7 +7,7 @@ export const defaultConfig = {
 	inputName: "blueprint.md",
 	pkgName: "package.json",
 	outputName: "README.md",
-	placeholders: ["{{", "}}"],
+	placeholder: ["{{", "}}"],
 	dry: false,
 	silent: false,
 	githubBadges: [
@@ -49,7 +49,7 @@ export const defaultConfig = {
  * @param userArgs
  * @param pkgName
  * @param generators
- * @returns {{inputName: *, outputName: *, silent: (*|boolean), dry: (*|boolean), pkgName: *, placeholders: (*|string[]), generators: *, lineBreak: (*|string), tab: (*|string), templatesName: *}}
+ * @returns {{inputName: *, outputName: *, silent: (*|boolean), dry: (*|boolean), pkgName: *, placeholder: (*|string[]), generators: *, lineBreak: (*|string), tab: (*|string), templates: *}}
  */
 export function constructConfig ({pkg, userArgs, pkgName, generators}) {
 	const inputName = path.resolve(userArgs["input"] || getValue(pkg, "readme.input") || defaultConfig.inputName);
@@ -57,7 +57,7 @@ export function constructConfig ({pkg, userArgs, pkgName, generators}) {
 
 	const templates = userArgs["templates"] || getValue(pkg, "readme.templates");
 
-	const placeholders = userArgs["placeholders"] || getValue(pkg, "readme.placeholders") || defaultConfig.placeholders;
+	const placeholder = userArgs["placeholder"] || getValue(pkg, "readme.placeholder") || defaultConfig.placeholder;
 	const lineBreak = userArgs["lineBreak"] || getValue(pkg, "readme.lineBreak") || defaultConfig.lineBreak;
 	const tab = userArgs["tab"] || getValue(pkg, "readme.tab") || defaultConfig.tab;
 
@@ -65,5 +65,5 @@ export function constructConfig ({pkg, userArgs, pkgName, generators}) {
 	const dry = (userArgs["dry"] != null ? userArgs["dry"] : getValue(pkg, "readme.dry")) || defaultConfig.dry;
 
 
-	return {inputName, outputName, silent, dry, pkgName, placeholders, generators, lineBreak, tab, templates};
+	return {inputName, outputName, silent, dry, pkgName, placeholder, generators, lineBreak, tab, templates};
 }

@@ -1,27 +1,21 @@
-[[ readme:logo ]]
+[[ template:logo ]]
 
-[[ readme:title ]]
-[[ readme:badges ]]
-[[ readme:description ]]
+[[ template:title ]]
+[[ template:badges ]]
+[[ template:description ]]
 
-[[ readme:bullets ]]
+[[ template:bullets ]]
 
-[[ readme:toc ]]
+[[ template:toc ]]
 
-[[ readme:readme/1-installation.md ]]
-[[ readme:readme/2-create-blueprint.md ]]
-[[ readme:readme/3-templates.md ]]
+[[ load:readme/1-installation.md ]]
+[[ load:readme/2-create-blueprint.md ]]
+[[ load:readme/3-templates.md ]]
+[[ load:readme/4-load-markdown.md ]]
+[[ load:readme/5-custom-templates.md ]]
+[[ load:readme/6-advanced.md ]]
+[[ load:readme/7-future-work.md ]]
 
-Here are the dependencies:
-[[ dependencies ]]
+[[ template:contributors ]]
 
-This is the contributors
-[[ readme.list ]]
-
-[[ template:my-awesome-template ]]
-[[ template:break ]]
-
-[[ readme:contributors ]]
-
-[[ readme:license ]]
-
+[[ template:license ]]

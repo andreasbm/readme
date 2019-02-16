@@ -3,6 +3,10 @@
 	"version": "1.0.0",
 	"description": "Generate pretty README.md files with your new superpowers!",
 	"license": "MIT",
+	"module": "index.js",
+	"main": "index.js",
+	"types": "index.d.ts",
+	"author": "Appnest",
 	"scripts": {
 		"b:lib": "node build.js",
 		"readme": "npm run b:lib && node dist/index.cjs.js",
@@ -11,10 +15,27 @@
 		"bump:patch": "npm version patch && npm run git:add:commit:push",
 		"bump:minor": "npm version minor && npm run git:add:commit:push",
 		"bump:major": "npm version major && npm run git:add:commit:push",
-		"publish:patch": "npm run test && npm run bump:patch && npm run b:lib && npm run publish",
-		"publish:minor": "npm run test && npm run bump:minor && npm run b:lib && npm run publish",
-		"publish:major": "npm run test && npm run bump:major && npm run b:lib && npm run publish",
+		"publish:patch": "npm run bump:patch && npm run b:lib && npm run publish",
+		"publish:minor": "npm run bump:minor && npm run b:lib && npm run publish",
+		"publish:major": "npm run bump:major && npm run b:lib && npm run publish"
 	},
+	"bugs": {
+		"url": "https://github.com/andreasbm/readme/issues"
+	},
+	"homepage": "https://github.com/andreasbm/readme#readme",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/andreasbm/readme.git"
+	},
+	"keywords": [
+		"readme",
+		"template",
+		"boilerplate",
+		"nodejs",
+		"opensource",
+		"maintaining",
+		"generator"
+	],
 	"contributors": [
 		{
 			"name": "Andreas Mehlsen",

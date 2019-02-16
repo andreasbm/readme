@@ -10,6 +10,8 @@ The important thing to note here is that the template automatically reads your `
 
 ### Logo
 
+[[ readme:logo ]]
+
 The logo template adds a logo to your readme. Use the syntax `{{ readme:logo }}` to stamp it. You will need to add the "readme.logo" field to your `package.json`. The logo field requires an `url` field and the fields `width`, `height` and `alt` are optional. Below is an example on how to add a logo.
 
 ```json
@@ -25,7 +27,6 @@ The logo template adds a logo to your readme. Use the syntax `{{ readme:logo }}`
 }
 ```
 
-[[ readme:logo ]]
 
 ### Badges
 

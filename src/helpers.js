@@ -1,6 +1,7 @@
 import colors from "colors";
 import fse from "fs-extra";
 import path from "path";
+import {githubBadges, npmBadges, webcomponentsBadges} from "./badges";
 import {defaultConfig} from "./config";
 
 /**
@@ -97,21 +98,25 @@ export function extractValues ({map, obj}) {
  * @returns {*|Array}
  */
 export function getBadges ({pkg, config}) {
-	const badges = getValue(pkg, "readme.badges") || [];
+	const badges = [...(getValue(pkg, "readme.badges") || [])];
+
+	const npmId = getValue(pkg, "readme.ids.npm");
+	const githubId = getValue(pkg, "readme.ids.github");
+	const webcomponentsId = getValue(pkg, "readme.ids.webcomponents");
 
 	// Add NPM badges
-	if (hasKey(pkg, "readme.ids.npm")) {
-		badges.push(...defaultConfig.npmBadges);
+	if (npmId != null) {
+		badges.push(...npmBadges({npmId}));
 	}
 
 	// Add Github badges
-	if (hasKey(pkg, "readme.ids.github")) {
-		badges.push(...defaultConfig.githubBadges);
+	if (githubId != null) {
+		badges.push(...githubBadges({githubId}));
 	}
 
 	// Add webcomponents badges
-	if (hasKey(pkg, "readme.ids.webcomponents")) {
-		badges.push(...defaultConfig.webcomponentBadges);
+	if (webcomponentsId != null) {
+		badges.push(...webcomponentsBadges({webcomponentsId}));
 	}
 
 	return badges

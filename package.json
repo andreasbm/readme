@@ -5,7 +5,15 @@
 	"license": "MIT",
 	"scripts": {
 		"b:lib": "node build.js",
-		"readme": "npm run b:lib && node dist/index.cjs.js"
+		"readme": "npm run b:lib && node dist/index.cjs.js",
+		"publish": "cd dist && npm publish --access=public && cd ..",
+		"git:add:commit:push": "git add . && git commit --no-edit --amend --no-verify && git push",
+		"bump:patch": "npm version patch && npm run git:add:commit:push",
+		"bump:minor": "npm version minor && npm run git:add:commit:push",
+		"bump:major": "npm version major && npm run git:add:commit:push",
+		"publish:patch": "npm run test && npm run bump:patch && npm run b:lib && npm run publish",
+		"publish:minor": "npm run test && npm run bump:minor && npm run b:lib && npm run publish",
+		"publish:major": "npm run test && npm run bump:major && npm run b:lib && npm run publish",
 	},
 	"contributors": [
 		{

@@ -9,7 +9,7 @@
 	"author": "Appnest",
 	"scripts": {
 		"b:lib": "node build.js",
-		"readme": "npm run b:lib && node dist/index.cjs.js",
+		"readme": "npm run b:lib && node dist/index.cjs.js --output=test.md --input=teasd.md",
 		"publish": "cd dist && npm publish --access=public && cd ..",
 		"git:add:commit:push": "git add . && git commit --no-edit --amend --no-verify && git push",
 		"bump:patch": "npm version patch && npm run git:add:commit:push",

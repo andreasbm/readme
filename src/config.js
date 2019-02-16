@@ -53,7 +53,7 @@ export const defaultConfig = {
  */
 export function constructConfig ({pkg, userArgs, pkgName, generators}) {
 	const inputName = path.resolve(userArgs["input"] || getValue(pkg, "readme.input") || defaultConfig.inputName);
-	const outputName = path.resolve(userArgs["outputName"] || getValue(pkg, "readme.output") || defaultConfig.outputName);
+	const outputName = path.resolve(userArgs["output"] || getValue(pkg, "readme.output") || defaultConfig.outputName);
 
 	const templates = userArgs["templates"] || getValue(pkg, "readme.templates");
 

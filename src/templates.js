@@ -45,7 +45,8 @@ export function titleTemplate ({title, level, config}) {
 export function badgesTemplate ({badges, config}) {
 	return `<p align="center">
 		${badges.map(badge => `<a href="${badge.url}"><img alt="${badge.alt}" src="${badge.img}" height="20"/></a>`).join(config.lineBreak)}
-	</p>`;
+	</p>
+`;
 }
 
 /**
@@ -81,7 +82,8 @@ export function descriptionTemplate ({description, text, demo}) {
   <sub>${text != null ? text : ""}${demo != null ? ` ${demoTemplate({url: demo})}` : ""}<sub>
 </p>
 
-<br />`;
+<br />
+`;
 }
 
 /**

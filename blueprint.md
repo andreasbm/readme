@@ -5,7 +5,6 @@
 [[ template:description ]]
 
 [[ template:bullets ]]
-
 [[ template:toc ]]
 
 [[ load:readme/1-installation.md ]]

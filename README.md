@@ -10,6 +10,7 @@
 <a href="https://david-dm.org/andreasbm/readme"><img alt="Dependencies" src="https://img.shields.io/david/andreasbm/readme.svg" height="20"/></a>
 <a href="https://github.com/andreasbm/readme/graphs/contributors"><img alt="Contributors" src="https://img.shields.io/github/contributors/andreasbm/readme.svg" height="20"/></a>
 	</p>
+
 <p align="center">
   <b>Generate pretty README.md files with your new superpowers!</b></br>
   <sub>Use this readme generator to easily generate pretty readme's like this one! Simply extend your <code>package.json</code> and create a readme blueprint.<sub>
@@ -17,10 +18,10 @@
 
 <br />
 
+
 * **Simple:** Extremely simple to use - so simple that it almost feels like magic!
 * **Powerful:** Customize almost everything - add your own templates and variables if you like
 * **Awesome:** The tool you don't know you need before you have many different repositories that all need maintanence
-
 ## Table of Contents
 
 * [❯ 1. Installation](#-1-installation)
@@ -62,7 +63,7 @@ Let's start simple. In order to get values from your `package.json` file injecte
 ```json
 {
   "name": "@appnest/readme",
-  "version": "1.0.1"
+  "version": "1.0.3"
 }
 ```
 
@@ -75,7 +76,7 @@ Welcome to {{ name }}. This is version {{ version }}!
 When running `node node_modules/.bin/readme --input=blueprint.md --output=README.md` the file `README.md` will be generated with the following contents:
 
 ```markdown
-Welcome to @appnest/readme. This is version 1.0.1.
+Welcome to @appnest/readme. This is version 1.0.3.
 ```
 
 Great. Let's continue and see how you can use templates!
@@ -127,6 +128,7 @@ The badges template adds badges to your readme and looks like this:
 <a href="https://github.com/andreasbm/readme/graphs/contributors"><img alt="Contributors" src="https://img.shields.io/github/contributors/andreasbm/readme.svg" height="20"/></a>
 	</p>
 
+
 Use the `{{ template:badges }}` placeholder to stamp it. You will need to add the information about how the badges should be generated. For that you can extend the "readme.ids" property in your `package.json` add the `npm` and `github` ids (both are optional). If you want to add your own badges you can use the `readme.badges` field.
 
 ```json
@@ -157,6 +159,7 @@ The description template adds a description to your readme and looks like this:
 </p>
 
 <br />
+
 
 Use the `{{ template:description }}` placeholder to stamp it. To use this template you are required to add the field `description` to your `package.json` file. Optionally you can also add the fields `readme.text` and `readme.demo` which will be presented below the description.
 

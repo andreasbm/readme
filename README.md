@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://avatars1.githubusercontent.com/u/6267397?s=460&v=4" alt="Logo" width="100" height="auto" />
+  <img src="https://github.com/andreasbm/readme/blob/master/assets/line.png" alt="Logo" width="150" height="auto" />
 </p>
 
 <h1 align="center">@appnest/readme</h1>
@@ -98,7 +98,7 @@ The important thing to note here is that the template automatically reads your `
 The logo template adds a logo to your readme and looks like this:
 
 <p align="center">
-  <img src="https://avatars1.githubusercontent.com/u/6267397?s=460&v=4" alt="Logo" width="100" height="auto" />
+  <img src="https://github.com/andreasbm/readme/blob/master/assets/line.png" alt="Logo" width="150" height="auto" />
 </p>
 
 Use the placeholder `{{ template:logo }}` to stamp it. You will need to add the `readme.logo` field to your `package.json`. The logo field requires an `url` field and the fields `width`, `height` and `alt` are optional. Below is an example on how to add a logo.

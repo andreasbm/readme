@@ -1,6 +1,6 @@
 {
 	"name": "@appnest/readme",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Generate pretty README.md files with your new superpowers!",
 	"license": "MIT",
 	"module": "index.js",
@@ -65,7 +65,10 @@
 		"text": "Use this readme generator to easily generate pretty readme's like this one! Simply extend your <code>package.json</code> and create a readme blueprint.",
 		"input": "blueprint.md",
 		"output": "README.md",
-		"placeholder": ["[[", "]]"],
+		"placeholder": [
+			"[[",
+			"]]"
+		],
 		"ids": {
 			"github": "andreasbm/readme",
 			"npm": "@appnest/readme"
@@ -82,7 +85,7 @@
 			"**Powerful:** Customize almost everything - add your own templates and variables if you like",
 			"**Awesome:** The tool you don't know you need before you have many different repositories that all need maintanence"
 		],
-		"templates":[
+		"templates": [
 			{
 				"name": "install",
 				"template": "Run `npm install [[ readme.ids.npm ]] to install this library!"

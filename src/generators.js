@@ -34,7 +34,7 @@ export function simpleTemplateGenerator ({name, template, params}) {
  * @type {{name: string, regex: RegExp, template: (function({content: *}): *), params: Function}}
  */
 export const generateLoad = {
-	name: "markdown",
+	name: "load",
 	regex: placeholderRegexCallback("load:(.*.md)"),
 	template: ({content, generateReadme, config, pkg}) => {
 		// Recursively generate the readme for all the files that are being loaded, but only add the load generator

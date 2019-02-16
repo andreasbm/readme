@@ -65,7 +65,9 @@ function generate (userArgs) {
 	// Grab templates
 	if (templates != null) {
 		const simpleTemplateGenerators = templates.map(simpleTemplateGenerator);
-		config.generators.unshift(...simpleTemplateGenerators);
+
+		// Append the simple generators after the loading generator
+		config.generators.splice(1, 0, ...simpleTemplateGenerators);
 	}
 
 

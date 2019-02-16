@@ -220,7 +220,6 @@ export function generateReadme ({pkg, input, config}) {
 	// Go through all of the generators and replace with the template
 	for (const generator of generators) {
 		input = input.replace(generator.regex({pkg, input, config}), (string, ...matches) => {
-
 			let params = null;
 
 			// If the params are required we extract them from the package.

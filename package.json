@@ -88,7 +88,7 @@
 		"templates": [
 			{
 				"name": "install",
-				"template": "Run `npm install [[ readme.ids.npm ]] to install this library!"
+				"template": "Run `npm install [[ readme.ids.npm ]]' to install this library!"
 			}
 		]
 	}

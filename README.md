@@ -63,7 +63,7 @@ Let's start simple. In order to get values from your `package.json` file injecte
 ```json
 {
   "name": "@appnest/readme",
-  "version": "1.0.4"
+  "version": "1.0.5"
 }
 ```
 
@@ -76,7 +76,7 @@ Welcome to {{ name }}. This is version {{ version }}!
 When running `node node_modules/.bin/readme --input=blueprint.md --output=README.md` the file `README.md` will be generated with the following contents:
 
 ```markdown
-Welcome to @appnest/readme. This is version 1.0.4.
+Welcome to @appnest/readme. This is version 1.0.5.
 ```
 
 Great. Let's continue and see how you can use templates!
@@ -294,7 +294,7 @@ To create your own templates you'll first need to add the `readme.templates` arr
 
 Then you can stamp your custom template using the `{{ template:install }}` syntax ('install' here referencing the name of the custom template).
 
-Run `npm install @appnest/readme to install this library!
+Run `npm install @appnest/readme' to install this library!
 ![line](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line.png)
 
 ## ❯ Advanced!

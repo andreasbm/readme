@@ -29,8 +29,9 @@
 	},
 	"readme": {
 		"logo": {
-			"url": "https://github.com/andreasbm/readme/blob/master/assets/line.png",
-			"width": 150
+			"url": "https://github.com/andreasbm/readme/blob/master/assets/logo-shadow.svg",
+			"width": 150,
+			"height": 150
 		},
 		"text": "Use this readme generator to easily generate pretty readme's like this one! Simply extend your <code>package.json</code> and create a readme blueprint.",
 		"input": "blueprint.md",

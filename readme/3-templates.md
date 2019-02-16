@@ -29,6 +29,8 @@ The logo template adds a logo to your readme. Use the syntax `{{ readme:logo }}`
 
 ### Badges
 
+[[ readme:badges ]]
+
 The badges template adds badges to your readme. Use the `{{ readme:badges }}` syntax to stamp it. You will need to add the information about how the badges should be generated. For that you can extend the "readme.ids" property in your `package.json` add the `npm` and `github` ids (both are optional). If you want to add your own badges you can use the `readme.badges` field.
 
 ```json
@@ -51,9 +53,9 @@ The badges template adds badges to your readme. Use the `{{ readme:badges }}` sy
 }
 ```
 
-[[ readme:badges ]]
-
 ### Description
+
+[[ readme:description ]]
 
 The description template adds a description to your readme. Use the `{{ readme.description }}` syntax to stamp it. You are required to add the field `description` to your `package.json` file. Optionally you can also add the fields `readme.text` and `readme.demo` which will be presented below the description.
 
@@ -69,4 +71,3 @@ The description template adds a description to your readme. Use the `{{ readme.d
 }
 ```
 
-[[ readme:description ]]

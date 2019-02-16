@@ -30,6 +30,7 @@
 * [❯ 3. Templates](#-3-templates)
 	* [Logo](#logo)
 	* [Badges](#badges)
+	* [Description](#description)
 * [❯ Contributors](#-contributors)
 * [❯ License](#-license)
 
@@ -105,7 +106,19 @@ The logo template adds a logo to your readme. Use the syntax `{{ readme:logo }}`
 
 ### Badges
 
-The badges template adds badges to your readme. Use the `{{ readme:badges }}` syntax to stamp it. You will need to add the information about how the badges should be generated. For that you can extend the "readme.ids" property in your `package.json` add the `npm` and `github` ids (both are optional). If you want to add custom badges you can use the `readme.badges` field.
+<p align="center">
+		<a href="https://github.com/badges/shields"><img alt="Custom badge" src="https://img.shields.io/badge/custom-badge-f39f37.svg" height="20"/></a>
+<a href="https://npmcharts.com/compare/{{ readme.ids.npm }}?minimal=true"><img alt="Downloads per month" src="https://img.shields.io/npm/dm/{{ readme.ids.npm }}.svg" height="20"/></a>
+<a href="https://www.npmjs.com/package/{{ readme.ids.npm }}"><img alt="NPM Version" src="https://img.shields.io/npm/v/{{ readme.ids.npm }}.svg" height="20"/></a>
+<a href="https://david-dm.org/{{ readme.ids.github }}"><img alt="Dependencies" src="https://img.shields.io/david/{{ readme.ids.github }}.svg" height="20"/></a>
+<a href="https://github.com/{{ readme.ids.github }}/graphs/contributors"><img alt="Contributors" src="https://img.shields.io/github/contributors/{{ readme.ids.github }}.svg" height="20"/></a>
+<a href="https://npmcharts.com/compare/{{ readme.ids.npm }}?minimal=true"><img alt="Downloads per month" src="https://img.shields.io/npm/dm/{{ readme.ids.npm }}.svg" height="20"/></a>
+<a href="https://www.npmjs.com/package/{{ readme.ids.npm }}"><img alt="NPM Version" src="https://img.shields.io/npm/v/{{ readme.ids.npm }}.svg" height="20"/></a>
+<a href="https://david-dm.org/{{ readme.ids.github }}"><img alt="Dependencies" src="https://img.shields.io/david/{{ readme.ids.github }}.svg" height="20"/></a>
+<a href="https://github.com/{{ readme.ids.github }}/graphs/contributors"><img alt="Contributors" src="https://img.shields.io/github/contributors/{{ readme.ids.github }}.svg" height="20"/></a>
+	</p>
+
+The badges template adds badges to your readme. Use the `{{ readme:badges }}` syntax to stamp it. You will need to add the information about how the badges should be generated. For that you can extend the "readme.ids" property in your `package.json` add the `npm` and `github` ids (both are optional). If you want to add your own badges you can use the `readme.badges` field.
 
 ```json
 {
@@ -127,19 +140,29 @@ The badges template adds badges to your readme. Use the `{{ readme:badges }}` sy
 }
 ```
 
-<p align="center">
-		<a href="https://github.com/badges/shields"><img alt="Custom badge" src="https://img.shields.io/badge/custom-badge-f39f37.svg" height="20"/></a>
-<a href="https://npmcharts.com/compare/{{ readme.ids.npm }}?minimal=true"><img alt="Downloads per month" src="https://img.shields.io/npm/dm/{{ readme.ids.npm }}.svg" height="20"/></a>
-<a href="https://www.npmjs.com/package/{{ readme.ids.npm }}"><img alt="NPM Version" src="https://img.shields.io/npm/v/{{ readme.ids.npm }}.svg" height="20"/></a>
-<a href="https://david-dm.org/{{ readme.ids.github }}"><img alt="Dependencies" src="https://img.shields.io/david/{{ readme.ids.github }}.svg" height="20"/></a>
-<a href="https://github.com/{{ readme.ids.github }}/graphs/contributors"><img alt="Contributors" src="https://img.shields.io/github/contributors/{{ readme.ids.github }}.svg" height="20"/></a>
-<a href="https://npmcharts.com/compare/{{ readme.ids.npm }}?minimal=true"><img alt="Downloads per month" src="https://img.shields.io/npm/dm/{{ readme.ids.npm }}.svg" height="20"/></a>
-<a href="https://www.npmjs.com/package/{{ readme.ids.npm }}"><img alt="NPM Version" src="https://img.shields.io/npm/v/{{ readme.ids.npm }}.svg" height="20"/></a>
-<a href="https://david-dm.org/{{ readme.ids.github }}"><img alt="Dependencies" src="https://img.shields.io/david/{{ readme.ids.github }}.svg" height="20"/></a>
-<a href="https://github.com/{{ readme.ids.github }}/graphs/contributors"><img alt="Contributors" src="https://img.shields.io/github/contributors/{{ readme.ids.github }}.svg" height="20"/></a>
-	</p>
+### Description
 
-###
+<p align="center">
+  <b>Generate pretty README.md files with your new superpowers!</b></br>
+  <sub>Use this readme generator to easily generate pretty readme's like this one! Simply extend your <code>package.json</code> and create a readme blueprint.<sub>
+</p>
+
+<br />
+
+The description template adds a description to your readme. Use the `{{ readme.description }}` syntax to stamp it. You are required to add the field `description` to your `package.json` file. Optionally you can also add the fields `readme.text` and `readme.demo` which will be presented below the description.
+
+```json
+{
+  ...
+  "description": "Generate pretty README.md files with your new superpowers!",
+  "readme": {
+    "text": "Use this readme generator to easily generate pretty readme's like this one! Simply extend your <code>package.json</code> and create a readme blueprint.",
+    "demo": "https://my-demo-url.com"
+  }
+  ...
+}
+```
+
 
 
 Here are the dependencies:

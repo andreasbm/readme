@@ -85,13 +85,13 @@ The important thing to note here is that the template automatically reads your `
 
 ### Logo
 
-The template looks like this:
+The logo template adds a logo to your readme and looks like this:
 
 <p align="center">
   <img src="https://avatars1.githubusercontent.com/u/6267397?s=460&v=4" alt="Logo" width="100" height="auto" />
 </p>
 
-The logo template adds a logo to your readme. Use the syntax `{{ readme:logo }}` to stamp it. You will need to add the `readme.logo` field to your `package.json`. The logo field requires an `url` field and the fields `width`, `height` and `alt` are optional. Below is an example on how to add a logo.
+Use the syntax `{{ readme:logo }}` to stamp it. You will need to add the `readme.logo` field to your `package.json`. The logo field requires an `url` field and the fields `width`, `height` and `alt` are optional. Below is an example on how to add a logo.
 
 ```json
 {
@@ -109,7 +109,7 @@ The logo template adds a logo to your readme. Use the syntax `{{ readme:logo }}`
 
 ### Badges
 
-The template looks like this:
+The badges template adds badges to your readme and looks like this:
 
 <p align="center">
 		<a href="https://github.com/badges/shields"><img alt="Custom badge" src="https://img.shields.io/badge/custom-badge-f39f37.svg" height="20"/></a>
@@ -119,7 +119,7 @@ The template looks like this:
 <a href="https://github.com/andreasbm/readme/graphs/contributors"><img alt="Contributors" src="https://img.shields.io/github/contributors/andreasbm/readme.svg" height="20"/></a>
 	</p>
 
-The badges template adds badges to your readme. Use the `{{ readme:badges }}` syntax to stamp it. You will need to add the information about how the badges should be generated. For that you can extend the "readme.ids" property in your `package.json` add the `npm` and `github` ids (both are optional). If you want to add your own badges you can use the `readme.badges` field.
+Use the `{{ readme:badges }}` syntax to stamp it. You will need to add the information about how the badges should be generated. For that you can extend the "readme.ids" property in your `package.json` add the `npm` and `github` ids (both are optional). If you want to add your own badges you can use the `readme.badges` field.
 
 ```json
 {
@@ -143,7 +143,7 @@ The badges template adds badges to your readme. Use the `{{ readme:badges }}` sy
 
 ### Description
 
-The template looks like this:
+The description template adds a description to your readme and looks like this:
 
 <p align="center">
   <b>Generate pretty README.md files with your new superpowers!</b></br>
@@ -152,7 +152,7 @@ The template looks like this:
 
 <br />
 
-The description template adds a description to your readme. Use the `{{ readme.description }}` syntax to stamp it. To use this template you are required to add the field `description` to your `package.json` file. Optionally you can also add the fields `readme.text` and `readme.demo` which will be presented below the description.
+Use the `{{ readme.description }}` syntax to stamp it. To use this template you are required to add the field `description` to your `package.json` file. Optionally you can also add the fields `readme.text` and `readme.demo` which will be presented below the description.
 
 ```json
 {
@@ -168,13 +168,13 @@ The description template adds a description to your readme. Use the `{{ readme.d
 
 ### Bullets
 
-The template looks like this:
+The bullets template adds bullets to your readme and looks like this:
 
 * **Simple:** Extremely simple to use
 * **Extensible:** Add your own templates and variables
 * **Awesome:** The tool you don't know you need before you have many different repositories that all need maintanence
 
-The bullets template adds bullets to your readme. Use the `{{ readme.bullets }}` syntax to stamp it. To use this template you are required to add the `readme.bullets` array to your `package.json` file. This array has to be an array of strings as shown below.
+Use the `{{ readme.bullets }}` syntax to stamp it. To use this template you are required to add the `readme.bullets` array to your `package.json` file. This array has to be an array of strings as shown below.
 
 
 ```json
@@ -194,7 +194,7 @@ The bullets template adds bullets to your readme. Use the `{{ readme.bullets }}`
 
 ### Table of Contents
 
-The template looks like this:
+The table of contents template adds a table of contents and looks like this:
 
 ## Table of Contents
 
@@ -209,10 +209,7 @@ The template looks like this:
 * [❯ Contributors](#-contributors)
 * [❯ License](#-license)
 
-The table of contents template adds a table of contents. Use the `{{ readme.toc }}` syntax to stamp it.
-
-
-This template will save you approximately 392.3 hours during your life-time.
+Use the `{{ readme.toc }}` syntax to stamp it. It has been scientifically proven that this template will save you approximately 392.3 hours during your life-time.
 
 
 Here are the dependencies:

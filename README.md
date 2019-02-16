@@ -24,9 +24,9 @@
 * **Awesome:** The tool you don't know you need before you have many different repositories that all need maintanence
 ## Table of Contents
 
-* [❯ 1. Installation](#-1-installation)
-* [❯ 2. Create a blueprint](#-2-create-a-blueprint)
-* [❯ 3. Templates](#-3-templates)
+* [❯ Installation](#-installation)
+* [❯ Create a blueprint](#-create-a-blueprint)
+* [❯ Templates](#-templates)
 	* [Logo](#logo)
 	* [Badges](#badges)
 	* [Description](#description)
@@ -47,14 +47,14 @@
 
 ![line](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line.png)
 
-## ❯ 1. Installation
+## ❯ Installation
 
 ```javascript
 npm install @appnest/readme -D
 ```
 ![line](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line.png)
 
-## ❯ 2. Create a blueprint
+## ❯ Create a blueprint
 
 First you need to create a `blueprint.md` file (name it whatever you like). This blueprint is going to be the blueprint for the `README.md` file we are going to generate later.
 
@@ -84,7 +84,7 @@ Great. Let's continue and see how you can use templates!
 
 ![line](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line.png)
 
-## ❯ 3. Templates
+## ❯ Templates
 
 If you have come this far you are probably interested to figure out how to use readme templates. This library comes with a set of pre-defined templates to make your readme awesome, but you can of course create your own. More about that later, let's not get ahead of our self just yet.
 
@@ -202,9 +202,9 @@ The table of contents template adds a table of contents and looks like this:
 
 ## Table of Contents
 
-* [❯ 1. Installation](#-1-installation)
-* [❯ 2. Create a blueprint](#-2-create-a-blueprint)
-* [❯ 3. Templates](#-3-templates)
+* [❯ Installation](#-installation)
+* [❯ Create a blueprint](#-create-a-blueprint)
+* [❯ Templates](#-templates)
 	* [Logo](#logo)
 	* [Badges](#badges)
 	* [Description](#description)

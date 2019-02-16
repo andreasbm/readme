@@ -1,4 +1,4 @@
-## 1. Installation
+## Installation
 
 ```javascript
 npm install [[ readme.ids.npm ]] -D

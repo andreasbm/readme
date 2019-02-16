@@ -1,4 +1,4 @@
-## 2. Create a blueprint
+## Create a blueprint
 
 First you need to create a `blueprint.md` file (name it whatever you like). This blueprint is going to be the blueprint for the `README.md` file we are going to generate later.
 

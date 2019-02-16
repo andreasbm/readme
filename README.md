@@ -4,7 +4,8 @@
 
 <h1 align="center">@appnest/readme</h1>
 <p align="center">
-		<a href="https://npmcharts.com/compare/{{ readme.ids.npm }}?minimal=true"><img alt="Downloads per month" src="https://img.shields.io/npm/dm/{{ readme.ids.npm }}.svg" height="20"/></a>
+		<a href="https://github.com/badges/shields"><img alt="Custom badge" src="https://img.shields.io/badge/custom-badge-f39f37.svg" height="20"/></a>
+<a href="https://npmcharts.com/compare/{{ readme.ids.npm }}?minimal=true"><img alt="Downloads per month" src="https://img.shields.io/npm/dm/{{ readme.ids.npm }}.svg" height="20"/></a>
 <a href="https://www.npmjs.com/package/{{ readme.ids.npm }}"><img alt="NPM Version" src="https://img.shields.io/npm/v/{{ readme.ids.npm }}.svg" height="20"/></a>
 <a href="https://david-dm.org/{{ readme.ids.github }}"><img alt="Dependencies" src="https://img.shields.io/david/{{ readme.ids.github }}.svg" height="20"/></a>
 <a href="https://github.com/{{ readme.ids.github }}/graphs/contributors"><img alt="Contributors" src="https://img.shields.io/github/contributors/{{ readme.ids.github }}.svg" height="20"/></a>
@@ -27,6 +28,8 @@
 * [❯ 1. Installation](#-1-installation)
 * [❯ 2. Create a blueprint](#-2-create-a-blueprint)
 * [❯ 3. Templates](#-3-templates)
+	* [Logo](#logo)
+	* [Badges](#badges)
 * [❯ Contributors](#-contributors)
 * [❯ License](#-license)
 
@@ -77,7 +80,66 @@ The most simple template you can use is the title template. The way to generate 
 
 <h1 align="center">@appnest/readme</h1>
 
-The important thing to note here is that the template automatically reads your `package.json` file and inserts the `name` from the package.
+The important thing to note here is that the template automatically reads your `package.json` file and inserts the `name` from the package. That's pretty cool. Let's go through some of the other built-in templates you might want to add.
+
+### Logo
+
+The logo template adds a logo to your readme. Use the syntax `{{ readme:logo }}` to stamp it. You will need to add the "readme.logo" field to your `package.json`. The logo field requires an `url` field and the fields `width`, `height` and `alt` are optional. Below is an example on how to add a logo.
+
+```json
+{
+  ...
+  "readme": {
+    "logo": {
+      "url": "https://avatars1.githubusercontent.com/u/6267397?s=460&v=4",
+      "width": 100
+    }
+  }
+  ...
+}
+```
+
+<p align="center">
+  <img src="https://avatars1.githubusercontent.com/u/6267397?s=460&v=4" alt="Logo" width="100" height="auto" />
+</p>
+
+### Badges
+
+The badges template adds badges to your readme. Use the `{{ readme:badges }}` syntax to stamp it. You will need to add the information about how the badges should be generated. For that you can extend the "readme.ids" property in your `package.json` add the `npm` and `github` ids (both are optional). If you want to add custom badges you can use the `readme.badges` field.
+
+```json
+{
+  ...
+  "readme": {
+    "ids": {
+      "github": "andreasbm/readme",
+      "npm": "@appnest/readme"
+    },
+    "badges": [
+      {
+        "alt": "Custom badge",
+        "url": "https://github.com/badges/shields",
+        "img": "https://img.shields.io/badge/custom-badge-f39f37.svg"
+      }
+    ]
+  }
+  ...
+}
+```
+
+<p align="center">
+		<a href="https://github.com/badges/shields"><img alt="Custom badge" src="https://img.shields.io/badge/custom-badge-f39f37.svg" height="20"/></a>
+<a href="https://npmcharts.com/compare/{{ readme.ids.npm }}?minimal=true"><img alt="Downloads per month" src="https://img.shields.io/npm/dm/{{ readme.ids.npm }}.svg" height="20"/></a>
+<a href="https://www.npmjs.com/package/{{ readme.ids.npm }}"><img alt="NPM Version" src="https://img.shields.io/npm/v/{{ readme.ids.npm }}.svg" height="20"/></a>
+<a href="https://david-dm.org/{{ readme.ids.github }}"><img alt="Dependencies" src="https://img.shields.io/david/{{ readme.ids.github }}.svg" height="20"/></a>
+<a href="https://github.com/{{ readme.ids.github }}/graphs/contributors"><img alt="Contributors" src="https://img.shields.io/github/contributors/{{ readme.ids.github }}.svg" height="20"/></a>
+<a href="https://npmcharts.com/compare/{{ readme.ids.npm }}?minimal=true"><img alt="Downloads per month" src="https://img.shields.io/npm/dm/{{ readme.ids.npm }}.svg" height="20"/></a>
+<a href="https://www.npmjs.com/package/{{ readme.ids.npm }}"><img alt="NPM Version" src="https://img.shields.io/npm/v/{{ readme.ids.npm }}.svg" height="20"/></a>
+<a href="https://david-dm.org/{{ readme.ids.github }}"><img alt="Dependencies" src="https://img.shields.io/david/{{ readme.ids.github }}.svg" height="20"/></a>
+<a href="https://github.com/{{ readme.ids.github }}/graphs/contributors"><img alt="Contributors" src="https://img.shields.io/github/contributors/{{ readme.ids.github }}.svg" height="20"/></a>
+	</p>
+
+###
 
 
 Here are the dependencies:

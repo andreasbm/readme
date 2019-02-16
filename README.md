@@ -17,9 +17,9 @@
 
 <br />
 
-* Bullet 1
-* Bullet 2
-* Bullet 3
+* **Simple:** Extremely simple to use
+* **Extensible:** Add your own templates and variables
+* **Awesome:** The tool you don't know you need before you have many different repositories that all need maintanence
 
 <p>IMAGE</p>
 
@@ -31,6 +31,7 @@
 	* [Logo](#logo)
 	* [Badges](#badges)
 	* [Description](#description)
+	* [Bullets](#bullets)
 * [❯ Contributors](#-contributors)
 * [❯ License](#-license)
 
@@ -146,7 +147,7 @@ The badges template adds badges to your readme. Use the `{{ readme:badges }}` sy
 
 <br />
 
-The description template adds a description to your readme. Use the `{{ readme.description }}` syntax to stamp it. You are required to add the field `description` to your `package.json` file. Optionally you can also add the fields `readme.text` and `readme.demo` which will be presented below the description.
+The description template adds a description to your readme. Use the `{{ readme.description }}` syntax to stamp it. To use this template you are required to add the field `description` to your `package.json` file. Optionally you can also add the fields `readme.text` and `readme.demo` which will be presented below the description.
 
 ```json
 {
@@ -160,6 +161,29 @@ The description template adds a description to your readme. Use the `{{ readme.d
 }
 ```
 
+### Bullets
+
+* **Simple:** Extremely simple to use
+* **Extensible:** Add your own templates and variables
+* **Awesome:** The tool you don't know you need before you have many different repositories that all need maintanence
+
+The bullets template adds bullets to your readme. Use the `{{ readme.bullets }}` syntax to stamp it. To use this template you are required to add the `readme.bullets` array to your `package.json` file. This array has to be an array of strings as presented below.
+
+
+```json
+{
+  ...
+  "description": "Generate pretty README.md files with your new superpowers!",
+  "readme": {
+    "bullets": [
+      "**Simple:** Extremely simple to use",
+      "**Extensible:** Add your own templates and variables",
+      "**Awesome:** The tool you don't know you need before you have many different repositories that all need maintanence"
+    ]
+  }
+  ...
+}
+```
 
 
 Here are the dependencies:

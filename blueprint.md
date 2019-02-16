@@ -6,8 +6,6 @@
 
 [[ readme:bullets ]]
 
-<p>IMAGE</p>
-
 [[ readme:toc ]]
 
 [[ readme:readme/1-installation.md ]]

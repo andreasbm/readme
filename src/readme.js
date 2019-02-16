@@ -52,7 +52,7 @@ function generate (userArgs) {
 
 	// Construct the configuration object
 	const config = constructConfig({pkg, pkgName, userArgs, generators});
-	const {inputName, outputName, dry, silent, templatesName} = config;
+	const {inputName, outputName, dry, silent, templates} = config;
 
 	// Grab input
 	if (!fileExists(inputName)) {
@@ -63,8 +63,7 @@ function generate (userArgs) {
 	const input = readFile(inputName);
 
 	// Grab templates
-	if (templatesName != null) {
-		const templates = readJSONFile(templatesName);
+	if (templates != null) {
 		const simpleTemplateGenerators = templates.map(simpleTemplateGenerator);
 		config.generators.unshift(...simpleTemplateGenerators);
 	}

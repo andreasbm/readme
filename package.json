@@ -28,7 +28,6 @@
 		"rollup": "^1.1.2"
 	},
 	"readme": {
-		"templates": "templates.json",
 		"logo": {
 			"url": "https://avatars1.githubusercontent.com/u/6267397?s=460&v=4",
 			"width": 100
@@ -49,9 +48,9 @@
 			}
 		],
 		"bullets": [
-			"Bullet 1",
-			"Bullet 2",
-			"Bullet 3"
+			"**Simple:** Extremely simple to use",
+			"**Extensible:** Add your own templates and variables",
+			"**Awesome:** The tool you don't know you need before you have many different repositories that all need maintanence"
 		],
 		"list": [
 			"This",
@@ -59,6 +58,16 @@
 			"my",
 			"**AWESOME**",
 			"LIST!"
+		],
+		"templates":[
+			{
+				"name": "my-awesome-template",
+				"template": "This is a cool template :D Please install [[ readme.ids.npm ]]!"
+			},
+			{
+				"name": "break",
+				"template": "<p>This is a template!</p>"
+			}
 		]
 	}
 }

@@ -54,7 +54,8 @@ export const defaultConfig = {
 export function constructConfig ({pkg, userArgs, pkgName, generators}) {
 	const inputName = path.resolve(userArgs["input"] || getValue(pkg, "readme.input") || defaultConfig.inputName);
 	const outputName = path.resolve(userArgs["outputName"] || getValue(pkg, "readme.output") || defaultConfig.outputName);
-	const templatesName = path.resolve(userArgs["templates"] || getValue(pkg, "readme.templates"));
+
+	const templates = userArgs["templates"] || getValue(pkg, "readme.templates");
 
 	const placeholders = userArgs["placeholders"] || getValue(pkg, "readme.placeholders") || defaultConfig.placeholders;
 	const lineBreak = userArgs["lineBreak"] || getValue(pkg, "readme.lineBreak") || defaultConfig.lineBreak;
@@ -64,5 +65,5 @@ export function constructConfig ({pkg, userArgs, pkgName, generators}) {
 	const dry = (userArgs["dry"] != null ? userArgs["dry"] : getValue(pkg, "readme.dry")) || defaultConfig.dry;
 
 
-	return {inputName, outputName, silent, dry, pkgName, placeholders, generators, lineBreak, tab, templatesName};
+	return {inputName, outputName, silent, dry, pkgName, placeholders, generators, lineBreak, tab, templates};
 }

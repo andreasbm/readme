@@ -17,7 +17,7 @@
             </mask>
             <use id="Rectangle-4" fill="#FFFFFF" fill-rule="nonzero" xlink:href="#path-1"></use>
             <circle id="Oval-2" fill="#94AFC0" fill-rule="nonzero" mask="url(#mask-2)" cx="209.739" cy="229.185" r="193.071"></circle>
-            <path d="M-66.826,-2.778 L325.952,-2.778 L325.952,390 C325.952,430.316787 293.268787,463 252.952,463 L-66.826,463 C-107.142787,463 -139.826,430.316787 -139.826,390 L-139.826,70.222 C-139.826,29.9052133 -107.142787,-2.778 -66.826,-2.778 Z" id="Rectangle" fill="#2289B6" fill-rule="nonzero" mask="url(#mask-2)"></path>
+            <path d="M-67.752,-2.778 L325.026,-2.778 L325.026,390 C325.026,430.316787 292.342787,463 252.026,463 L-67.752,463 C-108.068787,463 -140.752,430.316787 -140.752,390 L-140.752,70.222 C-140.752,29.9052133 -108.068787,-2.778 -67.752,-2.778 Z" id="Rectangle" fill="#2289B6" fill-rule="nonzero" mask="url(#mask-2)"></path>
             <path d="M-72.382,-5.556 L302.802,-5.556 L302.802,369.628 C302.802,409.944787 270.118787,442.628 229.802,442.628 L-72.382,442.628 C-112.698787,442.628 -145.382,409.944787 -145.382,369.628 L-145.382,67.444 C-145.382,27.1272133 -112.698787,-5.556 -72.382,-5.556 Z" id="Rectangle" fill="#FFFFFF" fill-rule="nonzero" mask="url(#mask-2)"></path>
             <g id="Group" stroke-width="1" fill-rule="evenodd" mask="url(#mask-2)" fill="#DCE4E8">
                 <g transform="translate(43.522000, 206.498000)" fill-rule="nonzero" id="Rectangle-2">

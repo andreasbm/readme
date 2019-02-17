@@ -8,7 +8,7 @@
 	"types": "index.d.ts",
 	"author": "Appnest",
 	"scripts": {
-		"b:lib": "node build.js",
+		"b:lib": "node prebuild.js && rollup -c",
 		"readme": "npm run b:lib && node dist/index.cjs.js",
 		"publish": "cd dist && npm publish --access=public && cd ..",
 		"git:add:commit:push": "git add . && git commit --no-edit --amend --no-verify && git push",
@@ -53,8 +53,11 @@
 		"path": "^0.12.7"
 	},
 	"devDependencies": {
+		"@wessberg/rollup-plugin-ts": "^1.1.28",
 		"rimraf": "^2.6.3",
-		"rollup": "^1.1.2"
+		"rollup": "^1.1.2",
+		"rollup-plugin-commonjs": "^9.2.0",
+		"rollup-plugin-node-resolve": "^4.0.0"
 	},
 	"readme": {
 		"logo": {

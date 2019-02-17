@@ -1,24 +1,9 @@
-import colors from "colors";
+import { green, red } from "colors";
 import argv from "minimist";
-import path from "path";
-import {constructConfig} from "./config";
-import {defaultConfig} from "./config.js";
-import {
-	generateBadges,
-	generateBullets,
-	generateContributors,
-	generateDescription,
-	generateInterpolate,
-	generateLicense,
-	generateLine,
-	generateLogo,
-	generateMainTitle,
-	generateLoad,
-	generateTitle,
-	generateToc, simpleTemplateGenerator
-} from "./generators";
-import {fileExists, generateReadme, readFile, writeFile} from "./helpers";
-import {readJSONFile} from "./helpers.js";
+import { resolve } from "path";
+import { constructConfig, defaultConfig } from "./config";
+import { generateBadges, generateBullets, generateContributors, generateDescription, generateInterpolate, generateLicense, generateLine, generateLoad, generateLogo, generateMainTitle, generateTitle, generateToc, simpleTemplateGenerator } from "./generators";
+import { fileExists, generateReadme, readFile, readJSONFile, writeFile } from "./helpers";
 
 const generators = [
 	generateLoad,
@@ -42,9 +27,9 @@ const generators = [
 function generate (userArgs) {
 
 	// Grab package
-	const pkgName = path.resolve(userArgs["pkgName"] || defaultConfig.pkgName);
+	const pkgName = resolve(userArgs["pkgName"] || defaultConfig.pkgName);
 	if (!fileExists(pkgName)) {
-		console.log(colors.red(`[readme] - Could not find the package file "${pkgName}".`));
+		console.log(red(`[readme] - Could not find the package file "${pkgName}".`));
 		return;
 	}
 
@@ -56,7 +41,7 @@ function generate (userArgs) {
 
 	// Grab input
 	if (!fileExists(inputName)) {
-		console.log(colors.red(`[readme] - Could not find the input file "${inputName}". Make sure to provide a valid path as either the user arguments --input or in the "readme.input" field in the "${pkgName}" file.`));
+		console.log(red(`[readme] - Could not find the input file "${inputName}". Make sure to provide a valid path as either the user arguments --input or in the "readme.input" field in the "${pkgName}" file.`));
 		return;
 	}
 
@@ -80,11 +65,11 @@ function generate (userArgs) {
 
 		// Print the success messsage if not silent
 		if (!silent) {
-			console.log(colors.green(`[readme] - A readme file was successfully generated at "${outputName}".`));
+			console.log(green(`[readme] - A readme file was successfully generated at "${outputName}".`));
 		}
 
 	} else {
-		console.log(colors.green(`[readme] - Created the following readme but did not write it to any files".`), colors.green(readme));
+		console.log(green(`[readme] - Created the following readme but did not write it to any files".`), green(readme));
 	}
 }
 

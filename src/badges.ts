@@ -1,9 +1,10 @@
+import { IBadge } from "./model";
+
 /**
  * Generate npm badges.
  * @param npmId
- * @returns {*[]}
  */
-export function npmBadges ({npmId}) {
+export function npmBadges ({npmId}: {npmId: string}): IBadge[] {
 	return [
 		{
 			"alt": "Downloads per month",
@@ -20,8 +21,9 @@ export function npmBadges ({npmId}) {
 
 /**
  * Generate github badges.
+ * @param githubId
  */
-export function githubBadges ({githubId}) {
+export function githubBadges ({githubId}: {githubId: string}): IBadge[] {
 	return [
 		{
 			"alt": "Dependencies",
@@ -39,9 +41,8 @@ export function githubBadges ({githubId}) {
 /**
  * Generates the webcomponents badges.
  * @param webcomponentsId
- * @returns {{alt: string, url: string, img: string}[]}
  */
-export function webcomponentsBadges ({webcomponentsId}) {
+export function webcomponentsBadges ({webcomponentsId}: {webcomponentsId: string}): IBadge[] {
 	return [
 		{
 			"alt": "Published on webcomponents.org",

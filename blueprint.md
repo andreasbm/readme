@@ -3,7 +3,7 @@
 [[ template:badges ]]
 [[ template:description ]]
 <p align="center">
-  <img src="https://github.com/andreasbm/readme/blob/master/assets/demo.gif" alt="Demo" width="500" />
+  <img src="https://github.com/andreasbm/readme/blob/master/assets/demo.gif" alt="Demo" width="800" />
 </p>
 [[ template:bullets ]]
 [[ template:toc ]]

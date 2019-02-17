@@ -103,14 +103,20 @@ export function bulletsTemplate ({bullets, config}) {
  * @returns {string}
  */
 export function tocTemplate ({titles, config}) {
+
+	// Figure out the lowest level
+	const titleLevels = titles.map(title => {return {title, level: (title.match(/#/g) || []).length}});
+	const lowestLevel = titleLevels.reduce((acc, {title, level}) => Math.min(acc, level), Infinity);
+
 	return `## Table of Contents
 
-${titles.map(title => {
-		const tabs = Array(Math.max((title.match(/#/g) || []).length - 2, 0)).fill(config.tab).join("");
+${titleLevels.map(({title, level}) => {
+		// Subtract the lowest level from the level to ensure that the lowest level will have 0 tabs in front
+		// We can't make any assumptions about what level of headings the readme uses.
+		const tabs = Array(level - lowestLevel).fill(config.tab).join("");
 		const cleanedTitle = title.replace(/^[# ]*/gm, "");
 		return `${tabs}* [${cleanedTitle}](${getTitleLink(cleanedTitle)})`;
-	}).join(config.lineBreak)}`
-
+	}).join(config.lineBreak)}`;
 }
 
 /**

@@ -20,6 +20,3 @@ If you are in the mood you can change the syntax used for matching with the temp
 If you have an array or an object you want to stamp to your readme as a list just use the `{{ ... }}` syntax as usual. If you for example want to stamp the `dependencies` from your `package.json` file you write `{{ dependencies }}` and the dependencies will be stamped in a nice formatted way.
 
 [[ dependencies ]]
-
-
-

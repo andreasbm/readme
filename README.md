@@ -1,7 +1,6 @@
 <p align="center">
   <img src="https://github.com/andreasbm/readme/blob/master/assets/logo-shadow.png" alt="Logo" width="150" height="150" />
 </p>
-
 <h1 align="center">@appnest/readme</h1>
 <p align="center">
 		<a href="https://github.com/badges/shields"><img alt="Custom badge" src="https://img.shields.io/badge/custom-badge-f39f37.svg" height="20"/></a>
@@ -22,6 +21,7 @@
 * **Simple:** Extremely simple to use - so simple that it almost feels like magic!
 * **Powerful:** Customize almost everything - add your own templates and variables if you like
 * **Awesome:** The tool you don't know you need before you have many different repositories that all need maintenance
+
 ## Table of Contents
 
 * [❯ Installation](#-installation)
@@ -37,6 +37,7 @@
 	* [License](#license)
 * [❯ License](#-license)
 * [❯ Load markdown files](#-load-markdown-files)
+* [❯ A bit about this readme](#-a-bit-about-this-readme)
 * [❯ Custom templates](#-custom-templates)
 * [❯ Advanced!](#-advanced)
 	* [New template syntax](#new-template-syntax)
@@ -213,6 +214,7 @@ The table of contents template adds a table of contents and looks like this:
 	* [License](#license)
 * [❯ License](#-license)
 * [❯ Load markdown files](#-load-markdown-files)
+* [❯ A bit about this readme](#-a-bit-about-this-readme)
 * [❯ Custom templates](#-custom-templates)
 * [❯ Advanced!](#-advanced)
 	* [New template syntax](#new-template-syntax)
@@ -273,6 +275,36 @@ What? You heard right. You can split the contents of your readme into multiple d
 
 ![line](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line.png)
 
+## ❯ A bit about this readme
+
+By now you are probably curious to know how this `README.md` was generated? It was created from the following `blueprint.md` file.
+
+```markdown
+{{ template:logo }}
+{{ template:title }}
+{{ template:badges }}
+{{ template:description }}
+
+{{ template:bullets }}
+
+{{ template:toc }}
+
+{{ load:readme/1-installation.md }}
+{{ load:readme/2-create-blueprint.md }}
+{{ load:readme/3-templates.md }}
+{{ load:readme/4-load-markdown.md }}
+{{ load:readme/5-this-readme.md }}
+{{ load:readme/6-custom-templates.md }}
+{{ load:readme/7-advanced.md }}
+{{ load:readme/8-future-work.md }}
+
+{{ template:contributors }}
+{{ template:license }}
+```
+
+It really couldn't be more simple that this.
+![line](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line.png)
+
 ## ❯ Custom templates
 
 To create your own templates you'll first need to add the `readme.templates` array to your `package.json` file like this.
@@ -320,10 +352,6 @@ If you have an array or an object you want to stamp to your readme as a list jus
 * **fs-extra**: ^7.0.1
 * **minimist**: ^1.2.0
 * **path**: ^0.12.7
-
-
-
-
 ![line](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line.png)
 
 ## ❯ Future work
@@ -335,7 +363,6 @@ That's it for now! Lot's of exiting features a going to be added in the future. 
 ## ❯ Contributors
 	
 * <a href="https://twitter.com/andreasmehlsen">Andreas Mehlsen</a> (<a href="mailto:andmehlsen@gmail.com">andmehlsen@gmail.com</a>)
-
 ![line](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line.png)
 
 ## ❯ License

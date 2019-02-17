@@ -2,6 +2,9 @@
 [[ template:title ]]
 [[ template:badges ]]
 [[ template:description ]]
+<p align="center">
+  <img src="https://github.com/andreasbm/readme/blob/master/assets/demo.gif" alt="Demo" width="500" />
+</p>
 [[ template:bullets ]]
 [[ template:toc ]]
 [[ load:readme/1-installation.md ]]

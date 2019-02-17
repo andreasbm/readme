@@ -2,7 +2,6 @@ import colors from "colors";
 import fse from "fs-extra";
 import path from "path";
 import {githubBadges, npmBadges, webcomponentsBadges} from "./badges";
-import {defaultConfig} from "./config";
 
 /**
  * Determines whether an object has the specified key.
@@ -166,10 +165,12 @@ export function placeholderRegexCallback (text) {
  * @param target
  * @param content
  */
-export function writeFile ({target, content}) {
-	const stream = fse.createWriteStream(target);
-	stream.write(content);
-	stream.end();
+export async function writeFile ({target, content}) {
+	try {
+		await fse.outputFile(target, content)
+	} catch (err) {
+		console.error(err)
+	}
 }
 
 /**
@@ -253,7 +254,7 @@ export function generateReadme ({pkg, input, config}) {
 				// If an error occurred print it and continue
 				if (errorReason != null) {
 					if (!silent) {
-						console.log(colors.yellow(`[readme] - The readme template "${generator.name}" matched "${string}" but was skipped because ${errorReason}.`));
+						console.log(colors.yellow(`[readme] - The readme generator "${generator.name}" matched "${string}" but was skipped because ${errorReason}.`));
 					}
 
 					return string;

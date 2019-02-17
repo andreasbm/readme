@@ -17,9 +17,11 @@
 
 <br />
 
+
 <p align="center">
   <img src="https://github.com/andreasbm/readme/blob/master/assets/demo.gif" alt="Demo" width="800" />
 </p>
+
 * **Simple:** Extremely simple to use - so simple that it almost feels like magic!
 * **Powerful:** Customize almost everything - add your own templates and variables if you like
 * **Awesome:** The tool you don't know you need before you have many different repositories that all need maintenance

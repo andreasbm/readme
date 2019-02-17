@@ -18,7 +18,7 @@
 <br />
 
 <p align="center">
-  <img src="https://github.com/andreasbm/readme/blob/master/assets/demo.gif" alt="Demo" width="500" />
+  <img src="https://github.com/andreasbm/readme/blob/master/assets/demo.gif" alt="Demo" width="800" />
 </p>
 * **Simple:** Extremely simple to use - so simple that it almost feels like magic!
 * **Powerful:** Customize almost everything - add your own templates and variables if you like

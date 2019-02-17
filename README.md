@@ -21,7 +21,7 @@
 * **Powerful:** Customize almost everything - add your own templates and variables if you like
 * **Awesome:** The tool you don't know you need before you have many different repositories that all need maintenance
 
-![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line-colored.png)
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line-dark.png)
 
 ## ❯ Table of Contents
 
@@ -43,11 +43,12 @@
 * [❯ Advanced!](#-advanced)
 	* [New template syntax](#new-template-syntax)
 	* [Arrays and objects](#arrays-and-objects)
+	* [Different colored lines](#different-colored-lines)
 * [❯ Future work](#-future-work)
 * [❯ Contributors](#-contributors)
 * [❯ License](#-license)
 
-![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line-colored.png)
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line-dark.png)
 
 ## ❯ Installation
 
@@ -55,7 +56,7 @@
 npm install @appnest/readme -D
 ```
 
-![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line-colored.png)
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line-dark.png)
 
 ## ❯ Create a blueprint
 
@@ -84,7 +85,7 @@ Welcome to @appnest/readme. This is version 1.0.7.
 
 Great. Let's continue and see how you can use templates!
 
-![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line-colored.png)
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line-dark.png)
 
 ## ❯ Templates
 
@@ -201,7 +202,7 @@ Use the `{{ template:bullets }}` placeholder to stamp it. To use this template y
 The table of contents template adds a table of contents and looks like this:
 
 
-![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line-colored.png)
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line-dark.png)
 
 ## ❯ Table of Contents
 
@@ -223,6 +224,7 @@ The table of contents template adds a table of contents and looks like this:
 * [❯ Advanced!](#-advanced)
 	* [New template syntax](#new-template-syntax)
 	* [Arrays and objects](#arrays-and-objects)
+	* [Different colored lines](#different-colored-lines)
 * [❯ Future work](#-future-work)
 * [❯ Contributors](#-contributors)
 * [❯ License](#-license)
@@ -234,7 +236,7 @@ Use the `{{ template:toc }}` placeholder to stamp it. It has been scientifically
 The contributors template adds the list of contributors and looks like this:
 
 
-![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line-colored.png)
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line-dark.png)
 
 ## ❯ Contributors
 	
@@ -259,7 +261,7 @@ Use the `{{ template:contributors }}` placeholder to stamp it. To use this templ
 The license template adds a license section and looks like this:
 
 
-![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line-colored.png)
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line-dark.png)
 
 ## ❯ License
 	
@@ -273,13 +275,13 @@ Use the `{{ template:license }}` placeholder to stamp it. To use this template y
 }
 ```
 
-![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line-colored.png)
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line-dark.png)
 
 ## ❯ Load markdown files
 
 What? You heard right. You can split the contents of your readme into multiple different files to make your life easier. Let's say you have a file called `my-section.md`. To stamp it you'll need to add `{{ load:my-section.md }}`.
 
-![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line-colored.png)
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line-dark.png)
 
 ## ❯ A bit about this readme
 
@@ -310,7 +312,7 @@ By now you are probably curious to know how this `README.md` was generated? It w
 
 It really couldn't be more simple that this.
 
-![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line-colored.png)
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line-dark.png)
 
 ## ❯ Custom templates
 
@@ -333,7 +335,7 @@ Then you can stamp your custom template using the `{{ template:install }}` synta
 
 Run `npm install @appnest/readme' to install this library!
 
-![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line-colored.png)
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line-dark.png)
 
 ## ❯ Advanced!
 
@@ -361,19 +363,36 @@ If you have an array or an object you want to stamp to your readme as a list jus
 * **minimist**: ^1.2.0
 * **path**: ^0.12.7
 
-![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line-colored.png)
+### Different colored lines
+
+If you want to change the color of the lines above headers you can change the `readme.line` field in the `package.json`. You can either choose `dark` or `colored` values.
+
+```json
+{
+  "readme": {
+    "line": "dark"
+  }
+}
+```
+
+The following is the dark variant of the line.
+
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line-dark.png)
+
+
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line-dark.png)
 
 ## ❯ Future work
 
 That's it for now! Lot's of exiting features a going to be added in the future. If you stumble upon an issue or have a feature request you can open a github issue. Also, if you use this generator for one of your projects I would love to hear about it so I can feature it. Have a great day!
 
-![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line-colored.png)
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line-dark.png)
 
 ## ❯ Contributors
 	
 * <a href="https://twitter.com/andreasmehlsen">Andreas Mehlsen</a> (<a href="mailto:andmehlsen@gmail.com">andmehlsen@gmail.com</a>)
 
-![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line-colored.png)
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line-dark.png)
 
 ## ❯ License
 	

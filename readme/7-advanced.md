@@ -20,3 +20,19 @@ If you are in the mood you can change the syntax used for matching with the temp
 If you have an array or an object you want to stamp to your readme as a list just use the `{{ ... }}` syntax as usual. If you for example want to stamp the `dependencies` from your `package.json` file you write `{{ dependencies }}` and the dependencies will be stamped in a nice formatted way.
 
 [[ dependencies ]]
+
+### Different colored lines
+
+If you want to change the color of the lines above headers you can change the `readme.line` field in the `package.json`. You can either choose `dark` or `colored` values.
+
+```json
+{
+  "readme": {
+    "line": "dark"
+  }
+}
+```
+
+The following is the dark variant of the line.
+
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line-dark.png)

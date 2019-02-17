@@ -20,13 +20,12 @@ Use the placeholder `{{ template:logo }}` to stamp it. You will need to add the 
 {
   "readme": {
     "logo": {
-      "url": "https://avatars1.githubusercontent.com/u/6267397?s=460&v=4",
-      "width": 100
+      "url": "https://github.com/andreasbm/readme/blob/master/assets/logo-shadow.png",
+      "width": 150
     }
   }
 }
 ```
-
 
 ### Badges
 
@@ -64,10 +63,9 @@ Use the `{{ template:description }}` placeholder to stamp it. To use this templa
 
 ```json
 {
-  "description": "Generate pretty README.md files with your new superpowers!",
+  "description": "Generate pretty best-practice and easy-to-maintain README files",
   "readme": {
-    "text": "Use this readme generator to easily generate pretty readme's like this one! Simply extend your <code>package.json</code> and create a readme blueprint.",
-    "demo": "https://my-demo-url.com"
+    "text": "Use this readme generator to easily generate pretty readme's like this one! Simply extend your <code>package.json</code> and create a readme blueprint."
   }
 }
 ```
@@ -87,7 +85,7 @@ Use the `{{ template:bullets }}` placeholder to stamp it. To use this template y
     "bullets": [
       "**Simple:** Extremely simple to use - so simple that it almost feels like magic!",
       "**Powerful:** Customize almost everything - add your own templates and variables if you like",
-      "**Awesome:** The tool you don't know you need before you have many different repositories that all need maintanence"
+      "**Awesome:** The tool you don't know you need before you have many different repositories that all need maintenance"
     ]
   }
 }

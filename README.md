@@ -53,6 +53,7 @@
 ```javascript
 npm install @appnest/readme -D
 ```
+
 ![line](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line.png)
 
 ## ❯ Create a blueprint
@@ -64,7 +65,7 @@ Let's start simple. In order to get values from your `package.json` file injecte
 ```json
 {
   "name": "@appnest/readme",
-  "version": "1.0.6"
+  "version": "1.0.7"
 }
 ```
 
@@ -77,11 +78,10 @@ Welcome to {{ name }}. This is version {{ version }}!
 When running `node node_modules/.bin/readme --input=blueprint.md --output=README.md` the file `README.md` will be generated with the following contents:
 
 ```markdown
-Welcome to @appnest/readme. This is version 1.0.6.
+Welcome to @appnest/readme. This is version 1.0.7.
 ```
 
 Great. Let's continue and see how you can use templates!
-
 
 ![line](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line.png)
 
@@ -266,12 +266,12 @@ Use the `{{ template:license }}` placeholder to stamp it. To use this template y
   "license": "MIT"
 }
 ```
+
 ![line](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line.png)
 
 ## ❯ Load markdown files
 
 What? You heard right. You can split the contents of your readme into multiple different files to make your life easier. Let's say you have a file called `my-section.md`. To stamp it you'll need to add `{{ load:my-section.md }}`.
-
 
 ![line](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line.png)
 
@@ -303,6 +303,7 @@ By now you are probably curious to know how this `README.md` was generated? It w
 ```
 
 It really couldn't be more simple that this.
+
 ![line](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line.png)
 
 ## ❯ Custom templates
@@ -325,6 +326,7 @@ To create your own templates you'll first need to add the `readme.templates` arr
 Then you can stamp your custom template using the `{{ template:install }}` syntax ('install' here referencing the name of the custom template).
 
 Run `npm install @appnest/readme' to install this library!
+
 ![line](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line.png)
 
 ## ❯ Advanced!
@@ -352,6 +354,7 @@ If you have an array or an object you want to stamp to your readme as a list jus
 * **fs-extra**: ^7.0.1
 * **minimist**: ^1.2.0
 * **path**: ^0.12.7
+
 ![line](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line.png)
 
 ## ❯ Future work

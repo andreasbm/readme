@@ -36,3 +36,6 @@ If you want to change the color of the lines above headers you can change the `r
 The following is the dark variant of the line.
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line-dark.png)
+
+Yeah! Dark mode on your `README.md` is awesome indeed.
+

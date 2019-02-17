@@ -20,8 +20,11 @@ export function mainTitleTemplate ({name}) {
  * Creates a line template.
  * @returns {string}
  */
-export function lineTemplate () {
-	return `![line](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line.png)`;
+export function lineTemplate ({config}) {
+	const {line} = config;
+	const url = `https://raw.githubusercontent.com/andreasbm/readme/master/assets/line-${line}.png`;
+	return `
+![-----------------------------------------------------](${url})`;
 }
 
 /**
@@ -32,7 +35,7 @@ export function lineTemplate () {
  * @returns {string}
  */
 export function titleTemplate ({title, level, config}) {
-	const beforeTitleContent = level <= 2 ? `${lineTemplate()}${config.lineBreak}${config.lineBreak}` : "";
+	const beforeTitleContent = level <= 2 ? `${lineTemplate({config})}${config.lineBreak}${config.lineBreak}` : "";
 	return `${beforeTitleContent}${Array(level).fill("#").join("")} ${getTitle({title, level})}`;
 }
 
@@ -108,7 +111,8 @@ export function tocTemplate ({titles, config}) {
 	const titleLevels = titles.map(title => {return {title, level: (title.match(/#/g) || []).length}});
 	const lowestLevel = titleLevels.reduce((acc, {title, level}) => Math.min(acc, level), Infinity);
 
-	return `## Table of Contents
+	// Format the table of contents title because it is applied after the title template
+	return `${titleTemplate({title: "Table of Contents", level: 2, config})}
 
 ${titleLevels.map(({title, level}) => {
 		// Subtract the lowest level from the level to ensure that the lowest level will have 0 tabs in front

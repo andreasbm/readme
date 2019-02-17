@@ -17,12 +17,13 @@
 
 <br />
 
-
 * **Simple:** Extremely simple to use - so simple that it almost feels like magic!
 * **Powerful:** Customize almost everything - add your own templates and variables if you like
 * **Awesome:** The tool you don't know you need before you have many different repositories that all need maintenance
 
-## Table of Contents
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line-colored.png)
+
+## ❯ Table of Contents
 
 * [❯ Installation](#-installation)
 * [❯ Create a blueprint](#-create-a-blueprint)
@@ -46,7 +47,7 @@
 * [❯ Contributors](#-contributors)
 * [❯ License](#-license)
 
-![line](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line.png)
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line-colored.png)
 
 ## ❯ Installation
 
@@ -54,7 +55,7 @@
 npm install @appnest/readme -D
 ```
 
-![line](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line.png)
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line-colored.png)
 
 ## ❯ Create a blueprint
 
@@ -83,7 +84,7 @@ Welcome to @appnest/readme. This is version 1.0.7.
 
 Great. Let's continue and see how you can use templates!
 
-![line](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line.png)
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line-colored.png)
 
 ## ❯ Templates
 
@@ -199,7 +200,10 @@ Use the `{{ template:bullets }}` placeholder to stamp it. To use this template y
 
 The table of contents template adds a table of contents and looks like this:
 
-## Table of Contents
+
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line-colored.png)
+
+## ❯ Table of Contents
 
 * [❯ Installation](#-installation)
 * [❯ Create a blueprint](#-create-a-blueprint)
@@ -229,7 +233,8 @@ Use the `{{ template:toc }}` placeholder to stamp it. It has been scientifically
 
 The contributors template adds the list of contributors and looks like this:
 
-![line](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line.png)
+
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line-colored.png)
 
 ## ❯ Contributors
 	
@@ -253,7 +258,8 @@ Use the `{{ template:contributors }}` placeholder to stamp it. To use this templ
 
 The license template adds a license section and looks like this:
 
-![line](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line.png)
+
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line-colored.png)
 
 ## ❯ License
 	
@@ -267,13 +273,13 @@ Use the `{{ template:license }}` placeholder to stamp it. To use this template y
 }
 ```
 
-![line](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line.png)
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line-colored.png)
 
 ## ❯ Load markdown files
 
 What? You heard right. You can split the contents of your readme into multiple different files to make your life easier. Let's say you have a file called `my-section.md`. To stamp it you'll need to add `{{ load:my-section.md }}`.
 
-![line](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line.png)
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line-colored.png)
 
 ## ❯ A bit about this readme
 
@@ -304,7 +310,7 @@ By now you are probably curious to know how this `README.md` was generated? It w
 
 It really couldn't be more simple that this.
 
-![line](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line.png)
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line-colored.png)
 
 ## ❯ Custom templates
 
@@ -327,7 +333,7 @@ Then you can stamp your custom template using the `{{ template:install }}` synta
 
 Run `npm install @appnest/readme' to install this library!
 
-![line](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line.png)
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line-colored.png)
 
 ## ❯ Advanced!
 
@@ -355,18 +361,19 @@ If you have an array or an object you want to stamp to your readme as a list jus
 * **minimist**: ^1.2.0
 * **path**: ^0.12.7
 
-![line](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line.png)
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line-colored.png)
 
 ## ❯ Future work
 
 That's it for now! Lot's of exiting features a going to be added in the future. If you stumble upon an issue or have a feature request you can open a github issue. Also, if you use this generator for one of your projects I would love to hear about it so I can feature it. Have a great day!
 
-![line](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line.png)
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line-colored.png)
 
 ## ❯ Contributors
 	
 * <a href="https://twitter.com/andreasmehlsen">Andreas Mehlsen</a> (<a href="mailto:andmehlsen@gmail.com">andmehlsen@gmail.com</a>)
-![line](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line.png)
+
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line-colored.png)
 
 ## ❯ License
 	

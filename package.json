@@ -1,6 +1,6 @@
 {
 	"name": "@appnest/readme",
-	"version": "1.0.8",
+	"version": "1.0.9",
 	"description": "Generate pretty best-practice and easy-to-maintain README files",
 	"license": "MIT",
 	"module": "index.js",

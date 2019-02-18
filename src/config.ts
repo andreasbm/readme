@@ -34,7 +34,11 @@ export const defaultConfig: IConfig = {
 	dry: false,
 	silent: false,
 	line: LineColor.COLORED,
-	templates: []
+	templates: [],
+	titlePrefix: {
+		1: "❯ ",
+		2: "❯ "
+	}
 };
 
 /**
@@ -62,7 +66,8 @@ export const commandArgs: [string, any, ((v: any) => any)?][] = [
 	["readme.templates", defaultConfig.templates],
 	["readme.bullets", defaultConfig.bullets],
 	["readme.silent", defaultConfig.silent, booleanTransformer],
-	["readme.dry", defaultConfig.dry, booleanTransformer]
+	["readme.dry", defaultConfig.dry, booleanTransformer],
+	["readme.titlePrefix", defaultConfig.titlePrefix]
 ];
 
 /**

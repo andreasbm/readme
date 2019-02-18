@@ -186,9 +186,11 @@ export async function writeFile ({target, content}: {target: string, content: st
  * Returns the title for a level.
  * @param title
  * @param level
+ * @param pkg
  */
-export function getTitle ({title, level}: {title: string, level: number}): string {
-	return `${level <= 2 ? `❯ ` : ""}${title}`;
+export function getTitle ({title, level, pkg}: {title: string, level: number, pkg: IPackage}): string {
+	const prefix = pkg.readme.titlePrefix[level] || "";
+	return `${prefix}${title}`;
 }
 
 /**

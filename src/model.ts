@@ -49,6 +49,7 @@ export interface IConfig {
 	line: LineColor;
 	templates?: IUserTemplate[];
 	bullets?: Bullet[];
+	titlePrefix: {[key: number]: string}
 }
 
 export interface IPackage {

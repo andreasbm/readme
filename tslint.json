@@ -1,0 +1,102 @@
+{
+	"rules": {
+		"semicolon": [
+			true,
+			"always"
+		],
+		"space-before-function-paren": [
+			true,
+			"always"
+		],
+		"quotemark": [
+			true,
+			"double",
+			"avoid-escape"
+		],
+		"prefer-method-signature": true,
+		"one-variable-per-declaration": [
+			true
+		],
+		"object-literal-key-quotes": [
+			true,
+			"as-needed"
+		],
+		"no-unnecessary-qualifier": true,
+		"no-unnecessary-initializer": true,
+		"no-unsafe-any": false,
+		"no-trailing-whitespace": true,
+		"no-consecutive-blank-lines": [
+			true,
+			2
+		],
+		"new-parens": true,
+		"jsdoc-format": true,
+		"interface-name": [
+			true,
+			"always-prefix"
+		],
+		"class-name": true,
+		"arrow-return-shorthand": true,
+		"array-type": [
+			true,
+			"array"
+		],
+		"trailing-comma": [
+			false
+		],
+		"prefer-const": [
+			true,
+			{
+				"destructuring": "all"
+			}
+		],
+		"no-require-imports": false,
+		"no-default-export": false,
+		"max-classes-per-file": [
+			true,
+			1
+		],
+		"linebreak-style": [
+			true,
+			"LF"
+		],
+		"eofline": false,
+		"use-isnan": true,
+		"no-var-keyword": true,
+		"no-use-before-declare": false,
+		"no-unused-expression": false,
+		"no-sparse-arrays": true,
+		"no-shadowed-variable": true,
+		"no-misused-new": true,
+		"no-eval": true,
+		"no-duplicate-super": true,
+		"no-duplicate-variable": true,
+		"no-construct": true,
+		"no-conditional-assignment": false,
+		"no-var-requires": false,
+		"no-magic-numbers": [
+			true,
+			-1,
+			-0.5,
+			-0.1,
+			0.5,
+			0.1,
+			0.01,
+			0,
+			1,
+			2,
+			-2,
+			100
+		],
+		"no-any": false,
+		"member-access": [
+			true,
+			"no-public"
+		],
+		"triple-equals": [
+			true,
+			"allow-null-check"
+		],
+		"no-string-literal": true
+	}
+}

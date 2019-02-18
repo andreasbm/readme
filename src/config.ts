@@ -1,6 +1,6 @@
 import { generateBadges, generateBullets, generateContributors, generateDescription, generateInterpolate, generateLicense, generateLine, generateLoad, generateLogo, generateMainTitle, generateTitle, generateToc } from "./generators";
 import { getValue, setValue } from "./helpers";
-import { IConfig, IGenerator, IPackage, IReadmeCommandArgs, LineColor } from "./model";
+import { CommandArgs, IConfig, IGenerator, IPackage, LineColor } from "./model";
 
 export const defaultGenerators: IGenerator<any>[] = [
 	generateLoad,
@@ -40,7 +40,7 @@ export const defaultConfig: IConfig = {
 /**
  * Defaults for each package key.
  */
-const packageKeys: [string, any][] = [
+export const commandArgs: [string, any][] = [
 	["name", null],
 	["contributors", null],
 	["license", null],
@@ -64,8 +64,8 @@ const packageKeys: [string, any][] = [
  * @param pkg
  * @param defaultValue
  */
-function extractValue<T> ({keyPath, userArgs, pkg, defaultValue}: {keyPath: string, userArgs: IReadmeCommandArgs, pkg: IPackage, defaultValue: T}): T {
-	return (userArgs[keyPath] != null ? userArgs[keyPath] : getValue(pkg, keyPath)) || defaultValue;
+function extractValue<T> ({keyPath, userArgs, pkg, defaultValue}: {keyPath: string, userArgs: CommandArgs, pkg: IPackage, defaultValue: T}): T {
+	return <T>(userArgs[keyPath] != null ? userArgs[keyPath] : getValue(pkg, keyPath)) || defaultValue;
 }
 
 /**
@@ -73,8 +73,8 @@ function extractValue<T> ({keyPath, userArgs, pkg, defaultValue}: {keyPath: stri
  * @param pkg
  * @param userArgs
  */
-export function extendPackageWithDefaults ({pkg, userArgs}: {pkg: IPackage, userArgs: IReadmeCommandArgs}) {
-	for (const [keyPath, defaultValue] of packageKeys) {
+export function extendPackageWithDefaults ({pkg, userArgs}: {pkg: IPackage, userArgs: CommandArgs}) {
+	for (const [keyPath, defaultValue] of commandArgs) {
 		const value = extractValue({keyPath, defaultValue, pkg, userArgs});
 		setValue(pkg, keyPath, value);
 	}

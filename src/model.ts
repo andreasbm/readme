@@ -93,12 +93,7 @@ export interface IContributor {
 	email?: string;
 }
 
-export interface IReadmeCommandArgs {
-	blueprint?: string;
-	output?: string;
-	package?: string;
-
-}
+export type CommandArgs =  {[key: string]: any};
 
 export type Bullet = string;
 export type License = string;

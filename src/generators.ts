@@ -76,7 +76,9 @@ export const generateBadges: IGenerator<BadgesTemplateArgs> = {
 	template: badgesTemplate,
 	params: ({pkg}: IGeneratorParamsArgs) => {
 		const badges = getBadges({pkg});
-		if (badges.length === 0) return null;
+		if (badges.length === 0) {
+			return {error: "it could not generate any badges"};
+		}
 		return {badges, pkg};
 	}
 };
@@ -168,7 +170,7 @@ export const generateInterpolate: IGenerator<{pkg: IPackage, text: string}> = {
 
 		// If object, turn it into an array
 		if (isObject(value)) {
-			value = (<any>Object).entries(value).map(([k, v]) => `**${k}**: ${v}`);
+			value = (<any>Object).entries(value).map(([k, v]: [string, string]) => `**${k}**: ${v}`);
 		}
 
 		// Turn arrays into bullets if its an array!
@@ -176,7 +178,7 @@ export const generateInterpolate: IGenerator<{pkg: IPackage, text: string}> = {
 			value = bulletsTemplate({bullets: value, pkg});
 		}
 
-		return value;
+		return value || text;
 	},
 	params: ({pkg, matches}) => {
 		const text = matches[0];

@@ -3,13 +3,13 @@ import argv from "minimist";
 import { resolve } from "path";
 import { defaultGenerators, defaultPackageName, extendPackageWithDefaults } from "./config";
 import { simpleTemplateGenerator } from "./generators";
-import { fileExists, generateReadme, isObject, readFile, readJSONFile, writeFile } from "./helpers";
-import { IPackage } from "./model";
+import { fileExists, generateReadme, readFile, readJSONFile, writeFile } from "./helpers";
+import { CommandArgs, IPackage } from "./model";
 
 /**
  * Generates the readme.
  */
-async function generate (userArgs) {
+async function generate (userArgs: CommandArgs) {
 
 	// Grab package
 	const pkgPath = resolve(userArgs["package"] || defaultPackageName);
@@ -22,7 +22,7 @@ async function generate (userArgs) {
 
 	// Construct the configuration object
 	extendPackageWithDefaults({pkg, userArgs});
-	const {dry, silent, templates, output} = pkg.readme;
+	const {dry, silent, templates, output} = pkg.readme;
 
 
 	// Grab blueprint

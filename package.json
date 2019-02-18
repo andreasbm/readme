@@ -55,6 +55,8 @@
 		"path": "^0.12.7"
 	},
 	"devDependencies": {
+		"@types/minimist": "^1.2.0",
+		"@types/fs-extra": "^5.0.5",
 		"@wessberg/rollup-plugin-ts": "^1.1.28",
 		"rimraf": "^2.6.3",
 		"rollup": "^1.1.2",

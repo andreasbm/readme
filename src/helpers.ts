@@ -1,5 +1,5 @@
 import { yellow } from "colors";
-import fse from "fs-extra";
+import {readFileSync, existsSync, outputFile} from "fs-extra";
 import { resolve } from "path";
 import { githubBadges, npmBadges, webcomponentsBadges } from "./badges";
 import { IBadge, IGenerator, IGeneratorParamsArgs, IGeneratorParamsError, IPackage, Params } from "./model";
@@ -26,10 +26,10 @@ export function getLicenseUrl (license: string): string {
  * @param obj
  * @param keyPath
  */
-export function getValue<T> (obj: Object, keyPath: string): T | null {
+export function getValue<T> (obj: {[key: string]: any}, keyPath: string): T | null {
 	let keys = keyPath.split(".");
 	while (keys.length > 0 && obj != null) {
-		keyPath = keys.shift();
+		keyPath = keys.shift()!;
 		obj = obj[keyPath];
 	}
 
@@ -42,17 +42,17 @@ export function getValue<T> (obj: Object, keyPath: string): T | null {
  * @param keyPath
  * @param value
  */
-export function setValue<T> (obj: Object, keyPath: string, value: T) {
+export function setValue<T> (obj: {[key: string]: any}, keyPath: string, value: T) {
 	let keys = keyPath.split(".");
 	while (keys.length > 0 && obj != null) {
 
 		// Set value for the last key
 		if (keys.length === 1) {
-			obj[keys.shift()] = value;
+			obj[keys.shift()!] = value;
 			return;
 		}
 
-		obj = obj[keys.shift()];
+		obj = obj[keys.shift()!];
 	}
 }
 
@@ -96,10 +96,10 @@ export function isObject (obj: unknown): boolean {
  * @param map
  * @param obj
  */
-export function extractValues ({map, obj}: {map: Object, obj: Object}) {
+export function extractValues ({map, obj}: {map: {[key: string]: any}, obj: Object}) {
 	const newObj = {};
 	for (const [k, v] of (<any>Object).entries(map)) {
-		newObj[k] = getValue(obj, v);
+		(<any>newObj)[k] = getValue(obj, v);
 	}
 
 	return newObj;
@@ -139,7 +139,7 @@ export function getBadges ({pkg}: {pkg: IPackage}): IBadge[] {
  * @param name
  */
 export function readFile (name: string): string {
-	return fse.readFileSync(resolve(name)).toString("utf8");
+	return readFileSync(resolve(name)).toString("utf8");
 }
 
 /**
@@ -162,7 +162,7 @@ export function escapeRegex (text: string): string {
  * Returns a placeholder regex.
  * @param text
  */
-export function placeholderRegexCallback (text: string): (({pkg: IPackage}) => RegExp) {
+export function placeholderRegexCallback (text: string): (({pkg}: {pkg: IPackage}) => RegExp) {
 	return (({pkg}: {pkg: IPackage}) => {
 		const {placeholder} = pkg.readme;
 		return new RegExp(`${escapeRegex(placeholder[0])}\\s*(${text})\\s*${escapeRegex(placeholder[1])}`, "gm");
@@ -174,9 +174,9 @@ export function placeholderRegexCallback (text: string): (({pkg: IPackage}) => R
  * @param target
  * @param content
  */
-export async function writeFile ({target, content}: {target: string, content: string}): Promise<void> {
+export async function writeFile ({target, content}: {target: string, content: string}) {
 	try {
-		await fse.outputFile(target, content);
+		await outputFile(target, content);
 	} catch (err) {
 		console.error(err);
 	}
@@ -212,7 +212,7 @@ export function getTitleLink (title: string): string {
  * @param absolutePath
  */
 export function fileExists (absolutePath: string): boolean {
-	return fse.existsSync(absolutePath);
+	return existsSync(absolutePath);
 }
 
 /**
@@ -238,7 +238,12 @@ export function generateReadme ({pkg, blueprint, pkgPath, generators}: {pkg: IPa
 				if (isFunction(generator.params)) {
 
 					// Extract the params using the function
-					params = (<(args: IGeneratorParamsArgs) => any>generator.params)({...defaultArgs, blueprint, matches, string});
+					params = (<(args: IGeneratorParamsArgs) => any>generator.params)({
+						...defaultArgs,
+						blueprint,
+						matches,
+						string
+					});
 
 					// Validate the params
 					if (params == null || params.error) {
@@ -248,7 +253,7 @@ export function generateReadme ({pkg, blueprint, pkgPath, generators}: {pkg: IPa
 				} else {
 
 					// Get the required and optional parameters
-					const optionalParams = generator.params["optional"] || [];
+					const optionalParams = (<any>generator.params)["optional"] || [];
 					const requiredParams = {...generator.params};
 					delete requiredParams["optional"];
 

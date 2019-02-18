@@ -72,7 +72,7 @@ Let's start simple. In order to get values from your `package.json` file injecte
 ```json
 {
   "name": "@appnest/readme",
-  "version": "1.0.8"
+  "version": "1.0.9"
 }
 ```
 
@@ -82,10 +82,10 @@ To get the `name` and `version` into your readme you will need to write `{{ name
 Welcome to {{ name }}. This is version {{ version }}!
 ```
 
-When running `node node_modules/.bin/readme --input=blueprint.md --output=README.md` the file `README.md` will be generated with the following contents:
+When running `node node_modules/.bin/readme --blueprint=blueprint.md --output=README.md` the file `README.md` will be generated with the following contents:
 
 ```markdown
-Welcome to @appnest/readme. This is version 1.0.8.
+Welcome to @appnest/readme. This is version 1.0.9.
 ```
 
 Great. Let's continue and see how you can use templates!

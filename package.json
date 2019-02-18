@@ -8,16 +8,18 @@
 	"types": "index.d.ts",
 	"author": "Appnest",
 	"scripts": {
-		"b:lib": "node prebuild.js && rollup -c",
+		"prebuild": "node prebuild.js",
+		"b:lib": "rollup -c",
+		"b:lib:prebuild": "npm run prebuild && npm run b:lib",
 		"readme": "npm run b:lib && node dist/index.cjs.js",
 		"publish": "cd dist && npm publish --access=public && cd ..",
 		"git:add:commit:push": "git add . && git commit --no-edit --amend --no-verify && git push",
 		"bump:patch": "npm version patch && npm run git:add:commit:push",
 		"bump:minor": "npm version minor && npm run git:add:commit:push",
 		"bump:major": "npm version major && npm run git:add:commit:push",
-		"publish:patch": "npm run bump:patch && npm run b:lib && npm run publish",
-		"publish:minor": "npm run bump:minor && npm run b:lib && npm run publish",
-		"publish:major": "npm run bump:major && npm run b:lib && npm run publish"
+		"publish:patch": "npm run bump:patch && npm run b:lib:prebuild && npm run publish",
+		"publish:minor": "npm run bump:minor && npm run b:lib:prebuild && npm run publish",
+		"publish:major": "npm run bump:major && npm run b:lib:prebuild && npm run publish"
 	},
 	"bugs": {
 		"url": "https://github.com/andreasbm/readme/issues"
@@ -60,6 +62,8 @@
 		"rollup-plugin-node-resolve": "^4.0.0"
 	},
 	"readme": {
+		"blueprint": "blueprint.md",
+		"output": "README.md",
 		"logo": {
 			"url": "https://github.com/andreasbm/readme/blob/master/assets/logo-shadow.png",
 			"width": 150,
@@ -67,7 +71,6 @@
 		},
 		"text": "Use this readme generator to easily generate pretty readme's like this one! Simply extend your <code>package.json</code> and create a readme blueprint.",
 		"input": "blueprint.md",
-		"output": "README.md",
 		"placeholder": [
 			"[[",
 			"]]"

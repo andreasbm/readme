@@ -2,7 +2,7 @@ import { yellow } from "colors";
 import fse from "fs-extra";
 import { resolve } from "path";
 import { githubBadges, npmBadges, webcomponentsBadges } from "./badges";
-import { IBadge, IConfig, IGeneratorParamsArgs, IGeneratorParamsError, Package, Params } from "./model";
+import { IBadge, IGenerator, IGeneratorParamsArgs, IGeneratorParamsError, IPackage, Params } from "./model";
 
 /**
  * Determines whether an object has the specified key.
@@ -22,18 +22,38 @@ export function getLicenseUrl (license: string): string {
 }
 
 /**
- * Returns a key from an object.
+ * Returns a key from from an object for a key path.
  * @param obj
- * @param key
+ * @param keyPath
  */
-export function getValue<T> (obj: Object, key: string): T | null {
-	let keys = key.split(".");
+export function getValue<T> (obj: Object, keyPath: string): T | null {
+	let keys = keyPath.split(".");
 	while (keys.length > 0 && obj != null) {
-		key = keys.shift();
-		obj = obj[key];
+		keyPath = keys.shift();
+		obj = obj[keyPath];
 	}
 
 	return <T | null>obj;
+}
+
+/**
+ * Sets a value for a key path (".")
+ * @param obj
+ * @param keyPath
+ * @param value
+ */
+export function setValue<T> (obj: Object, keyPath: string, value: T) {
+	let keys = keyPath.split(".");
+	while (keys.length > 0 && obj != null) {
+
+		// Set value for the last key
+		if (keys.length === 1) {
+			obj[keys.shift()] = value;
+			return;
+		}
+
+		obj = obj[keys.shift()];
+	}
 }
 
 /**
@@ -88,9 +108,8 @@ export function extractValues ({map, obj}: {map: Object, obj: Object}) {
 /**
  * Returns available badges.
  * @param pkg
- * @param config
  */
-export function getBadges ({pkg, config}): IBadge[] {
+export function getBadges ({pkg}: {pkg: IPackage}): IBadge[] {
 	const badges: IBadge[] = [...(getValue<IBadge[]>(pkg, "readme.badges") || [])];
 
 	const npmId = getValue<string>(pkg, "readme.ids.npm");
@@ -143,9 +162,9 @@ export function escapeRegex (text: string): string {
  * Returns a placeholder regex.
  * @param text
  */
-export function placeholderRegexCallback (text: string): (({config: IConfig}) => RegExp) {
-	return (({config}) => {
-		const {placeholder} = config;
+export function placeholderRegexCallback (text: string): (({pkg: IPackage}) => RegExp) {
+	return (({pkg}: {pkg: IPackage}) => {
+		const {placeholder} = pkg.readme;
 		return new RegExp(`${escapeRegex(placeholder[0])}\\s*(${text})\\s*${escapeRegex(placeholder[1])}`, "gm");
 	});
 }
@@ -155,7 +174,7 @@ export function placeholderRegexCallback (text: string): (({config: IConfig}) =>
  * @param target
  * @param content
  */
-export async function writeFile ({target, content}: {target: string, content: string}) {
+export async function writeFile ({target, content}: {target: string, content: string}): Promise<void> {
 	try {
 		await fse.outputFile(target, content);
 	} catch (err) {
@@ -198,16 +217,19 @@ export function fileExists (absolutePath: string): boolean {
 
 /**
  * Generates a readme.
- * @param info
- * @returns {info.input}
+ * @param pkg
+ * @param blueprint
+ * @param pkgPath
+ * @param generators
  */
-export function generateReadme ({pkg, input, config}: {pkg: Package, input: string, config: IConfig}): string {
+export function generateReadme ({pkg, blueprint, pkgPath, generators}: {pkg: IPackage, blueprint: string, pkgPath: string, generators: IGenerator<any>[]}): string {
 
-	const {generators, silent, pkgName} = config;
+	const {silent} = pkg.readme;
 
 	// Go through all of the generators and replace with the template
+	let defaultArgs = {pkg, pkgPath, generateReadme};
 	for (const generator of generators) {
-		input = input.replace(generator.regex({pkg, input, config}), (string, ...matches) => {
+		blueprint = blueprint.replace(generator.regex({...defaultArgs, blueprint}), (string, ...matches) => {
 			let params: any | null | Params | IGeneratorParamsError = null;
 
 			// If the params are required we extract them from the package.
@@ -216,7 +238,7 @@ export function generateReadme ({pkg, input, config}: {pkg: Package, input: stri
 				if (isFunction(generator.params)) {
 
 					// Extract the params using the function
-					params = (<(args: IGeneratorParamsArgs) => any>generator.params)({pkg, input, config, matches, string, generateReadme});
+					params = (<(args: IGeneratorParamsArgs) => any>generator.params)({...defaultArgs, blueprint, matches, string});
 
 					// Validate the params
 					if (params == null || params.error) {
@@ -232,7 +254,7 @@ export function generateReadme ({pkg, input, config}: {pkg: Package, input: stri
 
 					// Validate the params
 					if (!validateObject({obj: pkg, requiredFields: (<any>Object).values(requiredParams)})) {
-						errorReason = `"${pkgName}" is missing the keys "${(<any>Object).values(requiredParams)
+						errorReason = `"${pkgPath}" is missing the keys "${(<any>Object).values(requiredParams)
 						                                                                .join(", ")}"`;
 					} else {
 						params = extractValues({map: {...optionalParams, ...requiredParams}, obj: pkg});
@@ -249,9 +271,9 @@ export function generateReadme ({pkg, input, config}: {pkg: Package, input: stri
 				}
 			}
 
-			return generator.template({config, ...params});
+			return generator.template({...defaultArgs, blueprint, ...params});
 		});
 	}
 
-	return input;
+	return blueprint;
 }

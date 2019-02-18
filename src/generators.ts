@@ -1,6 +1,6 @@
 import { resolve } from "path";
 import { fileExists, getBadges, getValue, isObject, placeholderRegexCallback, readFile } from "./helpers";
-import { BadgesTemplateArgs, BulletsTemplateArgs, ContributorsTemplateArgs, DescriptionTemplateArgs, IConfig, IGenerator, IGeneratorParamsArgs, IUserTemplate, LicenseTemplateArgs, LineTemplateArgs, LoadTemplateArgs, LogoTemplateArgs, MainTitleTemplateArgs, Package, TableOfContentsTemplateArgs, TitleTemplateArgs } from "./model";
+import { BadgesTemplateArgs, BulletsTemplateArgs, ContributorsTemplateArgs, DescriptionTemplateArgs, IGenerator, IGeneratorParamsArgs, IPackage, IUserTemplate, LicenseTemplateArgs, LineTemplateArgs, LoadTemplateArgs, LogoTemplateArgs, MainTitleTemplateArgs, TableOfContentsTemplateArgs, TitleTemplateArgs } from "./model";
 import { badgesTemplate, bulletsTemplate, contributorsTemplate, descriptionTemplate, licenseTemplate, lineTemplate, logoTemplate, mainTitleTemplate, titleTemplate, tocTemplate } from "./templates";
 
 /**
@@ -23,13 +23,13 @@ export function simpleTemplateGenerator ({name, template, params}: IUserTemplate
  */
 export const generateLoad: IGenerator<LoadTemplateArgs> = {
 	name: "load",
-	regex: placeholderRegexCallback("load:(.*.md)"),
-	template: ({content, generateReadme, config, pkg}: LoadTemplateArgs) => {
+	regex: placeholderRegexCallback("load:(.+?\.md)"),
+	template: ({content, generateReadme, pkgPath, pkg}: LoadTemplateArgs) => {
 		// Recursively generate the readme for all the files that are being loaded, but only add the load generator
 		// since all of the generators should only run once.
-		return generateReadme({pkg, input: content, config: {...config, generators: [generateLoad]}});
+		return generateReadme({pkg, blueprint: content, pkgPath, generators: [generateLoad]});
 	},
-	params: ({pkg, matches, generateReadme, config}) => {
+	params: ({pkg, matches, generateReadme, pkgPath}) => {
 		const absolutePath = resolve(matches[1]);
 
 		// Check if file exists
@@ -39,7 +39,7 @@ export const generateLoad: IGenerator<LoadTemplateArgs> = {
 
 		// Read the file
 		const content = readFile(absolutePath);
-		return {content, generateReadme, config, pkg};
+		return {content, generateReadme, pkgPath, pkg};
 	}
 };
 
@@ -74,10 +74,10 @@ export const generateBadges: IGenerator<BadgesTemplateArgs> = {
 	name: "badges",
 	regex: placeholderRegexCallback("template:badges"),
 	template: badgesTemplate,
-	params: ({pkg, config}: IGeneratorParamsArgs) => {
-		const badges = getBadges({pkg, config});
+	params: ({pkg}: IGeneratorParamsArgs) => {
+		const badges = getBadges({pkg});
 		if (badges.length === 0) return null;
-		return {badges, config};
+		return {badges, pkg};
 	}
 };
 
@@ -149,20 +149,20 @@ export const generateTitle: IGenerator<TitleTemplateArgs> = {
 	name: "title",
 	regex: () => /^([#]{1,2}) (.*)$/gm,
 	template: titleTemplate,
-	params: ({pkg, input, matches, config}) => {
+	params: ({pkg, matches}) => {
 		const hashes = matches[0];
 		const title = matches[1];
-		return {title, level: hashes.length, config};
+		return {title, level: hashes.length, pkg};
 	}
 };
 
 /**
  * Generates the interpolation.
  */
-export const generateInterpolate: IGenerator<{pkg: Package, text: string, config: IConfig}> = {
+export const generateInterpolate: IGenerator<{pkg: IPackage, text: string}> = {
 	name: "interpolate",
 	regex: placeholderRegexCallback(`[^\\s:]*`),
-	template: ({pkg, text, config}) => {
+	template: ({pkg, text}) => {
 		let value = getValue<string>(pkg, text);
 		if (value == null) return text;
 
@@ -173,27 +173,29 @@ export const generateInterpolate: IGenerator<{pkg: Package, text: string, config
 
 		// Turn arrays into bullets if its an array!
 		if (Array.isArray(value)) {
-			value = bulletsTemplate({bullets: value, config});
+			value = bulletsTemplate({bullets: value, pkg});
 		}
 
 		return value;
 	},
-	params: ({pkg, matches, config}) => {
+	params: ({pkg, matches}) => {
 		const text = matches[0];
-		return {pkg, text: text.trim(), config};
+		return {pkg, text: text.trim()};
 	}
 };
 
 /**
  * Generates the toc.
- * @type {{name: string, regex: RegExp, template: tocTemplate, params: (function({pkg: *, input: *, config: *}): {titles: RegExpMatchArray | Promise<Response | undefined> | *, config: *})}}
  */
 export const generateToc: IGenerator<TableOfContentsTemplateArgs> = {
 	name: "toc",
 	regex: placeholderRegexCallback("template:toc"),
 	template: tocTemplate,
-	params: ({pkg, input, config}) => {
-		const titles = input.match(/^[#]{1,6} .*$/gm);
-		return {titles, config};
+	params: ({pkg, blueprint}) => {
+		const titles = blueprint.match(/^[#]{1,6} .*$/gm);
+		if (titles == null) {
+			return {error: "it could not find any titles"};
+		}
+		return {titles, pkg};
 	}
 };

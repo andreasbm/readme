@@ -1,71 +1,68 @@
 import { green, red } from "colors";
 import argv from "minimist";
 import { resolve } from "path";
-import { constructConfig, defaultConfig } from "./config";
-import { generateBadges, generateBullets, generateContributors, generateDescription, generateInterpolate, generateLicense, generateLine, generateLoad, generateLogo, generateMainTitle, generateTitle, generateToc, simpleTemplateGenerator } from "./generators";
-import { fileExists, generateReadme, readFile, readJSONFile, writeFile } from "./helpers";
-
-const generators = [
-	generateLoad,
-	generateLogo,
-	generateMainTitle,
-	generateBadges,
-	generateDescription,
-	generateBullets,
-	generateLine,
-	generateContributors,
-	generateLicense,
-	generateTitle,
-	generateInterpolate,
-	generateToc
-];
-
+import { defaultGenerators, defaultPackageName, extendPackageWithDefaults } from "./config";
+import { simpleTemplateGenerator } from "./generators";
+import { fileExists, generateReadme, isObject, readFile, readJSONFile, writeFile } from "./helpers";
+import { IPackage } from "./model";
 
 /**
  * Generates the readme.
  */
-function generate (userArgs) {
+async function generate (userArgs) {
 
 	// Grab package
-	const pkgName = resolve(userArgs["pkgName"] || defaultConfig.pkgName);
-	if (!fileExists(pkgName)) {
-		console.log(red(`[readme] - Could not find the package file "${pkgName}".`));
+	const pkgPath = resolve(userArgs["package"] || defaultPackageName);
+	if (!fileExists(pkgPath)) {
+		console.log(red(`[readme] - Could not find the package file "${pkgPath}".`));
 		return;
 	}
 
-	const pkg = readJSONFile(pkgName);
+	const pkg = <IPackage>readJSONFile(pkgPath);
 
 	// Construct the configuration object
-	const config = constructConfig({pkg, pkgName, userArgs, generators});
-	const {inputName, outputName, dry, silent, templates} = config;
+	extendPackageWithDefaults({pkg, userArgs});
+	const {dry, silent, templates, output} = pkg.readme;
 
-	// Grab input
-	if (!fileExists(inputName)) {
-		console.log(red(`[readme] - Could not find the input file "${inputName}". Make sure to provide a valid path as either the user arguments --input or in the "readme.input" field in the "${pkgName}" file.`));
-		return;
+
+	// Grab blueprint
+	let blueprint: string = "";
+	if (Array.isArray(pkg.readme.blueprint)) {
+		blueprint = pkg.readme.blueprint.join(pkg.readme.lineBreak);
+
+	} else {
+		const blueprintPath = resolve(pkg.readme.blueprint);
+		if (!fileExists(blueprintPath)) {
+			console.log(red(`[readme] - Could not find the blueprint file "${blueprintPath}". Make sure to provide a valid path as either the user arguments --readme.blueprint or in the "readme.blueprint" field in the "${pkgPath}" file.`));
+			return;
+		}
+
+		blueprint = readFile(blueprintPath);
 	}
 
-	const input = readFile(inputName);
-
 	// Grab templates
+	const generators = [...defaultGenerators];
 	if (templates != null) {
 		const simpleTemplateGenerators = templates.map(simpleTemplateGenerator);
 
 		// Append the simple generators after the loading generator
-		config.generators.splice(1, 0, ...simpleTemplateGenerators);
+		generators.splice(1, 0, ...simpleTemplateGenerators);
 	}
 
-
 	// Generate the readme
-	const readme = generateReadme({pkg, input, config});
+	const readme = generateReadme({pkg, blueprint, pkgPath, generators});
 
 	// Write the file
 	if (!dry) {
-		writeFile({target: outputName, content: readme});
+		try {
+			await writeFile({target: output, content: readme});
 
-		// Print the success messsage if not silent
-		if (!silent) {
-			console.log(green(`[readme] - A readme file was successfully generated at "${outputName}".`));
+			// Print the success messsage if not silent
+			if (!silent) {
+				console.log(green(`[readme] - A readme file was successfully generated at "${output}".`));
+			}
+		} catch (err) {
+			console.log(red(`[readme] - Could not generate readme at "${output}"`), err);
 		}
 
 	} else {

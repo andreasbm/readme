@@ -21,40 +21,62 @@ export interface IUserTemplate {
 
 export type PlaceholderSyntax = [string, string];
 
+// export interface IConfig {
+// 	lineBreak: string;
+// 	tab: string;
+// 	blueprintName: string;
+// 	pkgName: string;
+// 	outputName: string;
+// 	placeholder: PlaceholderSyntax;
+// 	dry: boolean;
+// 	silent: boolean;
+// 	line: LineColor;
+// 	generators: IGenerator<Params>[];
+// 	templates: IUserTemplate[];
+// }
+
 export interface IConfig {
+	blueprint: string
+	output: string;
+	text?: string;
+	demo?: string;
 	lineBreak: string;
 	tab: string;
-	inputName: string;
-	pkgName: string;
-	outputName: string;
-	placeholder: PlaceholderSyntax;
-	dry: boolean;
 	silent: boolean;
+	dry: boolean;
+	logo?: ILogo;
+	placeholder: PlaceholderSyntax;
 	line: LineColor;
-	generators: IGenerator<Params>[];
-	templates: IUserTemplate[];
+	templates?: IUserTemplate[];
+	bullets?: Bullet[];
 }
 
-export type Package = Object;
-export type Params = {[key: string]: string} | {optional?: {[key: string]: string}}
-export type GenerateReadmeFunction = ({pkg: Package, input: string, config: IConfig}) => string;
+export interface IPackage {
+	name?: string;
+	contributors?: IContributor[];
+	license?: License;
+	readme: IConfig
+}
 
 export interface IGeneratorArgs {
-	pkg: Package;
-	input: string;
-	config: IConfig;
+	pkg: IPackage;
+	blueprint: string;
+	pkgPath: string;
+	generateReadme: GenerateReadmeFunction;
 }
+
+export type Params = {[key: string]: string} | {optional?: {[key: string]: string}}
+export type GenerateReadmeFunction = ({pkg, blueprint, generators, pkgPath}: {pkg: IPackage, blueprint: string, generators: IGenerator<any>[], pkgPath: string}) => string;
 
 export interface IGeneratorParamsArgs extends IGeneratorArgs {
 	matches: RegExpMatchArray;
 	string: string;
-	generateReadme: GenerateReadmeFunction;
 }
 
 export interface IGenerator<T> {
 	name: string;
 	regex: (args: IGeneratorArgs) => RegExp;
-	template: (args: {config: IConfig} & T) => string;
+	template: (args: T) => string;
 	params?: Params | ((args: IGeneratorParamsArgs) => T | IGeneratorParamsError);
 }
 
@@ -71,18 +93,25 @@ export interface IContributor {
 	email?: string;
 }
 
+export interface IReadmeCommandArgs {
+	blueprint?: string;
+	output?: string;
+	package?: string;
+
+}
+
 export type Bullet = string;
 export type License = string;
 
-export type LoadTemplateArgs = {content: string, generateReadme: GenerateReadmeFunction, config: IConfig, pkg: Package};
+export type LoadTemplateArgs = {content: string, generateReadme: GenerateReadmeFunction, pkgPath: string, pkg: IPackage};
 export type LogoTemplateArgs = {logo: ILogo};
-export type LineTemplateArgs = {config: IConfig};
-export type TitleTemplateArgs = {title: string, level: number, config: IConfig};
+export type LineTemplateArgs = {pkg: IPackage};
+export type TitleTemplateArgs = {title: string, level: number, pkg: IPackage};
 export type MainTitleTemplateArgs = {name: string};
-export type BadgesTemplateArgs = {badges: IBadge[], config: IConfig};
+export type BadgesTemplateArgs = {badges: IBadge[], pkg: IPackage};
 export type DescriptionTemplateArgs = {description: string, text?: string, demo?: string};
-export type BulletsTemplateArgs = {bullets: Bullet[], config: IConfig};
-export type TableOfContentsTemplateArgs = {titles: string[], config: IConfig};
-export type ContributorsTemplateArgs = {contributors: IContributor[], config: IConfig};
+export type BulletsTemplateArgs = {bullets: Bullet[], pkg: IPackage};
+export type TableOfContentsTemplateArgs = {titles: string[], pkg: IPackage};
+export type ContributorsTemplateArgs = {contributors: IContributor[], pkg: IPackage};
 export type LicenseTemplateArgs = {license: License};
 export type DemoTemplateArgs = {url: string};

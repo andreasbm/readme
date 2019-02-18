@@ -398,7 +398,11 @@ If you use this generator for one of your projects I would love to hear about it
 * [web-router](https://github.com/andreasbm/web-router)
 * [web-config](https://github.com/andreasbm/web-config)
 
-As inspiration for the layout of the generated README files I initially found inspiration from [terkelg's brilliant repository called prompts](https://github.com/terkelg/prompts). I therefore want to mention him here even though he doesn't use this README library. If you want to see an example of a brilliant README file you should definitely check his repository out.
+As inspiration for the layout of the generated README files I initially found inspiration from [terkelg's brilliant repository called prompts](https://github.com/terkelg/prompts) - a prime example on how every README file should look! I therefore wanted to mention him here even though he doesn't use this README library. If you want to see an example of a brilliant README file you should definitely check his repository out.
+
+...
+
+Why are you still here? I asked you to check [it](https://github.com/terkelg/prompts) out - you can always go back to [this](https://github.com/andreasbm/readme) repository later.
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line-colored.png)
 

@@ -8,9 +8,7 @@
 <a href="https://david-dm.org/andreasbm/readme"><img alt="Dependencies" src="https://img.shields.io/david/andreasbm/readme.svg" height="20"/></a>
 <a href="https://github.com/andreasbm/readme/graphs/contributors"><img alt="Contributors" src="https://img.shields.io/github/contributors/andreasbm/readme.svg" height="20"/></a>
 <a href="https://github.com/badges/shields"><img alt="Custom badge" src="https://img.shields.io/badge/custom-badge-f39f37.svg" height="20"/></a>
-<a href="https://twitter.com/intent/tweet?text=Generate%20beautiful%20best-practice%20and%20easy-to-maintain%20README%20files&url=https://github.com/andreasbm/readme&via=andreasmehlsen&hashtags=readme,github,documentation"><img alt="Tweet" src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social" height="20"/></a>
 <a href="https://github.com/andreasbm/readme/graphs/commit-activity"><img alt="Maintained" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" height="20"/></a>
-<a href="https://GitHub.com/andreasbm/readme/stargazers"><img alt="Github Stars" src="https://img.shields.io/github/stars/Naereen/StrapDown.js.svg?style=social&label=Star&maxAge=2592000" height="20"/></a>
 	</p>
 
 <p align="center">
@@ -137,9 +135,7 @@ The badges template adds badges to your readme and looks like this:
 <a href="https://david-dm.org/andreasbm/readme"><img alt="Dependencies" src="https://img.shields.io/david/andreasbm/readme.svg" height="20"/></a>
 <a href="https://github.com/andreasbm/readme/graphs/contributors"><img alt="Contributors" src="https://img.shields.io/github/contributors/andreasbm/readme.svg" height="20"/></a>
 <a href="https://github.com/badges/shields"><img alt="Custom badge" src="https://img.shields.io/badge/custom-badge-f39f37.svg" height="20"/></a>
-<a href="https://twitter.com/intent/tweet?text=Generate%20beautiful%20best-practice%20and%20easy-to-maintain%20README%20files&url=https://github.com/andreasbm/readme&via=andreasmehlsen&hashtags=readme,github,documentation"><img alt="Tweet" src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social" height="20"/></a>
 <a href="https://github.com/andreasbm/readme/graphs/commit-activity"><img alt="Maintained" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" height="20"/></a>
-<a href="https://GitHub.com/andreasbm/readme/stargazers"><img alt="Github Stars" src="https://img.shields.io/github/stars/Naereen/StrapDown.js.svg?style=social&label=Star&maxAge=2592000" height="20"/></a>
 	</p>
 
 

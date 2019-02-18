@@ -110,7 +110,7 @@ export function extractValues ({map, obj}: {map: {[key: string]: any}, obj: Obje
  * @param pkg
  */
 export function getBadges ({pkg}: {pkg: IPackage}): IBadge[] {
-	const badges: IBadge[] = [...(getValue<IBadge[]>(pkg, "readme.badges") || [])];
+	const badges: IBadge[] = [];
 
 	const npmId = getValue<string>(pkg, "readme.ids.npm");
 	const githubId = getValue<string>(pkg, "readme.ids.github");
@@ -130,6 +130,9 @@ export function getBadges ({pkg}: {pkg: IPackage}): IBadge[] {
 	if (webcomponentsId != null) {
 		badges.push(...webcomponentsBadges({webcomponentsId}));
 	}
+
+	// Add user badges
+	badges.push(...(pkg.readme.badges || []));
 
 	return badges;
 }

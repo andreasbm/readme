@@ -56,6 +56,7 @@ export const commandArgs: [string, any, ((v: any) => any)?][] = [
 	["name", null],
 	["contributors", null],
 	["license", null],
+	["readme.badges", null],
 	["readme.blueprint", defaultConfig.blueprint],
 	["readme.output", defaultConfig.output],
 	["readme.text", defaultConfig.text],

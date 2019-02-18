@@ -130,4 +130,3 @@ export function contributorsTemplate ({contributors, pkg}: ContributorsTemplateA
 	
 ${contributors.map(({name, email, url}) => `* <a href="${url}">${name}</a> ${email != null ? `(<a href="mailto:${email}">${email}</a>` : ""})`).join(pkg.readme.lineBreak)}`;
 }
-

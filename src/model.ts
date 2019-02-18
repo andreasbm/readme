@@ -50,6 +50,7 @@ export interface IConfig {
 	templates?: IUserTemplate[];
 	bullets?: Bullet[];
 	titlePrefix: {[key: number]: string}
+	badges?: IBadge[];
 }
 
 export interface IPackage {

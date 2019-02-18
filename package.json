@@ -86,8 +86,23 @@
 				"alt": "Custom badge",
 				"url": "https://github.com/badges/shields",
 				"img": "https://img.shields.io/badge/custom-badge-f39f37.svg"
+			},
+			{
+				"alt": "Tweet",
+				"img": "https://img.shields.io/twitter/url/http/shields.io.svg?style=social",
+				"url": "https://twitter.com/intent/tweet?text=Generate%20beautiful%20best-practice%20and%20easy-to-maintain%20README%20files&url=https://github.com/andreasbm/readme&via=andreasmehlsen&hashtags=readme,github,documentation"
+			},
+			{
+				"alt": "Maintained",
+				"img": "https://img.shields.io/badge/Maintained%3F-yes-green.svg",
+				"url": "https://github.com/andreasbm/readme/graphs/commit-activity"
+			},
+			{
+				"alt": "Github Stars",
+				"img": "https://img.shields.io/github/stars/Naereen/StrapDown.js.svg?style=social&label=Star&maxAge=2592000",
+				"url": "https://GitHub.com/andreasbm/readme/stargazers"
 			}
-		],
+			],
 		"bullets": [
 			"**Simple:** Extremely simple to use - so simple that it almost feels like magic!",
 			"**Powerful:** Customize almost everything - add your own templates and variables if you like",

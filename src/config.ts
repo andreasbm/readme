@@ -73,11 +73,11 @@ export const commandArgs: [string, any, ((v: any) => any)?][] = [
  * @param defaultValue
  * @param transform
  */
-function extractValue<T> ({keyPath, userArgs, pkg, defaultValue, transform}: {keyPath: string, userArgs: CommandArgs, pkg: IPackage, defaultValue: T, transform?: ((v: string | T | null) => T)}): T {
+function extractValue<T> ({keyPath, userArgs, pkg, defaultValue, transform}: {keyPath: string, userArgs: CommandArgs, pkg: IPackage, defaultValue: T, transform?: ((v: any) => T)}): T {
 	transform = transform || ((v: T) => v);
-	const userValue = transform(getValue(userArgs, keyPath));
+	const userValue = getValue(userArgs, keyPath);
 	const pkgValue = getValue(pkg, keyPath);
-	return <T>(userValue != null ? userValue : (pkgValue != null ? pkgValue : defaultValue));
+	return <T>(userValue != null ? transform(userValue) : (pkgValue != null ? pkgValue : defaultValue));
 }
 
 /**

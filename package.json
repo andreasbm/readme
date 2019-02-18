@@ -11,7 +11,7 @@
 		"prebuild": "node prebuild.js",
 		"b:lib": "rollup -c",
 		"b:lib:prebuild": "npm run prebuild && npm run b:lib",
-		"readme": "npm run b:lib && node dist/index.cjs.js --readme.dry=false",
+		"readme": "npm run b:lib && node dist/index.cjs.js",
 		"publish": "cd dist && npm publish --access=public && cd ..",
 		"git:add:commit:push": "git add . && git commit --no-edit --amend --no-verify && git push",
 		"bump:patch": "npm version patch && npm run git:add:commit:push",

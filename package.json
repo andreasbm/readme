@@ -1,7 +1,7 @@
 {
 	"name": "@appnest/readme",
 	"version": "1.0.9",
-	"description": "Generate pretty best-practice and easy-to-maintain README files",
+	"description": "Generate beautiful best-practice and easy-to-maintain README files",
 	"license": "MIT",
 	"module": "index.js",
 	"main": "index.js",
@@ -11,7 +11,7 @@
 		"prebuild": "node prebuild.js",
 		"b:lib": "rollup -c",
 		"b:lib:prebuild": "npm run prebuild && npm run b:lib",
-		"readme": "npm run b:lib && node dist/index.cjs.js",
+		"readme": "npm run b:lib && node dist/index.cjs.js --readme.dry=false",
 		"publish": "cd dist && npm publish --access=public && cd ..",
 		"git:add:commit:push": "git add . && git commit --no-edit --amend --no-verify && git push",
 		"bump:patch": "npm version patch && npm run git:add:commit:push",
@@ -71,7 +71,7 @@
 			"width": 150,
 			"height": 150
 		},
-		"text": "Use this readme generator to easily generate pretty readme's like this one! Simply extend your <code>package.json</code> and create a readme blueprint.",
+		"text": "Use this readme generator to easily generate beautiful readme's like this one! Simply extend your <code>package.json</code> and create a readme blueprint.",
 		"input": "blueprint.md",
 		"placeholder": [
 			"[[",

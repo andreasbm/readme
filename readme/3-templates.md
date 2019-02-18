@@ -6,7 +6,7 @@ The most simple template you can use is the title template. The way to generate 
 
 [[ template:title ]]
 
-The important thing to note here is that the template automatically reads your `package.json` file and inserts the `name` from the package. That's pretty cool. Let's go through some of the other built-in templates you might want to add.
+The important thing to note here is that the template automatically reads your `package.json` file and inserts the `name` from the package. That's beautiful cool. Let's go through some of the other built-in templates you might want to add.
 
 ### Logo
 
@@ -63,9 +63,9 @@ Use the `{{ template:description }}` placeholder to stamp it. To use this templa
 
 ```json
 {
-  "description": "Generate pretty best-practice and easy-to-maintain README files",
+  "description": "Generate beautiful best-practice and easy-to-maintain README files",
   "readme": {
-    "text": "Use this readme generator to easily generate pretty readme's like this one! Simply extend your <code>package.json</code> and create a readme blueprint."
+    "text": "Use this readme generator to easily generate beautiful readme's like this one! Simply extend your <code>package.json</code> and create a readme blueprint."
   }
 }
 ```
@@ -80,7 +80,7 @@ Use the `{{ template:bullets }}` placeholder to stamp it. To use this template y
 
 ```json
 {
-  "description": "Generate pretty README.md files with your new superpowers!",
+  "description": "Generate beautiful README.md files with your new superpowers!",
   "readme": {
     "bullets": [
       "**Simple:** Extremely simple to use - so simple that it almost feels like magic!",

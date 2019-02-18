@@ -38,9 +38,17 @@ export const defaultConfig: IConfig = {
 };
 
 /**
+ * Converts a value to a boolean.
+ * @param v
+ */
+function booleanTransformer (v: any): boolean {
+	return v !== "false";
+}
+
+/**
  * Defaults for each package key.
  */
-export const commandArgs: [string, any][] = [
+export const commandArgs: [string, any, ((v: any) => any)?][] = [
 	["name", null],
 	["contributors", null],
 	["license", null],
@@ -49,23 +57,27 @@ export const commandArgs: [string, any][] = [
 	["readme.text", defaultConfig.text],
 	["readme.lineBreak", defaultConfig.lineBreak],
 	["readme.tab", defaultConfig.tab],
-	["readme.silent", defaultConfig.silent],
-	["readme.dry", defaultConfig.dry],
 	["readme.placeholder", defaultConfig.placeholder],
 	["readme.line", defaultConfig.line],
 	["readme.templates", defaultConfig.templates],
-	["readme.bullets", defaultConfig.bullets]
+	["readme.bullets", defaultConfig.bullets],
+	["readme.silent", defaultConfig.silent, booleanTransformer],
+	["readme.dry", defaultConfig.dry, booleanTransformer]
 ];
 
 /**
  * Extracts user inputted values.
- * @param key
+ * @param keyPath
  * @param userArgs
  * @param pkg
  * @param defaultValue
+ * @param transform
  */
-function extractValue<T> ({keyPath, userArgs, pkg, defaultValue}: {keyPath: string, userArgs: CommandArgs, pkg: IPackage, defaultValue: T}): T {
-	return <T>(userArgs[keyPath] != null ? userArgs[keyPath] : getValue(pkg, keyPath)) || defaultValue;
+function extractValue<T> ({keyPath, userArgs, pkg, defaultValue, transform}: {keyPath: string, userArgs: CommandArgs, pkg: IPackage, defaultValue: T, transform?: ((v: string | T | null) => T)}): T {
+	transform = transform || ((v: T) => v);
+	const userValue = transform(getValue(userArgs, keyPath));
+	const pkgValue = getValue(pkg, keyPath);
+	return <T>(userValue != null ? userValue : (pkgValue != null ? pkgValue : defaultValue));
 }
 
 /**
@@ -74,8 +86,8 @@ function extractValue<T> ({keyPath, userArgs, pkg, defaultValue}: {keyPath: stri
  * @param userArgs
  */
 export function extendPackageWithDefaults ({pkg, userArgs}: {pkg: IPackage, userArgs: CommandArgs}) {
-	for (const [keyPath, defaultValue] of commandArgs) {
-		const value = extractValue({keyPath, defaultValue, pkg, userArgs});
+	for (const [keyPath, defaultValue, transform] of commandArgs) {
+		const value = extractValue({keyPath, defaultValue, pkg, userArgs, transform});
 		setValue(pkg, keyPath, value);
 	}
 }

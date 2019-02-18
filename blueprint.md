@@ -16,6 +16,7 @@
 [[ load:readme/5-this-readme.md ]]
 [[ load:readme/6-custom-templates.md ]]
 [[ load:readme/7-advanced.md ]]
-[[ load:readme/8-future-work.md ]]
+[[ load:readme/8-featured-readmes.md ]]
+[[ load:readme/9-future-work.md ]]
 [[ template:contributors ]]
 [[ template:license ]]

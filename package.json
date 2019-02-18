@@ -93,6 +93,13 @@
 			"**Powerful:** Customize almost everything - add your own templates and variables if you like",
 			"**Awesome:** The tool you don't know you need before you have many different repositories that all need maintenance"
 		],
+		"featured": [
+			"[lit-translate](https://github.com/andreasbm/lit-translate)",
+			"[masonry-layout](https://github.com/andreasbm/masonry-layout)",
+			"[focus-trap](https://github.com/andreasbm/focus-trap)",
+			"[web-router](https://github.com/andreasbm/web-router)",
+			"[web-config](https://github.com/andreasbm/web-config)"
+		],
 		"templates": [
 			{
 				"name": "install",

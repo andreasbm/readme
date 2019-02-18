@@ -49,6 +49,7 @@
 	* [New template syntax](#new-template-syntax)
 	* [Arrays and objects](#arrays-and-objects)
 	* [Different colored lines](#different-colored-lines)
+* [❯ Featured README's](#-featured-readmes)
 * [❯ Future work](#-future-work)
 * [❯ Contributors](#-contributors)
 * [❯ License](#-license)
@@ -72,7 +73,7 @@ Let's start simple. In order to get values from your `package.json` file injecte
 ```json
 {
   "name": "@appnest/readme",
-  "version": "1.0.10"
+  "version": "1.0.11"
 }
 ```
 
@@ -85,7 +86,7 @@ Welcome to {{ name }}. This is version {{ version }}!
 When running `node node_modules/.bin/readme --blueprint=blueprint.md --output=README.md` the file `README.md` will be generated with the following contents:
 
 ```markdown
-Welcome to @appnest/readme. This is version 1.0.10.
+Welcome to @appnest/readme. This is version 1.0.11.
 ```
 
 Great. Let's continue and see how you can use templates!
@@ -230,6 +231,7 @@ The table of contents template adds a table of contents and looks like this:
 	* [New template syntax](#new-template-syntax)
 	* [Arrays and objects](#arrays-and-objects)
 	* [Different colored lines](#different-colored-lines)
+* [❯ Featured README's](#-featured-readmes)
 * [❯ Future work](#-future-work)
 * [❯ Contributors](#-contributors)
 * [❯ License](#-license)
@@ -386,9 +388,24 @@ Yeah! Dark mode on your `README.md` is awesome indeed.
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line-colored.png)
 
+## ❯ Featured README's
+
+If you use this generator for one of your projects I would love to hear about it so I can feature it.
+
+* [lit-translate](https://github.com/andreasbm/lit-translate)
+* [masonry-layout](https://github.com/andreasbm/masonry-layout)
+* [focus-trap](https://github.com/andreasbm/focus-trap)
+* [web-router](https://github.com/andreasbm/web-router)
+* [web-config](https://github.com/andreasbm/web-config)
+
+
+
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line-colored.png)
+
 ## ❯ Future work
 
-That's it for now! Lot's of exiting features a going to be added in the future. If you stumble upon an issue or have a feature request you can open a github issue. Also, if you use this generator for one of your projects I would love to hear about it so I can feature it. Have a great day!
+That's it for now! Lot's of exiting features a going to be added in the future. If you stumble upon an issue or have a feature request you are very welcome to open a Github issue or pull request. Have a great day!
+
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line-colored.png)
 

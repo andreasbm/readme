@@ -93,3 +93,5 @@ If you want to change the prefix infront of the heading you can change the `read
   }
 }
 ```
+
+If you want some inspiration you can check out [this](https://unicodes.smpc.io/) website.

@@ -99,3 +99,16 @@ Solar
 Vintage
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/vintage.png)
+
+### Different formatted headings
+
+If you want to change the prefix infront of the heading you can change the `readme.titlePrefix` in the `package.json` file. Just map the heading level to the desired prefix as shown below.
+
+```json
+{
+  "titlePrefix": {
+    1: "➜ ",
+    2: "➜ "
+  }
+}
+```

@@ -473,5 +473,5 @@ Licensed under [MIT](https://opensource.org/licenses/MIT).
 
 <h1 align="center">
 	Test
-	![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/vintage.png)
+	<img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/vintage.png" alt="Demo" width="800" />
 </h1>

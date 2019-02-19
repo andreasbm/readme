@@ -70,5 +70,32 @@ The following is the dark variant of the line.
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line-dark.png)
 
-Yeah! Dark mode on your `README.md` is awesome indeed.
+Yeah! Dark mode on your `README.md` is awesome indeed. You have other options besides dark mode. Here's some more line styles you can choose from.
 
+Gold
+
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/gold.png)
+
+Grass
+
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/grass.png)
+
+Happy
+
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/happy.png)
+
+Rainbow
+
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/rainbow.png)
+
+Shady
+
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/shady.png)
+
+Solar
+
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/solar.png)
+
+Vintage
+
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/vintage.png)

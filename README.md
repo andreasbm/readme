@@ -470,3 +470,8 @@ That's it for now! Lot's of exiting features a going to be added in the future. 
 ## ➜ License
 	
 Licensed under [MIT](https://opensource.org/licenses/MIT).
+
+<h1 align="center">
+	Test
+	![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/vintage.png)
+</h1>

@@ -20,3 +20,8 @@
 [[ load:readme/9-future-work.md ]]
 [[ template:contributors ]]
 [[ template:license ]]
+
+<h1 align="center">
+	Test
+	![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/vintage.png)
+</h1>

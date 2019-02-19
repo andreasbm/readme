@@ -107,8 +107,8 @@ If you want to change the prefix infront of the heading you can change the `read
 ```json
 {
   "titlePrefix": {
-    1: "➜ ",
-    2: "➜ "
+    "1": "➜ ",
+    "2": "➜ "
   }
 }
 ```

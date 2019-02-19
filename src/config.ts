@@ -1,4 +1,4 @@
-import { generateBadges, generateBullets, generateContributors, generateDescription, generateInterpolate, generateLicense, generateLine, generateLoad, generateLogo, generateMainTitle, generateTitle, generateToc } from "./generators";
+import { generateBadges, generateContributors, generateDescription, generateInterpolate, generateLicense, generateLine, generateLoad, generateLogo, generateMainTitle, generateTitle, generateToc } from "./generators";
 import { getValue, setValue } from "./helpers";
 import { CommandArgs, IConfig, IGenerator, IPackage, LineColor } from "./model";
 
@@ -8,7 +8,6 @@ export const defaultGenerators: IGenerator<any>[] = [
 	generateMainTitle,
 	generateBadges,
 	generateDescription,
-	generateBullets,
 	generateLine,
 	generateContributors,
 	generateLicense,

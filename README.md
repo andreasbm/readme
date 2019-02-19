@@ -23,9 +23,9 @@
   <img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/demo.gif" alt="Demo" width="800" />
 </p>
 
-* **Simple:** Extremely simple to use - so simple that it almost feels like magic!
-* **Powerful:** Customize almost everything - add your own templates and variables if you like
-* **Awesome:** The tool you don't know you need before you have many different repositories that all need maintenance
+* **Simple**: Extremely simple to use - so simple that it almost feels like magic!
+* **Powerful**: Customize almost everything - add your own templates and variables if you like
+* **Awesome**: The tool you don't know you need before you have many different repositories that all need maintenance
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line-colored.png)
 
@@ -37,7 +37,6 @@
 	* [Logo](#logo)
 	* [Badges](#badges)
 	* [Description](#description)
-	* [Bullets](#bullets)
 	* [Table of Contents](#table-of-contents)
 	* [Contributors](#contributors)
 * [❯ Contributors](#-contributors)
@@ -77,7 +76,7 @@ Let's start simple. In order to get values from your `package.json` file injecte
 ```json
 {
   "name": "@appnest/readme",
-  "version": "1.0.13"
+  "version": "1.0.14"
 }
 ```
 
@@ -90,7 +89,7 @@ Welcome to {{ name }}. This is version {{ version }}!
 When running `node node_modules/.bin/readme --blueprint=blueprint.md --output=README.md` the file `README.md` will be generated with the following contents:
 
 ```markdown
-Welcome to @appnest/readme. This is version 1.0.13.
+Welcome to @appnest/readme. This is version 1.0.14.
 ```
 
 Great. Let's continue and see how you can use templates!
@@ -187,29 +186,6 @@ Use the `{{ template:description }}` placeholder to stamp it. To use this templa
 }
 ```
 
-### Bullets
-
-The bullets template adds bullets to your readme and looks like this:
-
-* **Simple:** Extremely simple to use - so simple that it almost feels like magic!
-* **Powerful:** Customize almost everything - add your own templates and variables if you like
-* **Awesome:** The tool you don't know you need before you have many different repositories that all need maintenance
-
-Use the `{{ template:bullets }}` placeholder to stamp it. To use this template you are required to add the `readme.bullets` array to your `package.json` file. This array has to be an array of strings as shown below.
-
-```json
-{
-  "description": "Generate beautiful README.md files with your new superpowers!",
-  "readme": {
-    "bullets": [
-      "**Simple:** Extremely simple to use - so simple that it almost feels like magic!",
-      "**Powerful:** Customize almost everything - add your own templates and variables if you like",
-      "**Awesome:** The tool you don't know you need before you have many different repositories that all need maintenance"
-    ]
-  }
-}
-```
-
 ### Table of Contents
 
 The table of contents template adds a table of contents and looks like this:
@@ -225,7 +201,6 @@ The table of contents template adds a table of contents and looks like this:
 	* [Logo](#logo)
 	* [Badges](#badges)
 	* [Description](#description)
-	* [Bullets](#bullets)
 	* [Table of Contents](#table-of-contents)
 	* [Contributors](#contributors)
 * [❯ Contributors](#-contributors)
@@ -309,7 +284,7 @@ By now you are probably curious to know how this `README.md` was generated? It w
 {{ template:title }}
 {{ template:badges }}
 {{ template:description }}
-{{ template:bullets }}
+{{ readme.bullets }}
 {{ template:toc }}
 {{ load:readme/1-installation.md }}
 {{ load:readme/2-create-blueprint.md }}
@@ -417,7 +392,6 @@ Then you can stamp it to your readme by writing `{{ readme.table }}` and it will
 | **active** | boolean | Whether the element is active or not |
 
 You are welcome!
-
 
 ### Different colored lines
 

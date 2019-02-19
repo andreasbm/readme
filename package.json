@@ -93,11 +93,11 @@
 				"url": "https://github.com/andreasbm/readme/graphs/commit-activity"
 			}
 		],
-		"bullets": [
-			"**Simple:** Extremely simple to use - so simple that it almost feels like magic!",
-			"**Powerful:** Customize almost everything - add your own templates and variables if you like",
-			"**Awesome:** The tool you don't know you need before you have many different repositories that all need maintenance"
-		],
+		"bullets": {
+			"Simple": "Extremely simple to use - so simple that it almost feels like magic!",
+			"Powerful": "Customize almost everything - add your own templates and variables if you like",
+			"Awesome": "The tool you don't know you need before you have many different repositories that all need maintenance"
+		},
 		"featured": [
 			"[lit-translate](https://github.com/andreasbm/lit-translate)",
 			"[masonry-layout](https://github.com/andreasbm/masonry-layout)",

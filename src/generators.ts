@@ -100,18 +100,6 @@ export const generateDescription: IGenerator<DescriptionTemplateArgs> = {
 };
 
 /**
- * Generates bullets.
- */
-export const generateBullets: IGenerator<BulletsTemplateArgs> = {
-	name: "bullets",
-	regex: placeholderRegexCallback("template:bullets"),
-	template: bulletsTemplate,
-	params: {
-		bullets: "readme.bullets"
-	}
-};
-
-/**
  * Generates a line.
  */
 export const generateLine: IGenerator<LineTemplateArgs> = {

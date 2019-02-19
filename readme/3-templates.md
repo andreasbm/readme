@@ -72,27 +72,6 @@ Use the `{{ template:description }}` placeholder to stamp it. To use this templa
 }
 ```
 
-### Bullets
-
-The bullets template adds bullets to your readme and looks like this:
-
-[[ template:bullets ]]
-
-Use the `{{ template:bullets }}` placeholder to stamp it. To use this template you are required to add the `readme.bullets` array to your `package.json` file. This array has to be an array of strings as shown below.
-
-```json
-{
-  "description": "Generate beautiful README.md files with your new superpowers!",
-  "readme": {
-    "bullets": [
-      "**Simple:** Extremely simple to use - so simple that it almost feels like magic!",
-      "**Powerful:** Customize almost everything - add your own templates and variables if you like",
-      "**Awesome:** The tool you don't know you need before you have many different repositories that all need maintenance"
-    ]
-  }
-}
-```
-
 ### Table of Contents
 
 The table of contents template adds a table of contents and looks like this:

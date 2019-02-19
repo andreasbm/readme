@@ -20,7 +20,7 @@
 		"publish:patch": "npm run bump:patch && npm run b:lib:prebuild && npm run publish",
 		"publish:minor": "npm run bump:minor && npm run b:lib:prebuild && npm run publish",
 		"publish:major": "npm run bump:major && npm run b:lib:prebuild && npm run publish",
-		"push:readme": "npm run readme && npm run git:add:commit:push"
+		"push:readme": "npm run readme && git add . && git commit -m 'New readme' && git push"
 	},
 	"bugs": {
 		"url": "https://github.com/andreasbm/readme/issues"

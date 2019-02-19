@@ -21,7 +21,8 @@
 [[ template:contributors ]]
 [[ template:license ]]
 
-<h1 align="center">
+<h1 align="center" vlign="center">
+	<img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/vintage.png" alt="Demo" width="800" />
 	Test
 	<img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/vintage.png" alt="Demo" width="800" />
 </h1>

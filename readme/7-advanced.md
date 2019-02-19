@@ -68,34 +68,34 @@ If you want to change the color of the lines above headers you can change the `r
 
 The following is the dark variant of the line.
 
-![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line-dark.png)
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/dark.png)
 
 Yeah! Dark mode on your `README.md` is awesome indeed. You have other options besides dark mode. Here's some more line styles you can choose from.
 
 Gold
 
-![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/gold.png)
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/gold.png)
 
 Grass
 
-![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/grass.png)
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/grass.png)
 
 Happy
 
-![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/happy.png)
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/happy.png)
 
 Rainbow
 
-![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/rainbow.png)
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 Shady
 
-![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/shady.png)
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/shady.png)
 
 Solar
 
-![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/solar.png)
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/solar.png)
 
 Vintage
 
-![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/vintage.png)
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/vintage.png)

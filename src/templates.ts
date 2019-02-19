@@ -25,7 +25,7 @@ export function mainTitleTemplate ({name}: MainTitleTemplateArgs): string {
  */
 export function lineTemplate ({pkg}: LineTemplateArgs) {
 	const {line} = pkg.readme;
-	const url = `https://raw.githubusercontent.com/andreasbm/readme/master/assets/line-${line}.png`;
+	const url = `https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/${line}.png`;
 	return `
 ![-----------------------------------------------------](${url})`;
 }

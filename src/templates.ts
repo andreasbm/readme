@@ -137,6 +137,7 @@ ${contributors.map(({name, email, url}) => `* <a href="${url}">${name}</a> ${ema
 
 /**
  * Creates a svg line template.
+ * Currently base64 inline svg is not supported by Github flavored markdown.
  * @param pkg
  */
 export function svgLineTemplate ({pkg}: {pkg: IPackage}): string {
@@ -170,5 +171,4 @@ export function svgLineTemplate ({pkg}: {pkg: IPackage}): string {
 </svg>`;
 
 	return svg;
-	//return `data:image/svg+xml;base64,${btoa(svg)}`;
 }

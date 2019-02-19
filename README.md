@@ -77,7 +77,7 @@ Let's start simple. In order to get values from your `package.json` file injecte
 ```json
 {
   "name": "@appnest/readme",
-  "version": "1.0.15"
+  "version": "1.0.16"
 }
 ```
 
@@ -90,7 +90,7 @@ Welcome to {{ name }}. This is version {{ version }}!
 When running `node node_modules/.bin/readme --blueprint=blueprint.md --output=README.md` the file `README.md` will be generated with the following contents:
 
 ```markdown
-Welcome to @appnest/readme. This is version 1.0.15.
+Welcome to @appnest/readme. This is version 1.0.16.
 ```
 
 Great. Let's continue and see how you can use templates!
@@ -422,9 +422,6 @@ Yeah! Dark mode on your `README.md` is awesome indeed. You have other options be
 * "vintage" ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/vintage.png)
 * "colored" ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)
 * "cut" ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/cut.png)
-* "arrow-1" ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/arrow-1.png)
-* "arrow-2" ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/arrow-2.png)
-* "arrow-3" ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/arrow-3.png)
 
 ### Different formatted headings
 

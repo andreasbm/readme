@@ -110,6 +110,11 @@
 				"name": "install",
 				"template": "Run `npm install [[ readme.ids.npm ]]' to install this library!"
 			}
+		],
+		"table": [
+			["Attribute", "Type", "Description"],
+			["**size**", "'medium', 'large'", "Determines the size" ],
+			["**active**", "boolean", "Whether the element is active or not" ]
 		]
 	}
 }

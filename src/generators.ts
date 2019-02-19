@@ -1,7 +1,7 @@
 import { resolve } from "path";
 import { fileExists, getBadges, getValue, isObject, placeholderRegexCallback, readFile } from "./helpers";
 import { BadgesTemplateArgs, BulletsTemplateArgs, ContributorsTemplateArgs, DescriptionTemplateArgs, IGenerator, IGeneratorParamsArgs, IPackage, IUserTemplate, LicenseTemplateArgs, LineTemplateArgs, LoadTemplateArgs, LogoTemplateArgs, MainTitleTemplateArgs, TableOfContentsTemplateArgs, TitleTemplateArgs } from "./model";
-import { badgesTemplate, bulletsTemplate, contributorsTemplate, descriptionTemplate, licenseTemplate, lineTemplate, logoTemplate, mainTitleTemplate, titleTemplate, tocTemplate } from "./templates";
+import { badgesTemplate, bulletsTemplate, contributorsTemplate, descriptionTemplate, licenseTemplate, lineTemplate, logoTemplate, mainTitleTemplate, tableTemplate, titleTemplate, tocTemplate } from "./templates";
 
 /**
  * Creates a simple template.
@@ -168,14 +168,24 @@ export const generateInterpolate: IGenerator<{pkg: IPackage, text: string}> = {
 		let value = getValue<string>(pkg, text);
 		if (value == null) return text;
 
-		// If object, turn it into an array
+		// Transform objects into array so they can be transformed into lists
 		if (isObject(value)) {
 			value = (<any>Object).entries(value).map(([k, v]: [string, string]) => `**${k}**: ${v}`);
 		}
 
-		// Turn arrays into bullets if its an array!
+		// Transform arrays
 		if (Array.isArray(value)) {
-			value = bulletsTemplate({bullets: value, pkg});
+
+			// Turn 2D arrays into tables
+			if (value.length > 0 && Array.isArray(value[0])) {
+				value = tableTemplate({content: value, pkg});
+			}
+
+			// Turn 1D arrays into bullets
+			else {
+				value = bulletsTemplate({bullets: value, pkg});
+			}
+
 		}
 
 		return value || text;

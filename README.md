@@ -48,7 +48,10 @@
 * [❯ Custom templates](#-custom-templates)
 * [❯ Advanced!](#-advanced)
 	* [New template syntax](#new-template-syntax)
-	* [Arrays and objects](#arrays-and-objects)
+	* [Variables](#variables)
+		* [Objects](#objects)
+		* [1D Arrays](#1d-arrays)
+		* [2D Arrays](#2d-arrays)
 	* [Different colored lines](#different-colored-lines)
 * [❯ Featured README's](#-featured-readmes)
 * [❯ Future work](#-future-work)
@@ -74,7 +77,7 @@ Let's start simple. In order to get values from your `package.json` file injecte
 ```json
 {
   "name": "@appnest/readme",
-  "version": "1.0.12"
+  "version": "1.0.13"
 }
 ```
 
@@ -87,7 +90,7 @@ Welcome to {{ name }}. This is version {{ version }}!
 When running `node node_modules/.bin/readme --blueprint=blueprint.md --output=README.md` the file `README.md` will be generated with the following contents:
 
 ```markdown
-Welcome to @appnest/readme. This is version 1.0.12.
+Welcome to @appnest/readme. This is version 1.0.13.
 ```
 
 Great. Let's continue and see how you can use templates!
@@ -233,7 +236,10 @@ The table of contents template adds a table of contents and looks like this:
 * [❯ Custom templates](#-custom-templates)
 * [❯ Advanced!](#-advanced)
 	* [New template syntax](#new-template-syntax)
-	* [Arrays and objects](#arrays-and-objects)
+	* [Variables](#variables)
+		* [Objects](#objects)
+		* [1D Arrays](#1d-arrays)
+		* [2D Arrays](#2d-arrays)
 	* [Different colored lines](#different-colored-lines)
 * [❯ Featured README's](#-featured-readmes)
 * [❯ Future work](#-future-work)
@@ -361,14 +367,57 @@ If you are in the mood you can change the syntax used for matching with the temp
 }
 ```
 
-### Arrays and objects
+### Variables
 
-If you have an array or an object you want to stamp to your readme as a list just use the `{{ ... }}` syntax as usual. If you for example want to stamp the `dependencies` from your `package.json` file you write `{{ dependencies }}` and the dependencies will be stamped in a nice formatted way like this.
+If you have a variable from your `package.json` file you want to stamp to your readme just use the `{{ ... }}` syntax as usual.
+
+#### Objects
+
+Objects are formatted as a list with the keys being bold. If you for example want to stamp the `dependencies` field from your `package.json` file you write `{{ dependencies }}` and the dependencies will be stamped in a nice formatted way like this.
 
 * **colors**: ^1.3.3
 * **fs-extra**: ^7.0.1
 * **minimist**: ^1.2.0
 * **path**: ^0.12.7
+
+
+#### 1D Arrays
+
+If you have a 1D array it will be formatted as a list. If you for example want to stamp the the `keywords` field from your `package.json` file you write `{{ keywords }}` and the keywords will be stamped in a nice formatted way like this:
+
+* readme
+* template
+* boilerplate
+* nodejs
+* opensource
+* maintaining
+* generator
+
+#### 2D Arrays
+
+If you have a 2D array it will be formatted as a table. This is very convenient for things like documentation of API's. Let's say you have the following in your `package.json`.
+
+```json
+{
+  "readme": {
+    "table": [
+      ["Attribute", "Type", "Description"],
+      ["**size**", "'medium', 'large'", "Determines the size" ],
+      ["**active**", "boolean", "Whether the element is active or not" ]
+    ]
+  }
+}
+```
+
+Then you can stamp it to your readme by writing `{{ readme.table }}` and it will be formatted as a table.
+
+| Attribute | Type | Description |
+| ------- | ------- | ------- |
+| **size** | 'medium', 'large' | Determines the size |
+| **active** | boolean | Whether the element is active or not |
+
+You are welcome!
+
 
 ### Different colored lines
 

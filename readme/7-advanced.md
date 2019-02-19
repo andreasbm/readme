@@ -15,11 +15,44 @@ If you are in the mood you can change the syntax used for matching with the temp
 }
 ```
 
-### Arrays and objects
+### Variables
 
-If you have an array or an object you want to stamp to your readme as a list just use the `{{ ... }}` syntax as usual. If you for example want to stamp the `dependencies` from your `package.json` file you write `{{ dependencies }}` and the dependencies will be stamped in a nice formatted way like this.
+If you have a variable from your `package.json` file you want to stamp to your readme just use the `{{ ... }}` syntax as usual.
+
+#### Objects
+
+Objects are formatted as a list with the keys being bold. If you for example want to stamp the `dependencies` field from your `package.json` file you write `{{ dependencies }}` and the dependencies will be stamped in a nice formatted way like this.
 
 [[ dependencies ]]
+
+
+#### 1D Arrays
+
+If you have a 1D array it will be formatted as a list. If you for example want to stamp the the `keywords` field from your `package.json` file you write `{{ keywords }}` and the keywords will be stamped in a nice formatted way like this:
+
+[[ keywords ]]
+
+#### 2D Arrays
+
+If you have a 2D array it will be formatted as a table. This is very convenient for things like documentation of API's. Let's say you have the following in your `package.json`.
+
+```json
+{
+  "readme": {
+    "table": [
+      ["Attribute", "Type", "Description"],
+      ["**size**", "'medium', 'large'", "Determines the size" ],
+      ["**active**", "boolean", "Whether the element is active or not" ]
+    ]
+  }
+}
+```
+
+Then you can stamp it to your readme by writing `{{ readme.table }}` and it will be formatted as a table.
+
+[[ readme.table ]]
+
+You are welcome!
 
 ### Different colored lines
 

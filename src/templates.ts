@@ -1,5 +1,5 @@
 import { getLicenseUrl, getTitle, getTitleLink } from "./helpers";
-import { BadgesTemplateArgs, BulletsTemplateArgs, ContributorsTemplateArgs, DemoTemplateArgs, DescriptionTemplateArgs, IPackage, LicenseTemplateArgs, LineTemplateArgs, LogoTemplateArgs, MainTitleTemplateArgs, TableOfContentsTemplateArgs, TitleTemplateArgs } from "./model";
+import { BadgesTemplateArgs, BulletsTemplateArgs, ContributorsTemplateArgs, DemoTemplateArgs, DescriptionTemplateArgs, IPackage, LicenseTemplateArgs, LineTemplateArgs, LogoTemplateArgs, MainTitleTemplateArgs, TableOfContentsTemplateArgs, TableTemplateArgs, TitleTemplateArgs } from "./model";
 
 /**
  * Creates the template for the logo.
@@ -96,6 +96,28 @@ export function descriptionTemplate ({description, text, demo}: DescriptionTempl
  */
 export function bulletsTemplate ({bullets, pkg}: BulletsTemplateArgs): string {
 	return bullets.map(bullet => `* ${bullet}`).join(pkg.readme.lineBreak);
+}
+
+/**
+ * Creates a table template.
+ * @param content
+ * @param pkg
+ */
+export function tableTemplate ({content, pkg}: TableTemplateArgs): string {
+	const tableSplitter = `|`;
+
+	// Add the | ------------- | ---- | ----- | ----- | line after the header
+	if (content.length > 1) {
+		content.splice(1, 0, Array(content[0].length).fill("-------"));
+	}
+
+	return content.map((row, i) => {
+
+		// If the table splitter symbol is used within the table we need to make it safe
+		row = row.map(r => r.replace(tableSplitter, "\\$&"));
+
+		return `${tableSplitter} ${row.join(` ${tableSplitter} `)} ${tableSplitter}`;
+	}).join(pkg.readme.lineBreak);
 }
 
 /**

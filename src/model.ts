@@ -108,6 +108,7 @@ export type MainTitleTemplateArgs = {name: string};
 export type BadgesTemplateArgs = {badges: IBadge[], pkg: IPackage};
 export type DescriptionTemplateArgs = {description: string, text?: string, demo?: string};
 export type BulletsTemplateArgs = {bullets: Bullet[], pkg: IPackage};
+export type TableTemplateArgs = {content: string[][], pkg: IPackage};
 export type TableOfContentsTemplateArgs = {titles: string[], pkg: IPackage};
 export type ContributorsTemplateArgs = {contributors: IContributor[], pkg: IPackage};
 export type LicenseTemplateArgs = {license: License};

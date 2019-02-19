@@ -472,7 +472,7 @@ That's it for now! Lot's of exiting features a going to be added in the future. 
 Licensed under [MIT](https://opensource.org/licenses/MIT).
 
 <h1 align="center" vlign="center">
-	<img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/vintage.png" alt="Demo" width="800" />
+	<img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/vintage.png" alt="Demo" width="20%" />
 	Test
-	<img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/vintage.png" alt="Demo" width="800" />
+	<img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/vintage.png" alt="Demo" width="20%" />
 </h1>

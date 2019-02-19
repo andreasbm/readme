@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/andreasbm/readme/blob/master/assets/logo-shadow.png" alt="Logo" width="150" height="150" />
+  <img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/logo-shadow.png" alt="Logo" width="150" height="150" />
 </p>
 <h1 align="center">@appnest/readme</h1>
 <p align="center">
@@ -20,7 +20,7 @@
 
 
 <p align="center">
-  <img src="https://github.com/andreasbm/readme/blob/master/assets/demo.gif" alt="Demo" width="800" />
+  <img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/demo.gif" alt="Demo" width="800" />
 </p>
 
 * **Simple:** Extremely simple to use - so simple that it almost feels like magic!
@@ -109,7 +109,7 @@ The important thing to note here is that the template automatically reads your `
 The logo template adds a logo to your readme and looks like this:
 
 <p align="center">
-  <img src="https://github.com/andreasbm/readme/blob/master/assets/logo-shadow.png" alt="Logo" width="150" height="150" />
+  <img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/logo-shadow.png" alt="Logo" width="150" height="150" />
 </p>
 
 Use the placeholder `{{ template:logo }}` to stamp it. You will need to add the `readme.logo` field to your `package.json`. The logo field requires an `url` field and the fields `width`, `height` and `alt` are optional. Below is an example on how to add a logo.
@@ -158,6 +158,8 @@ Use the `{{ template:badges }}` placeholder to stamp it. You will need to add th
   }
 }
 ```
+
+If you need some inspiration for badges, check [this website](https://shields.io/) out.
 
 ### Description
 
@@ -361,7 +363,7 @@ If you are in the mood you can change the syntax used for matching with the temp
 
 ### Arrays and objects
 
-If you have an array or an object you want to stamp to your readme as a list just use the `{{ ... }}` syntax as usual. If you for example want to stamp the `dependencies` from your `package.json` file you write `{{ dependencies }}` and the dependencies will be stamped in a nice formatted way.
+If you have an array or an object you want to stamp to your readme as a list just use the `{{ ... }}` syntax as usual. If you for example want to stamp the `dependencies` from your `package.json` file you write `{{ dependencies }}` and the dependencies will be stamped in a nice formatted way like this.
 
 * **colors**: ^1.3.3
 * **fs-extra**: ^7.0.1
@@ -392,7 +394,7 @@ Yeah! Dark mode on your `README.md` is awesome indeed.
 
 ## ❯ Featured README's
 
-If you use this generator for one of your projects I would love to hear about it so I can feature it.
+If you use this generator for one of your projects I would love to hear about it so I can feature it. Here's a list of some repositories using this generator for their README file.
 
 * [lit-translate](https://github.com/andreasbm/lit-translate)
 * [masonry-layout](https://github.com/andreasbm/masonry-layout)
@@ -402,9 +404,6 @@ If you use this generator for one of your projects I would love to hear about it
 
 As inspiration for the layout of the generated README files I initially found inspiration from [terkelg's brilliant repository called prompts](https://github.com/terkelg/prompts) - a prime example on how every README file should look! I therefore wanted to mention him here even though he doesn't use this README generator. If you want to see an example of a brilliant README file you should definitely check his repository out.
 
-...
-
-Why are you still here? I asked you to check it out - you can always come back later :-)
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line-colored.png)
 
@@ -424,3 +423,5 @@ That's it for now! Lot's of exiting features a going to be added in the future. 
 ## ❯ License
 	
 Licensed under [MIT](https://opensource.org/licenses/MIT).
+
+[new-line](data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iNTAwcHgi%0D%0AIGhlaWdodD0iNTAwcHgiIHZpZXdCb3g9IjAgMCA1MDAgNTAwIiB2ZXJzaW9uPSIxLjEiIHhtbG5z%0D%0APSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMu%0D%0Ab3JnLzE5OTkveGxpbmsiPgogICAgPCEtLSBHZW5lcmF0b3I6IFNrZXRjaCA1MS4zICg1NzU0NCkg%0D%0ALSBodHRwOi8vd3d3LmJvaGVtaWFuY29kaW5nLmNvbS9za2V0Y2ggLS0+CiAgICA8dGl0bGU+bG9n%0D%0AbzwvdGl0bGU+CiAgICA8ZGVzYz5DcmVhdGVkIHdpdGggU2tldGNoLjwvZGVzYz4KICAgIDxkZWZz%0D%0APgogICAgICAgIDxyZWN0IGlkPSJwYXRoLTEiIHg9IjAiIHk9IjAiIHdpZHRoPSI1MDAiIGhlaWdo%0D%0AdD0iNTAwIj48L3JlY3Q+CiAgICAgICAgPGxpbmVhckdyYWRpZW50IHgxPSI1MC4wMDQwMjQ0JSIg%0D%0AeTE9IjUwJSIgeDI9IjQ5Ljk1MDYxNzQlIiB5Mj0iNTAlIiBpZD0ibGluZWFyR3JhZGllbnQtMyI+%0D%0ACiAgICAgICAgICAgIDxzdG9wIHN0b3AtY29sb3I9IiNGN0JENDAiIG9mZnNldD0iMCUiPjwvc3Rv%0D%0AcD4KICAgICAgICAgICAgPHN0b3Agc3RvcC1jb2xvcj0iI0REOTcwMCIgb2Zmc2V0PSIxMDAlIj48%0D%0AL3N0b3A+CiAgICAgICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDwvZGVmcz4KICAgIDxnIGlkPSJs%0D%0Ab2dvIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxl%0D%0APSJldmVub2RkIj4KICAgICAgICA8bWFzayBpZD0ibWFzay0yIiBmaWxsPSJ3aGl0ZSI+CiAgICAg%0D%0AICAgICAgIDx1c2UgeGxpbms6aHJlZj0iI3BhdGgtMSI+PC91c2U+CiAgICAgICAgPC9tYXNrPgog%0D%0AICAgICAgIDx1c2UgaWQ9IlJlY3RhbmdsZS00IiBmaWxsPSIjRkZGRkZGIiBmaWxsLXJ1bGU9Im5v%0D%0Abnplcm8iIHhsaW5rOmhyZWY9IiNwYXRoLTEiPjwvdXNlPgogICAgICAgIDxjaXJjbGUgaWQ9Ik92%0D%0AYWwtMiIgZmlsbD0iIzk0QUZDMCIgZmlsbC1ydWxlPSJub256ZXJvIiBtYXNrPSJ1cmwoI21hc2st%0D%0AMikiIGN4PSIyMjYuNSIgY3k9IjI0Ny41IiByPSIyMDguNSI+PC9jaXJjbGU+CiAgICAgICAgPHBh%0D%0AdGggZD0iTS03OSwtMyBMMzUxLC0zIEwzNTEsNDI3IEMzNTEsNDY3LjMxNjc4NyAzMTguMzE2Nzg3%0D%0ALDUwMCAyNzgsNTAwIEwtNzksNTAwIEMtMTE5LjMxNjc4Nyw1MDAgLTE1Miw0NjcuMzE2Nzg3IC0x%0D%0ANTIsNDI3IEwtMTUyLDcwIEMtMTUyLDI5LjY4MzIxMzMgLTExOS4zMTY3ODcsLTMgLTc5LC0zIFoi%0D%0AIGlkPSJSZWN0YW5nbGUiIGZpbGw9IiMyMjg5QjYiIGZpbGwtcnVsZT0ibm9uemVybyIgbWFzaz0i%0D%0AdXJsKCNtYXNrLTIpIj48L3BhdGg+CiAgICAgICAgPHBhdGggZD0iTS04NCwtNiBMMzI3LC02IEwz%0D%0AMjcsNDA1IEMzMjcsNDQ1LjMxNjc4NyAyOTQuMzE2Nzg3LDQ3OCAyNTQsNDc4IEwtODQsNDc4IEMt%0D%0AMTI0LjMxNjc4Nyw0NzggLTE1Nyw0NDUuMzE2Nzg3IC0xNTcsNDA1IEwtMTU3LDY3IEMtMTU3LDI2%0D%0ALjY4MzIxMzMgLTEyNC4zMTY3ODcsLTYgLTg0LC02IFoiIGlkPSJSZWN0YW5nbGUiIGZpbGw9IiNG%0D%0ARkZGRkYiIGZpbGwtcnVsZT0ibm9uemVybyIgbWFzaz0idXJsKCNtYXNrLTIpIj48L3BhdGg+CiAg%0D%0AICAgICAgPGcgaWQ9Ikdyb3VwIiBtYXNrPSJ1cmwoI21hc2stMikiIGZpbGw9IiNEQ0U0RTgiIGZp%0D%0AbGwtcnVsZT0ibm9uemVybyI+CiAgICAgICAgICAgIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDQ3%0D%0ALjAwMDAwMCwgMjIzLjAwMDAwMCkiIGlkPSJSZWN0YW5nbGUtMiI+CiAgICAgICAgICAgICAgICA8%0D%0AcmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMjM0IiBoZWlnaHQ9IjE4IiByeD0iOSI+PC9yZWN0Pgog%0D%0AICAgICAgICAgICAgICAgPHJlY3QgeD0iMCIgeT0iNzYuNSIgd2lkdGg9IjIzNCIgaGVpZ2h0PSIx%0D%0AOCIgcng9IjkiPjwvcmVjdD4KICAgICAgICAgICAgICAgIDxyZWN0IHg9IjAiIHk9IjE1MyIgd2lk%0D%0AdGg9IjIzNCIgaGVpZ2h0PSIxOCIgcng9IjkiPjwvcmVjdD4KICAgICAgICAgICAgPC9nPgogICAg%0D%0AICAgIDwvZz4KICAgICAgICA8cGF0aCBkPSJNMjI2LjA4NDM4Miw2Ni42MTE0NzgzIEMyMzEuNjk0%0D%0ANTMzLDUzLjMwMjI2MDkgMjQ0LjUxMDU4OSw0NC4wMDI3ODI2IDI1OS40MTcyNDUsNDQuMDAyNzgy%0D%0ANiBDMjc5LjQ5NzU4NSw0NC4wMDI3ODI2IDI5My45NTk0MzMsNjEuMTk2NTIxNyAyOTUuNzc3NTks%0D%0AODEuNjg3NjUyMiBDMjk1Ljc3NzU5LDgxLjY4NzY1MjIgMjk2Ljc1ODk0OSw4Ni43NzQyNjA5IDI5%0D%0ANC41OTg4NDYsOTUuOTMxODI2MSBDMjkxLjY1NzU0NywxMDguNDAzNDc4IDI4NC43NDM1NSwxMTku%0D%0ANDgzODI2IDI3NS40MjIwMjQsMTI3Ljk0MDE3NCBMMjI2LjA4NDM4MiwxNzIgTDE3Ny41Nzc5NzYs%0D%0AMTI3LjkzNzM5MSBDMTY4LjI1NjQ1LDExOS40ODM4MjYgMTYxLjM0MjQ1MywxMDguNDAwNjk2IDE1%0D%0AOC40MDExNTQsOTUuOTI5MDQzNSBDMTU2LjI0MTA1MSw4Ni43NzE0NzgzIDE1Ny4yMjI0MSw4MS42%0D%0AODQ4Njk2IDE1Ny4yMjI0MSw4MS42ODQ4Njk2IEMxNTkuMDQwNTY3LDYxLjE5MzczOTEgMTczLjUw%0D%0AMjQxNSw0NCAxOTMuNTgyNzU1LDQ0IEMyMDguNDkyMTkxLDQ0IDIyMC40NzQyMyw1My4zMDIyNjA5%0D%0AIDIyNi4wODQzODIsNjYuNjExNDc4MyBaIiBpZD0iU2hhcGUiIGZpbGw9IiNFMDE2MEEiIGZpbGwt%0D%0AcnVsZT0ibm9uemVybyIgbWFzaz0idXJsKCNtYXNrLTIpIj48L3BhdGg+CiAgICAgICAgPHBhdGgg%0D%0AZD0iTTY1LDAgTDEyNiwwIEwxMjYsMTM3LjE5MTExMyBDMTI2LDEzOS40MDAyNTIgMTI0LjIwOTEz%0D%0AOSwxNDEuMTkxMTEzIDEyMiwxNDEuMTkxMTEzIEMxMjEuMzE4MzM4LDE0MS4xOTExMTMgMTIwLjY0%0D%0ANzk4NSwxNDEuMDE2OTEgMTIwLjA1MjU2NywxNDAuNjg1MDM3IEw5NS41LDEyNyBMNzAuOTQ3NDMz%0D%0ALDE0MC42ODUwMzcgQzY5LjAxNzc5MjEsMTQxLjc2MDU3NSA2Ni41ODE2MTM2LDE0MS4wNjgxODcg%0D%0ANjUuNTA2MDc2LDEzOS4xMzg1NDYgQzY1LjE3NDIwMzUsMTM4LjU0MzEyOCA2NSwxMzcuODcyNzc1%0D%0AIDY1LDEzNy4xOTExMTMgTDY1LDAgWiIgaWQ9IlJlY3RhbmdsZS0zIiBmaWxsPSJ1cmwoI2xpbmVh%0D%0AckdyYWRpZW50LTMpIiBmaWxsLXJ1bGU9Im5vbnplcm8iIG1hc2s9InVybCgjbWFzay0yKSI+PC9w%0D%0AYXRoPgogICAgPC9nPgo8L3N2Zz4=)

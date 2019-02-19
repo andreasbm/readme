@@ -67,7 +67,7 @@
 		"blueprint": "blueprint.md",
 		"output": "README.md",
 		"logo": {
-			"url": "https://github.com/andreasbm/readme/blob/master/assets/logo-shadow.png",
+			"url": "https://raw.githubusercontent.com/andreasbm/readme/master/assets/logo-shadow.png",
 			"width": 150,
 			"height": 150
 		},

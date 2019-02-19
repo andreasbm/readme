@@ -53,6 +53,8 @@ Use the `{{ template:badges }}` placeholder to stamp it. You will need to add th
 }
 ```
 
+If you need some inspiration for badges, check [this website](https://shields.io/) out.
+
 ### Description
 
 The description template adds a description to your readme and looks like this:

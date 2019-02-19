@@ -5,6 +5,7 @@ import { defaultGenerators, defaultPackageName, extendPackageWithDefaults } from
 import { simpleTemplateGenerator } from "./generators";
 import { fileExists, generateReadme, readFile, readJSONFile, writeFile } from "./helpers";
 import { CommandArgs, IPackage } from "./model";
+import { svgLineTemplate } from "./templates";
 
 /**
  * Generates the readme.
@@ -24,6 +25,7 @@ async function generate (userArgs: CommandArgs) {
 	extendPackageWithDefaults({pkg, userArgs});
 	const {dry, silent, templates, output} = pkg.readme;
 
+	console.log(svgLineTemplate({pkg}));
 
 	// Grab blueprint
 	let blueprint: string = "";

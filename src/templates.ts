@@ -1,5 +1,5 @@
-import {getLicenseUrl, getTitle, getTitleLink} from "./helpers";
-import { BadgesTemplateArgs, BulletsTemplateArgs, ContributorsTemplateArgs, DemoTemplateArgs, DescriptionTemplateArgs, LicenseTemplateArgs, LineTemplateArgs, LogoTemplateArgs, MainTitleTemplateArgs, TableOfContentsTemplateArgs, TitleTemplateArgs } from "./model";
+import { getLicenseUrl, getTitle, getTitleLink } from "./helpers";
+import { BadgesTemplateArgs, BulletsTemplateArgs, ContributorsTemplateArgs, DemoTemplateArgs, DescriptionTemplateArgs, IPackage, LicenseTemplateArgs, LineTemplateArgs, LogoTemplateArgs, MainTitleTemplateArgs, TableOfContentsTemplateArgs, TitleTemplateArgs } from "./model";
 
 /**
  * Creates the template for the logo.
@@ -17,7 +17,7 @@ export function logoTemplate ({logo}: LogoTemplateArgs): string {
  * @param name
  */
 export function mainTitleTemplate ({name}: MainTitleTemplateArgs): string {
-	return `<h1 align="center">${name}</h1>`
+	return `<h1 align="center">${name}</h1>`;
 }
 
 /**
@@ -48,7 +48,8 @@ export function titleTemplate ({title, level, pkg}: TitleTemplateArgs) {
  */
 export function badgesTemplate ({badges, pkg}: BadgesTemplateArgs): string {
 	return `<p align="center">
-		${badges.map(badge => `<a href="${badge.url}"><img alt="${badge.alt}" src="${badge.img}" height="20"/></a>`).join(pkg.readme.lineBreak)}
+		${badges.map(badge => `<a href="${badge.url}"><img alt="${badge.alt}" src="${badge.img}" height="20"/></a>`)
+	            .join(pkg.readme.lineBreak)}
 	</p>
 `;
 }
@@ -105,7 +106,9 @@ export function bulletsTemplate ({bullets, pkg}: BulletsTemplateArgs): string {
 export function tocTemplate ({titles, pkg}: TableOfContentsTemplateArgs): string {
 
 	// Figure out the lowest level
-	const titleLevels = titles.map(title => {return {title, level: (title.match(/#/g) || []).length}});
+	const titleLevels = titles.map(title => {
+		return {title, level: (title.match(/#/g) || []).length};
+	});
 	const lowestLevel = titleLevels.reduce((acc, {title, level}) => Math.min(acc, level), Infinity);
 
 	// Format the table of contents title because it is applied after the title template
@@ -128,5 +131,44 @@ ${titleLevels.map(({title, level}) => {
 export function contributorsTemplate ({contributors, pkg}: ContributorsTemplateArgs): string {
 	return `## Contributors
 	
-${contributors.map(({name, email, url}) => `* <a href="${url}">${name}</a> ${email != null ? `(<a href="mailto:${email}">${email}</a>` : ""})`).join(pkg.readme.lineBreak)}`;
+${contributors.map(({name, email, url}) => `* <a href="${url}">${name}</a> ${email != null ? `(<a href="mailto:${email}">${email}</a>` : ""})`)
+	          .join(pkg.readme.lineBreak)}`;
+}
+
+/**
+ * Creates a svg line template.
+ * @param pkg
+ */
+export function svgLineTemplate ({pkg}: {pkg: IPackage}): string {
+	const lineColors = [
+		"#63BC47",
+		"#FBB724",
+		"#F58220",
+		"#E03A3E",
+		"#963F97",
+		"#0B9EDA"
+	];
+
+	const width = 888;
+	const height = 9;
+	const lineHeight = 2;
+	const lineParthWidth = Math.round(width / lineColors.length);
+
+	const svg = `
+<svg width="${width}px" height="${height}px" viewBox="0 0 ${width} ${height}" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <defs></defs>
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="line-colored" fill-rule="nonzero">
+            <g id="line">
+                <rect id="bg" x="0" y="0" width="${width}" height="${height}"></rect>
+                <g id="parts" transform="translate(0, ${height - lineHeight})">
+                    ${lineColors.map((color, i) => `<rect fill="${color}" x="${lineParthWidth * i}" y="0" width="${lineParthWidth}" height="${lineHeight}"></rect>`).join(pkg.readme.lineBreak)}
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>`;
+
+	return svg;
+	//return `data:image/svg+xml;base64,${btoa(svg)}`;
 }

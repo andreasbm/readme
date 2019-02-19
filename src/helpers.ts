@@ -1,5 +1,5 @@
 import { yellow } from "colors";
-import {readFileSync, existsSync, outputFile} from "fs-extra";
+import { existsSync, outputFile, readFileSync } from "fs-extra";
 import { resolve } from "path";
 import { githubBadges, npmBadges, webcomponentsBadges } from "./badges";
 import { IBadge, IGenerator, IGeneratorParamsArgs, IGeneratorParamsError, IPackage, Params } from "./model";
@@ -42,9 +42,9 @@ export function getValue<T> (obj: {[key: string]: any}, keyPath: string): T | nu
  * @param keyPath
  * @param value
  */
-export function setValue<T> (obj: {[key: string]: any}, keyPath: string, value: T) {
+export function setValue<T> (obj: any, keyPath: string, value: T) {
 	let keys = keyPath.split(".");
-	while (keys.length > 0 && obj != null) {
+	while (keys.length > 0) {
 
 		// Set value for the last key
 		if (keys.length === 1) {
@@ -52,7 +52,12 @@ export function setValue<T> (obj: {[key: string]: any}, keyPath: string, value: 
 			return;
 		}
 
-		obj = obj[keys.shift()!];
+		const key = keys.shift()!;
+		if (obj[key] != null) {
+			obj = obj[key];
+		} else {
+			obj = (obj[key] = {});
+		}
 	}
 }
 

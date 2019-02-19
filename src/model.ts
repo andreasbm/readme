@@ -1,6 +1,13 @@
 export enum LineColor {
 	COLORED = "colored",
-	DARK = "dark"
+	DARK = "dark",
+	GOLD = "gold",
+	GRASS = "grass",
+	HAPPY = "happy",
+	RAINBOW = "rainbow",
+	SHADY = "shady",
+	SOLAR = "solar",
+	VINTAGE = "vintage"
 }
 
 export interface IBadge {

@@ -35,8 +35,8 @@ export const defaultConfig: IConfig = {
 	line: LineColor.COLORED,
 	templates: [],
 	titlePrefix: {
-		1: "❯ ",
-		2: "❯ "
+		1: "➔ ",
+		2: "➔ "
 	}
 };
 

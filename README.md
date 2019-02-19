@@ -29,37 +29,37 @@
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line-colored.png)
 
-## ❯ Table of Contents
+## ➔ Table of Contents
 
-* [❯ Installation](#-installation)
-* [❯ Create a blueprint](#-create-a-blueprint)
-* [❯ Templates](#-templates)
+* [➔ Installation](#-installation)
+* [➔ Create a blueprint](#-create-a-blueprint)
+* [➔ Templates](#-templates)
 	* [Logo](#logo)
 	* [Badges](#badges)
 	* [Description](#description)
 	* [Table of Contents](#table-of-contents)
 	* [Contributors](#contributors)
-* [❯ Contributors](#-contributors)
+* [➔ Contributors](#-contributors)
 	* [License](#license)
-* [❯ License](#-license)
-* [❯ Load markdown files](#-load-markdown-files)
-* [❯ A bit about this readme](#-a-bit-about-this-readme)
-* [❯ Custom templates](#-custom-templates)
-* [❯ Advanced!](#-advanced)
+* [➔ License](#-license)
+* [➔ Load markdown files](#-load-markdown-files)
+* [➔ A bit about this readme](#-a-bit-about-this-readme)
+* [➔ Custom templates](#-custom-templates)
+* [➔ Advanced!](#-advanced)
 	* [New template syntax](#new-template-syntax)
 	* [Variables](#variables)
 		* [Objects](#objects)
 		* [1D Arrays](#1d-arrays)
 		* [2D Arrays](#2d-arrays)
 	* [Different colored lines](#different-colored-lines)
-* [❯ Featured README's](#-featured-readmes)
-* [❯ Future work](#-future-work)
-* [❯ Contributors](#-contributors)
-* [❯ License](#-license)
+* [➔ Featured README's](#-featured-readmes)
+* [➔ Future work](#-future-work)
+* [➔ Contributors](#-contributors)
+* [➔ License](#-license)
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line-colored.png)
 
-## ❯ Installation
+## ➔ Installation
 
 ```javascript
 npm install @appnest/readme -D
@@ -67,7 +67,7 @@ npm install @appnest/readme -D
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line-colored.png)
 
-## ❯ Create a blueprint
+## ➔ Create a blueprint
 
 First you need to create a `blueprint.md` file (name it whatever you like). This blueprint is going to be the blueprint for the `README.md` file we are going to generate later.
 
@@ -76,7 +76,7 @@ Let's start simple. In order to get values from your `package.json` file injecte
 ```json
 {
   "name": "@appnest/readme",
-  "version": "1.0.14"
+  "version": "1.0.15"
 }
 ```
 
@@ -89,14 +89,14 @@ Welcome to {{ name }}. This is version {{ version }}!
 When running `node node_modules/.bin/readme --blueprint=blueprint.md --output=README.md` the file `README.md` will be generated with the following contents:
 
 ```markdown
-Welcome to @appnest/readme. This is version 1.0.14.
+Welcome to @appnest/readme. This is version 1.0.15.
 ```
 
 Great. Let's continue and see how you can use templates!
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line-colored.png)
 
-## ❯ Templates
+## ➔ Templates
 
 If you have come this far you are probably interested to figure out how to use readme templates. This library comes with a set of pre-defined templates to make your readme awesome, but you can of course create your own. More about that later, let's not get ahead of our self just yet.
 
@@ -193,33 +193,33 @@ The table of contents template adds a table of contents and looks like this:
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line-colored.png)
 
-## ❯ Table of Contents
+## ➔ Table of Contents
 
-* [❯ Installation](#-installation)
-* [❯ Create a blueprint](#-create-a-blueprint)
-* [❯ Templates](#-templates)
+* [➔ Installation](#-installation)
+* [➔ Create a blueprint](#-create-a-blueprint)
+* [➔ Templates](#-templates)
 	* [Logo](#logo)
 	* [Badges](#badges)
 	* [Description](#description)
 	* [Table of Contents](#table-of-contents)
 	* [Contributors](#contributors)
-* [❯ Contributors](#-contributors)
+* [➔ Contributors](#-contributors)
 	* [License](#license)
-* [❯ License](#-license)
-* [❯ Load markdown files](#-load-markdown-files)
-* [❯ A bit about this readme](#-a-bit-about-this-readme)
-* [❯ Custom templates](#-custom-templates)
-* [❯ Advanced!](#-advanced)
+* [➔ License](#-license)
+* [➔ Load markdown files](#-load-markdown-files)
+* [➔ A bit about this readme](#-a-bit-about-this-readme)
+* [➔ Custom templates](#-custom-templates)
+* [➔ Advanced!](#-advanced)
 	* [New template syntax](#new-template-syntax)
 	* [Variables](#variables)
 		* [Objects](#objects)
 		* [1D Arrays](#1d-arrays)
 		* [2D Arrays](#2d-arrays)
 	* [Different colored lines](#different-colored-lines)
-* [❯ Featured README's](#-featured-readmes)
-* [❯ Future work](#-future-work)
-* [❯ Contributors](#-contributors)
-* [❯ License](#-license)
+* [➔ Featured README's](#-featured-readmes)
+* [➔ Future work](#-future-work)
+* [➔ Contributors](#-contributors)
+* [➔ License](#-license)
 
 Use the `{{ template:toc }}` placeholder to stamp it. It has been scientifically proven that this template will save you approximately 392.3 hours during your life-time.
 
@@ -230,7 +230,7 @@ The contributors template adds the list of contributors and looks like this:
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line-colored.png)
 
-## ❯ Contributors
+## ➔ Contributors
 	
 * <a href="https://twitter.com/andreasmehlsen">Andreas Mehlsen</a> (<a href="mailto:andmehlsen@gmail.com">andmehlsen@gmail.com</a>)
 
@@ -255,7 +255,7 @@ The license template adds a license section and looks like this:
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line-colored.png)
 
-## ❯ License
+## ➔ License
 	
 Licensed under [MIT](https://opensource.org/licenses/MIT).
 
@@ -269,13 +269,13 @@ Use the `{{ template:license }}` placeholder to stamp it. To use this template y
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line-colored.png)
 
-## ❯ Load markdown files
+## ➔ Load markdown files
 
 What? You heard right. You can split the contents of your readme into multiple different files to make your life easier. Let's say you have a file called `my-section.md`. To stamp it you'll need to add `{{ load:my-section.md }}`.
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line-colored.png)
 
-## ❯ A bit about this readme
+## ➔ A bit about this readme
 
 By now you are probably curious to know how this `README.md` was generated? It was created from the following `blueprint.md` file.
 
@@ -302,7 +302,7 @@ It really couldn't be more simple that this.
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line-colored.png)
 
-## ❯ Custom templates
+## ➔ Custom templates
 
 To create your own templates you'll first need to add the `readme.templates` array to your `package.json` file like this.
 
@@ -325,7 +325,7 @@ Run `npm install @appnest/readme' to install this library!
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line-colored.png)
 
-## ❯ Advanced!
+## ➔ Advanced!
 
 Oh! So are you ready to open Pandora's box? Let's do it.
 
@@ -415,7 +415,7 @@ Yeah! Dark mode on your `README.md` is awesome indeed.
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line-colored.png)
 
-## ❯ Featured README's
+## ➔ Featured README's
 
 If you use this generator for one of your projects I would love to hear about it so I can feature it. Here's a list of some repositories using this generator for their README file.
 
@@ -430,19 +430,19 @@ As inspiration for the layout of the generated README files I initially found in
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line-colored.png)
 
-## ❯ Future work
+## ➔ Future work
 
 That's it for now! Lot's of exiting features a going to be added in the future. If you stumble upon an issue or have a feature request you are very welcome to open a Github issue or pull request. Have a great day!
 
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line-colored.png)
 
-## ❯ Contributors
+## ➔ Contributors
 	
 * <a href="https://twitter.com/andreasmehlsen">Andreas Mehlsen</a> (<a href="mailto:andmehlsen@gmail.com">andmehlsen@gmail.com</a>)
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line-colored.png)
 
-## ❯ License
+## ➔ License
 	
 Licensed under [MIT](https://opensource.org/licenses/MIT).

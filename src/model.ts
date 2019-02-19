@@ -8,10 +8,7 @@ export enum LineColor {
 	SHADY = "shady",
 	SOLAR = "solar",
 	VINTAGE = "vintage",
-	CUT = "cut",
-	ARROW_1 = "arrow-1",
-	ARROW_2 = "arrow-2",
-	ARROW_3 = "arrow-3"
+	CUT = "cut"
 }
 
 export interface IBadge {

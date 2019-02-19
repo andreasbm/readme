@@ -12,7 +12,7 @@
 	</p>
 
 <p align="center">
-  <b>Generate beautiful best-practice and easy-to-maintain README files</b></br>
+  <b>Automatically generate a beautiful best-practice README file based on the contents of your repository</b></br>
   <sub>Use this readme generator to easily generate beautiful readme's like this one! Simply extend your <code>package.json</code> and create a readme blueprint. On Github, the README file is like the landing page of your website because it is the first thing visitors see. You want to make a good first impression.<sub>
 </p>
 
@@ -169,7 +169,7 @@ If you need some inspiration for badges, check [this website](https://shields.io
 The description template adds a description to your readme and looks like this:
 
 <p align="center">
-  <b>Generate beautiful best-practice and easy-to-maintain README files</b></br>
+  <b>Automatically generate a beautiful best-practice README file based on the contents of your repository</b></br>
   <sub>Use this readme generator to easily generate beautiful readme's like this one! Simply extend your <code>package.json</code> and create a readme blueprint. On Github, the README file is like the landing page of your website because it is the first thing visitors see. You want to make a good first impression.<sub>
 </p>
 
@@ -180,7 +180,7 @@ Use the `{{ template:description }}` placeholder to stamp it. To use this templa
 
 ```json
 {
-  "description": "Generate beautiful best-practice and easy-to-maintain README files",
+  "description": "Automatically generate a beautiful best-practice README file based on the contents of your repository",
   "readme": {
     "text": "Use this readme generator to easily generate beautiful readme's like this one! Simply extend your <code>package.json</code> and create a readme blueprint. On Github, the README file is like the landing page of your website because it is the first thing visitors see. You want to make a good first impression.",
   }

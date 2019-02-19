@@ -65,7 +65,7 @@ Use the `{{ template:description }}` placeholder to stamp it. To use this templa
 
 ```json
 {
-  "description": "Generate beautiful best-practice and easy-to-maintain README files",
+  "description": "Automatically generate a beautiful best-practice README file based on the contents of your repository",
   "readme": {
     "text": "Use this readme generator to easily generate beautiful readme's like this one! Simply extend your <code>package.json</code> and create a readme blueprint. On Github, the README file is like the landing page of your website because it is the first thing visitors see. You want to make a good first impression.",
   }

@@ -1,6 +1,6 @@
 {
 	"name": "@appnest/readme",
-	"version": "1.0.13",
+	"version": "1.0.14",
 	"description": "Generate beautiful best-practice and easy-to-maintain README files",
 	"license": "MIT",
 	"module": "index.js",
@@ -112,9 +112,21 @@
 			}
 		],
 		"table": [
-			["Attribute", "Type", "Description"],
-			["**size**", "'medium', 'large'", "Determines the size" ],
-			["**active**", "boolean", "Whether the element is active or not" ]
+			[
+				"Attribute",
+				"Type",
+				"Description"
+			],
+			[
+				"**size**",
+				"'medium', 'large'",
+				"Determines the size"
+			],
+			[
+				"**active**",
+				"boolean",
+				"Whether the element is active or not"
+			]
 		]
 	}
 }

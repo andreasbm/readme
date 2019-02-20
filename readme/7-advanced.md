@@ -56,7 +56,7 @@ You are welcome!
 
 ### Different colored lines
 
-If you want to change the color of the lines above headers you can change the `readme.line` field in the `package.json`. You can either choose `dark` or `colored` values.
+If you want to change the color of the lines above headers you can change the `readme.line` field in the `package.json`. Here's an example if you want a dark line instead of the colored one.
 
 ```json
 {
@@ -84,7 +84,7 @@ Yeah! Dark mode on your `README.md` is awesome indeed. You have other options be
 * "vintage" ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/vintage.png)
 * "water" ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/water.png)
 
-If you want your own line design you can give the `readme.line` field an url to an image instead. If you prefer no line at all you can give the `readme.line` field the string "none".
+If you want your own line design you can give the `readme.line` field an url to an image instead. It is recommended that this image is 900px in width. If you prefer no line at all you can give the `readme.line` field the string "none".
 
 ### Different formatted headings
 

@@ -2,11 +2,21 @@
 
 If you have come this far you are probably interested to figure out how to use readme templates. This library comes with a set of pre-defined templates to make your readme awesome, but you can of course create your own. More about that later, let's not get ahead of our self just yet.
 
+### Title
+
 The most simple template you can use is the title template. The way to generate a title is by writing `{{ template:title }}` in your blueprint. When you run the `readme` command the template will generate the following:
 
 [[ template:title ]]
 
-The important thing to note here is that the template automatically reads your `package.json` file and inserts the `name` from the package. That's beautiful cool. Let's go through some of the other built-in templates you might want to add.
+The important thing to note here is that the template automatically reads your `package.json` file and inserts the `name` from the package.
+
+```json
+{
+  "name": "[[ name ]]"
+}
+```
+
+That's cool. Let's go through some of the other built-in templates you might want to add.
 
 ### Logo
 
@@ -20,8 +30,8 @@ Use the placeholder `{{ template:logo }}` to stamp it. You will need to add the 
 {
   "readme": {
     "logo": {
-      "url": "https://github.com/andreasbm/readme/blob/master/assets/logo-shadow.png",
-      "width": 150
+      "url": "[[ readme.logo.url ]]",
+      "width": "[[ readme.logo.width ]]"
     }
   }
 }
@@ -39,8 +49,8 @@ Use the `{{ template:badges }}` placeholder to stamp it. You will need to add th
 {
   "readme": {
     "ids": {
-      "github": "andreasbm/readme",
-      "npm": "@appnest/readme"
+      "github": "[[ readme.ids.github ]]",
+      "npm": "[[ readme.ids.npm ]]"
     },
     "badges": [
       {
@@ -65,9 +75,9 @@ Use the `{{ template:description }}` placeholder to stamp it. To use this templa
 
 ```json
 {
-  "description": "Automatically generate a beautiful best-practice README file based on the contents of your repository",
+  "description": "[[ description ]]",
   "readme": {
-    "text": "Use this readme generator to easily generate beautiful readme's like this one! Simply extend your <code>package.json</code> and create a readme blueprint. On Github, the README file is like the landing page of your website because it is the first thing visitors see. You want to make a good first impression.",
+    "text": "[[ readme.text ]]"
   }
 }
 ```
@@ -110,6 +120,6 @@ Use the `{{ template:license }}` placeholder to stamp it. To use this template y
 
 ```json
 {
-  "license": "MIT"
+  "license": "[[ license ]]"
 }
 ```

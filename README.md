@@ -34,6 +34,7 @@
 * [➤ Installation](#-installation)
 * [➤ Create a blueprint](#-create-a-blueprint)
 * [➤ Templates](#-templates)
+	* [Title](#title)
 	* [Logo](#logo)
 	* [Badges](#badges)
 	* [Description](#description)
@@ -101,11 +102,21 @@ Great. Let's continue and see how you can use templates!
 
 If you have come this far you are probably interested to figure out how to use readme templates. This library comes with a set of pre-defined templates to make your readme awesome, but you can of course create your own. More about that later, let's not get ahead of our self just yet.
 
+### Title
+
 The most simple template you can use is the title template. The way to generate a title is by writing `{{ template:title }}` in your blueprint. When you run the `readme` command the template will generate the following:
 
 <h1 align="center">@appnest/readme</h1>
 
-The important thing to note here is that the template automatically reads your `package.json` file and inserts the `name` from the package. That's beautiful cool. Let's go through some of the other built-in templates you might want to add.
+The important thing to note here is that the template automatically reads your `package.json` file and inserts the `name` from the package.
+
+```json
+{
+  "name": "@appnest/readme"
+}
+```
+
+That's cool. Let's go through some of the other built-in templates you might want to add.
 
 ### Logo
 
@@ -121,8 +132,8 @@ Use the placeholder `{{ template:logo }}` to stamp it. You will need to add the 
 {
   "readme": {
     "logo": {
-      "url": "https://github.com/andreasbm/readme/blob/master/assets/logo-shadow.png",
-      "width": 150
+      "url": "https://raw.githubusercontent.com/andreasbm/readme/master/assets/logo-shadow.png",
+      "width": "150"
     }
   }
 }
@@ -182,7 +193,7 @@ Use the `{{ template:description }}` placeholder to stamp it. To use this templa
 {
   "description": "Automatically generate a beautiful best-practice README file based on the contents of your repository",
   "readme": {
-    "text": "Use this readme generator to easily generate beautiful readme's like this one! Simply extend your <code>package.json</code> and create a readme blueprint. On Github, the README file is like the landing page of your website because it is the first thing visitors see. You want to make a good first impression.",
+    "text": "Use this readme generator to easily generate beautiful readme's like this one! Simply extend your <code>package.json</code> and create a readme blueprint. On Github, the README file is like the landing page of your website because it is the first thing visitors see. You want to make a good first impression."
   }
 }
 ```
@@ -199,6 +210,7 @@ The table of contents template adds a table of contents and looks like this:
 * [➤ Installation](#-installation)
 * [➤ Create a blueprint](#-create-a-blueprint)
 * [➤ Templates](#-templates)
+	* [Title](#title)
 	* [Logo](#logo)
 	* [Badges](#badges)
 	* [Description](#description)
@@ -397,7 +409,7 @@ You are welcome!
 
 ### Different colored lines
 
-If you want to change the color of the lines above headers you can change the `readme.line` field in the `package.json`. You can either choose `dark` or `colored` values.
+If you want to change the color of the lines above headers you can change the `readme.line` field in the `package.json`. Here's an example if you want a dark line instead of the colored one.
 
 ```json
 {
@@ -425,7 +437,7 @@ Yeah! Dark mode on your `README.md` is awesome indeed. You have other options be
 * "vintage" ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/vintage.png)
 * "water" ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/water.png)
 
-If you want your own line design you can give the `readme.line` field an url to an image instead. If you prefer no line at all you can give the `readme.line` field the string "none".
+If you want your own line design you can give the `readme.line` field an url to an image instead. It is recommended that this image is 900px in width. If you prefer no line at all you can give the `readme.line` field the string "none".
 
 ### Different formatted headings
 

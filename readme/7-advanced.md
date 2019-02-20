@@ -94,7 +94,7 @@ If you want to change the prefix in front of the heading you can change the `rea
 {
   "headingPrefix": {
     "1": "➜ ",
-    "2": "➜ "
+    "2": "⭑ "
   }
 }
 ```

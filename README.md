@@ -425,11 +425,11 @@ Yeah! Dark mode on your `README.md` is awesome indeed. You have other options be
 
 ### Different formatted headings
 
-If you want to change the prefix infront of the heading you can change the `readme.titlePrefix` in the `package.json` file. Just map the heading level to the desired prefix as shown below.
+If you want to change the prefix infront of the heading you can change the `readme.headingPrefix` in the `package.json` file. Just map the heading level to the desired prefix as shown below.
 
 ```json
 {
-  "titlePrefix": {
+  "headingPrefix": {
     "1": "➜ ",
     "2": "➜ "
   }

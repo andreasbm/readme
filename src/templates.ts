@@ -1,5 +1,5 @@
-import { getLicenseUrl, getTitle, getTitleLink } from "./helpers";
-import { BadgesTemplateArgs, BulletsTemplateArgs, ContributorsTemplateArgs, DemoTemplateArgs, DescriptionTemplateArgs, IPackage, LicenseTemplateArgs, LineTemplateArgs, LogoTemplateArgs, MainTitleTemplateArgs, TableOfContentsTemplateArgs, TableTemplateArgs, TitleTemplateArgs } from "./model";
+import { getLicenseUrl, getTitle, getTitleLink, isValidURL } from "./helpers";
+import { BadgesTemplateArgs, BulletsTemplateArgs, ContributorsTemplateArgs, DemoTemplateArgs, DescriptionTemplateArgs, IPackage, LicenseTemplateArgs, LineColor, LineTemplateArgs, LogoTemplateArgs, MainTitleTemplateArgs, TableOfContentsTemplateArgs, TableTemplateArgs, TitleTemplateArgs } from "./model";
 
 /**
  * Creates the template for the logo.
@@ -24,8 +24,21 @@ export function mainTitleTemplate ({name}: MainTitleTemplateArgs): string {
  * Creates a line template.
  */
 export function lineTemplate ({pkg}: LineTemplateArgs) {
+	let url = "";
 	const {line} = pkg.readme;
-	const url = `https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/${line}.png`;
+
+	// If the line should not be there we just return an empty string.
+	if (line === LineColor.NONE) {
+		return ``;
+	}
+
+	// Construct the URL.
+	if (isValidURL(line)) {
+		url = line;
+	} else {
+		url = `https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/${line}.png`;
+	}
+
 	return `
 ![-----------------------------------------------------](${url})`;
 }

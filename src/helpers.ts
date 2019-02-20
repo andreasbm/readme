@@ -4,6 +4,16 @@ import { resolve } from "path";
 import { githubBadges, npmBadges, webcomponentsBadges } from "./badges";
 import { IBadge, IGenerator, IGeneratorParamsArgs, IGeneratorParamsError, IPackage, Params } from "./model";
 
+export const URL_PATTERN = /^(?:(?:https?|ftp):\/\/)(?:\S+(?::\S*)?@)?(?:(?!10(?:\.\d{1,3}){3})(?!127(?:\.​\d{1,3}){3})(?!169\.254(?:\.\d{1,3}){2})(?!192\.168(?:\.\d{1,3}){2})(?!172\.(?:1[​6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1​,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00​a1-\uffff0-9]+-?)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]+-?)*[a-z\u​00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/[^\s]*)?$/i;
+
+/**
+ * Returns whether the URL is valid.
+ * @param url
+ */
+export function isValidURL (url: string): boolean {
+	return URL_PATTERN.test(url);
+}
+
 /**
  * Determines whether an object has the specified key.
  * @param obj
@@ -197,7 +207,7 @@ export async function writeFile ({target, content}: {target: string, content: st
  * @param pkg
  */
 export function getTitle ({title, level, pkg}: {title: string, level: number, pkg: IPackage}): string {
-	const prefix = pkg.readme.titlePrefix[level] || "";
+	const prefix = pkg.readme.headingPrefix[level] || "";
 	return `${prefix}${title}`;
 }
 

@@ -34,7 +34,7 @@ export const defaultConfig: IConfig = {
 	silent: false,
 	line: LineColor.COLORED,
 	templates: [],
-	titlePrefix: {
+	headingPrefix: {
 		1: "➜ ",
 		2: "➜ "
 	}
@@ -67,7 +67,7 @@ export const commandArgs: [string, any, ((v: any) => any)?][] = [
 	["readme.bullets", defaultConfig.bullets],
 	["readme.silent", defaultConfig.silent, booleanTransformer],
 	["readme.dry", defaultConfig.dry, booleanTransformer],
-	["readme.titlePrefix", defaultConfig.titlePrefix]
+	["readme.headingPrefix", defaultConfig.headingPrefix]
 ];
 
 /**

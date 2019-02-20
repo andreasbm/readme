@@ -1,14 +1,16 @@
 export enum LineColor {
+	AQUA = "aqua",
+	CLOUDY = "cloudy",
 	COLORED = "colored",
+	CUT = "cut",
 	DARK = "dark",
-	GOLD = "gold",
+	FIRE = "fire",
 	GRASS = "grass",
-	HAPPY = "happy",
 	RAINBOW = "rainbow",
-	SHADY = "shady",
 	SOLAR = "solar",
 	VINTAGE = "vintage",
-	CUT = "cut"
+	WATER = "water",
+	NONE = "none"
 }
 
 export interface IBadge {
@@ -57,7 +59,7 @@ export interface IConfig {
 	line: LineColor;
 	templates?: IUserTemplate[];
 	bullets?: Bullet[];
-	titlePrefix: {[key: number]: string}
+	headingPrefix: {[key: number]: string}
 	badges?: IBadge[];
 }
 

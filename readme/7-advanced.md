@@ -4,7 +4,7 @@ Oh! So are you ready to open Pandora's box? Let's do it.
 
 ### New template syntax
 
-If you are in the mood you can change the syntax used for matching with the templates. Let's say you want your placeholders to look like this instead `{[ template:title }]` you'll need to add the `readme.placeholder` array with the new syntax being `["{[", "}]"]` like this.
+If you are in the mood you can change the syntax used for matching with the templates. Let's say you want your placeholders to look like this instead `{[ template:title }]`. Then you'll need to add the `readme.placeholder` array with the new syntax being `["{[", "}]"]` like this.
 
 
 ```json
@@ -70,29 +70,33 @@ The following is the dark variant of the line.
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/dark.png)
 
-Yeah! Dark mode on your `README.md` is awesome indeed. You have other options besides dark mode. Here's some more line styles you can choose from.
+Yeah! Dark mode on your `README.md` is awesome indeed. You have other options besides dark mode. Here's all the line styles you can choose from.
 
-* "gold" ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/gold.png)
-* "grass" ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/grass.png)
-* "happy" ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/happy.png)
-* "rainbow" ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
-* "shady" ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/shady.png)
-* "solar" ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/solar.png)
-* "vintage" ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/vintage.png)
+* "aqua" ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png)
+* "cloudy" ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/cloudy.png)
 * "colored" ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)
 * "cut" ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/cut.png)
+* "dark" ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/dark.png)
+* "fire" ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/fire.png)
+* "grass" ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/grass.png)
+* "rainbow" ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+* "solar" ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/solar.png)
+* "vintage" ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/vintage.png)
+* "water" ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/water.png)
+
+If you want your own line design you can give the `readme.line` field an url to an image instead. If you prefer no line at all you can give the `readme.line` field the string "none".
 
 ### Different formatted headings
 
-If you want to change the prefix infront of the heading you can change the `readme.titlePrefix` in the `package.json` file. Just map the heading level to the desired prefix as shown below.
+If you want to change the prefix in front of the heading you can change the `readme.headingPrefix` in the `package.json` file. Just map the heading level to the desired prefix as shown below.
 
 ```json
 {
-  "titlePrefix": {
+  "headingPrefix": {
     "1": "➜ ",
     "2": "➜ "
   }
 }
 ```
 
-If you want some inspiration you can check out [this](https://unicodes.smpc.io/) website.
+If you want some inspiration for symbols you can put infront of the headings you can check out [this](https://unicodes.smpc.io/) website.

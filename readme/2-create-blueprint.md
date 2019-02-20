@@ -17,7 +17,7 @@ To get the `name` and `version` into your readme you will need to write `{{ name
 Welcome to {{ name }}. This is version {{ version }}!
 ```
 
-When running `node node_modules/.bin/readme --blueprint=blueprint.md --output=README.md` the file `README.md` will be generated with the following contents:
+When running `[[ readme.example.command ]]` the file `README.md` will be generated with the following contents:
 
 ```markdown
 Welcome to [[ name ]]. This is version [[ version ]].

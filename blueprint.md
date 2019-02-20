@@ -18,5 +18,6 @@
 [[ load:readme/7-advanced.md ]]
 [[ load:readme/8-featured-readmes.md ]]
 [[ load:readme/9-future-work.md ]]
+[[ load:readme/10-faq.md ]]
 [[ template:contributors ]]
 [[ template:license ]]

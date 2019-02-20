@@ -112,6 +112,9 @@
 				"template": "Run `npm install [[ readme.ids.npm ]]' to install this library!"
 			}
 		],
+		"example": {
+			"command": "node node_modules/.bin/readme --blueprint=blueprint.md --output=README.md"
+		},
 		"table": [
 			[
 				"Attribute",

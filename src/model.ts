@@ -48,6 +48,7 @@ export type PlaceholderSyntax = [string, string];
 export interface IConfig {
 	blueprint: string
 	output: string;
+	help: boolean;
 	text?: string;
 	demo?: string;
 	lineBreak: string;
@@ -58,7 +59,6 @@ export interface IConfig {
 	placeholder: PlaceholderSyntax;
 	line: LineColor;
 	templates?: IUserTemplate[];
-	bullets?: Bullet[];
 	headingPrefix: {[key: number]: string}
 	badges?: IBadge[];
 }
@@ -105,7 +105,7 @@ export interface IContributor {
 	email?: string;
 }
 
-export type CommandArgs =  {[key: string]: any};
+export type UserArgs =  {[key: string]: any};
 
 export type Bullet = string;
 export type License = string;

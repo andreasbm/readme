@@ -10,7 +10,7 @@
 [[ readme.bullets ]]
 [[ template:toc ]]
 [[ load:readme/1-installation.md ]]
-[[ load:readme/2-create-blueprint.md ]]
+[[ load:readme/2-getting-started.md ]]
 [[ load:readme/3-templates.md ]]
 [[ load:readme/4-load-markdown.md ]]
 [[ load:readme/5-this-readme.md ]]

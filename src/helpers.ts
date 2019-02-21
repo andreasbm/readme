@@ -1,8 +1,7 @@
-import { yellow } from "colors";
 import { existsSync, outputFile, readFileSync } from "fs-extra";
 import { resolve } from "path";
 import { githubBadges, npmBadges, webcomponentsBadges } from "./badges";
-import { IBadge, IGenerator, IGeneratorParamsArgs, IGeneratorParamsError, IPackage, Params } from "./model";
+import { IBadge, IPackage } from "./model";
 
 export const URL_PATTERN = /^(?:(?:https?|ftp):\/\/)(?:\S+(?::\S*)?@)?(?:(?!10(?:\.\d{1,3}){3})(?!127(?:\.​\d{1,3}){3})(?!169\.254(?:\.\d{1,3}){2})(?!192\.168(?:\.\d{1,3}){2})(?!172\.(?:1[​6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1​,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00​a1-\uffff0-9]+-?)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]+-?)*[a-z\u​00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/[^\s]*)?$/i;
 
@@ -235,70 +234,4 @@ export function fileExists (absolutePath: string): boolean {
 	return existsSync(absolutePath);
 }
 
-/**
- * Generates a readme.
- * @param pkg
- * @param blueprint
- * @param pkgPath
- * @param generators
- */
-export function generateReadme ({pkg, blueprint, pkgPath, generators}: {pkg: IPackage, blueprint: string, pkgPath: string, generators: IGenerator<any>[]}): string {
 
-	const {silent} = pkg.readme;
-
-	// Go through all of the generators and replace with the template
-	let defaultArgs = {pkg, pkgPath, generateReadme};
-	for (const generator of generators) {
-		blueprint = blueprint.replace(generator.regex({...defaultArgs, blueprint}), (string, ...matches) => {
-			let params: any | null | Params | IGeneratorParamsError = null;
-
-			// If the params are required we extract them from the package.
-			if (generator.params != null) {
-				let errorReason;
-				if (isFunction(generator.params)) {
-
-					// Extract the params using the function
-					params = (<(args: IGeneratorParamsArgs) => any>generator.params)({
-						...defaultArgs,
-						blueprint,
-						matches,
-						string
-					});
-
-					// Validate the params
-					if (params == null || params.error) {
-						errorReason = (params || {}).error || `the params couldn't not be generated`;
-					}
-
-				} else {
-
-					// Get the required and optional parameters
-					const optionalParams = (<any>generator.params)["optional"] || [];
-					const requiredParams = {...generator.params};
-					delete requiredParams["optional"];
-
-					// Validate the params
-					if (!validateObject({obj: pkg, requiredFields: (<any>Object).values(requiredParams)})) {
-						errorReason = `"${pkgPath}" is missing the keys "${(<any>Object).values(requiredParams)
-						                                                                .join(", ")}"`;
-					} else {
-						params = extractValues({map: {...optionalParams, ...requiredParams}, obj: pkg});
-					}
-				}
-
-				// If an error occurred print it and continue
-				if (errorReason != null) {
-					if (!silent) {
-						console.log(yellow(`[readme] - The readme generator "${generator.name}" matched "${string}" but was skipped because ${errorReason}.`));
-					}
-
-					return string;
-				}
-			}
-
-			return generator.template({...defaultArgs, blueprint, ...params});
-		});
-	}
-
-	return blueprint;
-}

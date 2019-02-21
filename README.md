@@ -32,7 +32,9 @@
 ## ➤ Table of Contents
 
 * [➤ Installation](#-installation)
-* [➤ Create a blueprint](#-create-a-blueprint)
+* [➤ Getting Started](#-getting-started)
+	* [Blueprint](#blueprint)
+	* [Usage](#usage)
 * [➤ Templates](#-templates)
 	* [Title](#title)
 	* [Logo](#logo)
@@ -74,7 +76,11 @@ npm install @appnest/readme -D
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)
 
-## ➤ Create a blueprint
+## ➤ Getting Started
+
+Spent a minute reading
+
+### Blueprint
 
 First you need to create a `blueprint.md` file (name it whatever you like). This blueprint is going to be the blueprint for the `README.md` file we are going to generate later.
 
@@ -83,7 +89,7 @@ Let's start simple. In order to get values from your `package.json` file injecte
 ```json
 {
   "name": "@appnest/readme",
-  "version": "1.0.17"
+  "version": "1.0.18"
 }
 ```
 
@@ -93,11 +99,36 @@ To get the `name` and `version` into your readme you will need to write `{{ name
 Welcome to {{ name }}. This is version {{ version }}!
 ```
 
-When running `node node_modules/.bin/readme --blueprint=blueprint.md --output=README.md` the file `README.md` will be generated with the following contents:
+When running `node node_modules/.bin/readme --b=blueprint.md --o=README.md` the file `README.md` will be generated with the following contents:
 
 ```markdown
-Welcome to @appnest/readme. This is version 1.0.17.
+Welcome to @appnest/readme. This is version 1.0.18.
 ```
+
+### Usage
+
+If you want to go into depth with the readme command, check out the following options.
+
+| Option | Type | Description |
+| ------- | ------- | ------- |
+| -p, --package | string | Path of the 'package.json' file. Defaults to 'package.json'. |
+| --name | string | Name of the project. Used for the 'title' template. |
+| --contributors | {name: string, email: string, url: string}[] | Contributors of the project. Used for the 'contributors' template. |
+| --license | string | License kind. Used for the 'license' template. |
+| -o, --readme.output | string | Path of the generated README file. Defaults to 'README.md'. |
+| -h, --readme.help |  | Display this help message. |
+| -b, --readme.blueprint | string | The blueprint. Defaults to 'blueprint.md'. |
+| --readme.badges | {alt: string, url: string, img: string}[] | Badges. Used for the 'badges' template. |
+| --readme.text | string | Text describing your project. Used for the 'description' template. |
+| --readme.demo | string | Demo url for your project. Used for the 'description' template. |
+| --readme.lineBreak | string | The linebreak used in the generation of the README file. Defaults to 'rn' |
+| --readme.tab | string | The tab used in the generation of the README file. Defaults to 't' |
+| --readme.placeholder | [string, string] | The placeholder syntax used when looking for templates in the blueprint. Defaults to '["{{", "}}"]. |
+| --readme.line | string | The line style of the titles. Can also be an URL. Defaults to 'colored'. |
+| --readme.templates | {name: string, template: string}[] | User created templates. |
+| -s, --readme.silent | boolean | Whether the console output from the command should be silent. |
+| -d, --readme.dry | boolean | Whether the command should run as dry. If dry, the output file is notgenerated but outputted to the console instead. |
+| --readme.headingPrefix | {[key: number]: string} | The prefix of the header tags. Defaults to '{1: "➤ ", 2: "➤ "}' |
 
 Great. Let's continue and see how you can use templates!
 
@@ -213,7 +244,9 @@ The table of contents template adds a table of contents and looks like this:
 ## ➤ Table of Contents
 
 * [➤ Installation](#-installation)
-* [➤ Create a blueprint](#-create-a-blueprint)
+* [➤ Getting Started](#-getting-started)
+	* [Blueprint](#blueprint)
+	* [Usage](#usage)
 * [➤ Templates](#-templates)
 	* [Title](#title)
 	* [Logo](#logo)
@@ -375,6 +408,7 @@ If you have a variable from your `package.json` file you want to stamp to your r
 Objects are formatted as a list with the keys being bold. If you for example want to stamp the `dependencies` field from your `package.json` file you write `{{ dependencies }}` and the dependencies will be stamped in a nice formatted way like this.
 
 * **colors**: ^1.3.3
+* **command-line-usage**: ^5.0.5
 * **fs-extra**: ^7.0.1
 * **minimist**: ^1.2.0
 * **path**: ^0.12.7
@@ -500,7 +534,7 @@ Create an issue or pull-request. You are also very welcome to throw me a message
 
 ### I already have a large README file - I don't have time to rewrite everything!
 
-No problem at all! Your first step can be to rename your `README.md` to `blueprint.md` and run `node node_modules/.bin/readme --blueprint=blueprint.md --output=README.md`. Already then your README should now be well-formatted. Then you can slowly replace the contents when you have time. The low-hanging fruit would be to add the table of contents and license using respectively the `{{ template:toc }}` and `{{ template:license }}` templates.
+No problem at all! Your first step can be to rename your `README.md` to `blueprint.md` and run `node node_modules/.bin/readme --b=blueprint.md --o=README.md`. Already then your README should now be well-formatted. Then you can slowly replace the contents when you have time. The low-hanging fruit would be to add the table of contents and license using respectively the `{{ template:toc }}` and `{{ template:license }}` templates.
 
 ### How can I support you?
 

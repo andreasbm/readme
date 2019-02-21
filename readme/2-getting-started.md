@@ -1,4 +1,8 @@
-## Create a blueprint
+## Getting Started
+
+Spent a minute reading
+
+### Blueprint
 
 First you need to create a `blueprint.md` file (name it whatever you like). This blueprint is going to be the blueprint for the `README.md` file we are going to generate later.
 
@@ -22,5 +26,11 @@ When running `[[ readme.example.command ]]` the file `README.md` will be generat
 ```markdown
 Welcome to [[ name ]]. This is version [[ version ]].
 ```
+
+### Usage
+
+If you want to go into depth with the readme command, check out the following options.
+
+[[ readme.commandOptions ]]
 
 Great. Let's continue and see how you can use templates!

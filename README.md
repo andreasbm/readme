@@ -290,12 +290,12 @@ The contributors template adds the list of contributors and looks like this:
 
 ## ➤ Contributors
 	
-[<img alt="Andreas Mehlsen" src="https://avatars1.githubusercontent.com/u/6267397?s=460&v=4" width="100">](url) | [<img alt="Andreas Mehlsen" src="https://avatars1.githubusercontent.com/u/6267397?s=460&v=4" width="100">](url) | [<img alt="Andreas Mehlsen" src="https://avatars1.githubusercontent.com/u/6267397?s=460&v=4" width="100">](url) | [<img alt="Andreas Mehlsen" src="https://avatars1.githubusercontent.com/u/6267397?s=460&v=4" width="100">](url) | [<img alt="Andreas Mehlsen" src="https://avatars1.githubusercontent.com/u/6267397?s=460&v=4" width="100">](url) | [<img alt="Andreas Mehlsen" src="https://avatars1.githubusercontent.com/u/6267397?s=460&v=4" width="100">](url)
-:-------: | :-------: | :-------: | :-------: | :-------: | :-------: | :-------:
+[<img alt="Andreas Mehlsen" src="https://avatars1.githubusercontent.com/u/6267397?s=460&v=4" width="100">](https://twitter.com/andreasmehlsen) | [<img alt="Andreas Mehlsen" src="https://avatars1.githubusercontent.com/u/6267397?s=460&v=4" width="100">](https://twitter.com/andreasmehlsen) | [<img alt="Andreas Mehlsen" src="https://avatars1.githubusercontent.com/u/6267397?s=460&v=4" width="100">](https://twitter.com/andreasmehlsen) | [<img alt="Andreas Mehlsen" src="https://avatars1.githubusercontent.com/u/6267397?s=460&v=4" width="100">](https://twitter.com/andreasmehlsen) | [<img alt="Andreas Mehlsen" src="https://avatars1.githubusercontent.com/u/6267397?s=460&v=4" width="100">](https://twitter.com/andreasmehlsen) | [<img alt="Andreas Mehlsen" src="https://avatars1.githubusercontent.com/u/6267397?s=460&v=4" width="100">](https://twitter.com/andreasmehlsen)
+:---: | :---: | :---: | :---: | :---: | :---: | :---:
 [Andreas Mehlsen](https://twitter.com/andreasmehlsen)([andmehlsen@gmail.com](mailto:andmehlsen@gmail.com)) | [Andreas Mehlsen](https://twitter.com/andreasmehlsen)([andmehlsen@gmail.com](mailto:andmehlsen@gmail.com)) | [Andreas Mehlsen](https://twitter.com/andreasmehlsen)([andmehlsen@gmail.com](mailto:andmehlsen@gmail.com)) | [Andreas Mehlsen](https://twitter.com/andreasmehlsen)([andmehlsen@gmail.com](mailto:andmehlsen@gmail.com)) | [Andreas Mehlsen](https://twitter.com/andreasmehlsen)([andmehlsen@gmail.com](mailto:andmehlsen@gmail.com)) | [Andreas Mehlsen](https://twitter.com/andreasmehlsen)([andmehlsen@gmail.com](mailto:andmehlsen@gmail.com))
 
-[<img alt="Andreas Mehlsen" src="https://avatars1.githubusercontent.com/u/6267397?s=460&v=4" width="100">](url) | [<img alt="Andreas Mehlsen" src="https://avatars1.githubusercontent.com/u/6267397?s=460&v=4" width="100">](url)
-:-------: | :-------: | :-------: | :-------: | :-------: | :-------: | :-------:
+[<img alt="Andreas Mehlsen" src="https://avatars1.githubusercontent.com/u/6267397?s=460&v=4" width="100">](https://twitter.com/andreasmehlsen) | [<img alt="Andreas Mehlsen" src="https://avatars1.githubusercontent.com/u/6267397?s=460&v=4" width="100">](https://twitter.com/andreasmehlsen)
+:---: | :---: | :---: | :---: | :---: | :---: | :---:
 [Andreas Mehlsen](https://twitter.com/andreasmehlsen)([andmehlsen@gmail.com](mailto:andmehlsen@gmail.com)) | [Andreas Mehlsen](https://twitter.com/andreasmehlsen)([andmehlsen@gmail.com](mailto:andmehlsen@gmail.com))
 
 
@@ -553,12 +553,12 @@ There are lot's of ways to support me! I would be so happy if you gave this repo
 
 ## ➤ Contributors
 	
-[<img alt="Andreas Mehlsen" src="https://avatars1.githubusercontent.com/u/6267397?s=460&v=4" width="100">](url) | [<img alt="Andreas Mehlsen" src="https://avatars1.githubusercontent.com/u/6267397?s=460&v=4" width="100">](url) | [<img alt="Andreas Mehlsen" src="https://avatars1.githubusercontent.com/u/6267397?s=460&v=4" width="100">](url) | [<img alt="Andreas Mehlsen" src="https://avatars1.githubusercontent.com/u/6267397?s=460&v=4" width="100">](url) | [<img alt="Andreas Mehlsen" src="https://avatars1.githubusercontent.com/u/6267397?s=460&v=4" width="100">](url) | [<img alt="Andreas Mehlsen" src="https://avatars1.githubusercontent.com/u/6267397?s=460&v=4" width="100">](url)
-:-------: | :-------: | :-------: | :-------: | :-------: | :-------: | :-------:
+[<img alt="Andreas Mehlsen" src="https://avatars1.githubusercontent.com/u/6267397?s=460&v=4" width="100">](https://twitter.com/andreasmehlsen) | [<img alt="Andreas Mehlsen" src="https://avatars1.githubusercontent.com/u/6267397?s=460&v=4" width="100">](https://twitter.com/andreasmehlsen) | [<img alt="Andreas Mehlsen" src="https://avatars1.githubusercontent.com/u/6267397?s=460&v=4" width="100">](https://twitter.com/andreasmehlsen) | [<img alt="Andreas Mehlsen" src="https://avatars1.githubusercontent.com/u/6267397?s=460&v=4" width="100">](https://twitter.com/andreasmehlsen) | [<img alt="Andreas Mehlsen" src="https://avatars1.githubusercontent.com/u/6267397?s=460&v=4" width="100">](https://twitter.com/andreasmehlsen) | [<img alt="Andreas Mehlsen" src="https://avatars1.githubusercontent.com/u/6267397?s=460&v=4" width="100">](https://twitter.com/andreasmehlsen)
+:---: | :---: | :---: | :---: | :---: | :---: | :---:
 [Andreas Mehlsen](https://twitter.com/andreasmehlsen)([andmehlsen@gmail.com](mailto:andmehlsen@gmail.com)) | [Andreas Mehlsen](https://twitter.com/andreasmehlsen)([andmehlsen@gmail.com](mailto:andmehlsen@gmail.com)) | [Andreas Mehlsen](https://twitter.com/andreasmehlsen)([andmehlsen@gmail.com](mailto:andmehlsen@gmail.com)) | [Andreas Mehlsen](https://twitter.com/andreasmehlsen)([andmehlsen@gmail.com](mailto:andmehlsen@gmail.com)) | [Andreas Mehlsen](https://twitter.com/andreasmehlsen)([andmehlsen@gmail.com](mailto:andmehlsen@gmail.com)) | [Andreas Mehlsen](https://twitter.com/andreasmehlsen)([andmehlsen@gmail.com](mailto:andmehlsen@gmail.com))
 
-[<img alt="Andreas Mehlsen" src="https://avatars1.githubusercontent.com/u/6267397?s=460&v=4" width="100">](url) | [<img alt="Andreas Mehlsen" src="https://avatars1.githubusercontent.com/u/6267397?s=460&v=4" width="100">](url)
-:-------: | :-------: | :-------: | :-------: | :-------: | :-------: | :-------:
+[<img alt="Andreas Mehlsen" src="https://avatars1.githubusercontent.com/u/6267397?s=460&v=4" width="100">](https://twitter.com/andreasmehlsen) | [<img alt="Andreas Mehlsen" src="https://avatars1.githubusercontent.com/u/6267397?s=460&v=4" width="100">](https://twitter.com/andreasmehlsen)
+:---: | :---: | :---: | :---: | :---: | :---: | :---:
 [Andreas Mehlsen](https://twitter.com/andreasmehlsen)([andmehlsen@gmail.com](mailto:andmehlsen@gmail.com)) | [Andreas Mehlsen](https://twitter.com/andreasmehlsen)([andmehlsen@gmail.com](mailto:andmehlsen@gmail.com))
 
 

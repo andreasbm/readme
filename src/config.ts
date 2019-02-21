@@ -17,6 +17,16 @@ export const defaultGenerators: IGenerator<any>[] = [
 	generateToc
 ];
 
+/**
+ * The amount of contributors pr row.
+ * TODO: Make it customizable.
+ */
+export const contributorsPerRow = 4;
+
+/**
+ * The maximum document width in px.
+ */
+export const documentMaxWidth = 900;
 
 /**
  * Default name of the package config.

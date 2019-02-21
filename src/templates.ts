@@ -1,3 +1,4 @@
+import { contributorsPerRow, documentMaxWidth } from "./config";
 import { getLicenseUrl, getTitle, getTitleLink, isValidURL, splitArrayIntoArrays } from "./helpers";
 import { BadgesTemplateArgs, BulletsTemplateArgs, ContributorsTemplateArgs, DemoTemplateArgs, DescriptionTemplateArgs, IContributor, IPackage, LicenseTemplateArgs, LineColor, LineTemplateArgs, LogoTemplateArgs, MainTitleTemplateArgs, TableOfContentsTemplateArgs, TableTemplateArgs, TitleTemplateArgs } from "./model";
 
@@ -164,17 +165,14 @@ ${titleLevels.map(({title, level}) => {
  * @param pkg
  */
 export function contributorsTemplate ({contributors, pkg}: ContributorsTemplateArgs): string {
-	const contributorsPrRow = 6;
+	const contributorsPrRow = contributorsPerRow;
 
 	// Split the contributors into multiple arrays (one for each row)
 	const rows = splitArrayIntoArrays(contributors, contributorsPrRow);
 
-	// Figure out the minimum size of the table
-	const minRowsCount = rows[0].length + 1;
-
 	return `## Contributors
 	
-${rows.map(row => `${row.map(({img, url, name}) => img != null ? `[<img alt="${name}" src="${img}" width="100">](${url})` : " ").join(" | ")} |
+${rows.map(row => `${row.map(({img, url, name}) => img != null ? `[<img alt="${name}" src="${img}" width="${(documentMaxWidth + 1) / contributorsPrRow}">](${url})` : " ").join(" | ")} |
 ${Array(row.length).fill(":---:").join(" | ")} |
 ${row.map(({url, email, name}) => `[${name}](${url})`).join(" | ")} |
 ${row.map(({url, email}) => email != null ? `([${email}](mailto:${email}))` : " ").join(" | ")} |
@@ -196,7 +194,7 @@ export function svgLineTemplate ({pkg}: {pkg: IPackage}): string {
 		"#0B9EDA"
 	];
 
-	const width = 888;
+	const width = documentMaxWidth;
 	const height = 9;
 	const lineHeight = 2;
 	const lineParthWidth = Math.round(width / lineColors.length);

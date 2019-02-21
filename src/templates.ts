@@ -176,7 +176,7 @@ export function contributorsTemplate ({contributors, pkg}: ContributorsTemplateA
 	
 ${rows.map(row => `${row.map(({img, url, name}) => img != null ? `[<img alt="${name}" src="${img}" width="100">](url)` : "").join(" | ")}
 ${Array(minRowsCount).fill(":-------:").join(" | ")}
-${row.map(({url, email, name}) => `[${name}](${url})${email != null ? `<br/>([${email}](mailto:${email}))` : ""}`).join(" | ")}
+${row.map(({url, email, name}) => `[${name}](${url})${email != null ? `([${email}](mailto:${email}))` : ""}`).join(" | ")}
 `).join(pkg.readme.lineBreak)}`;
 }
 

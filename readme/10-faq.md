@@ -14,4 +14,4 @@ No problem at all! Your first step can be to rename your `README.md` to `bluepri
 
 ### How can I support you?
 
-There are lot's of ways to support me! I would be so happy if you gave this repository a star, Tweeted about it or told your friends about this little corner of the Internet ❤️
+There are lot's of ways to support me! I would be so happy if you gave this repository a star, tweeted about it or told your friends about this little corner of the Internet ❤️

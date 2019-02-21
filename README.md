@@ -89,7 +89,7 @@ Let's start simple. In order to get values from your `package.json` file injecte
 ```json
 {
   "name": "@appnest/readme",
-  "version": "1.0.18"
+  "version": "1.0.19"
 }
 ```
 
@@ -102,7 +102,7 @@ Welcome to {{ name }}. This is version {{ version }}!
 When running `node node_modules/.bin/readme --b=blueprint.md --o=README.md` the file `README.md` will be generated with the following contents:
 
 ```markdown
-Welcome to @appnest/readme. This is version 1.0.18.
+Welcome to @appnest/readme. This is version 1.0.19.
 ```
 
 ### Usage
@@ -544,7 +544,7 @@ No problem at all! Your first step can be to rename your `README.md` to `bluepri
 
 ### How can I support you?
 
-There are lot's of ways to support me! I would be so happy if you gave this repository a star, Tweeted about it or told your friends about this little corner of the Internet ❤️
+There are lot's of ways to support me! I would be so happy if you gave this repository a star, tweeted about it or told your friends about this little corner of the Internet ❤️
 
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)

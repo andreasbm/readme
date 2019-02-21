@@ -1,5 +1,5 @@
-import { getLicenseUrl, getTitle, getTitleLink, isValidURL } from "./helpers";
-import { BadgesTemplateArgs, BulletsTemplateArgs, ContributorsTemplateArgs, DemoTemplateArgs, DescriptionTemplateArgs, IPackage, LicenseTemplateArgs, LineColor, LineTemplateArgs, LogoTemplateArgs, MainTitleTemplateArgs, TableOfContentsTemplateArgs, TableTemplateArgs, TitleTemplateArgs } from "./model";
+import { getLicenseUrl, getTitle, getTitleLink, isValidURL, splitArrayIntoArrays } from "./helpers";
+import { BadgesTemplateArgs, BulletsTemplateArgs, ContributorsTemplateArgs, DemoTemplateArgs, DescriptionTemplateArgs, IContributor, IPackage, LicenseTemplateArgs, LineColor, LineTemplateArgs, LogoTemplateArgs, MainTitleTemplateArgs, TableOfContentsTemplateArgs, TableTemplateArgs, TitleTemplateArgs } from "./model";
 
 /**
  * Creates the template for the logo.
@@ -164,10 +164,20 @@ ${titleLevels.map(({title, level}) => {
  * @param pkg
  */
 export function contributorsTemplate ({contributors, pkg}: ContributorsTemplateArgs): string {
+	const contributorsPrRow = 6;
+
+	// Split the contributors into multiple arrays (one for each row)
+	const rows = splitArrayIntoArrays(contributors, contributorsPrRow);
+
+	// Figure out the minimum size of the table
+	const minRowsCount = rows[0].length + 1;
+
 	return `## Contributors
 	
-${contributors.map(({name, email, url}) => `* <a href="${url}">${name}</a> ${email != null ? `(<a href="mailto:${email}">${email}</a>` : ""})`)
-	          .join(pkg.readme.lineBreak)}`;
+${rows.map(row => `${row.map(({img, url, name}) => img != null ? `<a href="${url}"><img width="100" alt="${name}" src="${img}"></a>` : "").join(" | ")}
+${Array(minRowsCount).fill(":-------:").join(" |")}
+${row.map(({url, email, name}) => `<span>${name}</span>${email != null ? `<br/>(<a href="mailto:${email}">${email}</a>)` : ""}`).join(" | ")}
+`).join(pkg.readme.lineBreak)}`;
 }
 
 /**

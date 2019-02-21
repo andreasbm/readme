@@ -103,6 +103,7 @@ export interface IContributor {
 	name: string;
 	url?: string;
 	email?: string;
+	img?: string;
 }
 
 export type UserArgs =  {[key: string]: any};

@@ -44,7 +44,50 @@
 		{
 			"name": "Andreas Mehlsen",
 			"email": "andmehlsen@gmail.com",
-			"url": "https://twitter.com/andreasmehlsen"
+			"url": "https://twitter.com/andreasmehlsen",
+			"img": "https://avatars1.githubusercontent.com/u/6267397?s=460&v=4"
+		},
+		{
+			"name": "Andreas Mehlsen",
+			"email": "andmehlsen@gmail.com",
+			"url": "https://twitter.com/andreasmehlsen",
+			"img": "https://avatars1.githubusercontent.com/u/6267397?s=460&v=4"
+		},
+		{
+			"name": "Andreas Mehlsen",
+			"email": "andmehlsen@gmail.com",
+			"url": "https://twitter.com/andreasmehlsen",
+			"img": "https://avatars1.githubusercontent.com/u/6267397?s=460&v=4"
+		},
+		{
+			"name": "Andreas Mehlsen",
+			"email": "andmehlsen@gmail.com",
+			"url": "https://twitter.com/andreasmehlsen",
+			"img": "https://avatars1.githubusercontent.com/u/6267397?s=460&v=4"
+		},
+		{
+			"name": "Andreas Mehlsen",
+			"email": "andmehlsen@gmail.com",
+			"url": "https://twitter.com/andreasmehlsen",
+			"img": "https://avatars1.githubusercontent.com/u/6267397?s=460&v=4"
+		},
+		{
+			"name": "Andreas Mehlsen",
+			"email": "andmehlsen@gmail.com",
+			"url": "https://twitter.com/andreasmehlsen",
+			"img": "https://avatars1.githubusercontent.com/u/6267397?s=460&v=4"
+		},
+		{
+			"name": "Andreas Mehlsen",
+			"email": "andmehlsen@gmail.com",
+			"url": "https://twitter.com/andreasmehlsen",
+			"img": "https://avatars1.githubusercontent.com/u/6267397?s=460&v=4"
+		},
+		{
+			"name": "Andreas Mehlsen",
+			"email": "andmehlsen@gmail.com",
+			"url": "https://twitter.com/andreasmehlsen",
+			"img": "https://avatars1.githubusercontent.com/u/6267397?s=460&v=4"
 		}
 	],
 	"bin": {
@@ -153,7 +196,7 @@
 			],
 			[
 				"--contributors",
-				"{name: string, email: string, url: string}[]",
+				"{name: string; email: string; url: string; img: string;}[]",
 				"Contributors of the project. Used for the 'contributors' template."
 			],
 			[

@@ -1,7 +1,7 @@
 import { OptionDefinition, OptionList } from "command-line-usage";
 import { generateBadges, generateContributors, generateDescription, generateInterpolate, generateLicense, generateLine, generateLoad, generateLogo, generateMainTitle, generateTitle, generateToc } from "./generators";
 import { getValue, setValue } from "./helpers";
-import { UserArgs, IConfig, IGenerator, IPackage, LineColor, ILogo, PlaceholderSyntax, IUserTemplate, IBadge } from "./model";
+import { IConfig, IGenerator, IPackage, LineColor, UserArgs } from "./model";
 
 export const defaultGenerators: IGenerator<any>[] = [
 	generateLoad,
@@ -62,7 +62,7 @@ export const commandOptions: OptionDefinition[] = [
 	{
 		name: "contributors",
 		description: `Contributors of the project. Used for the 'contributors' template.`,
-		type: {name: "\\{name: string, email: string, url: string\\}[]"}
+		type: {name: "\\{name: string; email: string; url: string; img: string;\\}[]"}
 	},
 	{
 		name: "license",
@@ -80,7 +80,7 @@ export const commandOptions: OptionDefinition[] = [
 		name: "readme.help",
 		alias: "h",
 		description: "Display this help message.",
-		defaultValue: defaultConfig.help,
+		defaultValue: defaultConfig.help
 	},
 	{
 		name: "readme.blueprint",
@@ -92,7 +92,7 @@ export const commandOptions: OptionDefinition[] = [
 	{
 		name: "readme.badges",
 		description: `Badges. Used for the 'badges' template.`,
-		type: {name: "\\{alt: string, url: string, img: string\\}[]"}
+		type: {name: "\\{alt: string; url: string; img: string;\\}[]"}
 	},
 	{
 		name: "readme.text",
@@ -132,7 +132,7 @@ export const commandOptions: OptionDefinition[] = [
 		name: "readme.templates",
 		description: `User created templates.`,
 		defaultValue: defaultConfig.templates,
-		type: {name: "\\{name: string, template: string\\}[]"}
+		type: {name: "\\{name: string; template: string;\\}[]"}
 	},
 	{
 		name: "readme.silent",

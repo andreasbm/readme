@@ -113,7 +113,7 @@ If you want to go into depth with the readme command, check out the following op
 | ------- | ------- | ------- |
 | -p, --package | string | Path of the 'package.json' file. Defaults to 'package.json'. |
 | --name | string | Name of the project. Used for the 'title' template. |
-| --contributors | {name: string, email: string, url: string}[] | Contributors of the project. Used for the 'contributors' template. |
+| --contributors | {name: string; email: string; url: string; img: string;}[] | Contributors of the project. Used for the 'contributors' template. |
 | --license | string | License kind. Used for the 'license' template. |
 | -o, --readme.output | string | Path of the generated README file. Defaults to 'README.md'. |
 | -h, --readme.help |  | Display this help message. |
@@ -290,7 +290,14 @@ The contributors template adds the list of contributors and looks like this:
 
 ## ➤ Contributors
 	
-* <a href="https://twitter.com/andreasmehlsen">Andreas Mehlsen</a> (<a href="mailto:andmehlsen@gmail.com">andmehlsen@gmail.com</a>)
+<a href="https://twitter.com/andreasmehlsen"><img width="100" alt="Andreas Mehlsen" src="https://avatars1.githubusercontent.com/u/6267397?s=460&v=4"></a> | <a href="https://twitter.com/andreasmehlsen"><img width="100" alt="Andreas Mehlsen" src="https://avatars1.githubusercontent.com/u/6267397?s=460&v=4"></a> | <a href="https://twitter.com/andreasmehlsen"><img width="100" alt="Andreas Mehlsen" src="https://avatars1.githubusercontent.com/u/6267397?s=460&v=4"></a> | <a href="https://twitter.com/andreasmehlsen"><img width="100" alt="Andreas Mehlsen" src="https://avatars1.githubusercontent.com/u/6267397?s=460&v=4"></a> | <a href="https://twitter.com/andreasmehlsen"><img width="100" alt="Andreas Mehlsen" src="https://avatars1.githubusercontent.com/u/6267397?s=460&v=4"></a> | <a href="https://twitter.com/andreasmehlsen"><img width="100" alt="Andreas Mehlsen" src="https://avatars1.githubusercontent.com/u/6267397?s=460&v=4"></a>
+:-------: |:-------: |:-------: |:-------: |:-------: |:-------: |:-------:
+<span>Andreas Mehlsen</span><br/>(<a href="mailto:andmehlsen@gmail.com">andmehlsen@gmail.com</a>) | <span>Andreas Mehlsen</span><br/>(<a href="mailto:andmehlsen@gmail.com">andmehlsen@gmail.com</a>) | <span>Andreas Mehlsen</span><br/>(<a href="mailto:andmehlsen@gmail.com">andmehlsen@gmail.com</a>) | <span>Andreas Mehlsen</span><br/>(<a href="mailto:andmehlsen@gmail.com">andmehlsen@gmail.com</a>) | <span>Andreas Mehlsen</span><br/>(<a href="mailto:andmehlsen@gmail.com">andmehlsen@gmail.com</a>) | <span>Andreas Mehlsen</span><br/>(<a href="mailto:andmehlsen@gmail.com">andmehlsen@gmail.com</a>)
+
+<a href="https://twitter.com/andreasmehlsen"><img width="100" alt="Andreas Mehlsen" src="https://avatars1.githubusercontent.com/u/6267397?s=460&v=4"></a> | <a href="https://twitter.com/andreasmehlsen"><img width="100" alt="Andreas Mehlsen" src="https://avatars1.githubusercontent.com/u/6267397?s=460&v=4"></a>
+:-------: |:-------: |:-------: |:-------: |:-------: |:-------: |:-------:
+<span>Andreas Mehlsen</span><br/>(<a href="mailto:andmehlsen@gmail.com">andmehlsen@gmail.com</a>) | <span>Andreas Mehlsen</span><br/>(<a href="mailto:andmehlsen@gmail.com">andmehlsen@gmail.com</a>)
+
 
 Use the `{{ template:contributors }}` placeholder to stamp it. To use this template your are required to add the `contributors` array to your `package.json` file like this.
 
@@ -546,7 +553,14 @@ There are lot's of ways to support me! I would be so happy if you gave this repo
 
 ## ➤ Contributors
 	
-* <a href="https://twitter.com/andreasmehlsen">Andreas Mehlsen</a> (<a href="mailto:andmehlsen@gmail.com">andmehlsen@gmail.com</a>)
+<a href="https://twitter.com/andreasmehlsen"><img width="100" alt="Andreas Mehlsen" src="https://avatars1.githubusercontent.com/u/6267397?s=460&v=4"></a> | <a href="https://twitter.com/andreasmehlsen"><img width="100" alt="Andreas Mehlsen" src="https://avatars1.githubusercontent.com/u/6267397?s=460&v=4"></a> | <a href="https://twitter.com/andreasmehlsen"><img width="100" alt="Andreas Mehlsen" src="https://avatars1.githubusercontent.com/u/6267397?s=460&v=4"></a> | <a href="https://twitter.com/andreasmehlsen"><img width="100" alt="Andreas Mehlsen" src="https://avatars1.githubusercontent.com/u/6267397?s=460&v=4"></a> | <a href="https://twitter.com/andreasmehlsen"><img width="100" alt="Andreas Mehlsen" src="https://avatars1.githubusercontent.com/u/6267397?s=460&v=4"></a> | <a href="https://twitter.com/andreasmehlsen"><img width="100" alt="Andreas Mehlsen" src="https://avatars1.githubusercontent.com/u/6267397?s=460&v=4"></a>
+:-------: |:-------: |:-------: |:-------: |:-------: |:-------: |:-------:
+<span>Andreas Mehlsen</span><br/>(<a href="mailto:andmehlsen@gmail.com">andmehlsen@gmail.com</a>) | <span>Andreas Mehlsen</span><br/>(<a href="mailto:andmehlsen@gmail.com">andmehlsen@gmail.com</a>) | <span>Andreas Mehlsen</span><br/>(<a href="mailto:andmehlsen@gmail.com">andmehlsen@gmail.com</a>) | <span>Andreas Mehlsen</span><br/>(<a href="mailto:andmehlsen@gmail.com">andmehlsen@gmail.com</a>) | <span>Andreas Mehlsen</span><br/>(<a href="mailto:andmehlsen@gmail.com">andmehlsen@gmail.com</a>) | <span>Andreas Mehlsen</span><br/>(<a href="mailto:andmehlsen@gmail.com">andmehlsen@gmail.com</a>)
+
+<a href="https://twitter.com/andreasmehlsen"><img width="100" alt="Andreas Mehlsen" src="https://avatars1.githubusercontent.com/u/6267397?s=460&v=4"></a> | <a href="https://twitter.com/andreasmehlsen"><img width="100" alt="Andreas Mehlsen" src="https://avatars1.githubusercontent.com/u/6267397?s=460&v=4"></a>
+:-------: |:-------: |:-------: |:-------: |:-------: |:-------: |:-------:
+<span>Andreas Mehlsen</span><br/>(<a href="mailto:andmehlsen@gmail.com">andmehlsen@gmail.com</a>) | <span>Andreas Mehlsen</span><br/>(<a href="mailto:andmehlsen@gmail.com">andmehlsen@gmail.com</a>)
+
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)
 

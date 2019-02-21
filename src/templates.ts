@@ -166,13 +166,14 @@ ${titleLevels.map(({title, level}) => {
  */
 export function contributorsTemplate ({contributors, pkg}: ContributorsTemplateArgs): string {
 	const contributorsPrRow = contributorsPerRow;
+	const imageSize = 100;
 
 	// Split the contributors into multiple arrays (one for each row)
 	const rows = splitArrayIntoArrays(contributors, contributorsPrRow);
 
 	return `## Contributors
 	
-${rows.map(row => `${row.map(({img, url, name}) => img != null ? `[<img alt="${name}" src="${img}" width="${(documentMaxWidth / 2) / contributorsPrRow}">](${url})` : " ").join(" | ")} |
+${rows.map(row => `${row.map(({img, url, name}) => img != null ? `[<img alt="${name}" src="${img}" width="${imageSize}">](${url})` : " ").join(" | ")} |
 ${Array(row.length).fill(":---:").join(" | ")} |
 ${row.map(({url, email, name}) => `[${name}](${url})`).join(" | ")} |
 ${row.map(({url, email}) => email != null ? `([${email}](mailto:${email}))` : " ").join(" | ")} |

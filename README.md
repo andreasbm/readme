@@ -129,6 +129,7 @@ If you want to go into depth with the readme command, check out the following op
 | -s, --readme.silent | boolean | Whether the console output from the command should be silent. |
 | -d, --readme.dry | boolean | Whether the command should run as dry. If dry, the output file is notgenerated but outputted to the console instead. |
 | --readme.headingPrefix | {[key: number]: string} | The prefix of the header tags. Defaults to '{1: "➤ ", 2: "➤ "}' |
+| --logo | {url: string; alt?: string; width?: number; height?: number;} | The logo information. Used for the 'logo' template. |
 
 Great. Let's continue and see how you can use templates!
 

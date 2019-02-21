@@ -8,4 +8,7 @@ export * from "./templates.js";
 
 // Extract the package
 const userArgs = argv(process.argv.slice(2));
-run(userArgs);
+run(userArgs).catch(e => {
+	console.log(e);
+	process.exit(-1);
+});

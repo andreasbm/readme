@@ -199,3 +199,4 @@ export const generateToc: IGenerator<TableOfContentsTemplateArgs> = {
 		return {titles, pkg};
 	}
 };
+

@@ -87,12 +87,7 @@ export function loadPackage ({pkgPath, userArgs}: {pkgPath: string, userArgs: Us
 		return null;
 	}
 
-	const pkg = <IPackage>readJSONFile(pkgPath) || {};
-
-	// Construct the configuration object
-	extendPackageWithDefaults({pkg, userArgs});
-
-	return pkg;
+	return <IPackage>readJSONFile(pkgPath) || {};
 }
 
 /**
@@ -158,14 +153,18 @@ export function showHelp () {
  * Runs the readme command.
  * @param userArgs
  */
-export function run (userArgs: UserArgs) {
+export async function run (userArgs: UserArgs) {
 	const pkgPath = resolve(userArgs["package"] || defaultPackageName);
 	const pkg = loadPackage({pkgPath, userArgs});
+
+	// Only if the package is defined we continue
 	if (pkg != null) {
+		extendPackageWithDefaults({pkg, userArgs});
+
 		if (pkg.readme.help) {
 			showHelp();
 		} else {
-			generate({pkg, pkgPath}).then();
+			await generate({pkg, pkgPath});
 		}
 	}
 }

@@ -21,7 +21,7 @@ export const defaultGenerators: IGenerator<any>[] = [
  * The amount of contributors pr row.
  * TODO: Make it customizable.
  */
-export const contributorsPerRow = 4;
+export const contributorsPerRow = 10;
 
 /**
  * The maximum document width in px.

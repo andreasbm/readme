@@ -104,7 +104,8 @@ Use the `{{ template:contributors }}` placeholder to stamp it. To use this templ
     {
       "name": "Andreas Mehlsen",
       "email": "andmehlsen@gmail.com",
-      "url": "https://twitter.com/andreasmehlsen"
+      "url": "https://twitter.com/andreasmehlsen",
+      "img": "https://avatars1.githubusercontent.com/u/6267397?s=460&v=4"
     }
   ]
 }

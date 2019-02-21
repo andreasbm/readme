@@ -174,9 +174,9 @@ export function contributorsTemplate ({contributors, pkg}: ContributorsTemplateA
 
 	return `## Contributors
 	
-${rows.map(row => `${row.map(({img, url, name}) => img != null ? `<a href="${url}"><img width="100" alt="${name}" src="${img}"></a>` : "").join(" | ")}
-${Array(minRowsCount).fill(":-------:").join(" |")}
-${row.map(({url, email, name}) => `<span>${name}</span>${email != null ? `<br/>(<a href="mailto:${email}">${email}</a>)` : ""}`).join(" | ")}
+${rows.map(row => `|${row.map(({img, url, name}) => img != null ? `<a href="${url}"><img width="100" alt="${name}" src="${img}"></a>` : "").join(" | ")}|
+|${Array(minRowsCount).fill(":-------:").join(" |")}|
+|${row.map(({url, email, name}) => `<span>${name}</span>${email != null ? `<br/>(<a href="mailto:${email}">${email}</a>)` : ""}`).join(" | ")}|
 `).join(pkg.readme.lineBreak)}`;
 }
 

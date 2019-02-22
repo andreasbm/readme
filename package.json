@@ -32,11 +32,12 @@
 		"url": "git+https://github.com/andreasbm/readme.git"
 	},
 	"keywords": [
+		"opensource",
+		"project",
 		"readme",
 		"template",
 		"boilerplate",
 		"nodejs",
-		"opensource",
 		"maintaining",
 		"generator"
 	],
@@ -115,7 +116,8 @@
 			"[masonry-layout](https://github.com/andreasbm/masonry-layout)",
 			"[focus-trap](https://github.com/andreasbm/focus-trap)",
 			"[web-router](https://github.com/andreasbm/web-router)",
-			"[web-config](https://github.com/andreasbm/web-config)"
+			"[web-config](https://github.com/andreasbm/web-config)",
+			"[ts-lit-plugin](https://github.com/runem/ts-lit-plugin)"
 		],
 		"templates": [
 			{
@@ -126,7 +128,7 @@
 		"example": {
 			"command": "node node_modules/.bin/readme"
 		},
-		"table": [
+		"properties": [
 			[
 				"Attribute",
 				"Type",

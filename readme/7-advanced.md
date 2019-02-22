@@ -48,9 +48,9 @@ If you have a 2D array it will be formatted as a table. This is very convenient 
 }
 ```
 
-Then you can stamp it to your readme by writing `{{ readme.table }}` and it will be formatted as a table.
+Then you can stamp it to your readme by writing `{{ readme.properties }}` and it will be formatted as a table.
 
-[[ readme.table ]]
+[[ readme.properties ]]
 
 You are welcome!
 

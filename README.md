@@ -89,7 +89,7 @@ Let's start simple. In order to get values from your `package.json` file injecte
 ```json
 {
   "name": "@appnest/readme",
-  "version": "1.0.20"
+  "version": "1.0.21"
 }
 ```
 
@@ -102,7 +102,7 @@ Welcome to {{ name }}. This is version {{ version }}!
 When running `node node_modules/.bin/readme` the file `README.md` will be generated with the following contents:
 
 ```markdown
-Welcome to @appnest/readme. This is version 1.0.20.
+Welcome to @appnest/readme. This is version 1.0.21.
 ```
 
 ### Usage
@@ -435,11 +435,12 @@ Objects are formatted as a list with the keys being bold. If you for example wan
 
 If you have a 1D array it will be formatted as a list. If you for example want to stamp the the `keywords` field from your `package.json` file you write `{{ keywords }}` and the keywords will be stamped in a nice formatted way like this:
 
+* opensource
+* project
 * readme
 * template
 * boilerplate
 * nodejs
-* opensource
 * maintaining
 * generator
 
@@ -459,7 +460,7 @@ If you have a 2D array it will be formatted as a table. This is very convenient 
 }
 ```
 
-Then you can stamp it to your readme by writing `{{ readme.table }}` and it will be formatted as a table.
+Then you can stamp it to your readme by writing `{{ readme.properties }}` and it will be formatted as a table.
 
 | Attribute | Type | Description |
 | ------- | ------- | ------- |
@@ -526,6 +527,7 @@ If you use this generator for one of your projects I would love to hear about it
 * [focus-trap](https://github.com/andreasbm/focus-trap)
 * [web-router](https://github.com/andreasbm/web-router)
 * [web-config](https://github.com/andreasbm/web-config)
+* [ts-lit-plugin](https://github.com/runem/ts-lit-plugin)
 
 As inspiration for the layout of the generated README files I initially found inspiration from [terkelg's brilliant repository called prompts](https://github.com/terkelg/prompts) - a prime example on how every README file should look! I therefore wanted to mention him here even though he doesn't use this README generator. If you want to see an example of a brilliant README file you should definitely check his repository out.
 

@@ -451,7 +451,7 @@ If you have a 2D array it will be formatted as a table. This is very convenient 
 ```json
 {
   "readme": {
-    "table": [
+    "properties": [
       ["Attribute", "Type", "Description"],
       ["**size**", "'medium', 'large'", "Determines the size" ],
       ["**active**", "boolean", "Whether the element is active or not" ]

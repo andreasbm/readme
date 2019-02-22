@@ -113,7 +113,7 @@ Run the `node node_modules/.bin/readme` command and a README file will be genera
 | ------- | ------- | ------- |
 | -p, --package | string | Path of the 'package.json' file. Defaults to 'package.json'. |
 | --name | string | Name of the project. Used for the 'title' template. |
-| --contributors | {name: string; email: string; url: string; img: string;}[] | Contributors of the project. Used for the 'contributors' template. |
+| --contributors | {name: string; email: string; url: string; img: string; info: string[];}[] | Contributors of the project. Used for the 'contributors' template. |
 | --license | string | License kind. Used for the 'license' template. |
 | -o, --readme.output | string | Path of the generated README file. Defaults to 'README.md'. |
 | -h, --readme.help |  | Display this help message. |
@@ -290,11 +290,10 @@ The contributors template adds the list of contributors and looks like this:
 
 ## ➤ Contributors
 	
-|[<img alt="Andreas Mehlsen" src="https://avatars1.githubusercontent.com/u/6267397?s=460&v=4" width="100">](https://twitter.com/andreasmehlsen) |
-|:---: |
-|[Andreas Mehlsen](https://twitter.com/andreasmehlsen) |
-|([andmehlsen@gmail.com](mailto:andmehlsen@gmail.com)) |
-
+|[<img alt="Andreas Mehlsen" src="https://avatars1.githubusercontent.com/u/6267397?s=460&v=4" width="100">](https://twitter.com/andreasmehlsen) | [<img alt="You?" src="https://joeschmoe.io/api/v1/random" width="100">](https://github.com/andreasbm/readme/blob/master/CONTRIBUTING.md)|
+|:---: | :---:|
+|[Andreas Mehlsen](https://twitter.com/andreasmehlsen) | [You?](https://github.com/andreasbm/readme/blob/master/CONTRIBUTING.md)|
+|Lead-Developer | |
 
 Use the `{{ template:contributors }}` placeholder to stamp it. To use this template your are required to add the `contributors` array to your `package.json` file like this. Only the `name` field is required.
 
@@ -303,13 +302,23 @@ Use the `{{ template:contributors }}` placeholder to stamp it. To use this templ
   "contributors": [
     {
       "name": "Andreas Mehlsen",
-      "email": "andmehlsen@gmail.com",
+      "email": "hello@example.com",
       "url": "https://twitter.com/andreasmehlsen",
-      "img": "https://avatars1.githubusercontent.com/u/6267397?s=460&v=4"
+      "img": "https://avatars1.githubusercontent.com/u/6267397?s=460&v=4",
+      "info": [
+        "Lead-developer"
+      ]
+    },
+    {
+      "name": "You?",
+      "img": "https://joeschmoe.io/api/v1/random",
+      "url": "https://github.com/andreasbm/readme/blob/master/CONTRIBUTING.md"
     }
   ]
 }
 ```
+
+Take note of the `info` array. That one is really exciting! Here you can add lines describing the contributors - for example the role of accomplishments. Take a look [here](https://allcontributors.org/docs/en/emoji-key) for more inspiration of what you could put into the info array.
 
 ### License
 
@@ -553,11 +562,10 @@ There are lot's of ways to support me! I would be so happy if you gave this repo
 
 ## ➤ Contributors
 	
-|[<img alt="Andreas Mehlsen" src="https://avatars1.githubusercontent.com/u/6267397?s=460&v=4" width="100">](https://twitter.com/andreasmehlsen) |
-|:---: |
-|[Andreas Mehlsen](https://twitter.com/andreasmehlsen) |
-|([andmehlsen@gmail.com](mailto:andmehlsen@gmail.com)) |
-
+|[<img alt="Andreas Mehlsen" src="https://avatars1.githubusercontent.com/u/6267397?s=460&v=4" width="100">](https://twitter.com/andreasmehlsen) | [<img alt="You?" src="https://joeschmoe.io/api/v1/random" width="100">](https://github.com/andreasbm/readme/blob/master/CONTRIBUTING.md)|
+|:---: | :---:|
+|[Andreas Mehlsen](https://twitter.com/andreasmehlsen) | [You?](https://github.com/andreasbm/readme/blob/master/CONTRIBUTING.md)|
+|Lead-Developer | |
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)
 

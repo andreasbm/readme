@@ -43,9 +43,16 @@
 	"contributors": [
 		{
 			"name": "Andreas Mehlsen",
-			"email": "andmehlsen@gmail.com",
 			"url": "https://twitter.com/andreasmehlsen",
-			"img": "https://avatars1.githubusercontent.com/u/6267397?s=460&v=4"
+			"img": "https://avatars1.githubusercontent.com/u/6267397?s=460&v=4",
+			"info": [
+				"Lead-Developer"
+			]
+		},
+		{
+			"name": "You?",
+			"img": "https://joeschmoe.io/api/v1/random",
+			"url": "https://github.com/andreasbm/readme/blob/master/CONTRIBUTING.md"
 		}
 	],
 	"bin": {
@@ -154,7 +161,7 @@
 			],
 			[
 				"--contributors",
-				"{name: string; email: string; url: string; img: string;}[]",
+				"{name: string; email: string; url: string; img: string; info: string[];}[]",
 				"Contributors of the project. Used for the 'contributors' template."
 			],
 			[

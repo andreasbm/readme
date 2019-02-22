@@ -72,7 +72,7 @@ export const commandOptions: OptionDefinition[] = [
 	{
 		name: "contributors",
 		description: `Contributors of the project. Used for the 'contributors' template.`,
-		type: {name: "\\{name: string; email: string; url: string; img: string;\\}[]"}
+		type: {name: "\\{name: string; email?: string; url?: string; img?: string; info?: string[];\\}[]"}
 	},
 	{
 		name: "license",

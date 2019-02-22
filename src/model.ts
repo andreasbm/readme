@@ -104,6 +104,7 @@ export interface IContributor {
 	url?: string;
 	email?: string;
 	img?: string;
+	info?: string[];
 }
 
 export type UserArgs =  {[key: string]: any};

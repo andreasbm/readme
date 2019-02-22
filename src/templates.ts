@@ -141,10 +141,12 @@ export function tableTemplate ({content, pkg}: TableTemplateArgs): string {
  */
 export function tocTemplate ({titles, pkg}: TableOfContentsTemplateArgs): string {
 
-	// Figure out the lowest level
+	// Map the title to the level of the title (# = 1, ## = 2 and so on)
 	const titleLevels = titles.map(title => {
 		return {title, level: (title.match(/#/g) || []).length};
 	});
+
+	// Find the lowest level of heading (# is lower than ##)
 	const lowestLevel = titleLevels.reduce((acc, {title, level}) => Math.min(acc, level), Infinity);
 
 	// Format the table of contents title because it is applied after the title template
@@ -173,11 +175,42 @@ export function contributorsTemplate ({contributors, pkg}: ContributorsTemplateA
 
 	return `## Contributors
 	
-${rows.map(row => `|${row.map(({img, url, name}) => img != null ? `[<img alt="${name}" src="${img}" width="${imageSize}">](${url})` : " ").join(" | ")} |
-|${Array(row.length).fill(":---:").join(" | ")} |
-|${row.map(({url, email, name}) => `[${name}](${url})`).join(" | ")} |
-|${row.map(({url, email}) => email != null ? `([${email}](mailto:${email}))` : " ").join(" | ")} |
-`).join(pkg.readme.lineBreak)}`;
+${rows.map(row => {
+	
+	// Figures out what elements the row should have
+	const hasImages = row.find(({img}) => img != null);
+	const hasEmails = row.find(({email}) => email != null);
+	
+	// Create the cells for the images for each contributor in the row
+	const imgCells = row.map(({img, url, name}) => img != null ? `[<img alt="${name}" src="${img}" width="${imageSize}">](${url})` : "").join(" | ");
+	
+	// Create the cells that tells markdown that this is a table
+	const tableCells = Array(row.length).fill(":---:").join(" | ");
+	
+	// Create a cell for each name
+	const nameCells = row.map(({url, email, name}) => `[${name}](${url})`).join(" | ");
+	
+	// Create a cell for each email address
+	const emailCells = row.map(({url, email}) => email != null ? `[${email}](mailto:${email})` : "").join(" | ");
+	
+	// Find the maximum amount of info lines for the row!
+	const maxInfoLinesCount = row.reduce((acc, {info}) => info != null ? Math.max(acc, info.length) : acc, 0);
+	
+	// For each line we go through the row and find the correct info
+	const infoLines = Array(maxInfoLinesCount).fill(0).map((_, i) => {
+		const infoForLine = row.map(({info}) => info != null && i < info.length ? info[i] : "");
+		return `${infoForLine.join(" | ")}`;
+	});
+	
+	// Join each line in the row
+	return `|${[
+		...(hasImages ? [imgCells] : []),
+		tableCells,
+		nameCells,
+		...(hasEmails ? [emailCells] : []),
+		...infoLines
+	].join(`|${pkg.readme.lineBreak}|`)}|`;
+}).join(pkg.readme.lineBreak)}`;
 }
 
 /**

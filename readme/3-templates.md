@@ -103,13 +103,23 @@ Use the `{{ template:contributors }}` placeholder to stamp it. To use this templ
   "contributors": [
     {
       "name": "Andreas Mehlsen",
-      "email": "andmehlsen@gmail.com",
+      "email": "hello@example.com",
       "url": "https://twitter.com/andreasmehlsen",
-      "img": "https://avatars1.githubusercontent.com/u/6267397?s=460&v=4"
+      "img": "https://avatars1.githubusercontent.com/u/6267397?s=460&v=4",
+      "info": [
+        "Lead-developer"
+      ]
+    },
+    {
+      "name": "You?",
+      "img": "https://joeschmoe.io/api/v1/random",
+      "url": "https://github.com/andreasbm/readme/blob/master/CONTRIBUTING.md"
     }
   ]
 }
 ```
+
+Take note of the `info` array. That one is really exciting! Here you can add lines describing the contributors - for example the role of accomplishments. Take a look [here](https://allcontributors.org/docs/en/emoji-key) for more inspiration of what you could put into the info array.
 
 ### License
 

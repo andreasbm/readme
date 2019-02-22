@@ -29,7 +29,7 @@ Welcome to [[ name ]]. This is version [[ version ]].
 
 ### Usage
 
-So run the `[[ readme.example.command ]]` command and a README file will be generated for you. If you want to go into depth with the readme command, check out the following options or write `[[ readme.example.command ]] -h` in your terminal if that's your cup of tea.
+Run the `[[ readme.example.command ]]` command and a README file will be generated for you. If you want to go into depth with the readme command, check out the following options or write `[[ readme.example.command ]] -h` in your terminal if that's your cup of tea.
 
 [[ readme.commandOptions ]]
 

@@ -107,7 +107,7 @@ Welcome to @appnest/readme. This is version 1.0.19.
 
 ### Usage
 
-So run the `node node_modules/.bin/readme` command and a README file will be generated for you. If you want to go into depth with the readme command, check out the following options or write `node node_modules/.bin/readme -h` in your terminal if that's your cup of tea.
+Run the `node node_modules/.bin/readme` command and a README file will be generated for you. If you want to go into depth with the readme command, check out the following options or write `node node_modules/.bin/readme -h` in your terminal if that's your cup of tea.
 
 | Option | Type | Description |
 | ------- | ------- | ------- |

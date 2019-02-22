@@ -173,10 +173,10 @@ export function contributorsTemplate ({contributors, pkg}: ContributorsTemplateA
 
 	return `## Contributors
 	
-${rows.map(row => `${row.map(({img, url, name}) => img != null ? `[<img alt="${name}" src="${img}" width="${imageSize}">](${url})` : " ").join(" | ")} |
-${Array(row.length).fill(":---:").join(" | ")} |
-${row.map(({url, email, name}) => `[${name}](${url})`).join(" | ")} |
-${row.map(({url, email}) => email != null ? `([${email}](mailto:${email}))` : " ").join(" | ")} |
+${rows.map(row => `|${row.map(({img, url, name}) => img != null ? `[<img alt="${name}" src="${img}" width="${imageSize}">](${url})` : " ").join(" | ")} |
+|${Array(row.length).fill(":---:").join(" | ")} |
+|${row.map(({url, email, name}) => `[${name}](${url})`).join(" | ")} |
+|${row.map(({url, email}) => email != null ? `([${email}](mailto:${email}))` : " ").join(" | ")} |
 `).join(pkg.readme.lineBreak)}`;
 }
 

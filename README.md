@@ -89,7 +89,7 @@ Let's start simple. In order to get values from your `package.json` file injecte
 ```json
 {
   "name": "@appnest/readme",
-  "version": "1.0.19"
+  "version": "1.0.20"
 }
 ```
 
@@ -102,7 +102,7 @@ Welcome to {{ name }}. This is version {{ version }}!
 When running `node node_modules/.bin/readme` the file `README.md` will be generated with the following contents:
 
 ```markdown
-Welcome to @appnest/readme. This is version 1.0.19.
+Welcome to @appnest/readme. This is version 1.0.20.
 ```
 
 ### Usage
@@ -290,10 +290,10 @@ The contributors template adds the list of contributors and looks like this:
 
 ## ➤ Contributors
 	
-[<img alt="Andreas Mehlsen" src="https://avatars1.githubusercontent.com/u/6267397?s=460&v=4" width="100">](https://twitter.com/andreasmehlsen) |
-:---: |
-[Andreas Mehlsen](https://twitter.com/andreasmehlsen) |
-([andmehlsen@gmail.com](mailto:andmehlsen@gmail.com)) |
+|[<img alt="Andreas Mehlsen" src="https://avatars1.githubusercontent.com/u/6267397?s=460&v=4" width="100">](https://twitter.com/andreasmehlsen) |
+|:---: |
+|[Andreas Mehlsen](https://twitter.com/andreasmehlsen) |
+|([andmehlsen@gmail.com](mailto:andmehlsen@gmail.com)) |
 
 
 Use the `{{ template:contributors }}` placeholder to stamp it. To use this template your are required to add the `contributors` array to your `package.json` file like this. Only the `name` field is required.
@@ -553,10 +553,10 @@ There are lot's of ways to support me! I would be so happy if you gave this repo
 
 ## ➤ Contributors
 	
-[<img alt="Andreas Mehlsen" src="https://avatars1.githubusercontent.com/u/6267397?s=460&v=4" width="100">](https://twitter.com/andreasmehlsen) |
-:---: |
-[Andreas Mehlsen](https://twitter.com/andreasmehlsen) |
-([andmehlsen@gmail.com](mailto:andmehlsen@gmail.com)) |
+|[<img alt="Andreas Mehlsen" src="https://avatars1.githubusercontent.com/u/6267397?s=460&v=4" width="100">](https://twitter.com/andreasmehlsen) |
+|:---: |
+|[Andreas Mehlsen](https://twitter.com/andreasmehlsen) |
+|([andmehlsen@gmail.com](mailto:andmehlsen@gmail.com)) |
 
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)

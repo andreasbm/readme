@@ -1,6 +1,6 @@
 ## A bit about this readme
 
-By now you are probably curious to know how this `README.md` was generated? It was created from the following `blueprint.md` file.
+By now you are probably curious to know how this README file was generated? It was created from the following `blueprint.md` file.
 
 ```markdown
 {{ template:logo }}

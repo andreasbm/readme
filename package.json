@@ -117,7 +117,7 @@
 			}
 		],
 		"example": {
-			"command": "node node_modules/.bin/readme --b=blueprint.md --o=README.md"
+			"command": "node node_modules/.bin/readme"
 		},
 		"table": [
 			[

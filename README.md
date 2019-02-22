@@ -78,13 +78,13 @@ npm install @appnest/readme -D
 
 ## ➤ Getting Started
 
-Spent a minute reading
+Spend a minute reading this getting started guide and you'll have the best README file in your town. Promise.
 
 ### Blueprint
 
-First you need to create a `blueprint.md` file (name it whatever you like). This blueprint is going to be the blueprint for the `README.md` file we are going to generate later.
+First you need to create a `blueprint.md` file. This blueprint is going to be the blueprint for the `README.md` file we will generate later.
 
-Let's start simple. In order to get values from your `package.json` file injected into the readme we use the `{{ .. }}` syntax. Let's say your `package.json` file looks like this:
+Let's start simple. In order to get values from your `package.json` file injected into the readme we use the mustache syntax (`{{ .. }}`). Let's say your `package.json` file looks like this:
 
 ```json
 {
@@ -99,7 +99,7 @@ To get the `name` and `version` into your readme you will need to write `{{ name
 Welcome to {{ name }}. This is version {{ version }}!
 ```
 
-When running `node node_modules/.bin/readme --b=blueprint.md --o=README.md` the file `README.md` will be generated with the following contents:
+When running `node node_modules/.bin/readme` the file `README.md` will be generated with the following contents:
 
 ```markdown
 Welcome to @appnest/readme. This is version 1.0.19.
@@ -107,7 +107,7 @@ Welcome to @appnest/readme. This is version 1.0.19.
 
 ### Usage
 
-If you want to go into depth with the readme command, check out the following options.
+So run the `node node_modules/.bin/readme` command and a README file will be generated for you. If you want to go into depth with the readme command, check out the following options or write `node node_modules/.bin/readme -h` in your terminal if that's your cup of tea.
 
 | Option | Type | Description |
 | ------- | ------- | ------- |
@@ -131,17 +131,17 @@ If you want to go into depth with the readme command, check out the following op
 | --readme.headingPrefix | {[key: number]: string} | The prefix of the header tags. Defaults to '{1: "➤ ", 2: "➤ "}' |
 | --logo | {url: string; alt?: string; width?: number; height?: number;} | The logo information. Used for the 'logo' template. |
 
-Great. Let's continue and see how you can use templates!
+Great. Now that we have the basics covered, let's continue and see how you can use templates!
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)
 
 ## ➤ Templates
 
-If you have come this far you are probably interested to figure out how to use readme templates. This library comes with a set of pre-defined templates to make your readme awesome, but you can of course create your own. More about that later, let's not get ahead of our self just yet.
+If you have come this far you are probably interested to figure out how to use README templates. This library comes with a set of pre-defined templates to make your readme awesome, but you can of course create your own. More about that later, let's not get ahead of our self just yet.
 
 ### Title
 
-The most simple template you can use is the title template. The way to generate a title is by writing `{{ template:title }}` in your blueprint. When you run the `readme` command the template will generate the following:
+Let's start with the title template. To generate the title you write `{{ template:title }}` in your blueprint. When you run the `readme` command the template will generate the following:
 
 <h1 align="center">@appnest/readme</h1>
 
@@ -163,7 +163,7 @@ The logo template adds a logo to your readme and looks like this:
   <img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/logo-shadow.png" alt="Logo" width="150" height="150" />
 </p>
 
-Use the placeholder `{{ template:logo }}` to stamp it. You will need to add the `readme.logo` field to your `package.json`. The logo field requires an `url` field and the fields `width`, `height` and `alt` are optional. Below is an example on how to add a logo.
+Use the placeholder `{{ template:logo }}` to stamp it. You will need to add the `readme.logo` field to your `package.json`. The logo field requires an `url` field. Optionally you can provide values for `width`, `height` and `alt`. Below is an example on how to add the data for the logo template.
 
 ```json
 {
@@ -190,7 +190,7 @@ The badges template adds badges to your readme and looks like this:
 	</p>
 
 
-Use the `{{ template:badges }}` placeholder to stamp it. You will need to add the information about how the badges should be generated. For that you can extend the "readme.ids" property in your `package.json` add the `npm` and `github` ids (both are optional). If you want to add your own badges you can use the `readme.badges` field.
+Use the `{{ template:badges }}` placeholder to stamp it. You will need to add the data about how the badges should be generated. For that you can extend the `readme.ids` property in your `package.json` and add the `npm` and `github` ids (both are optional). If you want to add your own badges you can use the `readme.badges` field.
 
 ```json
 {
@@ -279,7 +279,7 @@ The table of contents template adds a table of contents and looks like this:
 * [➤ Contributors](#-contributors)
 * [➤ License](#-license)
 
-Use the `{{ template:toc }}` placeholder to stamp it. It has been scientifically proven that this template will save you approximately 392.3 hours during your life-time.
+Use the `{{ template:toc }}` placeholder to stamp it. It has been scientifically proven that this template will save you approximately 392.3 hours during your life-time. Seriously.
 
 ### Contributors
 
@@ -296,7 +296,7 @@ The contributors template adds the list of contributors and looks like this:
 ([andmehlsen@gmail.com](mailto:andmehlsen@gmail.com)) |
 
 
-Use the `{{ template:contributors }}` placeholder to stamp it. To use this template your are required to add the `contributors` array to your `package.json` file like this.
+Use the `{{ template:contributors }}` placeholder to stamp it. To use this template your are required to add the `contributors` array to your `package.json` file like this. Only the `name` field is required.
 
 ```json
 {
@@ -340,7 +340,7 @@ What? You heard right. You can split the contents of your readme into multiple d
 
 ## ➤ A bit about this readme
 
-By now you are probably curious to know how this `README.md` was generated? It was created from the following `blueprint.md` file.
+By now you are probably curious to know how this README file was generated? It was created from the following `blueprint.md` file.
 
 ```markdown
 {{ template:logo }}
@@ -367,7 +367,7 @@ It really couldn't be more simple that this.
 
 ## ➤ Custom templates
 
-To create your own templates you'll first need to add the `readme.templates` array to your `package.json` file like this.
+You are able to create your own templates to keep things as DRY as a hot summer day. To create your own templates you'll first need to add the `readme.templates` array to your `package.json` file like this.
 
 ```json
 {
@@ -382,9 +382,11 @@ To create your own templates you'll first need to add the `readme.templates` arr
 }
 ```
 
-Then you can stamp your custom template using the `{{ template:install }}` syntax ('install' here referencing the name of the custom template).
+Then you can stamp your custom template using the `{{ template:install }}` syntax ("install" here referencing the name of the custom template). The below is an example of what is stamped to the README file using the above template.
 
 Run `npm install @appnest/readme' to install this library!
+
+Be creative! You can for example add a template for code-snippets or [words you keep spelling wrong](https://en.oxforddictionaries.com/spelling/common-misspellings).
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)
 
@@ -540,7 +542,7 @@ Create an issue or pull-request. You are also very welcome to throw me a message
 
 ### I already have a large README file - I don't have time to rewrite everything!
 
-No problem at all! Your first step can be to rename your `README.md` to `blueprint.md` and run `node node_modules/.bin/readme --b=blueprint.md --o=README.md`. Already then your README should now be well-formatted. Then you can slowly replace the contents when you have time. The low-hanging fruit would be to add the table of contents and license using respectively the `{{ template:toc }}` and `{{ template:license }}` templates.
+No problem at all! Your first step can be to rename your `README.md` to `blueprint.md` and run `node node_modules/.bin/readme`. Already then your README should now be well-formatted. Then you can slowly replace the contents when you have time. The low-hanging fruit would be to add the table of contents and license using respectively the `{{ template:toc }}` and `{{ template:license }}` templates.
 
 ### How can I support you?
 

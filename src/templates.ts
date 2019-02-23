@@ -1,15 +1,14 @@
-import { contributorsPerRow, documentMaxWidth } from "./config";
 import { getLicenseUrl, getTitle, getTitleLink, isValidURL, splitArrayIntoArrays } from "./helpers";
-import { BadgesTemplateArgs, BulletsTemplateArgs, ContributorsTemplateArgs, DemoTemplateArgs, DescriptionTemplateArgs, IContributor, IPackage, LicenseTemplateArgs, LineColor, LineTemplateArgs, LogoTemplateArgs, MainTitleTemplateArgs, TableOfContentsTemplateArgs, TableTemplateArgs, TitleTemplateArgs } from "./model";
+import { BadgesTemplateArgs, BulletsTemplateArgs, ContributorsTemplateArgs, DemoTemplateArgs, DescriptionTemplateArgs, IPackage, LicenseTemplateArgs, LineColor, LineTemplateArgs, LogoTemplateArgs, MainTitleTemplateArgs, TableOfContentsTemplateArgs, TableTemplateArgs, TitleTemplateArgs } from "./model";
 
 /**
  * Creates the template for the logo.
  * @param logo
  */
 export function logoTemplate ({logo}: LogoTemplateArgs): string {
-	const {url, width = "auto", height = "auto", alt = "Logo"} = logo;
+	const {src, width = "auto", height = "auto", alt = "Logo"} = logo;
 	return `<p align="center">
-  <img src="${url}" alt="${alt}" width="${width}" height="${height}" />
+  <img src="${src}" alt="${alt}" width="${width}" height="${height}" />
 </p>`;
 }
 
@@ -167,7 +166,7 @@ ${titleLevels.map(({title, level}) => {
  * @param pkg
  */
 export function contributorsTemplate ({contributors, pkg}: ContributorsTemplateArgs): string {
-	const contributorsPrRow = contributorsPerRow;
+	const contributorsPrRow = pkg.readme.contributorsPerRow;
 	const imageSize = 100;
 
 	// Split the contributors into multiple arrays (one for each row)
@@ -176,41 +175,42 @@ export function contributorsTemplate ({contributors, pkg}: ContributorsTemplateA
 	return `## Contributors
 	
 ${rows.map(row => {
-	
-	// Figures out what elements the row should have
-	const hasImages = row.find(({img}) => img != null);
-	const hasEmails = row.find(({email}) => email != null);
-	
-	// Create the cells for the images for each contributor in the row
-	const imgCells = row.map(({img, url, name}) => img != null ? `[<img alt="${name}" src="${img}" width="${imageSize}">](${url})` : "").join(" | ");
-	
-	// Create the cells that tells markdown that this is a table
-	const tableCells = Array(row.length).fill(":---:").join(" | ");
-	
-	// Create a cell for each name
-	const nameCells = row.map(({url, email, name}) => `[${name}](${url})`).join(" | ");
-	
-	// Create a cell for each email address
-	const emailCells = row.map(({url, email}) => email != null ? `[${email}](mailto:${email})` : "").join(" | ");
-	
-	// Find the maximum amount of info lines for the row!
-	const maxInfoLinesCount = row.reduce((acc, {info}) => info != null ? Math.max(acc, info.length) : acc, 0);
-	
-	// For each line we go through the row and find the correct info
-	const infoLines = Array(maxInfoLinesCount).fill(0).map((_, i) => {
-		const infoForLine = row.map(({info}) => info != null && i < info.length ? info[i] : "");
-		return `${infoForLine.join(" | ")}`;
-	});
-	
-	// Join each line in the row
-	return `|${[
-		...(hasImages ? [imgCells] : []),
-		tableCells,
-		nameCells,
-		...(hasEmails ? [emailCells] : []),
-		...infoLines
-	].join(`|${pkg.readme.lineBreak}|`)}|`;
-}).join(pkg.readme.lineBreak)}`;
+
+		// Figures out what elements the row should have
+		const hasImages = row.find(({img}) => img != null);
+		const hasEmails = row.find(({email}) => email != null);
+
+		// Create the cells for the images for each contributor in the row
+		const imgCells = row.map(({img, url, name}) => img != null ? `[<img alt="${name}" src="${img}" width="${imageSize}">](${url})` : "")
+		                    .join(" | ");
+
+		// Create the cells that tells markdown that this is a table
+		const tableCells = Array(row.length).fill(":---:").join(" | ");
+
+		// Create a cell for each name
+		const nameCells = row.map(({url, email, name}) => `[${name}](${url})`).join(" | ");
+
+		// Create a cell for each email address
+		const emailCells = row.map(({url, email}) => email != null ? `[${email}](mailto:${email})` : "").join(" | ");
+
+		// Find the maximum amount of info lines for the row!
+		const maxInfoLinesCount = row.reduce((acc, {info}) => info != null ? Math.max(acc, info.length) : acc, 0);
+
+		// For each line we go through the row and find the correct info
+		const infoLines = Array(maxInfoLinesCount).fill(0).map((_, i) => {
+			const infoForLine = row.map(({info}) => info != null && i < info.length ? info[i] : "");
+			return `${infoForLine.join(" | ")}`;
+		});
+
+		// Join each line in the row
+		return `|${[
+			...(hasImages ? [imgCells] : []),
+			tableCells,
+			nameCells,
+			...(hasEmails ? [emailCells] : []),
+			...infoLines
+		].join(`|${pkg.readme.lineBreak}|`)}|`;
+	}).join(pkg.readme.lineBreak)}`;
 }
 
 /**
@@ -228,7 +228,7 @@ export function svgLineTemplate ({pkg}: {pkg: IPackage}): string {
 		"#0B9EDA"
 	];
 
-	const width = documentMaxWidth;
+	const width = 900;
 	const height = 9;
 	const lineHeight = 2;
 	const lineParthWidth = Math.round(width / lineColors.length);
@@ -241,7 +241,9 @@ export function svgLineTemplate ({pkg}: {pkg: IPackage}): string {
             <g id="line">
                 <rect id="bg" x="0" y="0" width="${width}" height="${height}"></rect>
                 <g id="parts" transform="translate(0, ${height - lineHeight})">
-                    ${lineColors.map((color, i) => `<rect fill="${color}" x="${lineParthWidth * i}" y="0" width="${lineParthWidth}" height="${lineHeight}"></rect>`).join(pkg.readme.lineBreak)}
+                    ${lineColors.map((color,
+	                                  i) => `<rect fill="${color}" x="${lineParthWidth * i}" y="0" width="${lineParthWidth}" height="${lineHeight}"></rect>`)
+	                            .join(pkg.readme.lineBreak)}
                 </g>
             </g>
         </g>

@@ -80,7 +80,7 @@
 		"blueprint": "blueprint.md",
 		"output": "README.md",
 		"logo": {
-			"url": "https://raw.githubusercontent.com/andreasbm/readme/master/assets/logo-shadow.png",
+			"src": "https://raw.githubusercontent.com/andreasbm/readme/master/assets/logo-shadow.png",
 			"width": 150,
 			"height": 150
 		},
@@ -242,9 +242,14 @@
 				"The prefix of the header tags. Defaults to '{1: \"➤ \", 2: \"➤ \"}'"
 			],
 			[
-				"--logo",
-				"{url: string; alt?: string; width?: number; height?: number;}",
+				"--readme.logo",
+				"{src: string; alt?: string; width?: number; height?: number;}",
 				"The logo information. Used for the 'logo' template."
+			],
+			[
+				"--readme.contributorsPerRow",
+				"number",
+				"The amount of contributors pr row when using the 'contributors' template. Defaults to '6'"
 			]
 		]
 	}

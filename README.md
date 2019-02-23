@@ -129,7 +129,8 @@ Run the `node node_modules/.bin/readme` command and a README file will be genera
 | -s, --readme.silent | boolean | Whether the console output from the command should be silent. |
 | -d, --readme.dry | boolean | Whether the command should run as dry. If dry, the output file is notgenerated but outputted to the console instead. |
 | --readme.headingPrefix | {[key: number]: string} | The prefix of the header tags. Defaults to '{1: "➤ ", 2: "➤ "}' |
-| --logo | {url: string; alt?: string; width?: number; height?: number;} | The logo information. Used for the 'logo' template. |
+| --readme.logo | {src: string; alt?: string; width?: number; height?: number;} | The logo information. Used for the 'logo' template. |
+| --readme.contributorsPerRow | number | The amount of contributors pr row when using the 'contributors' template. Defaults to '6' |
 
 Great. Now that we have the basics covered, let's continue and see how you can use templates!
 
@@ -169,7 +170,7 @@ Use the placeholder `{{ template:logo }}` to stamp it. You will need to add the 
 {
   "readme": {
     "logo": {
-      "url": "https://raw.githubusercontent.com/andreasbm/readme/master/assets/logo-shadow.png",
+      "url": "readme.logo.url",
       "width": "150"
     }
   }

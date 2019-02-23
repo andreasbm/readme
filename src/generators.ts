@@ -51,7 +51,8 @@ export const generateLogo: IGenerator<LogoTemplateArgs> = {
 	regex: placeholderRegexCallback("template:logo"),
 	template: logoTemplate,
 	params: {
-		logo: "readme.logo"
+		logo: "readme.logo",
+		src: "readme.logo.src"
 	}
 };
 

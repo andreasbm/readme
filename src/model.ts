@@ -61,6 +61,7 @@ export interface IConfig {
 	templates?: IUserTemplate[];
 	headingPrefix: {[key: number]: string}
 	badges?: IBadge[];
+	contributorsPerRow: number;
 }
 
 export interface IPackage {
@@ -93,7 +94,7 @@ export interface IGenerator<T> {
 }
 
 export interface ILogo {
-	url: string;
+	src: string;
 	alt?: string;
 	width?: number;
 	height?: number;

@@ -18,17 +18,6 @@ export const defaultGenerators: IGenerator<any>[] = [
 ];
 
 /**
- * The amount of contributors pr row.
- * TODO: Make it customizable.
- */
-export const contributorsPerRow = 4;
-
-/**
- * The maximum document width in px.
- */
-export const documentMaxWidth = 900;
-
-/**
  * Default name of the package config.
  */
 export const defaultPackageName = "package.json";
@@ -47,6 +36,7 @@ export const defaultConfig: IConfig = {
 	help: false,
 	line: LineColor.COLORED,
 	templates: [],
+	contributorsPerRow: 6,
 	headingPrefix: {
 		1: "➤ ",
 		2: "➤ "
@@ -165,9 +155,15 @@ export const commandOptions: OptionDefinition[] = [
 		type: {name: "\\{\\[key: number\\]\\: string\\}"}
 	},
 	{
-		name: "logo",
+		name: "readme.logo",
 		description: "The logo information. Used for the 'logo' template.",
-		type: {name: "\\{url: string; alt?: string; width?: number; height?: number;\\}"}
+		type: {name: "\\{src: string; alt?: string; width?: number; height?: number;\\}"}
+	},
+	{
+		name: "readme.contributorsPerRow",
+		description: `The amount of contributors pr row when using the 'contributors' template. Defaults to '${defaultConfig.contributorsPerRow}'`,
+		defaultValue: defaultConfig.contributorsPerRow,
+		type: Number
 	}
 ];
 

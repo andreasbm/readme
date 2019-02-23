@@ -164,13 +164,13 @@ The logo template adds a logo to your readme and looks like this:
   <img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/logo-shadow.png" alt="Logo" width="150" height="150" />
 </p>
 
-Use the placeholder `{{ template:logo }}` to stamp it. You will need to add the `readme.logo` field to your `package.json`. The logo field requires an `url` field. Optionally you can provide values for `width`, `height` and `alt`. Below is an example on how to add the data for the logo template.
+Use the placeholder `{{ template:logo }}` to stamp it. You will need to add the `readme.logo` field to your `package.json`. The logo field requires an `src` field. Optionally you can provide values for `width`, `height` and `alt`. Below is an example on how to add the data for the logo template.
 
 ```json
 {
   "readme": {
     "logo": {
-      "url": "readme.logo.url",
+      "src": "https://raw.githubusercontent.com/andreasbm/readme/master/assets/logo-shadow.png",
       "width": "150"
     }
   }

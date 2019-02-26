@@ -16,8 +16,5 @@ export default {
 			sourcemap: true,
 			banner: "#! /usr/bin/env node"
 		}
-	],
-	external: [
-		...config.external
 	]
 };

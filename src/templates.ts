@@ -39,8 +39,7 @@ export function lineTemplate ({pkg}: LineTemplateArgs) {
 		url = `https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/${line}.png`;
 	}
 
-	return `
-![-----------------------------------------------------](${url})`;
+	return `![-----------------------------------------------------](${url})`;
 }
 
 /**
@@ -50,7 +49,8 @@ export function lineTemplate ({pkg}: LineTemplateArgs) {
  * @param pkg
  */
 export function titleTemplate ({title, level, pkg}: TitleTemplateArgs) {
-	const beforeTitleContent = level <= 2 ? `[${lineTemplate({pkg})}${pkg.readme.lineBreak}${pkg.readme.lineBreak}](${getTitleLink(title)})` : "";
+	const beforeTitleContent = level <= 2 ? `
+[${lineTemplate({pkg})}${pkg.readme.lineBreak}${pkg.readme.lineBreak}](${getTitleLink(title)})` : "";
 	return `${beforeTitleContent}${(<any>Array(level)).fill("#").join("")} ${getTitle({title, level, pkg})}`;
 }
 

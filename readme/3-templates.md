@@ -107,7 +107,7 @@ Use the `{{ template:contributors }}` placeholder to stamp it. To use this templ
       "url": "https://twitter.com/andreasmehlsen",
       "img": "https://avatars1.githubusercontent.com/u/6267397?s=460&v=4",
       "info": [
-        "Lead-developer"
+        "🔥"
       ]
     },
     {

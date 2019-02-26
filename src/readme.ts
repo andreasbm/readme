@@ -50,7 +50,7 @@ export function generateReadme ({pkg, blueprint, pkgPath, generators}: {pkg: IPa
 
 					// Validate the params
 					if (!validateObject({obj: pkg, requiredFields: (<any>Object).values(requiredParams)})) {
-						errorReason = `"${pkgPath}" is missing the keys "${(<any>Object).values(requiredParams)
+						errorReason = `"${pkgPath}" is missing one or more of the keys "${(<any>Object).values(requiredParams)
 						                                                                .join(", ")}"`;
 					} else {
 						params = extractValues({map: {...optionalParams, ...requiredParams}, obj: pkg});

@@ -2,17 +2,22 @@ import {config, distPath, srcPath} from "./rollup-default.config";
 
 export default {
 	...config,
-	input: `${srcPath}/index.ts`,
+	input: `${srcPath}/cli.ts`,
 	output: [
 		{
-			file: `${distPath}/index.cjs.js`,
+			file: `${distPath}/cli.cjs.js`,
 			format: "cjs",
 			sourcemap: true,
+			banner: "#! /usr/bin/env node"
 		},
 		{
-			file: `${distPath}/index.esm.js`,
+			file: `${distPath}/cli.esm.js`,
 			format: "esm",
 			sourcemap: true,
+			banner: "#! /usr/bin/env node"
 		}
+	],
+	external: [
+		...config.external
 	]
 };

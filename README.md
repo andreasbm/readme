@@ -89,7 +89,7 @@ Let's start simple. In order to get values from your `package.json` file injecte
 ```json
 {
   "name": "@appnest/readme",
-  "version": "1.0.22"
+  "version": "1.0.23"
 }
 ```
 
@@ -99,15 +99,15 @@ To get the `name` and `version` into your readme you will need to write `{{ name
 Welcome to {{ name }}. This is version {{ version }}!
 ```
 
-When running `node node_modules/.bin/readme` the file `README.md` will be generated with the following contents:
+When running `node_modules/.bin/readme` the file `README.md` will be generated with the following contents:
 
 ```markdown
-Welcome to @appnest/readme. This is version 1.0.22.
+Welcome to @appnest/readme. This is version 1.0.23.
 ```
 
 ### Usage
 
-Run the `node node_modules/.bin/readme` command and a README file will be generated for you. If you want to go into depth with the readme command, check out the following options or write `node node_modules/.bin/readme -h` in your terminal if that's your cup of tea.
+Run the `node_modules/.bin/readme` command and a README file will be generated for you. If you want to go into depth with the readme command, check out the following options or write `node_modules/.bin/readme -h` in your terminal if that's your cup of tea.
 
 | Option | Type | Description |
 | ------- | ------- | ------- |
@@ -555,7 +555,7 @@ Create an issue or pull-request. You are also very welcome to throw me a message
 
 ### I already have a large README file - I don't have time to rewrite everything!
 
-No problem at all! Your first step can be to rename your `README.md` to `blueprint.md` and run `node node_modules/.bin/readme`. Already then your README should now be well-formatted. Then you can slowly replace the contents when you have time. The low-hanging fruit would be to add the table of contents and license using respectively the `{{ template:toc }}` and `{{ template:license }}` templates.
+No problem at all! Your first step can be to rename your `README.md` to `blueprint.md` and run `node_modules/.bin/readme`. Already then your README should now be well-formatted. Then you can slowly replace the contents when you have time. The low-hanging fruit would be to add the table of contents and license using respectively the `{{ template:toc }}` and `{{ template:license }}` templates.
 
 ### How can I support you?
 

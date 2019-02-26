@@ -128,7 +128,7 @@
 			}
 		],
 		"example": {
-			"command": "node node_modules/.bin/readme"
+			"command": "node_modules/.bin/readme"
 		},
 		"properties": [
 			[

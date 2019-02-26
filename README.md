@@ -529,6 +529,7 @@ If you use this generator for one of your projects I would love to hear about it
 * [web-router](https://github.com/andreasbm/web-router)
 * [web-config](https://github.com/andreasbm/web-config)
 * [ts-lit-plugin](https://github.com/runem/ts-lit-plugin)
+* [blob](https://github.com/andreasbm/blob)
 
 As inspiration for the layout of the generated README files I initially found inspiration from [terkelg's brilliant repository called prompts](https://github.com/terkelg/prompts) - a prime example on how every README file should look! I therefore wanted to mention him here even though he doesn't use this README generator. If you want to see an example of a brilliant README file you should definitely check his repository out.
 

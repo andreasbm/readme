@@ -118,7 +118,8 @@
 			"[focus-trap](https://github.com/andreasbm/focus-trap)",
 			"[web-router](https://github.com/andreasbm/web-router)",
 			"[web-config](https://github.com/andreasbm/web-config)",
-			"[ts-lit-plugin](https://github.com/runem/ts-lit-plugin)"
+			"[ts-lit-plugin](https://github.com/runem/ts-lit-plugin)",
+			"[blob](https://github.com/andreasbm/blob)"
 		],
 		"templates": [
 			{

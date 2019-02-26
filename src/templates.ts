@@ -49,8 +49,7 @@ export function lineTemplate ({pkg}: LineTemplateArgs) {
  * @param pkg
  */
 export function titleTemplate ({title, level, pkg}: TitleTemplateArgs) {
-	const beforeTitleContent = level <= 2 ? `
-[${lineTemplate({pkg})}${pkg.readme.lineBreak}${pkg.readme.lineBreak}](${getTitleLink(title)})` : "";
+	const beforeTitleContent = level <= 2 ? `${pkg.readme.lineBreak}[${lineTemplate({pkg})}](${getTitleLink(title)})${pkg.readme.lineBreak}${pkg.readme.lineBreak}` : "";
 	return `${beforeTitleContent}${(<any>Array(level)).fill("#").join("")} ${getTitle({title, level, pkg})}`;
 }
 

@@ -27,42 +27,56 @@
 * **Powerful**: Customize almost everything - add your own templates and variables if you like
 * **Awesome**: The tool you don't know you need before you have many different repositories that all need maintenance
 
-[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#table-of-contents)
 
-](#table-of-contents)## ➤ Table of Contents
+## ➤ Table of Contents
 
-* [Blueprint](#blueprint)
-* [Usage](#usage)
-* [Title](#title)
-* [Logo](#logo)
-* [Badges](#badges)
-* [Description](#description)
-* [Table of Contents](#table-of-contents)
-* [Contributors](#contributors)
-* [License](#license)
-* [New template syntax](#new-template-syntax)
-* [Variables](#variables)
-	* [Objects](#objects)
-	* [1D Arrays](#1d-arrays)
-	* [2D Arrays](#2d-arrays)
-* [Different colored lines](#different-colored-lines)
-* [Different formatted headings](#different-formatted-headings)
-* [Can I see how my README file is going to look before I commit it?](#can-i-see-how-my-readme-file-is-going-to-look-before-i-commit-it)
-* [How can I get involved?](#how-can-i-get-involved)
-* [I already have a large README file - I don't have time to rewrite everything!](#i-already-have-a-large-readme-file---i-dont-have-time-to-rewrite-everything)
-* [How can I support you?](#how-can-i-support-you)
+* [➤ Installation](#-installation)
+* [➤ Getting Started](#-getting-started)
+	* [Blueprint](#blueprint)
+	* [Usage](#usage)
+* [➤ Templates](#-templates)
+	* [Title](#title)
+	* [Logo](#logo)
+	* [Badges](#badges)
+	* [Description](#description)
+	* [Table of Contents](#table-of-contents)
+	* [Contributors](#contributors)
+* [➤ Contributors](#-contributors)
+	* [License](#license)
+* [➤ License](#-license)
+* [➤ Load markdown files](#-load-markdown-files)
+* [➤ A bit about this readme](#-a-bit-about-this-readme)
+* [➤ Custom templates](#-custom-templates)
+* [➤ Advanced!](#-advanced)
+	* [New template syntax](#new-template-syntax)
+	* [Variables](#variables)
+		* [Objects](#objects)
+		* [1D Arrays](#1d-arrays)
+		* [2D Arrays](#2d-arrays)
+	* [Different colored lines](#different-colored-lines)
+	* [Different formatted headings](#different-formatted-headings)
+* [➤ Featured README's](#-featured-readmes)
+* [➤ Future work](#-future-work)
+* [➤ FAQ](#-faq)
+	* [Can I see how my README file is going to look before I commit it?](#can-i-see-how-my-readme-file-is-going-to-look-before-i-commit-it)
+	* [How can I get involved?](#how-can-i-get-involved)
+	* [I already have a large README file - I don't have time to rewrite everything!](#i-already-have-a-large-readme-file---i-dont-have-time-to-rewrite-everything)
+	* [How can I support you?](#how-can-i-support-you)
+* [➤ Contributors](#-contributors)
+* [➤ License](#-license)
 
-[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#installation)
 
-](#installation)## ➤ Installation
+## ➤ Installation
 
 ```javascript
 npm install @appnest/readme -D
 ```
 
-[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#getting-started)
 
-](#getting-started)## ➤ Getting Started
+## ➤ Getting Started
 
 Spend a minute reading this getting started guide and you'll have the best README file in your town. Promise.
 
@@ -120,9 +134,9 @@ Run the `node node_modules/.bin/readme` command and a README file will be genera
 
 Great. Now that we have the basics covered, let's continue and see how you can use templates!
 
-[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#templates)
 
-](#templates)## ➤ Templates
+## ➤ Templates
 
 If you have come this far you are probably interested to figure out how to use README templates. This library comes with a set of pre-defined templates to make your readme awesome, but you can of course create your own. More about that later, let's not get ahead of our self just yet.
 
@@ -227,30 +241,44 @@ Use the `{{ template:description }}` placeholder to stamp it. To use this templa
 The table of contents template adds a table of contents and looks like this:
 
 
-[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#table-of-contents)
 
-](#table-of-contents)## ➤ Table of Contents
+## ➤ Table of Contents
 
-* [Blueprint](#blueprint)
-* [Usage](#usage)
-* [Title](#title)
-* [Logo](#logo)
-* [Badges](#badges)
-* [Description](#description)
-* [Table of Contents](#table-of-contents)
-* [Contributors](#contributors)
-* [License](#license)
-* [New template syntax](#new-template-syntax)
-* [Variables](#variables)
-	* [Objects](#objects)
-	* [1D Arrays](#1d-arrays)
-	* [2D Arrays](#2d-arrays)
-* [Different colored lines](#different-colored-lines)
-* [Different formatted headings](#different-formatted-headings)
-* [Can I see how my README file is going to look before I commit it?](#can-i-see-how-my-readme-file-is-going-to-look-before-i-commit-it)
-* [How can I get involved?](#how-can-i-get-involved)
-* [I already have a large README file - I don't have time to rewrite everything!](#i-already-have-a-large-readme-file---i-dont-have-time-to-rewrite-everything)
-* [How can I support you?](#how-can-i-support-you)
+* [➤ Installation](#-installation)
+* [➤ Getting Started](#-getting-started)
+	* [Blueprint](#blueprint)
+	* [Usage](#usage)
+* [➤ Templates](#-templates)
+	* [Title](#title)
+	* [Logo](#logo)
+	* [Badges](#badges)
+	* [Description](#description)
+	* [Table of Contents](#table-of-contents)
+	* [Contributors](#contributors)
+* [➤ Contributors](#-contributors)
+	* [License](#license)
+* [➤ License](#-license)
+* [➤ Load markdown files](#-load-markdown-files)
+* [➤ A bit about this readme](#-a-bit-about-this-readme)
+* [➤ Custom templates](#-custom-templates)
+* [➤ Advanced!](#-advanced)
+	* [New template syntax](#new-template-syntax)
+	* [Variables](#variables)
+		* [Objects](#objects)
+		* [1D Arrays](#1d-arrays)
+		* [2D Arrays](#2d-arrays)
+	* [Different colored lines](#different-colored-lines)
+	* [Different formatted headings](#different-formatted-headings)
+* [➤ Featured README's](#-featured-readmes)
+* [➤ Future work](#-future-work)
+* [➤ FAQ](#-faq)
+	* [Can I see how my README file is going to look before I commit it?](#can-i-see-how-my-readme-file-is-going-to-look-before-i-commit-it)
+	* [How can I get involved?](#how-can-i-get-involved)
+	* [I already have a large README file - I don't have time to rewrite everything!](#i-already-have-a-large-readme-file---i-dont-have-time-to-rewrite-everything)
+	* [How can I support you?](#how-can-i-support-you)
+* [➤ Contributors](#-contributors)
+* [➤ License](#-license)
 
 Use the `{{ template:toc }}` placeholder to stamp it. It has been scientifically proven that this template will save you approximately 392.3 hours during your life-time. Seriously.
 
@@ -259,9 +287,9 @@ Use the `{{ template:toc }}` placeholder to stamp it. It has been scientifically
 The contributors template adds the list of contributors and looks like this:
 
 
-[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#contributors)
 
-](#contributors)## ➤ Contributors
+## ➤ Contributors
 	
 |[<img alt="Andreas Mehlsen" src="https://avatars1.githubusercontent.com/u/6267397?s=460&v=4" width="100">](https://twitter.com/andreasmehlsen) | [<img alt="You?" src="https://joeschmoe.io/api/v1/random" width="100">](https://github.com/andreasbm/readme/blob/master/CONTRIBUTING.md)|
 |:---: | :---:|
@@ -298,9 +326,9 @@ Take note of the `info` array. That one is really exciting! Here you can add lin
 The license template adds a license section and looks like this:
 
 
-[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#license)
 
-](#license)## ➤ License
+## ➤ License
 	
 Licensed under [MIT](https://opensource.org/licenses/MIT).
 
@@ -312,15 +340,15 @@ Use the `{{ template:license }}` placeholder to stamp it. To use this template y
 }
 ```
 
-[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#load-markdown-files)
 
-](#load-markdown-files)## ➤ Load markdown files
+## ➤ Load markdown files
 
 What? You heard right. You can split the contents of your readme into multiple different files to make your life easier. Let's say you have a file called `my-section.md`. To stamp it you'll need to add `{{ load:my-section.md }}`.
 
-[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#a-bit-about-this-readme)
 
-](#a-bit-about-this-readme)## ➤ A bit about this readme
+## ➤ A bit about this readme
 
 By now you are probably curious to know how this README file was generated? It was created from the following `blueprint.md` file.
 
@@ -345,9 +373,9 @@ By now you are probably curious to know how this README file was generated? It w
 
 It really couldn't be more simple that this.
 
-[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#custom-templates)
 
-](#custom-templates)## ➤ Custom templates
+## ➤ Custom templates
 
 You are able to create your own templates to keep things as DRY as a hot summer day. To create your own templates you'll first need to add the `readme.templates` array to your `package.json` file like this.
 
@@ -370,9 +398,9 @@ Run `npm install @appnest/readme' to install this library!
 
 Be creative! You can for example add a template for code-snippets or [words you keep spelling wrong](https://en.oxforddictionaries.com/spelling/common-misspellings).
 
-[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#advanced)
 
-](#advanced)## ➤ Advanced!
+## ➤ Advanced!
 
 Oh! So are you ready to open Pandora's box? Let's do it.
 
@@ -489,9 +517,9 @@ If you want to change the prefix in front of the heading you can change the `rea
 
 If you want some inspiration for symbols you can put infront of the headings you can check out [this](https://unicodes.smpc.io/) website.
 
-[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#featured-readmes)
 
-](#featured-readmes)## ➤ Featured README's
+## ➤ Featured README's
 
 If you use this generator for one of your projects I would love to hear about it so I can feature it. Here's a list of some repositories using this generator for their README file.
 
@@ -505,16 +533,16 @@ If you use this generator for one of your projects I would love to hear about it
 As inspiration for the layout of the generated README files I initially found inspiration from [terkelg's brilliant repository called prompts](https://github.com/terkelg/prompts) - a prime example on how every README file should look! I therefore wanted to mention him here even though he doesn't use this README generator. If you want to see an example of a brilliant README file you should definitely check his repository out.
 
 
-[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#future-work)
 
-](#future-work)## ➤ Future work
+## ➤ Future work
 
 That's it for now! Lot's of exiting features a going to be added in the future. If you stumble upon an issue or have a feature request you are very welcome to open a Github issue or pull request. Have a great day!
 
 
-[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#faq)
 
-](#faq)## ➤ FAQ
+## ➤ FAQ
 
 ### Can I see how my README file is going to look before I commit it?
 
@@ -533,17 +561,17 @@ No problem at all! Your first step can be to rename your `README.md` to `bluepri
 There are lot's of ways to support me! I would be so happy if you gave this repository a star, tweeted about it or told your friends about this little corner of the Internet ❤️
 
 
-[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#contributors)
 
-](#contributors)## ➤ Contributors
+## ➤ Contributors
 	
 |[<img alt="Andreas Mehlsen" src="https://avatars1.githubusercontent.com/u/6267397?s=460&v=4" width="100">](https://twitter.com/andreasmehlsen) | [<img alt="You?" src="https://joeschmoe.io/api/v1/random" width="100">](https://github.com/andreasbm/readme/blob/master/CONTRIBUTING.md)|
 |:---: | :---:|
 |[Andreas Mehlsen](https://twitter.com/andreasmehlsen) | [You?](https://github.com/andreasbm/readme/blob/master/CONTRIBUTING.md)|
 |🔥 | |
 
-[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#license)
 
-](#license)## ➤ License
+## ➤ License
 	
 Licensed under [MIT](https://opensource.org/licenses/MIT).

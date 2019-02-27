@@ -1,17 +1,15 @@
 ## Custom templates
 
-You are able to create your own templates to keep things as DRY as a hot summer day. To create your own templates you'll first need to add the `readme.templates` array to your `package.json` file like this.
+You are able to create your own templates to keep things as DRY as a hot summer day. To create your own templates you'll first need to add the `templates` array to your `blueprint.json` file like this.
 
 ```json
 {
-  "readme": {
-    "templates":[
-      {
-        "name": "install",
-        "template": "Run `npm install {{ readme.ids.npm }} to install this library!"
-      }
-    ]
-  }
+  "templates": [
+    {
+      "name": "install",
+      "template": "Run `npm install {{ ids.npm }} to install this library!"
+    }
+  ]
 }
 ```
 

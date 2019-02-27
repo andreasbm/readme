@@ -4,65 +4,58 @@ Oh! So are you ready to open Pandora's box? Let's do it.
 
 ### New template syntax
 
-If you are in the mood you can change the syntax used for matching with the templates. Let's say you want your placeholders to look like this instead `{[ template:title }]`. Then you'll need to add the `readme.placeholder` array with the new syntax being `["{[", "}]"]` like this.
+If you are in the mood you can change the syntax used for matching with the templates. Let's say you want your placeholders to look like this instead `{[ template:title }]`. Then you'll need to add the `placeholder` array to your `blueprint.json` file with the new syntax being `["{[", "}]"]` like this.
 
 
 ```json
 {
-  "readme": {
-    "placeholder": ["{[", "}]"]
-  }
+  "placeholder": ["{[", "}]"]
 }
 ```
 
 ### Variables
 
-If you have a variable from your `package.json` file you want to stamp to your readme just use the `{{ ... }}` syntax as usual.
+If you have a variable from your `blueprint.json` file you want to stamp to your readme just use the `{{ ... }}` syntax as usual without any scopes.
 
 #### Objects
 
-Objects are formatted as a list with the keys being bold. If you for example want to stamp the `dependencies` field from your `package.json` file you write `{{ dependencies }}` and the dependencies will be stamped in a nice formatted way like this.
+Objects are formatted as a list with the keys being bold. If you for example want to stamp the `dependencies` field from your `package.json` file you write `{{ pkg.dependencies }}` and the dependencies will be stamped in a nice formatted way like this.
 
-[[ dependencies ]]
-
+[[ pkg.dependencies ]]
 
 #### 1D Arrays
 
-If you have a 1D array it will be formatted as a list. If you for example want to stamp the the `keywords` field from your `package.json` file you write `{{ keywords }}` and the keywords will be stamped in a nice formatted way like this:
+If you have a 1D array it will be formatted as a list. If you for example want to stamp the the `keywords` field from your `package.json` file you write `{{ pkg.keywords }}` and the keywords will be stamped in a nice formatted way like this:
 
-[[ keywords ]]
+[[ pkg.keywords ]]
 
 #### 2D Arrays
 
-If you have a 2D array it will be formatted as a table. This is very convenient for things like documentation of API's. Let's say you have the following in your `package.json`.
+If you have a 2D array it will be formatted as a table. This is very convenient for things like documentation of API's. Let's say you have the following in your `blueprint.json`.
 
 ```json
 {
-  "readme": {
-    "properties": [
-      ["Attribute", "Type", "Description"],
-      ["**size**", "'medium', 'large'", "Determines the size" ],
-      ["**active**", "boolean", "Whether the element is active or not" ]
-    ]
-  }
+  "properties": [
+    ["Attribute", "Type", "Description"],
+    ["**size**", "'medium', 'large'", "Determines the size" ],
+    ["**active**", "boolean", "Whether the element is active or not" ]
+  ]
 }
 ```
 
-Then you can stamp it to your readme by writing `{{ readme.properties }}` and it will be formatted as a table.
+Then you can stamp it to your readme by writing `{{ properties }}` and it will be formatted as a table.
 
-[[ readme.properties ]]
+[[ properties ]]
 
 You are welcome!
 
 ### Different colored lines
 
-If you want to change the color of the lines above headers you can change the `readme.line` field in the `package.json`. Here's an example if you want a dark line instead of the colored one.
+If you want to change the color of the lines above headers you can change the `line` field in the `blueprint.json`. Here's an example if you want a dark line instead of the colored one.
 
 ```json
 {
-  "readme": {
-    "line": "dark"
-  }
+  "line": "dark"
 }
 ```
 
@@ -84,11 +77,11 @@ Yeah! Dark mode on your `README.md` is awesome indeed. You have other options be
 * "vintage" ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/vintage.png)
 * "water" ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/water.png)
 
-If you want your own line design you can give the `readme.line` field an url to an image instead. It is recommended that this image is 900px in width. If you prefer no line at all you can give the `readme.line` field the string "none".
+If you want your own line design you can give the `line` field an url to an image instead. It is recommended that this image is 900px in width. If you prefer no line at all you can give the `line` field the string "none".
 
 ### Different formatted headings
 
-If you want to change the prefix in front of the heading you can change the `readme.headingPrefix` in the `package.json` file. Just map the heading level to the desired prefix as shown below.
+If you want to change the prefix in front of the heading you can change the `headingPrefix` in the `blueprint.json` file. Just map the heading level to the desired prefix as shown below.
 
 ```json
 {

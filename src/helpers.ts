@@ -1,7 +1,7 @@
 import { existsSync, outputFile, readFileSync } from "fs-extra";
 import { resolve } from "path";
 import { githubBadges, npmBadges, webcomponentsBadges } from "./badges";
-import { IBadge, IContributor, IPackage } from "./model";
+import { IBadge, IConfig } from "./model";
 
 export const URL_PATTERN = /^(?:(?:https?|ftp):\/\/)(?:\S+(?::\S*)?@)?(?:(?!10(?:\.\d{1,3}){3})(?!127(?:\.​\d{1,3}){3})(?!169\.254(?:\.\d{1,3}){2})(?!192\.168(?:\.\d{1,3}){2})(?!172\.(?:1[​6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1​,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00​a1-\uffff0-9]+-?)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]+-?)*[a-z\u​00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/[^\s]*)?$/i;
 
@@ -123,12 +123,12 @@ export function extractValues ({map, obj}: {map: {[key: string]: any}, obj: Obje
  * Returns available badges.
  * @param pkg
  */
-export function getBadges ({pkg}: {pkg: IPackage}): IBadge[] {
+export function getBadges ({config}: {config: IConfig}): IBadge[] {
 	const badges: IBadge[] = [];
 
-	const npmId = getValue<string>(pkg, "readme.ids.npm");
-	const githubId = getValue<string>(pkg, "readme.ids.github");
-	const webcomponentsId = getValue<string>(pkg, "readme.ids.webcomponents");
+	const npmId = getValue<string>(config, "readme.ids.npm");
+	const githubId = getValue<string>(config, "readme.ids.github");
+	const webcomponentsId = getValue<string>(config, "readme.ids.webcomponents");
 
 	// Add NPM badges
 	if (npmId != null) {
@@ -146,7 +146,7 @@ export function getBadges ({pkg}: {pkg: IPackage}): IBadge[] {
 	}
 
 	// Add user badges
-	badges.push(...(pkg.readme.badges || []));
+	badges.push(...(config.badges || []));
 
 	return badges;
 }
@@ -155,7 +155,13 @@ export function getBadges ({pkg}: {pkg: IPackage}): IBadge[] {
  * Reads a file.
  * @param name
  */
-export function readFile (name: string): string {
+export function readFile (name: string): string | null {
+
+	// Checks whether the file exists
+	if (!fileExists(name)) {
+		return null;
+	}
+
 	return readFileSync(resolve(name)).toString("utf8");
 }
 
@@ -163,8 +169,9 @@ export function readFile (name: string): string {
  * Reads the contents of a json file.
  * @param name
  */
-export function readJSONFile (name: string): Object {
-	return JSON.parse(readFile(name));
+export function readJSONFile (name: string): Object | null {
+	const file = readFile(name);
+	return file != null ? JSON.parse(file) : file;
 }
 
 /**
@@ -179,9 +186,9 @@ export function escapeRegex (text: string): string {
  * Returns a placeholder regex.
  * @param text
  */
-export function placeholderRegexCallback (text: string): (({pkg}: {pkg: IPackage}) => RegExp) {
-	return (({pkg}: {pkg: IPackage}) => {
-		const {placeholder} = pkg.readme;
+export function placeholderRegexCallback (text: string): (({config}: {config: IConfig}) => RegExp) {
+	return (({config}: {config: IConfig}) => {
+		const {placeholder} = config;
 		return new RegExp(`${escapeRegex(placeholder[0])}\\s*(${text})\\s*${escapeRegex(placeholder[1])}`, "gm");
 	});
 }
@@ -203,10 +210,10 @@ export async function writeFile ({target, content}: {target: string, content: st
  * Returns the title for a level.
  * @param title
  * @param level
- * @param pkg
+ * @param config
  */
-export function getTitle ({title, level, pkg}: {title: string, level: number, pkg: IPackage}): string {
-	const prefix = pkg.readme.headingPrefix[level] || "";
+export function getTitle ({title, level, config}: {title: string, level: number, config: IConfig}): string {
+	const prefix = config.headingPrefix[level] || "";
 	return `${prefix}${title}`;
 }
 
@@ -231,6 +238,7 @@ export function getTitleLink (title: string): string {
  * @param absolutePath
  */
 export function fileExists (absolutePath: string): boolean {
+	if (absolutePath == null || absolutePath == "") return false;
 	return existsSync(absolutePath);
 }
 
@@ -242,7 +250,7 @@ export function fileExists (absolutePath: string): boolean {
 export function splitArrayIntoArrays<T> (arr: T[], count: number): T[][] {
 	arr = [...arr];
 	const arrs: T[][] = [];
-	while(arr.length) {
+	while (arr.length) {
 		arrs.push(arr.splice(0, count));
 	}
 

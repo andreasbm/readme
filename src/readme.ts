@@ -1,24 +1,24 @@
 import { green, red, yellow } from "colors";
 import commandLineUsage from "command-line-usage";
 import { resolve } from "path";
-import { defaultGenerators, defaultPackageName, extendPackageWithDefaults, helpContent } from "./config";
+import { defaultConfig, defaultConfigName, defaultGenerators, extendConfigWithDefaults, helpContent } from "./config";
 import { simpleTemplateGenerator } from "./generators";
 import { extractValues, fileExists, isFunction, readFile, readJSONFile, validateObject, writeFile } from "./helpers";
-import { IGenerator, IGeneratorParamsArgs, IGeneratorParamsError, IPackage, Params, UserArgs } from "./model";
+import { IGenerator, IGeneratorParamsArgs, IGeneratorParamsError, IConfig, Params, UserArgs, IPackage } from "./model";
 
 /**
  * Generates a readme.
  * @param pkg
  * @param blueprint
- * @param pkgPath
+ * @param configPath
  * @param generators
  */
-export function generateReadme ({pkg, blueprint, pkgPath, generators}: {pkg: IPackage, blueprint: string, pkgPath: string, generators: IGenerator<any>[]}): string {
+export function generateReadme ({config, blueprint, configPath, generators}: {config: IConfig, blueprint: string, configPath: string, generators: IGenerator<any>[]}): string {
 
-	const {silent} = pkg.readme;
+	const {silent} = config;
 
 	// Go through all of the generators and replace with the template
-	let defaultArgs = {pkg, pkgPath, generateReadme};
+	let defaultArgs = {config, configPath, generateReadme};
 	for (const generator of generators) {
 		blueprint = blueprint.replace(generator.regex({...defaultArgs, blueprint}), (string, ...matches) => {
 			let params: any | null | Params | IGeneratorParamsError = null;
@@ -49,11 +49,11 @@ export function generateReadme ({pkg, blueprint, pkgPath, generators}: {pkg: IPa
 					delete requiredParams["optional"];
 
 					// Validate the params
-					if (!validateObject({obj: pkg, requiredFields: (<any>Object).values(requiredParams)})) {
-						errorReason = `"${pkgPath}" is missing one or more of the keys "${(<any>Object).values(requiredParams)
-						                                                                .join(", ")}"`;
+					if (!validateObject({obj: config, requiredFields: (<any>Object).values(requiredParams)})) {
+						errorReason = `"${configPath}" is missing one or more of the keys "${(<any>Object).values(requiredParams)
+						                                                                                  .join(", ")}"`;
 					} else {
-						params = extractValues({map: {...optionalParams, ...requiredParams}, obj: pkg});
+						params = extractValues({map: {...optionalParams, ...requiredParams}, obj: config});
 					}
 				}
 
@@ -77,39 +77,39 @@ export function generateReadme ({pkg, blueprint, pkgPath, generators}: {pkg: IPa
 /**
  * Loads the package file.
  * @param pkgPath
- * @param userArgs
  */
-export function loadPackage ({pkgPath, userArgs}: {pkgPath: string, userArgs: UserArgs}): IPackage | null {
+export function loadPackage (pkgPath: string): IPackage | null {
+	return <IPackage>readJSONFile(pkgPath) || null;
+}
 
-	// Grab package
-	if (!fileExists(pkgPath)) {
-		console.log(red(`[readme] - Could not find the package file "${pkgPath}".`));
-		return null;
-	}
-
-	return <IPackage>readJSONFile(pkgPath) || {};
+/**
+ * Loads the config file.
+ * @param configPath
+ */
+export function loadConfig (configPath: string): IConfig | null {
+	return <IConfig>readJSONFile(configPath) || null;
 }
 
 /**
  * Generates the readme.
  */
-export async function generate ({pkg, pkgPath}: {pkg: IPackage, pkgPath: string}) {
+export async function generate ({config, configPath}: {config: IConfig, configPath: string}) {
 
-	const {dry, silent, templates, output} = pkg.readme;
+	const {dry, silent, templates, output} = config;
 
 	// Grab blueprint
 	let blueprint: string = "";
-	if (Array.isArray(pkg.readme.blueprint)) {
-		blueprint = pkg.readme.blueprint.join(pkg.readme.lineBreak);
+	if (Array.isArray(config.input)) {
+		blueprint = config.input.join(config.lineBreak);
 
 	} else {
-		const blueprintPath = resolve(pkg.readme.blueprint);
+		const blueprintPath = resolve(config.input);
 		if (!fileExists(blueprintPath)) {
-			console.log(red(`[readme] - Could not find the blueprint file "${blueprintPath}". Make sure to provide a valid path as either the user arguments --readme.blueprint or in the "readme.blueprint" field in the "${pkgPath}" file.`));
+			console.log(red(`[readme] - Could not find the blueprint file "${blueprintPath}". Make sure to provide a valid path as either the user arguments --readme.input or in the "input" field in the "${configPath}" file.`));
 			return;
 		}
 
-		blueprint = readFile(blueprintPath);
+		blueprint = readFile(blueprintPath) || "";
 	}
 
 	// Grab templates
@@ -122,7 +122,7 @@ export async function generate ({pkg, pkgPath}: {pkg: IPackage, pkgPath: string}
 	}
 
 	// Generate the readme
-	const readme = generateReadme({pkg, blueprint, pkgPath, generators});
+	const readme = generateReadme({config: config, blueprint, configPath: configPath, generators});
 
 	// Write the file
 	if (!dry) {
@@ -154,17 +154,17 @@ export function showHelp () {
  * @param userArgs
  */
 export async function run (userArgs: UserArgs) {
-	const pkgPath = resolve(userArgs["package"] || defaultPackageName);
-	const pkg = loadPackage({pkgPath, userArgs});
+	const configPath = resolve(userArgs["config"] || userArgs["c"] || defaultConfigName);
 
-	// Only if the package is defined we continue
-	if (pkg != null) {
-		extendPackageWithDefaults({pkg, userArgs});
+	// Check if the config exists
+	let config: IConfig = extendConfigWithDefaults({config: loadConfig(configPath) || defaultConfig, userArgs});
 
-		if (pkg.readme.help) {
-			showHelp();
-		} else {
-			await generate({pkg, pkgPath});
-		}
+	// Extend the config with the package object
+	config.pkg = {...(loadPackage(config.package) || {}), ...config.pkg};
+
+	if (config.help) {
+		showHelp();
+	} else {
+		await generate({config, configPath});
 	}
 }

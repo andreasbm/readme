@@ -1,5 +1,5 @@
 import { getLicenseUrl, getTitle, getTitleLink, isValidURL, splitArrayIntoArrays } from "./helpers";
-import { BadgesTemplateArgs, BulletsTemplateArgs, ContributorsTemplateArgs, DemoTemplateArgs, DescriptionTemplateArgs, IPackage, LicenseTemplateArgs, LineColor, LineTemplateArgs, LogoTemplateArgs, MainTitleTemplateArgs, TableOfContentsTemplateArgs, TableTemplateArgs, TitleTemplateArgs } from "./model";
+import { BadgesTemplateArgs, BulletsTemplateArgs, ContributorsTemplateArgs, DemoTemplateArgs, DescriptionTemplateArgs, IConfig, LicenseTemplateArgs, LineColor, LineTemplateArgs, LogoTemplateArgs, MainTitleTemplateArgs, TableOfContentsTemplateArgs, TableTemplateArgs, TitleTemplateArgs } from "./model";
 
 /**
  * Creates the template for the logo.
@@ -22,10 +22,11 @@ export function mainTitleTemplate ({name}: MainTitleTemplateArgs): string {
 
 /**
  * Creates a line template.
+ * @param config
  */
-export function lineTemplate ({pkg}: LineTemplateArgs) {
+export function lineTemplate ({config}: LineTemplateArgs) {
 	let url = "";
-	const {line} = pkg.readme;
+	const {line} = config;
 
 	// If the line should not be there we just return an empty string.
 	if (line === LineColor.NONE) {
@@ -46,22 +47,22 @@ export function lineTemplate ({pkg}: LineTemplateArgs) {
  * Creates a template for the title.
  * @param title
  * @param level
- * @param pkg
+ * @param config
  */
-export function titleTemplate ({title, level, pkg}: TitleTemplateArgs) {
-	const beforeTitleContent = level <= 2 ? `${pkg.readme.lineBreak}[${lineTemplate({pkg})}](${getTitleLink(title)})${pkg.readme.lineBreak}${pkg.readme.lineBreak}` : "";
-	return `${beforeTitleContent}${(<any>Array(level)).fill("#").join("")} ${getTitle({title, level, pkg})}`;
+export function titleTemplate ({title, level, config}: TitleTemplateArgs) {
+	const beforeTitleContent = level <= 2 ? `${config.lineBreak}[${lineTemplate({config})}](${getTitleLink(title)})${config.lineBreak}${config.lineBreak}` : "";
+	return `${beforeTitleContent}${(<any>Array(level)).fill("#").join("")} ${getTitle({title, level, config})}`;
 }
 
 /**
  * Creates a template for the badges.
  * @param badges
- * @param pkg
+ * @param config
  */
-export function badgesTemplate ({badges, pkg}: BadgesTemplateArgs): string {
+export function badgesTemplate ({badges, config}: BadgesTemplateArgs): string {
 	return `<p align="center">
 		${badges.map(badge => `<a href="${badge.url}"><img alt="${badge.alt}" src="${badge.img}" height="20"/></a>`)
-	            .join(pkg.readme.lineBreak)}
+	            .join(config.lineBreak)}
 	</p>
 `;
 }
@@ -106,16 +107,16 @@ export function descriptionTemplate ({description, text, demo}: DescriptionTempl
  * @param bullets
  * @param pkg
  */
-export function bulletsTemplate ({bullets, pkg}: BulletsTemplateArgs): string {
-	return bullets.map(bullet => `* ${bullet}`).join(pkg.readme.lineBreak);
+export function bulletsTemplate ({bullets, config}: BulletsTemplateArgs): string {
+	return bullets.map(bullet => `* ${bullet}`).join(config.lineBreak);
 }
 
 /**
  * Creates a table template.
  * @param content
- * @param pkg
+ * @param config
  */
-export function tableTemplate ({content, pkg}: TableTemplateArgs): string {
+export function tableTemplate ({content, config}: TableTemplateArgs): string {
 	const tableSplitter = `|`;
 
 	// Add the | ------------- | ---- | ----- | ----- | line after the header
@@ -129,7 +130,7 @@ export function tableTemplate ({content, pkg}: TableTemplateArgs): string {
 		row = row.map(r => r.replace(tableSplitter, "\\$&"));
 
 		return `${tableSplitter} ${row.join(` ${tableSplitter} `)} ${tableSplitter}`;
-	}).join(pkg.readme.lineBreak);
+	}).join(config.lineBreak);
 }
 
 /**
@@ -137,7 +138,7 @@ export function tableTemplate ({content, pkg}: TableTemplateArgs): string {
  * @param titles
  * @param pkg
  */
-export function tocTemplate ({titles, pkg}: TableOfContentsTemplateArgs): string {
+export function tocTemplate ({titles, config}: TableOfContentsTemplateArgs): string {
 
 	// Map the title to the level of the title (# = 1, ## = 2 and so on)
 	const titleLevels = titles.map(title => {
@@ -148,28 +149,28 @@ export function tocTemplate ({titles, pkg}: TableOfContentsTemplateArgs): string
 	const lowestLevel = titleLevels.reduce((acc, {title, level}) => Math.min(acc, level), Infinity);
 
 	// Format the table of contents title because it is applied after the title template
-	return `${titleTemplate({title: "Table of Contents", level: 2, pkg})}
+	return `${titleTemplate({title: "Table of Contents", level: 2, config: config})}
 
 ${titleLevels.map(({title, level}) => {
 		// Subtract the lowest level from the level to ensure that the lowest level will have 0 tabs in front
 		// We can't make any assumptions about what level of headings the readme uses.
-		const tabs = (<any>Array(level - lowestLevel)).fill(pkg.readme.tab).join("");
+		const tabs = (<any>Array(level - lowestLevel)).fill(config.tab).join("");
 		const cleanedTitle = title.replace(/^[# ]*/gm, "");
 		return `${tabs}* [${cleanedTitle}](${getTitleLink(cleanedTitle)})`;
-	}).join(pkg.readme.lineBreak)}`;
+	}).join(config.lineBreak)}`;
 }
 
 /**
  * Creates the authors template.
  * @param contributors
- * @param pkg
+ * @param config
  */
-export function contributorsTemplate ({contributors, pkg}: ContributorsTemplateArgs): string {
-	const contributorsPrRow = pkg.readme.contributorsPerRow;
+export function contributorsTemplate ({contributors, config}: ContributorsTemplateArgs): string {
+	const {contributorsPerRow} = config;
 	const imageSize = 100;
 
 	// Split the contributors into multiple arrays (one for each row)
-	const rows = splitArrayIntoArrays(contributors, contributorsPrRow);
+	const rows = splitArrayIntoArrays(contributors, contributorsPerRow);
 
 	return `## Contributors
 	
@@ -208,8 +209,8 @@ ${rows.map(row => {
 			nameCells,
 			...(hasEmails ? [emailCells] : []),
 			...infoLines
-		].join(`|${pkg.readme.lineBreak}|`)}|`;
-	}).join(pkg.readme.lineBreak)}`;
+		].join(`|${config.lineBreak}|`)}|`;
+	}).join(config.lineBreak)}`;
 }
 
 /**
@@ -217,7 +218,7 @@ ${rows.map(row => {
  * Currently base64 inline svg is not supported by Github flavored markdown.
  * @param pkg
  */
-export function svgLineTemplate ({pkg}: {pkg: IPackage}): string {
+export function svgLineTemplate ({config}: {config: IConfig}): string {
 	const lineColors = [
 		"#63BC47",
 		"#FBB724",
@@ -242,7 +243,7 @@ export function svgLineTemplate ({pkg}: {pkg: IPackage}): string {
                 <g id="parts" transform="translate(0, ${height - lineHeight})">
                     ${lineColors.map((color,
 	                                  i) => `<rect fill="${color}" x="${lineParthWidth * i}" y="0" width="${lineParthWidth}" height="${lineHeight}"></rect>`)
-	                            .join(pkg.readme.lineBreak)}
+	                            .join(config.lineBreak)}
                 </g>
             </g>
         </g>

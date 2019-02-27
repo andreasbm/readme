@@ -7,7 +7,7 @@ By now you are probably curious to know how this README file was generated? It w
 {{ template:title }}
 {{ template:badges }}
 {{ template:description }}
-{{ readme.bullets }}
+{{ bullets }}
 {{ template:toc }}
 {{ load:readme/1-installation.md }}
 {{ load:readme/2-create-blueprint.md }}

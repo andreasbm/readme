@@ -12,7 +12,7 @@ The important thing to note here is that the template automatically reads your `
 
 ```json
 {
-  "name": "[[ name ]]"
+  "name": "[[ pkg.name ]]"
 }
 ```
 
@@ -24,15 +24,13 @@ The logo template adds a logo to your readme and looks like this:
 
 [[ template:logo ]]
 
-Use the placeholder `{{ template:logo }}` to stamp it. You will need to add the `readme.logo` field to your `package.json`. The logo field requires an `src` field. Optionally you can provide values for `width`, `height` and `alt`. Below is an example on how to add the data for the logo template.
+Use the placeholder `{{ template:logo }}` to stamp it. You will need to add the `logo` field to your `blueprint.json`. The logo field requires an `src` field. Optionally you can provide values for `width`, `height` and `alt`. Below is an example on how to add the data for the logo template.
 
 ```json
 {
-  "readme": {
-    "logo": {
-      "src": "[[ readme.logo.src ]]",
-      "width": "[[ readme.logo.width ]]"
-    }
+  "logo": {
+    "src": "[[ logo.src ]]",
+    "width": "[[ logo.width ]]"
   }
 }
 ```
@@ -43,23 +41,21 @@ The badges template adds badges to your readme and looks like this:
 
 [[ template:badges ]]
 
-Use the `{{ template:badges }}` placeholder to stamp it. You will need to add the data about how the badges should be generated. For that you can extend the `readme.ids` property in your `package.json` and add the `npm` and `github` ids (both are optional). If you want to add your own badges you can use the `readme.badges` field.
+Use the `{{ template:badges }}` placeholder to stamp it. You will need to add the data about how the badges should be generated. For that you can extend the `ids` property in your `blueprint.json` and add the `npm` and `github` ids (both are optional). If you want to add your own badges you can use the `badges` field.
 
 ```json
 {
-  "readme": {
-    "ids": {
-      "github": "[[ readme.ids.github ]]",
-      "npm": "[[ readme.ids.npm ]]"
-    },
-    "badges": [
-      {
-        "alt": "Custom badge",
-        "url": "https://github.com/badges/shields",
-        "img": "https://img.shields.io/badge/custom-badge-f39f37.svg"
-      }
-    ]
-  }
+  "ids": {
+    "github": "[[ ids.github ]]",
+    "npm": "[[ ids.npm ]]"
+  },
+  "badges": [
+    {
+      "alt": "Custom badge",
+      "url": "https://github.com/badges/shields",
+      "img": "https://img.shields.io/badge/custom-badge-f39f37.svg"
+    }
+  ]
 }
 ```
 
@@ -71,14 +67,21 @@ The description template adds a description to your readme and looks like this:
 
 [[ template:description ]]
 
-Use the `{{ template:description }}` placeholder to stamp it. To use this template you are required to add the field `description` to your `package.json` file. Optionally you can also add the fields `readme.text` and `readme.demo` which will be presented below the description.
+Use the `{{ template:description }}` placeholder to stamp it. To use this template you are required to add the field `description` to your `package.json` file. Optionally you can also add the fields `text` and `demo` in your `blueprint.json` file which will be presented below the description.
+
+// package.json
 
 ```json
 {
-  "description": "[[ description ]]",
-  "readme": {
-    "text": "[[ readme.text ]]"
-  }
+  "description": "[[ pkg.description ]]"
+}
+```
+
+// blueprint.json
+
+```json
+{
+  "text": "[[ text ]]"
 }
 ```
 

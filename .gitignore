@@ -11,6 +11,7 @@ package-lock.json
 
 # dependencies
 /node_modules
+/example/node_modules
 /functions/node_modules
 
 # IDEs and editors

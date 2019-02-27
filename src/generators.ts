@@ -1,6 +1,6 @@
 import { resolve } from "path";
 import { fileExists, getBadges, getValue, isObject, placeholderRegexCallback, readFile } from "./helpers";
-import { BadgesTemplateArgs, ContributorsTemplateArgs, DescriptionTemplateArgs, IGenerator, IGeneratorParamsArgs, IPackage, IUserTemplate, LicenseTemplateArgs, LineTemplateArgs, LoadTemplateArgs, LogoTemplateArgs, MainTitleTemplateArgs, TableOfContentsTemplateArgs, TitleTemplateArgs } from "./model";
+import { BadgesTemplateArgs, ContributorsTemplateArgs, DescriptionTemplateArgs, IGenerator, IGeneratorParamsArgs, IConfig, IUserTemplate, LicenseTemplateArgs, LineTemplateArgs, LoadTemplateArgs, LogoTemplateArgs, MainTitleTemplateArgs, TableOfContentsTemplateArgs, TitleTemplateArgs } from "./model";
 import { badgesTemplate, bulletsTemplate, contributorsTemplate, descriptionTemplate, licenseTemplate, lineTemplate, logoTemplate, mainTitleTemplate, tableTemplate, titleTemplate, tocTemplate } from "./templates";
 
 /**
@@ -24,12 +24,12 @@ export function simpleTemplateGenerator ({name, template, params}: IUserTemplate
 export const generateLoad: IGenerator<LoadTemplateArgs> = {
 	name: "load",
 	regex: placeholderRegexCallback("load:(.+?\.md)"),
-	template: ({content, generateReadme, pkgPath, pkg}: LoadTemplateArgs) => {
+	template: ({content, generateReadme, configPath, config}: LoadTemplateArgs) => {
 		// Recursively generate the readme for all the files that are being loaded, but only add the load generator
 		// since all of the generators should only run once.
-		return generateReadme({pkg, blueprint: content, pkgPath, generators: [generateLoad]});
+		return generateReadme({config, blueprint: content, configPath, generators: [generateLoad]});
 	},
-	params: ({pkg, matches, generateReadme, pkgPath}) => {
+	params: ({config, matches, generateReadme, configPath}) => {
 		const absolutePath = resolve(matches[1]);
 
 		// Check if file exists
@@ -38,8 +38,8 @@ export const generateLoad: IGenerator<LoadTemplateArgs> = {
 		}
 
 		// Read the file
-		const content = readFile(absolutePath);
-		return {content, generateReadme, pkgPath, pkg};
+		const content = readFile(absolutePath) || "";
+		return {content, generateReadme, configPath, config};
 	}
 };
 
@@ -51,8 +51,8 @@ export const generateLogo: IGenerator<LogoTemplateArgs> = {
 	regex: placeholderRegexCallback("template:logo"),
 	template: logoTemplate,
 	params: {
-		logo: "readme.logo",
-		src: "readme.logo.src"
+		logo: "logo",
+		src: "logo.src"
 	}
 };
 
@@ -64,7 +64,7 @@ export const generateMainTitle: IGenerator<MainTitleTemplateArgs> = {
 	regex: placeholderRegexCallback("template:title"),
 	template: mainTitleTemplate,
 	params: {
-		name: "name"
+		name: "pkg.name"
 	}
 };
 
@@ -75,12 +75,12 @@ export const generateBadges: IGenerator<BadgesTemplateArgs> = {
 	name: "badges",
 	regex: placeholderRegexCallback("template:badges"),
 	template: badgesTemplate,
-	params: ({pkg}: IGeneratorParamsArgs) => {
-		const badges = getBadges({pkg});
+	params: ({config}: IGeneratorParamsArgs) => {
+		const badges = getBadges({config});
 		if (badges.length === 0) {
 			return {error: "it could not generate any badges"};
 		}
-		return {badges, pkg};
+		return {badges, config};
 	}
 };
 
@@ -92,10 +92,10 @@ export const generateDescription: IGenerator<DescriptionTemplateArgs> = {
 	regex: placeholderRegexCallback("template:description"),
 	template: descriptionTemplate,
 	params: {
-		description: "description",
+		description: "pkg.description",
 		optional: {
-			demo: "readme.demo",
-			text: "readme.text"
+			demo: "demo",
+			text: "text"
 		}
 	}
 };
@@ -117,7 +117,7 @@ export const generateContributors: IGenerator<ContributorsTemplateArgs> = {
 	regex: placeholderRegexCallback("template:contributors"),
 	template: contributorsTemplate,
 	params: {
-		contributors: "contributors"
+		contributors: "pkg.contributors"
 	}
 };
 
@@ -129,7 +129,7 @@ export const generateLicense: IGenerator<LicenseTemplateArgs> = {
 	regex: placeholderRegexCallback("template:license"),
 	template: licenseTemplate,
 	params: {
-		license: "license"
+		license: "pkg.license"
 	}
 };
 
@@ -140,21 +140,21 @@ export const generateTitle: IGenerator<TitleTemplateArgs> = {
 	name: "title",
 	regex: () => /^([#]{1,2}) (.*)$/gm,
 	template: titleTemplate,
-	params: ({pkg, matches}) => {
+	params: ({config, matches}) => {
 		const hashes = matches[0];
 		const title = matches[1];
-		return {title, level: hashes.length, pkg};
+		return {title, level: hashes.length, config};
 	}
 };
 
 /**
  * Generates the interpolation.
  */
-export const generateInterpolate: IGenerator<{pkg: IPackage, text: string}> = {
+export const generateInterpolate: IGenerator<{config: IConfig, text: string}> = {
 	name: "interpolate",
 	regex: placeholderRegexCallback(`[^\\s:]*`),
-	template: ({pkg, text}) => {
-		let value = getValue<string>(pkg, text);
+	template: ({config, text}) => {
+		let value = getValue<string>(config, text);
 		if (value == null) return text;
 
 		// Transform objects into array so they can be transformed into lists
@@ -167,21 +167,21 @@ export const generateInterpolate: IGenerator<{pkg: IPackage, text: string}> = {
 
 			// Turn 2D arrays into tables
 			if (value.length > 0 && Array.isArray(value[0])) {
-				value = tableTemplate({content: value, pkg});
+				value = tableTemplate({content: value, config: config});
 			}
 
 			// Turn 1D arrays into bullets
 			else {
-				value = bulletsTemplate({bullets: value, pkg});
+				value = bulletsTemplate({bullets: value, config: config});
 			}
 
 		}
 
 		return value || text;
 	},
-	params: ({pkg, matches}) => {
+	params: ({config, matches}) => {
 		const text = matches[0];
-		return {pkg, text: text.trim()};
+		return {config, text: text.trim()};
 	}
 };
 
@@ -192,12 +192,12 @@ export const generateToc: IGenerator<TableOfContentsTemplateArgs> = {
 	name: "toc",
 	regex: placeholderRegexCallback("template:toc"),
 	template: tocTemplate,
-	params: ({pkg, blueprint}) => {
+	params: ({config, blueprint}) => {
 		const titles = blueprint.match(/^[#]{1,6} .*$/gm);
 		if (titles == null) {
 			return {error: "it could not find any titles"};
 		}
-		return {titles, pkg};
+		return {titles, config};
 	}
 };
 

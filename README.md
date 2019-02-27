@@ -3,11 +3,7 @@
 </p>
 <h1 align="center">@appnest/readme</h1>
 <p align="center">
-		<a href="https://npmcharts.com/compare/@appnest/readme?minimal=true"><img alt="Downloads per month" src="https://img.shields.io/npm/dm/@appnest/readme.svg" height="20"/></a>
-<a href="https://www.npmjs.com/package/@appnest/readme"><img alt="NPM Version" src="https://img.shields.io/npm/v/@appnest/readme.svg" height="20"/></a>
-<a href="https://david-dm.org/andreasbm/readme"><img alt="Dependencies" src="https://img.shields.io/david/andreasbm/readme.svg" height="20"/></a>
-<a href="https://github.com/andreasbm/readme/graphs/contributors"><img alt="Contributors" src="https://img.shields.io/github/contributors/andreasbm/readme.svg" height="20"/></a>
-<a href="https://github.com/badges/shields"><img alt="Custom badge" src="https://img.shields.io/badge/custom-badge-f39f37.svg" height="20"/></a>
+		<a href="https://github.com/badges/shields"><img alt="Custom badge" src="https://img.shields.io/badge/custom-badge-f39f37.svg" height="20"/></a>
 <a href="https://github.com/andreasbm/readme/graphs/commit-activity"><img alt="Maintained" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" height="20"/></a>
 	</p>
 
@@ -35,6 +31,7 @@
 * [➤ Getting Started](#-getting-started)
 	* [Blueprint](#blueprint)
 	* [Usage](#usage)
+	* [Configuration](#configuration)
 * [➤ Templates](#-templates)
 	* [Title](#title)
 	* [Logo](#logo)
@@ -84,7 +81,7 @@ Spend a minute reading this getting started guide and you'll have the best READM
 
 First you need to create a `blueprint.md` file. This blueprint is going to be the blueprint for the `README.md` file we will generate later.
 
-Let's start simple. In order to get values from your `package.json` file injected into the readme we use the mustache syntax (`{{ .. }}`). Let's say your `package.json` file looks like this:
+Let's start simple. In order to get values from your `package.json` file injected into the README file we use the mustache syntax (`{{ .. }}`). Let's say your `package.json` file looks like this:
 
 ```json
 {
@@ -93,10 +90,10 @@ Let's start simple. In order to get values from your `package.json` file injecte
 }
 ```
 
-To get the `name` and `version` into your readme you will need to write `{{ name }}` and `{{ version }}` in your `blueprint.md` file like this:
+To get the `name` and `version` into your README file you will need to write `{{ pkg.name }}` and `{{ pkg.version }}` in your `blueprint.md` file like this:
 
 ```markdown
-Welcome to {{ name }}. This is version {{ version }}!
+Welcome to {{ pkg.name }}. This is version {{ pkg.version }}!
 ```
 
 When running `node_modules/.bin/readme` the file `README.md` will be generated with the following contents:
@@ -132,6 +129,10 @@ Run the `node_modules/.bin/readme` command and a README file will be generated f
 | --readme.logo | {src: string; alt?: string; width?: number; height?: number;} | The logo information. Used for the 'logo' template. |
 | --readme.contributorsPerRow | number | The amount of contributors pr row when using the 'contributors' template. Defaults to '6' |
 
+### Configuration
+
+To configure this library you'll need to create a `blueprint.json` file. This file is the configuration for the templates we are going to take a look at in the next section. If you want to interpolate values from the configuration file into your README file you can simply reference them without a scope. Eg. if you have the field "link" in your `blueprint.json` you can write `{{ link }}` to reference it.
+
 Great. Now that we have the basics covered, let's continue and see how you can use templates!
 
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#templates)
@@ -164,15 +165,13 @@ The logo template adds a logo to your readme and looks like this:
   <img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/logo-shadow.png" alt="Logo" width="150" height="150" />
 </p>
 
-Use the placeholder `{{ template:logo }}` to stamp it. You will need to add the `readme.logo` field to your `package.json`. The logo field requires an `src` field. Optionally you can provide values for `width`, `height` and `alt`. Below is an example on how to add the data for the logo template.
+Use the placeholder `{{ template:logo }}` to stamp it. You will need to add the `logo` field to your `blueprint.json`. The logo field requires an `src` field. Optionally you can provide values for `width`, `height` and `alt`. Below is an example on how to add the data for the logo template.
 
 ```json
 {
-  "readme": {
-    "logo": {
-      "src": "https://raw.githubusercontent.com/andreasbm/readme/master/assets/logo-shadow.png",
-      "width": "150"
-    }
+  "logo": {
+    "src": "https://raw.githubusercontent.com/andreasbm/readme/master/assets/logo-shadow.png",
+    "width": "150"
   }
 }
 ```
@@ -182,32 +181,26 @@ Use the placeholder `{{ template:logo }}` to stamp it. You will need to add the 
 The badges template adds badges to your readme and looks like this:
 
 <p align="center">
-		<a href="https://npmcharts.com/compare/@appnest/readme?minimal=true"><img alt="Downloads per month" src="https://img.shields.io/npm/dm/@appnest/readme.svg" height="20"/></a>
-<a href="https://www.npmjs.com/package/@appnest/readme"><img alt="NPM Version" src="https://img.shields.io/npm/v/@appnest/readme.svg" height="20"/></a>
-<a href="https://david-dm.org/andreasbm/readme"><img alt="Dependencies" src="https://img.shields.io/david/andreasbm/readme.svg" height="20"/></a>
-<a href="https://github.com/andreasbm/readme/graphs/contributors"><img alt="Contributors" src="https://img.shields.io/github/contributors/andreasbm/readme.svg" height="20"/></a>
-<a href="https://github.com/badges/shields"><img alt="Custom badge" src="https://img.shields.io/badge/custom-badge-f39f37.svg" height="20"/></a>
+		<a href="https://github.com/badges/shields"><img alt="Custom badge" src="https://img.shields.io/badge/custom-badge-f39f37.svg" height="20"/></a>
 <a href="https://github.com/andreasbm/readme/graphs/commit-activity"><img alt="Maintained" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" height="20"/></a>
 	</p>
 
 
-Use the `{{ template:badges }}` placeholder to stamp it. You will need to add the data about how the badges should be generated. For that you can extend the `readme.ids` property in your `package.json` and add the `npm` and `github` ids (both are optional). If you want to add your own badges you can use the `readme.badges` field.
+Use the `{{ template:badges }}` placeholder to stamp it. You will need to add the data about how the badges should be generated. For that you can extend the `ids` property in your `blueprint.json` and add the `npm` and `github` ids (both are optional). If you want to add your own badges you can use the `badges` field.
 
 ```json
 {
-  "readme": {
-    "ids": {
-      "github": "andreasbm/readme",
-      "npm": "@appnest/readme"
-    },
-    "badges": [
-      {
-        "alt": "Custom badge",
-        "url": "https://github.com/badges/shields",
-        "img": "https://img.shields.io/badge/custom-badge-f39f37.svg"
-      }
-    ]
-  }
+  "ids": {
+    "github": "andreasbm/readme",
+    "npm": "@appnest/readme"
+  },
+  "badges": [
+    {
+      "alt": "Custom badge",
+      "url": "https://github.com/badges/shields",
+      "img": "https://img.shields.io/badge/custom-badge-f39f37.svg"
+    }
+  ]
 }
 ```
 
@@ -225,14 +218,21 @@ The description template adds a description to your readme and looks like this:
 <br />
 
 
-Use the `{{ template:description }}` placeholder to stamp it. To use this template you are required to add the field `description` to your `package.json` file. Optionally you can also add the fields `readme.text` and `readme.demo` which will be presented below the description.
+Use the `{{ template:description }}` placeholder to stamp it. To use this template you are required to add the field `description` to your `package.json` file. Optionally you can also add the fields `text` and `demo` in your `blueprint.json` file which will be presented below the description.
+
+// package.json
 
 ```json
 {
-  "description": "Automatically generate a beautiful best-practice README file based on the contents of your repository",
-  "readme": {
-    "text": "Use this readme generator to easily generate beautiful readme's like this one! Simply extend your <code>package.json</code> and create a readme blueprint. On Github, the README file is like the landing page of your website because it is the first thing visitors see. You want to make a good first impression."
-  }
+  "description": "Automatically generate a beautiful best-practice README file based on the contents of your repository"
+}
+```
+
+// blueprint.json
+
+```json
+{
+  "text": "Use this readme generator to easily generate beautiful readme's like this one! Simply extend your <code>package.json</code> and create a readme blueprint. On Github, the README file is like the landing page of your website because it is the first thing visitors see. You want to make a good first impression."
 }
 ```
 
@@ -249,6 +249,7 @@ The table of contents template adds a table of contents and looks like this:
 * [➤ Getting Started](#-getting-started)
 	* [Blueprint](#blueprint)
 	* [Usage](#usage)
+	* [Configuration](#configuration)
 * [➤ Templates](#-templates)
 	* [Title](#title)
 	* [Logo](#logo)
@@ -336,7 +337,7 @@ Use the `{{ template:license }}` placeholder to stamp it. To use this template y
 
 ```json
 {
-  "license": "MIT"
+  "license": "license"
 }
 ```
 
@@ -357,7 +358,7 @@ By now you are probably curious to know how this README file was generated? It w
 {{ template:title }}
 {{ template:badges }}
 {{ template:description }}
-{{ readme.bullets }}
+{{ bullets }}
 {{ template:toc }}
 {{ load:readme/1-installation.md }}
 {{ load:readme/2-create-blueprint.md }}
@@ -377,18 +378,16 @@ It really couldn't be more simple that this.
 
 ## ➤ Custom templates
 
-You are able to create your own templates to keep things as DRY as a hot summer day. To create your own templates you'll first need to add the `readme.templates` array to your `package.json` file like this.
+You are able to create your own templates to keep things as DRY as a hot summer day. To create your own templates you'll first need to add the `templates` array to your `blueprint.json` file like this.
 
 ```json
 {
-  "readme": {
-    "templates":[
-      {
-        "name": "install",
-        "template": "Run `npm install {{ readme.ids.npm }} to install this library!"
-      }
-    ]
-  }
+  "templates": [
+    {
+      "name": "install",
+      "template": "Run `npm install {{ ids.npm }} to install this library!"
+    }
+  ]
 }
 ```
 
@@ -406,24 +405,22 @@ Oh! So are you ready to open Pandora's box? Let's do it.
 
 ### New template syntax
 
-If you are in the mood you can change the syntax used for matching with the templates. Let's say you want your placeholders to look like this instead `{[ template:title }]`. Then you'll need to add the `readme.placeholder` array with the new syntax being `["{[", "}]"]` like this.
+If you are in the mood you can change the syntax used for matching with the templates. Let's say you want your placeholders to look like this instead `{[ template:title }]`. Then you'll need to add the `placeholder` array to your `blueprint.json` file with the new syntax being `["{[", "}]"]` like this.
 
 
 ```json
 {
-  "readme": {
-    "placeholder": ["{[", "}]"]
-  }
+  "placeholder": ["{[", "}]"]
 }
 ```
 
 ### Variables
 
-If you have a variable from your `package.json` file you want to stamp to your readme just use the `{{ ... }}` syntax as usual.
+If you have a variable from your `blueprint.json` file you want to stamp to your readme just use the `{{ ... }}` syntax as usual without any scopes.
 
 #### Objects
 
-Objects are formatted as a list with the keys being bold. If you for example want to stamp the `dependencies` field from your `package.json` file you write `{{ dependencies }}` and the dependencies will be stamped in a nice formatted way like this.
+Objects are formatted as a list with the keys being bold. If you for example want to stamp the `dependencies` field from your `package.json` file you write `{{ pkg.dependencies }}` and the dependencies will be stamped in a nice formatted way like this.
 
 * **colors**: ^1.3.3
 * **command-line-usage**: ^5.0.5
@@ -431,10 +428,9 @@ Objects are formatted as a list with the keys being bold. If you for example wan
 * **minimist**: ^1.2.0
 * **path**: ^0.12.7
 
-
 #### 1D Arrays
 
-If you have a 1D array it will be formatted as a list. If you for example want to stamp the the `keywords` field from your `package.json` file you write `{{ keywords }}` and the keywords will be stamped in a nice formatted way like this:
+If you have a 1D array it will be formatted as a list. If you for example want to stamp the the `keywords` field from your `package.json` file you write `{{ pkg.keywords }}` and the keywords will be stamped in a nice formatted way like this:
 
 * opensource
 * project
@@ -447,21 +443,19 @@ If you have a 1D array it will be formatted as a list. If you for example want t
 
 #### 2D Arrays
 
-If you have a 2D array it will be formatted as a table. This is very convenient for things like documentation of API's. Let's say you have the following in your `package.json`.
+If you have a 2D array it will be formatted as a table. This is very convenient for things like documentation of API's. Let's say you have the following in your `blueprint.json`.
 
 ```json
 {
-  "readme": {
-    "properties": [
-      ["Attribute", "Type", "Description"],
-      ["**size**", "'medium', 'large'", "Determines the size" ],
-      ["**active**", "boolean", "Whether the element is active or not" ]
-    ]
-  }
+  "properties": [
+    ["Attribute", "Type", "Description"],
+    ["**size**", "'medium', 'large'", "Determines the size" ],
+    ["**active**", "boolean", "Whether the element is active or not" ]
+  ]
 }
 ```
 
-Then you can stamp it to your readme by writing `{{ readme.properties }}` and it will be formatted as a table.
+Then you can stamp it to your readme by writing `{{ properties }}` and it will be formatted as a table.
 
 | Attribute | Type | Description |
 | ------- | ------- | ------- |
@@ -472,13 +466,11 @@ You are welcome!
 
 ### Different colored lines
 
-If you want to change the color of the lines above headers you can change the `readme.line` field in the `package.json`. Here's an example if you want a dark line instead of the colored one.
+If you want to change the color of the lines above headers you can change the `line` field in the `blueprint.json`. Here's an example if you want a dark line instead of the colored one.
 
 ```json
 {
-  "readme": {
-    "line": "dark"
-  }
+  "line": "dark"
 }
 ```
 
@@ -500,11 +492,11 @@ Yeah! Dark mode on your `README.md` is awesome indeed. You have other options be
 * "vintage" ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/vintage.png)
 * "water" ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/water.png)
 
-If you want your own line design you can give the `readme.line` field an url to an image instead. It is recommended that this image is 900px in width. If you prefer no line at all you can give the `readme.line` field the string "none".
+If you want your own line design you can give the `line` field an url to an image instead. It is recommended that this image is 900px in width. If you prefer no line at all you can give the `line` field the string "none".
 
 ### Different formatted headings
 
-If you want to change the prefix in front of the heading you can change the `readme.headingPrefix` in the `package.json` file. Just map the heading level to the desired prefix as shown below.
+If you want to change the prefix in front of the heading you can change the `headingPrefix` in the `blueprint.json` file. Just map the heading level to the desired prefix as shown below.
 
 ```json
 {

@@ -7,7 +7,7 @@
   <img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/demo.gif" alt="Demo" width="800" />
 </p>
 
-[[ readme.bullets ]]
+[[ bullets ]]
 [[ template:toc ]]
 [[ load:readme/1-installation.md ]]
 [[ load:readme/2-getting-started.md ]]

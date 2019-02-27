@@ -46,8 +46,9 @@ export type PlaceholderSyntax = [string, string];
 // }
 
 export interface IConfig {
-	blueprint: string
+	input: string
 	output: string;
+	package: string;
 	help: boolean;
 	text?: string;
 	demo?: string;
@@ -62,24 +63,24 @@ export interface IConfig {
 	headingPrefix: {[key: number]: string}
 	badges?: IBadge[];
 	contributorsPerRow: number;
+	pkg: IPackage;
 }
 
 export interface IPackage {
 	name?: string;
 	contributors?: IContributor[];
 	license?: License;
-	readme: IConfig
 }
 
 export interface IGeneratorArgs {
-	pkg: IPackage;
+	config: IConfig;
 	blueprint: string;
-	pkgPath: string;
+	configPath: string;
 	generateReadme: GenerateReadmeFunction;
 }
 
 export type Params = {[key: string]: string} | {optional?: {[key: string]: string}}
-export type GenerateReadmeFunction = ({pkg, blueprint, generators, pkgPath}: {pkg: IPackage, blueprint: string, generators: IGenerator<any>[], pkgPath: string}) => string;
+export type GenerateReadmeFunction = ({config, blueprint, generators, configPath}: {config: IConfig, blueprint: string, generators: IGenerator<any>[], configPath: string}) => string;
 
 export interface IGeneratorParamsArgs extends IGeneratorArgs {
 	matches: RegExpMatchArray;
@@ -108,21 +109,21 @@ export interface IContributor {
 	info?: string[];
 }
 
-export type UserArgs =  {[key: string]: any};
+export type UserArgs = {[key: string]: any};
 
 export type Bullet = string;
 export type License = string;
 
-export type LoadTemplateArgs = {content: string, generateReadme: GenerateReadmeFunction, pkgPath: string, pkg: IPackage};
+export type LoadTemplateArgs = {content: string, generateReadme: GenerateReadmeFunction, configPath: string, config: IConfig};
 export type LogoTemplateArgs = {logo: ILogo};
-export type LineTemplateArgs = {pkg: IPackage};
-export type TitleTemplateArgs = {title: string, level: number, pkg: IPackage};
+export type LineTemplateArgs = {config: IConfig};
+export type TitleTemplateArgs = {title: string, level: number, config: IConfig};
 export type MainTitleTemplateArgs = {name: string};
-export type BadgesTemplateArgs = {badges: IBadge[], pkg: IPackage};
+export type BadgesTemplateArgs = {badges: IBadge[], config: IConfig};
 export type DescriptionTemplateArgs = {description: string, text?: string, demo?: string};
-export type BulletsTemplateArgs = {bullets: Bullet[], pkg: IPackage};
-export type TableTemplateArgs = {content: string[][], pkg: IPackage};
-export type TableOfContentsTemplateArgs = {titles: string[], pkg: IPackage};
-export type ContributorsTemplateArgs = {contributors: IContributor[], pkg: IPackage};
+export type BulletsTemplateArgs = {bullets: Bullet[], config: IConfig};
+export type TableTemplateArgs = {content: string[][], config: IConfig};
+export type TableOfContentsTemplateArgs = {titles: string[], config: IConfig};
+export type ContributorsTemplateArgs = {contributors: IContributor[], config: IConfig};
 export type LicenseTemplateArgs = {license: License};
 export type DemoTemplateArgs = {url: string};

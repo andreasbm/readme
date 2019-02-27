@@ -178,7 +178,7 @@ ${titlesInfo.map(({level, titleLink, title}) => {
 		// Subtract the lowest level from the level to ensure that the lowest level will have 0 tabs in front
 		// We can't make any assumptions about what level of headings the readme uses.
 		const tabs = (<any>Array(level - lowestLevel)).fill(config.tab).join("");
-		title = title.replace(/^#*\s*/, "").trim();
+		title = title.replace(/^#*\s?/, "").trim();
 		return `${tabs}* [${title}](${titleLink})`;
 	}).join(config.lineBreak)}`;
 }

@@ -221,16 +221,17 @@ export function getTitle ({title, level, config}: {title: string, level: number,
  * Cleans the title from weird symbols.
  * @param title
  */
-export function cleanTitle (title: string): string {
+export function getCleanTitle (title: string): string {
 	return title.replace(/[^a-zA-Z0-9-_ ]/g, "");
 }
 
 /**
  * Returns the title link.
  * @param title
+ * @param index
  */
-export function getTitleLink (title: string): string {
-	return `#${cleanTitle(title).replace(/ /g, "-").toLowerCase()}`;
+export function getTitleLink (title: string, index: number = 0): string {
+	return `#${getCleanTitle(title).replace(/ /g, "-").toLowerCase()}${index > 0 ? `-${index}` : ""}`;
 }
 
 /**

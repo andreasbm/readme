@@ -1,4 +1,5 @@
-import { getLicenseUrl, getTitle, getTitleLink, isValidURL, splitArrayIntoArrays } from "./helpers";
+import { clean } from "semver";
+import { getCleanTitle, getLicenseUrl, getTitle, getTitleLink, isValidURL, splitArrayIntoArrays } from "./helpers";
 import { BadgesTemplateArgs, BulletsTemplateArgs, ContributorsTemplateArgs, DemoTemplateArgs, DescriptionTemplateArgs, IConfig, LicenseTemplateArgs, LineColor, LineTemplateArgs, LogoTemplateArgs, MainTitleTemplateArgs, TableOfContentsTemplateArgs, TableTemplateArgs, TitleTemplateArgs } from "./model";
 
 /**
@@ -140,23 +141,45 @@ export function tableTemplate ({content, config}: TableTemplateArgs): string {
  */
 export function tocTemplate ({titles, config}: TableOfContentsTemplateArgs): string {
 
-	// Map the title to the level of the title (# = 1, ## = 2 and so on)
-	const titleLevels = titles.map(title => {
-		return {title, level: (title.match(/#/g) || []).length};
+	// Create a clean titles array.
+	// We are going to use it to figure out the index of each title (there might be more titles with the same name).
+	const tempCleanTitles = titles.map(title => getCleanTitle(title));
+
+	// Create a map, mapping each clean title to the amount of times it occurs in the titles array
+	const countForTitle: {[key: string]: number} = <any>tempCleanTitles.reduce((acc: {[key: string]: number}, title) => { acc[title] = (acc[title] || 0) + 1; return acc; }, {});
+
+	// Map the titles to relevant info.
+	const titlesInfo = titles.map(title => {
+		const cleanTitle = getCleanTitle(title);
+		const titlesWithSameName = tempCleanTitles.filter(t => t === cleanTitle);
+
+		// Remove title from the temp array and compute the index
+		tempCleanTitles.splice(tempCleanTitles.indexOf(cleanTitle), 1);
+
+		// Compute the index (the first will be 0 and so on)
+		const index = ((countForTitle[cleanTitle] || 1) - titlesWithSameName.length);
+
+		// Compute the level of the title
+		const level = (title.match(/#/g) || []).length;
+
+		// Compute the title link
+		const titleLink = getTitleLink(title, index);
+
+		return {title, cleanTitle, index, titleLink, level};
 	});
 
 	// Find the lowest level of heading (# is lower than ##)
-	const lowestLevel = titleLevels.reduce((acc, {title, level}) => Math.min(acc, level), Infinity);
+	const lowestLevel = titlesInfo.reduce((acc, {title, level}) => Math.min(acc, level), Infinity);
 
 	// Format the table of contents title because it is applied after the title template
 	return `${titleTemplate({title: "Table of Contents", level: 2, config: config})}
 
-${titleLevels.map(({title, level}) => {
+${titlesInfo.map(({level, titleLink, title}) => {
 		// Subtract the lowest level from the level to ensure that the lowest level will have 0 tabs in front
 		// We can't make any assumptions about what level of headings the readme uses.
 		const tabs = (<any>Array(level - lowestLevel)).fill(config.tab).join("");
-		const cleanedTitle = title.replace(/^[# ]*/gm, "");
-		return `${tabs}* [${cleanedTitle}](${getTitleLink(cleanedTitle)})`;
+		title = title.replace(/^#*\s*/, "").trim();
+		return `${tabs}* [${title}](${titleLink})`;
 	}).join(config.lineBreak)}`;
 }
 

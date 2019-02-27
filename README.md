@@ -108,26 +108,27 @@ Run the `node_modules/.bin/readme` command and a README file will be generated f
 
 | Option | Type | Description |
 | ------- | ------- | ------- |
+| -c, --config | string | Path of the configuration file. Defaults to 'blueprint.json |
 | -p, --package | string | Path of the 'package.json' file. Defaults to 'package.json'. |
-| --name | string | Name of the project. Used for the 'title' template. |
-| --contributors | {name: string; email: string; url: string; img: string; info: string[];}[] | Contributors of the project. Used for the 'contributors' template. |
-| --license | string | License kind. Used for the 'license' template. |
-| -o, --readme.output | string | Path of the generated README file. Defaults to 'README.md'. |
-| -h, --readme.help |  | Display this help message. |
-| -b, --readme.blueprint | string | The blueprint. Defaults to 'blueprint.md'. |
-| --readme.badges | {alt: string, url: string, img: string}[] | Badges. Used for the 'badges' template. |
-| --readme.text | string | Text describing your project. Used for the 'description' template. |
-| --readme.demo | string | Demo url for your project. Used for the 'description' template. |
-| --readme.lineBreak | string | The linebreak used in the generation of the README file. Defaults to 'rn' |
-| --readme.tab | string | The tab used in the generation of the README file. Defaults to 't' |
-| --readme.placeholder | [string, string] | The placeholder syntax used when looking for templates in the blueprint. Defaults to '["{{", "}}"]. |
-| --readme.line | string | The line style of the titles. Can also be an URL. Defaults to 'colored'. |
-| --readme.templates | {name: string, template: string}[] | User created templates. |
-| -s, --readme.silent | boolean | Whether the console output from the command should be silent. |
-| -d, --readme.dry | boolean | Whether the command should run as dry. If dry, the output file is notgenerated but outputted to the console instead. |
-| --readme.headingPrefix | {[key: number]: string} | The prefix of the header tags. Defaults to '{1: "➤ ", 2: "➤ "}' |
-| --readme.logo | {src: string; alt?: string; width?: number; height?: number;} | The logo information. Used for the 'logo' template. |
-| --readme.contributorsPerRow | number | The amount of contributors pr row when using the 'contributors' template. Defaults to '6' |
+| --pkg.name | string | Name of the project. Used for the 'title' template. |
+| --pkg.contributors | {name: string; email: string; url: string; img: string; info: string[];}[] | Contributors of the project. Used for the 'contributors' template. |
+| --pkg.license | string | License kind. Used for the 'license' template. |
+| -o, --output | string | Path of the generated README file. Defaults to 'README.md'. |
+| -h, --help |  | Display this help message. |
+| -i, --input | string | The blueprint. Defaults to 'blueprint.md'. |
+| --badges | {alt: string, url: string, img: string}[] | Badges. Used for the 'badges' template. |
+| --text | string | Text describing your project. Used for the 'description' template. |
+| --demo | string | Demo url for your project. Used for the 'description' template. |
+| --lineBreak | string | The linebreak used in the generation of the README file. Defaults to 'rn' |
+| --tab | string | The tab used in the generation of the README file. Defaults to 't' |
+| --placeholder | [string, string] | The placeholder syntax used when looking for templates in the blueprint. Defaults to '["{{", "}}"]. |
+| --line | string | The line style of the titles. Can also be an URL. Defaults to 'colored'. |
+| --templates | {name: string, template: string}[] | User created templates. |
+| -s, --silent | boolean | Whether the console output from the command should be silent. |
+| -d, --dry | boolean | Whether the command should run as dry. If dry, the output file is notgenerated but outputted to the console instead. |
+| --headingPrefix | {[key: number]: string} | The prefix of the header tags. Defaults to '{1: "➤ ", 2: "➤ "}' |
+| --logo | {src: string; alt?: string; width?: number; height?: number;} | The logo information. Used for the 'logo' template. |
+| --contributorsPerRow | number | The amount of contributors pr row when using the 'contributors' template. Defaults to '6' |
 
 ### Configuration
 

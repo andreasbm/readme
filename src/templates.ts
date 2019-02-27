@@ -162,6 +162,9 @@ export function tocTemplate ({titles, config}: TableOfContentsTemplateArgs): str
 		// Compute the level of the title
 		const level = (title.match(/#/g) || []).length;
 
+		// Remove the "# " from the titles so eg. "## Hello" becomes "Hello"
+		title = title.replace(/^#*\s?/, "");
+
 		// Compute the title link
 		const titleLink = getTitleLink(title, index);
 
@@ -178,7 +181,6 @@ ${titlesInfo.map(({level, titleLink, title}) => {
 		// Subtract the lowest level from the level to ensure that the lowest level will have 0 tabs in front
 		// We can't make any assumptions about what level of headings the readme uses.
 		const tabs = (<any>Array(level - lowestLevel)).fill(config.tab).join("");
-		title = title.replace(/^#*\s?/, "").trim();
 		return `${tabs}* [${title}](${titleLink})`;
 	}).join(config.lineBreak)}`;
 }

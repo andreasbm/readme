@@ -126,9 +126,9 @@ export function extractValues ({map, obj}: {map: {[key: string]: any}, obj: Obje
 export function getBadges ({config}: {config: IConfig}): IBadge[] {
 	const badges: IBadge[] = [];
 
-	const npmId = getValue<string>(config, "readme.ids.npm");
-	const githubId = getValue<string>(config, "readme.ids.github");
-	const webcomponentsId = getValue<string>(config, "readme.ids.webcomponents");
+	const npmId = getValue<string>(config, "ids.npm");
+	const githubId = getValue<string>(config, "ids.github");
+	const webcomponentsId = getValue<string>(config, "ids.webcomponents");
 
 	// Add NPM badges
 	if (npmId != null) {

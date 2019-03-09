@@ -1,7 +1,7 @@
 import { resolve } from "path";
 import { fileExists, getBadges, getValue, isObject, placeholderRegexCallback, readFile } from "./helpers";
-import { BadgesTemplateArgs, ContributorsTemplateArgs, DescriptionTemplateArgs, IGenerator, IGeneratorParamsArgs, IConfig, IUserTemplate, LicenseTemplateArgs, LineTemplateArgs, LoadTemplateArgs, LogoTemplateArgs, MainTitleTemplateArgs, TableOfContentsTemplateArgs, TitleTemplateArgs } from "./model";
-import { badgesTemplate, bulletsTemplate, contributorsTemplate, descriptionTemplate, licenseTemplate, lineTemplate, logoTemplate, mainTitleTemplate, tableTemplate, titleTemplate, tocTemplate } from "./templates";
+import { BadgesTemplateArgs, ContributorsTemplateArgs, DescriptionTemplateArgs, IGenerator, IGeneratorParamsArgs, IConfig, IUserTemplate, LicenseTemplateArgs, LineTemplateArgs, LoadTemplateArgs, LogoTemplateArgs, MainTitleTemplateArgs, TableOfContentsTemplateArgs, TitleTemplateArgs, DocumentationTemplateArgs } from "./model";
+import { badgesTemplate, bulletsTemplate, contributorsTemplate, descriptionTemplate, documentationTemplate, licenseTemplate, lineTemplate, logoTemplate, mainTitleTemplate, tableTemplate, titleTemplate, tocTemplate } from "./templates";
 
 /**
  * Creates a simple template.
@@ -201,3 +201,18 @@ export const generateToc: IGenerator<TableOfContentsTemplateArgs> = {
 	}
 };
 
+/**
+ * Generates documentation.
+ */
+export const generateDocumentation: IGenerator<DocumentationTemplateArgs> = {
+	name: "documentation",
+	regex: placeholderRegexCallback("doc:(.+?)"),
+	template: documentationTemplate,
+	params: ({matches}: IGeneratorParamsArgs) => {
+		const glob = matches[1];
+		if (glob.length === 0) {
+			return {error: "it could not find the glob"};
+		}
+		return {glob};
+	}
+};

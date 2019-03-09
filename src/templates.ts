@@ -1,6 +1,6 @@
 import { clean } from "semver";
 import { getCleanTitle, getLicenseUrl, getTitle, getTitleLink, isValidURL, splitArrayIntoArrays } from "./helpers";
-import { BadgesTemplateArgs, BulletsTemplateArgs, ContributorsTemplateArgs, DemoTemplateArgs, DescriptionTemplateArgs, IConfig, LicenseTemplateArgs, LineColor, LineTemplateArgs, LogoTemplateArgs, MainTitleTemplateArgs, TableOfContentsTemplateArgs, TableTemplateArgs, TitleTemplateArgs } from "./model";
+import { BadgesTemplateArgs, BulletsTemplateArgs, ContributorsTemplateArgs, DemoTemplateArgs, DescriptionTemplateArgs, DocumentationTemplateArgs, IConfig, LicenseTemplateArgs, LineColor, LineTemplateArgs, LogoTemplateArgs, MainTitleTemplateArgs, TableOfContentsTemplateArgs, TableTemplateArgs, TitleTemplateArgs } from "./model";
 
 /**
  * Creates the template for the logo.
@@ -239,41 +239,10 @@ ${rows.map(row => {
 }
 
 /**
- * Creates a svg line template.
- * Currently base64 inline svg is not supported by Github flavored markdown.
- * @param pkg
+ * Generates documentation for a glob.
+ * @param badges
  */
-export function svgLineTemplate ({config}: {config: IConfig}): string {
-	const lineColors = [
-		"#63BC47",
-		"#FBB724",
-		"#F58220",
-		"#E03A3E",
-		"#963F97",
-		"#0B9EDA"
-	];
-
-	const width = 900;
-	const height = 9;
-	const lineHeight = 2;
-	const lineParthWidth = Math.round(width / lineColors.length);
-
-	const svg = `
-<svg width="${width}px" height="${height}px" viewBox="0 0 ${width} ${height}" version="1.1" xmlns="http://www.w3.org/2000/svg">
-    <defs></defs>
-    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="line-colored" fill-rule="nonzero">
-            <g id="line">
-                <rect id="bg" x="0" y="0" width="${width}" height="${height}"></rect>
-                <g id="parts" transform="translate(0, ${height - lineHeight})">
-                    ${lineColors.map((color,
-	                                  i) => `<rect fill="${color}" x="${lineParthWidth * i}" y="0" width="${lineParthWidth}" height="${lineHeight}"></rect>`)
-	                            .join(config.lineBreak)}
-                </g>
-            </g>
-        </g>
-    </g>
-</svg>`;
-
-	return svg;
+export function documentationTemplate ({glob}: DocumentationTemplateArgs): string {
+	return `TODO: Generate documentation for "${glob}"`;
 }
+

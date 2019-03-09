@@ -1,10 +1,13 @@
 import { OptionDefinition, OptionList } from "command-line-usage";
-import { generateBadges, generateContributors, generateDescription, generateInterpolate, generateLicense, generateLine, generateLoad, generateLogo, generateMainTitle, generateTitle, generateToc } from "./generators";
+import { generateBadges, generateContributors, generateDescription, generateDocumentation, generateInterpolate, generateLicense, generateLine, generateLoad, generateLogo, generateMainTitle, generateTitle, generateToc } from "./generators";
 import { getValue, setValue } from "./helpers";
 import { IConfig, IGenerator, LineColor, UserArgs, IPackage } from "./model";
 
 export const defaultGenerators: IGenerator<any>[] = [
+	// Pre process
 	generateLoad,
+
+	// Process
 	generateLogo,
 	generateMainTitle,
 	generateBadges,
@@ -12,6 +15,9 @@ export const defaultGenerators: IGenerator<any>[] = [
 	generateLine,
 	generateContributors,
 	generateLicense,
+	generateDocumentation,
+
+	// Post process
 	generateTitle,
 	generateInterpolate,
 	generateToc

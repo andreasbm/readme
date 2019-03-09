@@ -120,6 +120,7 @@ export type LineTemplateArgs = {config: IConfig};
 export type TitleTemplateArgs = {title: string, level: number, config: IConfig};
 export type MainTitleTemplateArgs = {name: string};
 export type BadgesTemplateArgs = {badges: IBadge[], config: IConfig};
+export type DocumentationTemplateArgs = {glob: string;};
 export type DescriptionTemplateArgs = {description: string, text?: string, demo?: string};
 export type BulletsTemplateArgs = {bullets: Bullet[], config: IConfig};
 export type TableTemplateArgs = {content: string[][], config: IConfig};

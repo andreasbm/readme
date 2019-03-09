@@ -80,18 +80,17 @@ export interface IGeneratorArgs {
 }
 
 export type Params = {[key: string]: string} | {optional?: {[key: string]: string}}
-export type GenerateReadmeFunction = ({config, blueprint, generators, configPath}: {config: IConfig, blueprint: string, generators: IGenerator<any>[], configPath: string}) => string;
+export type GenerateReadmeFunction = ({config, blueprint, generators, configPath}: {config: IConfig, blueprint: string, generators: IGenerator<any>[], configPath: string}) => Promise<string>;
 
 export interface IGeneratorParamsArgs extends IGeneratorArgs {
-	matches: RegExpMatchArray;
-	string: string;
+	match: RegExpMatchArray;
 }
 
 export interface IGenerator<T> {
 	name: string;
 	regex: (args: IGeneratorArgs) => RegExp;
-	template: (args: T) => string;
-	params?: Params | ((args: IGeneratorParamsArgs) => T | IGeneratorParamsError);
+	template: (args: T) => string | Promise<string>;
+	params?: Params | ((args: IGeneratorParamsArgs) => T | IGeneratorParamsError | Promise<T | IGeneratorParamsError>);
 }
 
 export interface ILogo {

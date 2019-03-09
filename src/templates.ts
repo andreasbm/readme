@@ -1,6 +1,7 @@
-import { clean } from "semver";
+import * as path from "path";
+import { AnalyzeCliCommand } from "web-component-analyzer";
 import { getCleanTitle, getLicenseUrl, getTitle, getTitleLink, isValidURL, splitArrayIntoArrays } from "./helpers";
-import { BadgesTemplateArgs, BulletsTemplateArgs, ContributorsTemplateArgs, DemoTemplateArgs, DescriptionTemplateArgs, DocumentationTemplateArgs, IConfig, LicenseTemplateArgs, LineColor, LineTemplateArgs, LogoTemplateArgs, MainTitleTemplateArgs, TableOfContentsTemplateArgs, TableTemplateArgs, TitleTemplateArgs } from "./model";
+import { BadgesTemplateArgs, BulletsTemplateArgs, ContributorsTemplateArgs, DemoTemplateArgs, DescriptionTemplateArgs, DocumentationTemplateArgs, LicenseTemplateArgs, LineColor, LineTemplateArgs, LogoTemplateArgs, MainTitleTemplateArgs, TableOfContentsTemplateArgs, TableTemplateArgs, TitleTemplateArgs } from "./model";
 
 /**
  * Creates the template for the logo.
@@ -146,7 +147,11 @@ export function tocTemplate ({titles, config}: TableOfContentsTemplateArgs): str
 	const tempCleanTitles = titles.map(title => getCleanTitle(title));
 
 	// Create a map, mapping each clean title to the amount of times it occurs in the titles array
-	const countForTitle: {[key: string]: number} = <any>tempCleanTitles.reduce((acc: {[key: string]: number}, title) => { acc[title] = (acc[title] || 0) + 1; return acc; }, {});
+	const countForTitle: {[key: string]: number} = <any>tempCleanTitles.reduce((acc: {[key: string]: number},
+	                                                                            title) => {
+		acc[title] = (acc[title] || 0) + 1;
+		return acc;
+	}, {});
 
 	// Map the titles to relevant info.
 	const titlesInfo = titles.map(title => {
@@ -242,7 +247,7 @@ ${rows.map(row => {
  * Generates documentation for a glob.
  * @param badges
  */
-export function documentationTemplate ({glob}: DocumentationTemplateArgs): string {
-	return `TODO: Generate documentation for "${glob}"`;
+export function documentationTemplate ({glob}: DocumentationTemplateArgs): Promise<string> {
+	return new AnalyzeCliCommand().analyze(glob, {output: "md", debug: false});
 }
 

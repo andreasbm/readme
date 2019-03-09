@@ -37,6 +37,6 @@ customElements.define("my-button", MyButton);
 
 Then you can get automatic documentation for the web component by simply writing `{{ doc:my-button.js }}` which will result in the following content.
 
-[[ doc:elements/my-element.js ]]
+[[ doc:elements/my-button.js ]]
 
 If you want to learn more about how the documentation is generated, check out [`web-component-analyzer`](https://github.com/runem/web-component-analyzer).

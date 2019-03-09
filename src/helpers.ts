@@ -258,3 +258,13 @@ export function splitArrayIntoArrays<T> (arr: T[], count: number): T[][] {
 	return arrs;
 }
 
+/**
+ * Replaces content in string between two indicies.
+ * @param string
+ * @param start
+ * @param end
+ * @param content
+ */
+export function replaceInString (string: string, content: string, {start, end}: {start: number, end: number}): string {
+	return string.substring(0, start) + content + string.substring(end);
+}

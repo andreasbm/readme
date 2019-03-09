@@ -29,8 +29,8 @@ export const generateLoad: IGenerator<LoadTemplateArgs> = {
 		// since all of the generators should only run once.
 		return generateReadme({config, blueprint: content, configPath, generators: [generateLoad]});
 	},
-	params: ({config, matches, generateReadme, configPath}) => {
-		const absolutePath = resolve(matches[1]);
+	params: ({config, match, generateReadme, configPath}) => {
+		const absolutePath = resolve(match[2]);
 
 		// Check if file exists
 		if (!fileExists(absolutePath)) {
@@ -140,9 +140,9 @@ export const generateTitle: IGenerator<TitleTemplateArgs> = {
 	name: "title",
 	regex: () => /^([#]{1,2}) (.*)$/gm,
 	template: titleTemplate,
-	params: ({config, matches}) => {
-		const hashes = matches[0];
-		const title = matches[1];
+	params: ({config, match}) => {
+		const hashes = match[1];
+		const title = match[2];
 		return {title, level: hashes.length, config};
 	}
 };
@@ -179,8 +179,8 @@ export const generateInterpolate: IGenerator<{config: IConfig, text: string}> = 
 
 		return value || text;
 	},
-	params: ({config, matches}) => {
-		const text = matches[0];
+	params: ({config, match}) => {
+		const text = match[1];
 		return {config, text: text.trim()};
 	}
 };
@@ -208,8 +208,8 @@ export const generateDocumentation: IGenerator<DocumentationTemplateArgs> = {
 	name: "documentation",
 	regex: placeholderRegexCallback("doc:(.+?)"),
 	template: documentationTemplate,
-	params: ({matches}: IGeneratorParamsArgs) => {
-		const glob = matches[1];
+	params: ({match}: IGeneratorParamsArgs) => {
+		const glob = match[2];
 		if (glob.length === 0) {
 			return {error: "it could not find the glob"};
 		}

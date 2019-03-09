@@ -48,6 +48,8 @@
 * [➤ License](#-license)
 * [➤ Load markdown files](#-load-markdown-files)
 * [➤ Automatic documentation](#-automatic-documentation)
+* [➤ my-button](#-my-button)
+	* [Properties](#properties)
 * [➤ A bit about this readme](#-a-bit-about-this-readme)
 * [➤ Custom templates](#-custom-templates)
 * [➤ Advanced!](#-advanced)
@@ -255,6 +257,7 @@ The table of contents template adds a table of contents and looks like this:
 
 ## ➤ Table of Contents
 
+* [➤ Table of Contents](#-table-of-contents)
 * [➤ Installation](#-installation)
 * [➤ Getting Started](#-getting-started)
 	* [Blueprint](#blueprint)
@@ -272,6 +275,8 @@ The table of contents template adds a table of contents and looks like this:
 * [➤ License](#-license)
 * [➤ Load markdown files](#-load-markdown-files)
 * [➤ Automatic documentation](#-automatic-documentation)
+* [➤ my-button](#-my-button)
+	* [Properties](#properties)
 * [➤ A bit about this readme](#-a-bit-about-this-readme)
 * [➤ Custom templates](#-custom-templates)
 * [➤ Advanced!](#-advanced)
@@ -401,7 +406,21 @@ customElements.define("my-button", MyButton);
 
 Then you can get automatic documentation for the web component by simply writing `{{ doc:my-button.js }}` which will result in the following content.
 
-OMG: elements/my-element.js
+
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#my-button)
+
+## ➤ my-button
+
+Button used for clicking!
+
+### Properties
+
+| Property   | Attribute  | Description           | Type      | Default  |
+|------------|------------|-----------------------|-----------|----------|
+| `disabled` | `disabled` | Disables the element. | `boolean` | false    |
+| `role`     | `role`     | Role of the element.  | `string`  | "button" |
+
+
 
 If you want to learn more about how the documentation is generated, check out [`web-component-analyzer`](https://github.com/runem/web-component-analyzer).
 
@@ -419,13 +438,16 @@ By now you are probably curious to know how this README file was generated? It w
 {{ bullets }}
 {{ template:toc }}
 {{ load:readme/1-installation.md }}
-{{ load:readme/2-create-blueprint.md }}
+{{ load:readme/2-getting-started.md }}
 {{ load:readme/3-templates.md }}
 {{ load:readme/4-load-markdown.md }}
-{{ load:readme/5-this-readme.md }}
-{{ load:readme/6-custom-templates.md }}
-{{ load:readme/7-advanced.md }}
-{{ load:readme/8-future-work.md }}
+{{ load:readme/5-automatic-documentation.md }}
+{{ load:readme/6-this-readme.md }}
+{{ load:readme/7-custom-templates.md }}
+{{ load:readme/8-advanced.md }}
+{{ load:readme/9-featured-readmes.md }}
+{{ load:readme/10-future-work.md }}
+{{ load:readme/11-faq.md }}
 {{ template:contributors }}
 {{ template:license }}
 ```
@@ -451,7 +473,7 @@ You are able to create your own templates to keep things as DRY as a hot summer 
 
 Then you can stamp your custom template using the `{{ template:install }}` syntax ("install" here referencing the name of the custom template). The below is an example of what is stamped to the README file using the above template.
 
-Run `npm install @appnest/readme' to install this library!
+[[ template:install ]]
 
 Be creative! You can for example add a template for code-snippets or [words you keep spelling wrong](https://en.oxforddictionaries.com/spelling/common-misspellings).
 
@@ -485,7 +507,7 @@ Objects are formatted as a list with the keys being bold. If you for example wan
 * **fs-extra**: ^7.0.1
 * **minimist**: ^1.2.0
 * **path**: ^0.12.7
-* **web-component-analyzer**: 0.0.3
+* **web-component-analyzer**: 0.0.5
 
 #### 1D Arrays
 

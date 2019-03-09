@@ -1,4 +1,5 @@
 import { OptionDefinition, OptionList } from "command-line-usage";
+import { AnalyzeCliCommandOptions } from "web-component-analyzer";
 import { generateBadges, generateContributors, generateDescription, generateDocumentation, generateInterpolate, generateLicense, generateLine, generateLoad, generateLogo, generateMainTitle, generateTitle, generateToc } from "./generators";
 import { getValue, setValue } from "./helpers";
 import { IConfig, IGenerator, LineColor, UserArgs, IPackage } from "./model";
@@ -22,6 +23,8 @@ export const defaultGenerators: IGenerator<any>[] = [
 	generateInterpolate,
 	generateToc
 ];
+
+export const defaultDocumentationConfig: AnalyzeCliCommandOptions = {output: "md", debug: false};
 
 /**
  * Default name of the blueprint configuration.
@@ -48,7 +51,8 @@ export const defaultConfig: IConfig = {
 		1: "➤ ",
 		2: "➤ "
 	},
-	pkg: {}
+	pkg: {},
+	documentationConfig: defaultDocumentationConfig
 };
 
 /**
@@ -178,6 +182,12 @@ export const commandOptions: OptionDefinition[] = [
 		description: `The amount of contributors pr row when using the 'contributors' template. Defaults to '${defaultConfig.contributorsPerRow}'`,
 		defaultValue: defaultConfig.contributorsPerRow,
 		type: Number
+	},
+	{
+		name: "documentationConfig",
+		description: `Configuration object for automatic documentation template.`,
+		defaultValue: defaultDocumentationConfig,
+		type: Object
 	}
 ];
 

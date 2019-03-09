@@ -13,6 +13,13 @@
 		"[[",
 		"]]"
 	],
+	"documentationConfig": {
+		"output": "md",
+		"debug": false,
+		"markdown": {
+			"titleLevel": 3
+		}
+	},
 	"ids": {
 		"github": "andreasbm/readme",
 		"npm": "@appnest/readme"
@@ -179,6 +186,11 @@
 			"--contributorsPerRow",
 			"number",
 			"The amount of contributors pr row when using the 'contributors' template. Defaults to '6'"
+		],
+		[
+			"--documentationConfig",
+			"object",
+			"Configuration object for automatic documentation template."
 		]
 	]
 }

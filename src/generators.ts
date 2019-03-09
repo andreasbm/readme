@@ -208,11 +208,11 @@ export const generateDocumentation: IGenerator<DocumentationTemplateArgs> = {
 	name: "documentation",
 	regex: placeholderRegexCallback("doc:(.+?)"),
 	template: documentationTemplate,
-	params: ({match}: IGeneratorParamsArgs) => {
+	params: ({match, config}: IGeneratorParamsArgs) => {
 		const glob = match[2];
 		if (glob.length === 0) {
 			return {error: "it could not find the glob"};
 		}
-		return {glob};
+		return {glob, config};
 	}
 };

@@ -5,7 +5,7 @@ Welcome to the future. Here we have **automatic documentation of web components!
 ```javascript
 /**
  * Button used for clicking!
- * @slot Default content
+ * @slot - Default content
  */
 export class MyButton extends HTMLElement {
 

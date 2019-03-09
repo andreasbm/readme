@@ -1,6 +1,6 @@
 /**
  * Button used for clicking!
- * @slot Default content
+ * @slot - Default content
  */
 export class MyButton extends HTMLElement {
 

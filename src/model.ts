@@ -1,3 +1,5 @@
+import { AnalyzeCliCommandOptions } from "web-component-analyzer";
+
 export enum LineColor {
 	AQUA = "aqua",
 	CLOUDY = "cloudy",
@@ -64,6 +66,7 @@ export interface IConfig {
 	badges?: IBadge[];
 	contributorsPerRow: number;
 	pkg: IPackage;
+	documentationConfig: AnalyzeCliCommandOptions;
 }
 
 export interface IPackage {
@@ -113,17 +116,17 @@ export type UserArgs = {[key: string]: any};
 export type Bullet = string;
 export type License = string;
 
-export type LoadTemplateArgs = {content: string, generateReadme: GenerateReadmeFunction, configPath: string, config: IConfig};
+export type LoadTemplateArgs = {content: string; generateReadme: GenerateReadmeFunction; configPath: string; config: IConfig};
 export type LogoTemplateArgs = {logo: ILogo};
 export type LineTemplateArgs = {config: IConfig};
-export type TitleTemplateArgs = {title: string, level: number, config: IConfig};
+export type TitleTemplateArgs = {title: string; level: number; config: IConfig};
 export type MainTitleTemplateArgs = {name: string};
-export type BadgesTemplateArgs = {badges: IBadge[], config: IConfig};
-export type DocumentationTemplateArgs = {glob: string;};
-export type DescriptionTemplateArgs = {description: string, text?: string, demo?: string};
-export type BulletsTemplateArgs = {bullets: Bullet[], config: IConfig};
-export type TableTemplateArgs = {content: string[][], config: IConfig};
-export type TableOfContentsTemplateArgs = {titles: string[], config: IConfig};
-export type ContributorsTemplateArgs = {contributors: IContributor[], config: IConfig};
+export type BadgesTemplateArgs = {badges: IBadge[]; config: IConfig};
+export type DocumentationTemplateArgs = {glob: string; config: IConfig};
+export type DescriptionTemplateArgs = {description: string; text?: string; demo?: string};
+export type BulletsTemplateArgs = {bullets: Bullet[]; config: IConfig};
+export type TableTemplateArgs = {content: string[][]; config: IConfig};
+export type TableOfContentsTemplateArgs = {titles: string[]; config: IConfig};
+export type ContributorsTemplateArgs = {contributors: IContributor[]; config: IConfig};
 export type LicenseTemplateArgs = {license: License};
 export type DemoTemplateArgs = {url: string};

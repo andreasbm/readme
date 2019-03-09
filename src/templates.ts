@@ -245,9 +245,11 @@ ${rows.map(row => {
 
 /**
  * Generates documentation for a glob.
- * @param badges
+ * @param glob
+ * @param config
  */
-export function documentationTemplate ({glob}: DocumentationTemplateArgs): Promise<string> {
-	return new AnalyzeCliCommand().analyze(glob, {output: "md", debug: false});
+export function documentationTemplate ({glob, config}: DocumentationTemplateArgs): Promise<string> {
+	console.log(config.documentationConfig);
+	return new AnalyzeCliCommand().analyze(glob, config.documentationConfig);
 }
 

@@ -1,5 +1,7 @@
 // import { WcaCliConfig } from "web-component-analyzer";
 
+import { WcaCliConfig } from "web-component-analyzer";
+
 export enum LineColor {
 	AQUA = "aqua",
 	CLOUDY = "cloudy",
@@ -66,7 +68,7 @@ export interface IConfig {
 	badges?: IBadge[];
 	contributorsPerRow: number;
 	pkg: IPackage;
-	documentationConfig: Object; /*WcaCliConfig;*/
+	documentationConfig: WcaCliConfig;
 	extend?: string;
 }
 

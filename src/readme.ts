@@ -3,8 +3,8 @@ import commandLineUsage from "command-line-usage";
 import { resolve } from "path";
 import { defaultConfig, defaultConfigName, defaultGenerators, extendConfigWithDefaults, helpContent } from "./config";
 import { simpleTemplateGenerator } from "./generators";
-import { extractValues, fileExists, isFunction, readFile, readJSONFile, replaceInString, validateObject, writeFile } from "./helpers";
-import { IGenerator, IGeneratorParamsArgs, IGeneratorParamsError, IConfig, Params, UserArgs, IPackage } from "./model";
+import { extractValues, fileExists, isFunction, loadConfig, loadPackage, readFile, replaceInString, validateObject, writeFile } from "./helpers";
+import { IConfig, IGenerator, IGeneratorParamsArgs, IGeneratorParamsError, Params, UserArgs } from "./model";
 
 /**
  * Generates a readme.
@@ -21,7 +21,7 @@ export async function generateReadme ({config, blueprint, configPath, generators
 	let defaultArgs = {config, configPath, generateReadme};
 
 	for (const generator of generators) {
-		const regex =generator.regex({...defaultArgs, blueprint});
+		const regex = generator.regex({...defaultArgs, blueprint});
 		let match: RegExpMatchArray | null = null;
 
 		do {
@@ -86,22 +86,6 @@ export async function generateReadme ({config, blueprint, configPath, generators
 	}
 
 	return blueprint;
-}
-
-/**
- * Loads the package file.
- * @param pkgPath
- */
-export function loadPackage (pkgPath: string): IPackage | null {
-	return <IPackage>readJSONFile(pkgPath) || null;
-}
-
-/**
- * Loads the config file.
- * @param configPath
- */
-export function loadConfig (configPath: string): IConfig | null {
-	return <IConfig>readJSONFile(configPath) || null;
 }
 
 /**

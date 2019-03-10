@@ -1,7 +1,7 @@
 import { existsSync, outputFile, readFileSync } from "fs-extra";
 import { resolve } from "path";
 import { githubBadges, npmBadges, webcomponentsBadges } from "./badges";
-import { IBadge, IConfig } from "./model";
+import { IBadge, IConfig, IPackage } from "./model";
 
 export const URL_PATTERN = /^(?:(?:https?|ftp):\/\/)(?:\S+(?::\S*)?@)?(?:(?!10(?:\.\d{1,3}){3})(?!127(?:\.​\d{1,3}){3})(?!169\.254(?:\.\d{1,3}){2})(?!192\.168(?:\.\d{1,3}){2})(?!172\.(?:1[​6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1​,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00​a1-\uffff0-9]+-?)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]+-?)*[a-z\u​00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/[^\s]*)?$/i;
 
@@ -267,4 +267,20 @@ export function splitArrayIntoArrays<T> (arr: T[], count: number): T[][] {
  */
 export function replaceInString (string: string, content: string, {start, end}: {start: number, end: number}): string {
 	return string.substring(0, start) + content + string.substring(end);
+}
+
+/**
+ * Loads the package file.
+ * @param pkgPath
+ */
+export function loadPackage (pkgPath: string): IPackage | null {
+	return <IPackage>readJSONFile(pkgPath) || null;
+}
+
+/**
+ * Loads the config file.
+ * @param configPath
+ */
+export function loadConfig (configPath: string): IConfig | null {
+	return <IConfig>readJSONFile(configPath) || null;
 }

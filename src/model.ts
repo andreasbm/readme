@@ -67,6 +67,7 @@ export interface IConfig {
 	contributorsPerRow: number;
 	pkg: IPackage;
 	documentationConfig: Object; /*WcaCliConfig;*/
+	extend?: string;
 }
 
 export interface IPackage {

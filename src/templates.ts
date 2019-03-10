@@ -248,7 +248,6 @@ ${rows.map(row => {
  * @param config
  */
 export function documentationTemplate ({glob, config}: DocumentationTemplateArgs): Promise<string> {
-	console.log(config.documentationConfig);
 	return new AnalyzeCliCommand().analyze(glob, config.documentationConfig);
 }
 

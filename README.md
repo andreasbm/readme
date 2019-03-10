@@ -94,7 +94,7 @@ Let's start simple. In order to get values from your `package.json` file injecte
 ```json
 {
   "name": "@appnest/readme",
-  "version": "1.1.4"
+  "version": "1.1.5"
 }
 ```
 
@@ -107,7 +107,7 @@ Welcome to {{ pkg.name }}. This is version {{ pkg.version }}!
 When running `node_modules/.bin/readme` the file `README.md` will be generated with the following contents:
 
 ```markdown
-Welcome to @appnest/readme. This is version 1.1.4.
+Welcome to @appnest/readme. This is version 1.1.5.
 ```
 
 ### Usage

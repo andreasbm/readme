@@ -3,12 +3,12 @@
 	"blueprint": "blueprint.md",
 	"input": "blueprint.md",
 	"output": "README.md",
+	"text": "Use this readme generator to easily generate beautiful readme's like this one! Simply extend your <code>package.json</code> and create a readme blueprint. On Github, the README file is like the landing page of your website because it is the first thing visitors see. You want to make a good first impression.",
 	"logo": {
 		"src": "https://raw.githubusercontent.com/andreasbm/readme/master/assets/logo-shadow.png",
 		"width": 150,
 		"height": 150
 	},
-	"text": "Use this readme generator to easily generate beautiful readme's like this one! Simply extend your <code>package.json</code> and create a readme blueprint. On Github, the README file is like the landing page of your website because it is the first thing visitors see. You want to make a good first impression.",
 	"placeholder": [
 		"[[",
 		"]]"
@@ -191,6 +191,11 @@
 			"--documentationConfig",
 			"object",
 			"Configuration object for automatic documentation template."
+		],
+		[
+			"--extend",
+			"string",
+			"Path to another configuration object that should be extended."
 		]
 	]
 }

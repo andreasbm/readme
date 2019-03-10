@@ -182,4 +182,5 @@ export async function run (userArgs: UserArgs) {
 	} else {
 		await generate({config, configPath});
 	}
+
 }

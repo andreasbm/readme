@@ -2,6 +2,7 @@ import { OptionDefinition, OptionList } from "command-line-usage";
 import { generateBadges, generateContributors, generateDescription, generateDocumentation, generateInterpolate, generateLicense, generateLine, generateLoad, generateLogo, generateMainTitle, generateTitle, generateToc } from "./generators";
 import { getValue, setValue } from "./helpers";
 import { IConfig, IGenerator, LineColor, UserArgs } from "./model";
+import { loadConfig } from "./readme";
 
 export const defaultGenerators: IGenerator<any>[] = [
 	// Pre process
@@ -23,7 +24,7 @@ export const defaultGenerators: IGenerator<any>[] = [
 	generateToc
 ];
 
-export const defaultDocumentationConfig /*: WcaCliConfig */ = {output: "md", debug: false};
+export const defaultDocumentationConfig /*: WcaCliConfig */ = {output: "md", debug: false, markdown: {titleLevel: 2}};
 
 /**
  * Default name of the blueprint configuration.
@@ -187,6 +188,11 @@ export const commandOptions: OptionDefinition[] = [
 		description: `Configuration object for automatic documentation template.`,
 		defaultValue: defaultDocumentationConfig,
 		type: Object
+	},
+	{
+		name: "extend",
+		description: `Path to another configuration object that should be extended.`,
+		type: String
 	}
 ];
 
@@ -228,6 +234,20 @@ function transformValue ({type, value}: {type: any, value: any}): any {
  * @param userArgs
  */
 export function extendConfigWithDefaults ({userArgs, config}: {config: IConfig, userArgs: UserArgs}): IConfig {
+
+	// Recursively load the extend path if one has been defined
+	const extend = config.extend || userArgs["extend"];
+	if (extend != null) {
+		const extendConfig = loadConfig(extend);
+
+		// Make sure the config exists
+		if (extendConfig == null) {
+			throw new Error(`Could not load extend config at path "${extend}". Make sure the file exists.`);
+		}
+
+		config = extendConfigWithDefaults({config: extendConfig, userArgs});
+	}
+
 	for (const {name, alias, defaultValue, type} of commandOptions) {
 
 		// Grab the user provided value

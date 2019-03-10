@@ -1,4 +1,4 @@
-import { AnalyzeCliCommandOptions } from "web-component-analyzer";
+// import { WcaCliConfig } from "web-component-analyzer";
 
 export enum LineColor {
 	AQUA = "aqua",
@@ -66,7 +66,7 @@ export interface IConfig {
 	badges?: IBadge[];
 	contributorsPerRow: number;
 	pkg: IPackage;
-	documentationConfig: AnalyzeCliCommandOptions;
+	documentationConfig: Object; /*WcaCliConfig;*/
 }
 
 export interface IPackage {

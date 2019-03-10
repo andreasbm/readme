@@ -94,7 +94,7 @@ Let's start simple. In order to get values from your `package.json` file injecte
 ```json
 {
   "name": "@appnest/readme",
-  "version": "1.1.3"
+  "version": "1.1.4"
 }
 ```
 
@@ -107,7 +107,7 @@ Welcome to {{ pkg.name }}. This is version {{ pkg.version }}!
 When running `node_modules/.bin/readme` the file `README.md` will be generated with the following contents:
 
 ```markdown
-Welcome to @appnest/readme. This is version 1.1.3.
+Welcome to @appnest/readme. This is version 1.1.4.
 ```
 
 ### Usage
@@ -421,9 +421,9 @@ Button used for clicking!
 
 #### Slots
 
-| Slot | Description     |
-|------|-----------------|
-|      | Default content |
+| Description     |
+|-----------------|
+| Default content |
 
 
 If you want to learn more about how the documentation is generated, check out [`web-component-analyzer`](https://github.com/runem/web-component-analyzer).
@@ -511,7 +511,7 @@ Objects are formatted as a list with the keys being bold. If you for example wan
 * **fs-extra**: ^7.0.1
 * **minimist**: ^1.2.0
 * **path**: ^0.12.7
-* **web-component-analyzer**: 0.0.7
+* **web-component-analyzer**: 0.0.9
 
 #### 1D Arrays
 

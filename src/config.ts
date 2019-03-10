@@ -1,8 +1,7 @@
 import { OptionDefinition, OptionList } from "command-line-usage";
-import { AnalyzeCliCommandOptions } from "web-component-analyzer";
 import { generateBadges, generateContributors, generateDescription, generateDocumentation, generateInterpolate, generateLicense, generateLine, generateLoad, generateLogo, generateMainTitle, generateTitle, generateToc } from "./generators";
 import { getValue, setValue } from "./helpers";
-import { IConfig, IGenerator, LineColor, UserArgs, IPackage } from "./model";
+import { IConfig, IGenerator, LineColor, UserArgs } from "./model";
 
 export const defaultGenerators: IGenerator<any>[] = [
 	// Pre process
@@ -24,7 +23,7 @@ export const defaultGenerators: IGenerator<any>[] = [
 	generateToc
 ];
 
-export const defaultDocumentationConfig: AnalyzeCliCommandOptions = {output: "md", debug: false};
+export const defaultDocumentationConfig /*: WcaCliConfig */ = {output: "md", debug: false};
 
 /**
  * Default name of the blueprint configuration.

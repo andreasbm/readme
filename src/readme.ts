@@ -27,7 +27,6 @@ export async function generateReadme ({config, blueprint, configPath, generators
 		do {
 			match = regex.exec(blueprint);
 			if (match != null) {
-				//console.log(match);
 				let markdown = match[0];
 				let params: any | null | Params | IGeneratorParamsError = null;
 
@@ -172,7 +171,7 @@ export async function run (userArgs: UserArgs) {
 	const configPath = resolve(userArgs["config"] || userArgs["c"] || defaultConfigName);
 
 	// Check if the config exists
-	let config: IConfig = extendConfigWithDefaults({config: loadConfig(configPath) || defaultConfig, userArgs});
+	const config: IConfig = extendConfigWithDefaults({config: loadConfig(configPath) || defaultConfig, userArgs});
 
 	// Extend the config with the package object
 	config.pkg = {...(loadPackage(config.package) || {}), ...config.pkg};

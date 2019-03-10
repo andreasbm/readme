@@ -1,7 +1,7 @@
 import { green, red, yellow } from "colors";
 import commandLineUsage from "command-line-usage";
 import { resolve } from "path";
-import { defaultConfig, defaultConfigName, defaultGenerators, extendConfigWithDefaults, helpContent } from "./config";
+import { defaultConfig, defaultConfigName, defaultGenerators, extendConfigWithDefaults, extendConfigWithExtendConfig, helpContent } from "./config";
 import { simpleTemplateGenerator } from "./generators";
 import { extractValues, fileExists, isFunction, loadConfig, loadPackage, readFile, replaceInString, validateObject, writeFile } from "./helpers";
 import { IConfig, IGenerator, IGeneratorParamsArgs, IGeneratorParamsError, Params, UserArgs } from "./model";
@@ -154,8 +154,9 @@ export function showHelp () {
 export async function run (userArgs: UserArgs) {
 	const configPath = resolve(userArgs["config"] || userArgs["c"] || defaultConfigName);
 
-	// Check if the config exists
-	const config: IConfig = extendConfigWithDefaults({config: loadConfig(configPath) || defaultConfig, userArgs});
+	let config: IConfig = loadConfig(configPath) || defaultConfig;
+	config = extendConfigWithExtendConfig({config});
+	config = extendConfigWithDefaults({config, userArgs});
 
 	// Extend the config with the package object
 	config.pkg = {...(loadPackage(config.package) || {}), ...config.pkg};

@@ -229,14 +229,13 @@ function transformValue ({type, value}: {type: any, value: any}): any {
 }
 
 /**
- * Constructs a configuration object.
- * @param pkg
- * @param userArgs
+ * Constructs a config using the extend path if one is defined.
+ * @param config
  */
-export function extendConfigWithDefaults ({userArgs, config}: {config: IConfig, userArgs: UserArgs}): IConfig {
+export function extendConfigWithExtendConfig ({config}: {config: IConfig}): IConfig {
 
-	// Recursively load the extend path if one has been defined
-	const extend = config.extend || userArgs["extend"];
+	// Recursively load the extend path.
+	const extend = config.extend;
 	if (extend != null) {
 		const extendConfig = loadConfig(extend);
 
@@ -245,8 +244,20 @@ export function extendConfigWithDefaults ({userArgs, config}: {config: IConfig, 
 			throw new Error(`Could not load extend config at path "${extend}". Make sure the file exists.`);
 		}
 
-		config = extendConfigWithDefaults({config: extendConfig, userArgs});
+		// Merge the extend with the config. The config object takes precedence.
+		config = {...extendConfigWithExtendConfig({config: extendConfig}), ...config};
 	}
+
+	return config;
+}
+
+/**
+ * Constructs a configuration object with defaults.
+ * @param pkg
+ * @param userArgs
+ */
+export function extendConfigWithDefaults ({userArgs, config}: {config: IConfig, userArgs: UserArgs}): IConfig {
+	config = {...config};
 
 	for (const {name, alias, defaultValue, type} of commandOptions) {
 

@@ -94,7 +94,7 @@ Let's start simple. In order to get values from your `package.json` file injecte
 ```json
 {
   "name": "@appnest/readme",
-  "version": "1.1.6"
+  "version": "1.1.7"
 }
 ```
 
@@ -107,7 +107,7 @@ Welcome to {{ pkg.name }}. This is version {{ pkg.version }}!
 When running `node_modules/.bin/readme` the file `README.md` will be generated with the following contents:
 
 ```markdown
-Welcome to @appnest/readme. This is version 1.1.6.
+Welcome to @appnest/readme. This is version 1.1.7.
 ```
 
 ### Usage
@@ -417,14 +417,14 @@ Button used for clicking!
 
 | Property   | Attribute  | Description           | Type      | Default  |
 |------------|------------|-----------------------|-----------|----------|
-| `disabled` | `disabled` | Disables the element. | `boolean` | false    |
+| `disabled` | `disabled` | Disables the element. | `boolean` |          |
 | `role`     | `role`     | Role of the element.  | `string`  | "button" |
 
 #### Slots
 
-| Description     |
-|-----------------|
-| Default content |
+| Slot | Description     |
+|------|-----------------|
+|      | Default content |
 
 
 If you want to learn more about how the documentation is generated, check out [`web-component-analyzer`](https://github.com/runem/web-component-analyzer).
@@ -512,7 +512,7 @@ Objects are formatted as a list with the keys being bold. If you for example wan
 * **fs-extra**: ^7.0.1
 * **minimist**: ^1.2.0
 * **path**: ^0.12.7
-* **web-component-analyzer**: 0.0.9
+* **web-component-analyzer**: 0.0.10
 
 #### 1D Arrays
 

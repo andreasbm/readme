@@ -28,11 +28,11 @@ export async function generateReadme ({config, blueprint, configPath, generators
 			match = regex.exec(blueprint);
 			if (match != null) {
 				let markdown = match[0];
+				let errorReason;
 				let params: any | null | Params | IGeneratorParamsError = null;
 
 				// If the params are required we extract them from the package.
 				if (generator.params != null) {
-					let errorReason;
 					if (isFunction(generator.params)) {
 
 						// Extract the params using the function
@@ -62,15 +62,15 @@ export async function generateReadme ({config, blueprint, configPath, generators
 							params = extractValues({map: {...optionalParams, ...requiredParams}, obj: config});
 						}
 					}
+				}
 
-					// If an error occurred print it and continue
-					if (errorReason != null) {
-						if (!silent) {
-							console.log(yellow(`[readme] - The readme generator "${generator.name}" matched "${match[0]}" but was skipped because ${errorReason}.`));
-						}
+				// Use the template if no errors occurred
+				if (errorReason == null) {
+					markdown = await generator.template({...defaultArgs, blueprint, ...params});
 
-					} else {
-						markdown = await generator.template({...defaultArgs, blueprint, ...params});
+				} else {
+					if (!silent) {
+						console.log(yellow(`[readme] - The readme generator "${generator.name}" matched "${match[0]}" but was skipped because ${errorReason}.`));
 					}
 				}
 
@@ -91,7 +91,7 @@ export async function generateReadme ({config, blueprint, configPath, generators
 /**
  * Generates the readme.
  */
-export async function generate ({config, configPath}: {config: IConfig, configPath: string}) {
+export async function generate ({config, configPath, generators}: {config: IConfig, configPath: string, generators: IGenerator<any>[]}) {
 
 	const {dry, silent, templates, output} = config;
 
@@ -111,7 +111,6 @@ export async function generate ({config, configPath}: {config: IConfig, configPa
 	}
 
 	// Grab templates
-	const generators = [...defaultGenerators];
 	if (templates != null) {
 		const simpleTemplateGenerators = templates.map(simpleTemplateGenerator);
 
@@ -120,7 +119,7 @@ export async function generate ({config, configPath}: {config: IConfig, configPa
 	}
 
 	// Generate the readme
-	const readme = await generateReadme({config: config, blueprint, configPath: configPath, generators});
+	const readme = await generateReadme({config, blueprint, configPath, generators});
 
 	// Write the file
 	if (!dry) {
@@ -164,7 +163,6 @@ export async function run (userArgs: UserArgs) {
 	if (config.help) {
 		showHelp();
 	} else {
-		await generate({config, configPath});
+		await generate({config, configPath, generators: defaultGenerators});
 	}
-
 }

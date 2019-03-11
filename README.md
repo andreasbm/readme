@@ -94,7 +94,7 @@ Let's start simple. In order to get values from your `package.json` file injecte
 ```json
 {
   "name": "@appnest/readme",
-  "version": "1.1.9"
+  "version": "1.1.13"
 }
 ```
 
@@ -107,7 +107,7 @@ Welcome to {{ pkg.name }}. This is version {{ pkg.version }}!
 When running `node_modules/.bin/readme` the file `README.md` will be generated with the following contents:
 
 ```markdown
-Welcome to @appnest/readme. This is version 1.1.9.
+Welcome to @appnest/readme. This is version 1.1.13.
 ```
 
 ### Usage
@@ -415,14 +415,14 @@ Then you can get automatic documentation for the web component by simply writing
 Button used for clicking!
 #### Properties
 
-| Property   | Attribute  | Description           | Type      | Default  |
-|------------|------------|-----------------------|-----------|----------|
-| `disabled` | `disabled` | Disables the element. | `boolean` |          |
-| `role`     | `role`     | Role of the element.  | `string`  | "button" |
+| Property   | Attribute  | Type      | Default  | Description           |
+|------------|------------|-----------|----------|-----------------------|
+| `disabled` | `disabled` | `boolean` | false    | Disables the element. |
+| `role`     | `role`     | `string`  | "button" | Role of the element.  |
 
 #### Slots
 
-| Slot | Description     |
+| Name | Description     |
 |------|-----------------|
 |      | Default content |
 
@@ -478,7 +478,7 @@ You are able to create your own templates to keep things as DRY as a hot summer 
 
 Then you can stamp your custom template using the `{{ template:install }}` syntax ("install" here referencing the name of the custom template). The below is an example of what is stamped to the README file using the above template.
 
-[[ template:install ]]
+Run `npm install @appnest/readme' to install this library!
 
 Be creative! You can for example add a template for code-snippets or [words you keep spelling wrong](https://en.oxforddictionaries.com/spelling/common-misspellings).
 
@@ -512,7 +512,7 @@ Objects are formatted as a list with the keys being bold. If you for example wan
 * **fs-extra**: ^7.0.1
 * **minimist**: ^1.2.0
 * **path**: ^0.12.7
-* **web-component-analyzer**: 0.0.10
+* **web-component-analyzer**: 0.0.13
 
 #### 1D Arrays
 

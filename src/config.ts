@@ -24,7 +24,7 @@ export const defaultGenerators: IGenerator<any>[] = [
 	generateToc
 ];
 
-export const defaultDocumentationConfig: WcaCliConfig = {output: "md", debug: false, markdown: {titleLevel: 2}};
+export const defaultDocumentationConfig: WcaCliConfig = {format: "md", debug: false, markdown: {titleLevel: 2}};
 
 /**
  * Default name of the blueprint configuration.

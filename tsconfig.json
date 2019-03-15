@@ -17,6 +17,7 @@
 		"noEmitOnError": true,
 		"strictNullChecks": true,
 		"experimentalDecorators": true,
+		"declaration": true,
 		"lib": [
 			"es2015.promise",
 			"dom",

@@ -119,13 +119,6 @@ export function bulletsTemplate ({bullets, config}: BulletsTemplateArgs): string
  * @param centered
  */
 export function tableTemplate ({rows, config, centered}: TableTemplateArgs): string {
-
-	// Filter away the rows that have no content
-	rows = rows.filter(row => row.map(r => r.trim()).join("").length > 0);
-
-	// Count the amount of columns
-	const columnCount = Math.max(...rows.map(r => r.length));
-
 	/**
 	 * Fills the width of the cell.
 	 * @param text
@@ -135,6 +128,24 @@ export function tableTemplate ({rows, config, centered}: TableTemplateArgs): str
 	function fillWidth (text: string, width: number, paddingStart: number): string {
 		return " ".repeat(paddingStart) + text + " ".repeat(Math.max(1, width - text.length - paddingStart));
 	}
+
+	/**
+	 * Escape a text so it can be used in a markdown table
+	 * @param text
+	 */
+	function markdownEscapeTableCell(text: string): string {
+		return text.replace(/\n/g, "<br />").replace(/\|/g, "\\|");
+	}
+
+	// Filter away the rows that have no content
+	rows = rows.filter(row => row.map(r => r.trim()).join("").length > 0);
+
+	// Count the amount of columns
+	const columnCount = Math.max(...rows.map(r => r.length));
+
+	// Escape all cells in the markdown output
+	rows = rows.map(r => r.map(markdownEscapeTableCell));
+
 
 	const MIN_WIDTH = 3;
 	const MAX_WIDTH = 50;

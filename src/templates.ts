@@ -145,7 +145,7 @@ export function tableTemplate ({rows, config}: TableTemplateArgs): string {
 
 	return `
 |${rows[0].map((r, i) => fillWidth(r, columnWidths[i], PADDING)).join("|")}|
-|${columnWidths.map(c => "-".repeat(c)).join("|")}|
+|${columnWidths.map(c => `:${"-".repeat(c)}:`).join("|")}|
 ${rows
 		.slice(1)
 		.map(r => `|${r.map((r, i) => fillWidth(r, columnWidths[i], PADDING)).join("|")}|`)

@@ -117,7 +117,7 @@ Run the `node_modules/.bin/readme` command and a README file will be generated f
 
 
 | Option                | Type                                             | Description                                      |
-|-----------------------|--------------------------------------------------|--------------------------------------------------|
+|:-----------------------:|:--------------------------------------------------:|:--------------------------------------------------:|
 | -c, --config          | string                                           | Path of the configuration file. Defaults to 'blueprint.json |
 | -p, --package         | string                                           | Path of the 'package.json' file. Defaults to 'package.json'. |
 | --pkg.name            | string                                           | Name of the project. Used for the 'title' template. |
@@ -319,7 +319,7 @@ The contributors template adds the list of contributors and looks like this:
 	
 
 | [<img alt="Andreas Mehlsen" src="https://avatars1.githubusercontent.com/u/6267397?s=460&v=4" width="100">](https://twitter.com/andreasmehlsen) | [<img alt="You?" src="https://joeschmoe.io/api/v1/random" width="100">](https://github.com/andreasbm/readme/blob/master/CONTRIBUTING.md) |
-|--------------------------------------------------|--------------------------------------------------|
+|:--------------------------------------------------:|:--------------------------------------------------:|
 | [Andreas Mehlsen](https://twitter.com/andreasmehlsen) | [You?](https://github.com/andreasbm/readme/blob/master/CONTRIBUTING.md) |
 | 🔥                                               |                                                  |
 
@@ -563,7 +563,7 @@ Then you can stamp it to your readme by writing `{{ properties }}` and it will b
 
 
 | Attribute  | Type              | Description                          |
-|------------|-------------------|--------------------------------------|
+|:------------:|:-------------------:|:--------------------------------------:|
 | **size**   | 'medium', 'large' | Determines the size                  |
 | **active** | boolean           | Whether the element is active or not |
 
@@ -666,7 +666,7 @@ There are lot's of ways to support me! I would be so happy if you gave this repo
 	
 
 | [<img alt="Andreas Mehlsen" src="https://avatars1.githubusercontent.com/u/6267397?s=460&v=4" width="100">](https://twitter.com/andreasmehlsen) | [<img alt="You?" src="https://joeschmoe.io/api/v1/random" width="100">](https://github.com/andreasbm/readme/blob/master/CONTRIBUTING.md) |
-|--------------------------------------------------|--------------------------------------------------|
+|:--------------------------------------------------:|:--------------------------------------------------:|
 | [Andreas Mehlsen](https://twitter.com/andreasmehlsen) | [You?](https://github.com/andreasbm/readme/blob/master/CONTRIBUTING.md) |
 | 🔥                                               |                                                  |
 

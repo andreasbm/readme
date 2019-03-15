@@ -114,10 +114,11 @@ export function bulletsTemplate ({bullets, config}: BulletsTemplateArgs): string
 
 /**
  * Creates a table template.
- * @param content
+ * @param rows
  * @param config
+ * @param centered
  */
-export function tableTemplate ({rows, config}: TableTemplateArgs): string {
+export function tableTemplate ({rows, config, centered}: TableTemplateArgs): string {
 
 	// Filter away the rows that have no content
 	rows = rows.filter(row => row.map(r => r.trim()).join("").length > 0);
@@ -138,6 +139,7 @@ export function tableTemplate ({rows, config}: TableTemplateArgs): string {
 	const MIN_WIDTH = 3;
 	const MAX_WIDTH = 50;
 	const PADDING = 1;
+	const tableColPrefix = centered ? ":" : "";
 
 	const columnWidths = Array(columnCount)
 		.fill(0)
@@ -145,7 +147,7 @@ export function tableTemplate ({rows, config}: TableTemplateArgs): string {
 
 	return `
 |${rows[0].map((r, i) => fillWidth(r, columnWidths[i], PADDING)).join("|")}|
-|${columnWidths.map(c => `:${"-".repeat(c)}:`).join("|")}|
+|${columnWidths.map(c => `${tableColPrefix}${"-".repeat(c)}${tableColPrefix}`).join("|")}|
 ${rows
 		.slice(1)
 		.map(r => `|${r.map((r, i) => fillWidth(r, columnWidths[i], PADDING)).join("|")}|`)
@@ -244,7 +246,7 @@ ${rows.map(row => {
 			...infos
 		];
 		
-		return tableTemplate({rows: content, config});
+		return tableTemplate({rows: content, config, centered: true});
 	}).join(config.lineBreak)}`;
 }
 

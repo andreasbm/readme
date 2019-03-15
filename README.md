@@ -95,7 +95,7 @@ Let's start simple. In order to get values from your `package.json` file injecte
 ```json
 {
   "name": "@appnest/readme",
-  "version": "1.1.23"
+  "version": "1.1.24"
 }
 ```
 
@@ -108,7 +108,7 @@ Welcome to {{ pkg.name }}. This is version {{ pkg.version }}!
 When running `node_modules/.bin/readme` the file `README.md` will be generated with the following contents:
 
 ```markdown
-Welcome to @appnest/readme. This is version 1.1.23.
+Welcome to @appnest/readme. This is version 1.1.24.
 ```
 
 ### Usage
@@ -117,7 +117,7 @@ Run the `node_modules/.bin/readme` command and a README file will be generated f
 
 
 | Option                | Type                                             | Description                                      |
-|:-----------------------:|:--------------------------------------------------:|:--------------------------------------------------:|
+|-----------------------|--------------------------------------------------|--------------------------------------------------|
 | -c, --config          | string                                           | Path of the configuration file. Defaults to 'blueprint.json |
 | -p, --package         | string                                           | Path of the 'package.json' file. Defaults to 'package.json'. |
 | --pkg.name            | string                                           | Name of the project. Used for the 'title' template. |
@@ -563,7 +563,7 @@ Then you can stamp it to your readme by writing `{{ properties }}` and it will b
 
 
 | Attribute  | Type              | Description                          |
-|:------------:|:-------------------:|:--------------------------------------:|
+|------------|-------------------|--------------------------------------|
 | **size**   | 'medium', 'large' | Determines the size                  |
 | **active** | boolean           | Whether the element is active or not |
 

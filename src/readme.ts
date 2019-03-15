@@ -128,7 +128,7 @@ export async function generate ({config, configPath, generators}: {config: IConf
 	if (config.checkBrokenLinks) {
 
 		// Find all links
-		const links = Array.from(readme.match(/(http|www)[A-Za-z\d-\._~:\/?#\[\]@!\$&'\*\+,;=]+/gm) || []);
+		const links = Array.from(readme.match(/(http|www)[A-Za-z\d-\._~:\/?#\[\]@!\$&\+;=]+/gm) || []);
 		console.log(green(`[readme] - Found "${links.length}" links. Checking all of them now!`));
 
 		// Check all links

@@ -54,6 +54,7 @@
 * [➤ A bit about this readme](#-a-bit-about-this-readme)
 * [➤ Custom templates](#-custom-templates)
 * [➤ Advanced!](#-advanced)
+	* [Check broken links](#check-broken-links)
 	* [New template syntax](#new-template-syntax)
 	* [Variables](#variables)
 		* [Objects](#objects)
@@ -94,7 +95,7 @@ Let's start simple. In order to get values from your `package.json` file injecte
 ```json
 {
   "name": "@appnest/readme",
-  "version": "1.1.20"
+  "version": "1.1.21"
 }
 ```
 
@@ -107,7 +108,7 @@ Welcome to {{ pkg.name }}. This is version {{ pkg.version }}!
 When running `node_modules/.bin/readme` the file `README.md` will be generated with the following contents:
 
 ```markdown
-Welcome to @appnest/readme. This is version 1.1.20.
+Welcome to @appnest/readme. This is version 1.1.21.
 ```
 
 ### Usage
@@ -139,7 +140,7 @@ Run the `node_modules/.bin/readme` command and a README file will be generated f
 | --contributorsPerRow | number | The amount of contributors pr row when using the 'contributors' template. Defaults to '6' |
 | --documentationConfig | object | Configuration object for automatic documentation template. |
 | --extend | string | Path to another configuration object that should be extended. |
-| --checkBrokenLinks | boolean | Whether all links should be checked after the README file has been generated. |
+| --checkBrokenLinks | boolean | Checks all links whether they are broken after the README file has been generated. |
 
 ### Configuration
 
@@ -285,6 +286,7 @@ The table of contents template adds a table of contents and looks like this:
 * [➤ A bit about this readme](#-a-bit-about-this-readme)
 * [➤ Custom templates](#-custom-templates)
 * [➤ Advanced!](#-advanced)
+	* [Check broken links](#check-broken-links)
 	* [New template syntax](#new-template-syntax)
 	* [Variables](#variables)
 		* [Objects](#objects)
@@ -489,6 +491,16 @@ Be creative! You can for example add a template for code-snippets or [words you 
 
 Oh! So are you ready to open Pandora's box? Let's do it.
 
+### Check broken links
+
+Add the `checkBrokenLinks` field to your `blueprint.json` and you'll be notified about all broken links in your README file.
+
+```json
+{
+  "checkBrokenLinks": true
+}
+```
+
 ### New template syntax
 
 If you are in the mood you can change the syntax used for matching with the templates. Let's say you want your placeholders to look like this instead `{[ template:title }]`. Then you'll need to add the `placeholder` array to your `blueprint.json` file with the new syntax being `["{[", "}]"]` like this.
@@ -502,7 +514,7 @@ If you are in the mood you can change the syntax used for matching with the temp
 
 ### Variables
 
-If you have a variable from your `blueprint.json` file you want to stamp to your readme just use the `{{ ... }}` syntax as usual without any scopes.
+If you have a variable from your `blueprint.json` file you want to stamp to your README file just use the `{{ ... }}` syntax as usual without any scopes.
 
 #### Objects
 

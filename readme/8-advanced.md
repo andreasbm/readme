@@ -4,7 +4,7 @@ Oh! So are you ready to open Pandora's box? Let's do it.
 
 ### Check broken links
 
-Add the `checkBrokenLinks` field to your `blueprint.json` and you'll be notified about all broken links in your README file.
+Add the `checkBrokenLinks` field to your `blueprint.json` and you'll be notified about all broken links in your README file. This check use [check-links](https://www.npmjs.com/package/check-links) to check links for aliveness. This library memoizes results, so on any given run each URL will only be pinged once; subsequent checks will be returned from the cache.
 
 ```json
 {

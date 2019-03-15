@@ -95,7 +95,7 @@ Let's start simple. In order to get values from your `package.json` file injecte
 ```json
 {
   "name": "@appnest/readme",
-  "version": "1.1.21"
+  "version": "1.1.22"
 }
 ```
 
@@ -108,7 +108,7 @@ Welcome to {{ pkg.name }}. This is version {{ pkg.version }}!
 When running `node_modules/.bin/readme` the file `README.md` will be generated with the following contents:
 
 ```markdown
-Welcome to @appnest/readme. This is version 1.1.21.
+Welcome to @appnest/readme. This is version 1.1.22.
 ```
 
 ### Usage
@@ -140,7 +140,7 @@ Run the `node_modules/.bin/readme` command and a README file will be generated f
 | --contributorsPerRow | number | The amount of contributors pr row when using the 'contributors' template. Defaults to '6' |
 | --documentationConfig | object | Configuration object for automatic documentation template. |
 | --extend | string | Path to another configuration object that should be extended. |
-| --checkBrokenLinks | boolean | Checks all links whether they are broken after the README file has been generated. |
+| --checkBrokenLinks | boolean | Checks all links for aliveness after the README file has been generated. |
 
 ### Configuration
 
@@ -493,7 +493,7 @@ Oh! So are you ready to open Pandora's box? Let's do it.
 
 ### Check broken links
 
-Add the `checkBrokenLinks` field to your `blueprint.json` and you'll be notified about all broken links in your README file.
+Add the `checkBrokenLinks` field to your `blueprint.json` and you'll be notified about all broken links in your README file. This check use [check-links](https://www.npmjs.com/package/check-links) to check links for aliveness. This library memoizes results, so on any given run each URL will only be pinged once; subsequent checks will be returned from the cache.
 
 ```json
 {

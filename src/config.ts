@@ -197,7 +197,7 @@ export const commandOptions: OptionDefinition[] = [
 	},
 	{
 		name: "checkBrokenLinks",
-		description: `Checks all links whether they are broken after the README file has been generated.`,
+		description: `Checks all links for aliveness after the README file has been generated.`,
 		type: Boolean
 	}
 ];

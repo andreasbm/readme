@@ -200,7 +200,7 @@
 		[
 			"--checkBrokenLinks",
 			"boolean",
-			"Checks all links whether they are broken after the README file has been generated."
+			"Checks all links for aliveness after the README file has been generated."
 		]
 	]
 }

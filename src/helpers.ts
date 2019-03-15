@@ -284,3 +284,4 @@ export function loadPackage (pkgPath: string): IPackage | null {
 export function loadConfig (configPath: string): IConfig | null {
 	return <IConfig>readJSONFile(configPath) || null;
 }
+

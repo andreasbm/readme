@@ -117,21 +117,40 @@ export function bulletsTemplate ({bullets, config}: BulletsTemplateArgs): string
  * @param content
  * @param config
  */
-export function tableTemplate ({content, config}: TableTemplateArgs): string {
-	const tableSplitter = `|`;
+export function tableTemplate ({rows, config}: TableTemplateArgs): string {
 
-	// Add the | ------------- | ---- | ----- | ----- | line after the header
-	if (content.length > 1) {
-		content.splice(1, 0, Array(content[0].length).fill("-------"));
+	// Filter away the rows that have no content
+	rows = rows.filter(row => row.map(r => r.trim()).join("").length > 0);
+
+	// Count the amount of columns
+	const columnCount = Math.max(...rows.map(r => r.length));
+
+	/**
+	 * Fills the width of the cell.
+	 * @param text
+	 * @param width
+	 * @param paddingStart
+	 */
+	function fillWidth (text: string, width: number, paddingStart: number): string {
+		return " ".repeat(paddingStart) + text + " ".repeat(Math.max(1, width - text.length - paddingStart));
 	}
 
-	return content.map((row, i) => {
+	const MIN_WIDTH = 3;
+	const MAX_WIDTH = 50;
+	const PADDING = 1;
 
-		// If the table splitter symbol is used within the table we need to make it safe
-		row = row.map(r => r.replace(tableSplitter, "\\$&"));
+	const columnWidths = Array(columnCount)
+		.fill(0)
+		.map((c, i) => Math.min(MAX_WIDTH, Math.max(MIN_WIDTH, ...rows.map(r => (r[i] || "").length)) + PADDING * 2));
 
-		return `${tableSplitter} ${row.join(` ${tableSplitter} `)} ${tableSplitter}`;
-	}).join(config.lineBreak);
+	return `
+|${rows[0].map((r, i) => fillWidth(r, columnWidths[i], PADDING)).join("|")}|
+|${columnWidths.map(c => "-".repeat(c)).join("|")}|
+${rows
+		.slice(1)
+		.map(r => `|${r.map((r, i) => fillWidth(r, columnWidths[i], PADDING)).join("|")}|`)
+		.join(config.lineBreak)}
+`;
 }
 
 /**
@@ -205,40 +224,27 @@ export function contributorsTemplate ({contributors, config}: ContributorsTempla
 	
 ${rows.map(row => {
 
-		// Figures out what elements the row should have
-		const hasImages = row.find(({img}) => img != null);
-		const hasEmails = row.find(({email}) => email != null);
-
-		// Create the cells for the images for each contributor in the row
-		const imgCells = row.map(({img, url, name}) => img != null ? `[<img alt="${name}" src="${img}" width="${imageSize}">](${url})` : "")
-		                    .join(" | ");
-
-		// Create the cells that tells markdown that this is a table
-		const tableCells = Array(row.length).fill(":---:").join(" | ");
-
-		// Create a cell for each name
-		const nameCells = row.map(({url, email, name}) => `[${name}](${url})`).join(" | ");
-
-		// Create a cell for each email address
-		const emailCells = row.map(({url, email}) => email != null ? `[${email}](mailto:${email})` : "").join(" | ");
+	    // Compile the rows
+		const imgs = row.map(({img, url, name}) => img != null ? `[<img alt="${name}" src="${img}" width="${imageSize}">](${url})` : " ");
+		const names = row.map(({url, email, name}) => `[${name}](${url})`);
+		const emails = row.map(({url, email}) => email != null ? `[${email}](mailto:${email})` : "");
 
 		// Find the maximum amount of info lines for the row!
 		const maxInfoLinesCount = row.reduce((acc, {info}) => info != null ? Math.max(acc, info.length) : acc, 0);
 
 		// For each line we go through the row and find the correct info
-		const infoLines = Array(maxInfoLinesCount).fill(0).map((_, i) => {
-			const infoForLine = row.map(({info}) => info != null && i < info.length ? info[i] : "");
-			return `${infoForLine.join(" | ")}`;
+		const infos = Array(maxInfoLinesCount).fill(0).map((_, i) => {
+			return row.map(({info}) => info != null && i < info.length ? info[i] : "");
 		});
 
-		// Join each line in the row
-		return `|${[
-			...(hasImages ? [imgCells] : []),
-			tableCells,
-			nameCells,
-			...(hasEmails ? [emailCells] : []),
-			...infoLines
-		].join(`|${config.lineBreak}|`)}|`;
+		const content: string[][] = [
+			imgs,
+			names,
+			emails,
+			...infos
+		];
+		
+		return tableTemplate({rows: content, config});
 	}).join(config.lineBreak)}`;
 }
 

@@ -167,7 +167,7 @@ export const generateInterpolate: IGenerator<{config: IConfig, text: string}> = 
 
 			// Turn 2D arrays into tables
 			if (value.length > 0 && Array.isArray(value[0])) {
-				value = tableTemplate({content: value, config: config});
+				value = tableTemplate({rows: value, config: config});
 			}
 
 			// Turn 1D arrays into bullets

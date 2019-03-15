@@ -95,7 +95,7 @@ Let's start simple. In order to get values from your `package.json` file injecte
 ```json
 {
   "name": "@appnest/readme",
-  "version": "1.1.22"
+  "version": "1.1.23"
 }
 ```
 
@@ -108,39 +108,41 @@ Welcome to {{ pkg.name }}. This is version {{ pkg.version }}!
 When running `node_modules/.bin/readme` the file `README.md` will be generated with the following contents:
 
 ```markdown
-Welcome to @appnest/readme. This is version 1.1.22.
+Welcome to @appnest/readme. This is version 1.1.23.
 ```
 
 ### Usage
 
 Run the `node_modules/.bin/readme` command and a README file will be generated for you. If you want to go into depth with the readme command, check out the following options or write `node_modules/.bin/readme -h` in your terminal if that's your cup of tea.
 
-| Option | Type | Description |
-| ------- | ------- | ------- |
-| -c, --config | string | Path of the configuration file. Defaults to 'blueprint.json |
-| -p, --package | string | Path of the 'package.json' file. Defaults to 'package.json'. |
-| --pkg.name | string | Name of the project. Used for the 'title' template. |
-| --pkg.contributors | {name: string; email: string; url: string; img: string; info: string[];}[] | Contributors of the project. Used for the 'contributors' template. |
-| --pkg.license | string | License kind. Used for the 'license' template. |
-| -o, --output | string | Path of the generated README file. Defaults to 'README.md'. |
-| -h, --help |  | Display this help message. |
-| -i, --input | string | The blueprint. Defaults to 'blueprint.md'. |
-| --badges | {alt: string, url: string, img: string}[] | Badges. Used for the 'badges' template. |
-| --text | string | Text describing your project. Used for the 'description' template. |
-| --demo | string | Demo url for your project. Used for the 'description' template. |
-| --lineBreak | string | The linebreak used in the generation of the README file. Defaults to 'rn' |
-| --tab | string | The tab used in the generation of the README file. Defaults to 't' |
-| --placeholder | [string, string] | The placeholder syntax used when looking for templates in the blueprint. Defaults to '["{{", "}}"]. |
-| --line | string | The line style of the titles. Can also be an URL. Defaults to 'colored'. |
-| --templates | {name: string, template: string}[] | User created templates. |
-| -s, --silent | boolean | Whether the console output from the command should be silent. |
-| -d, --dry | boolean | Whether the command should run as dry. If dry, the output file is notgenerated but outputted to the console instead. |
-| --headingPrefix | {[key: number]: string} | The prefix of the header tags. Defaults to '{1: "➤ ", 2: "➤ "}' |
-| --logo | {src: string; alt?: string; width?: number; height?: number;} | The logo information. Used for the 'logo' template. |
-| --contributorsPerRow | number | The amount of contributors pr row when using the 'contributors' template. Defaults to '6' |
-| --documentationConfig | object | Configuration object for automatic documentation template. |
-| --extend | string | Path to another configuration object that should be extended. |
-| --checkBrokenLinks | boolean | Checks all links for aliveness after the README file has been generated. |
+
+| Option                | Type                                             | Description                                      |
+|-----------------------|--------------------------------------------------|--------------------------------------------------|
+| -c, --config          | string                                           | Path of the configuration file. Defaults to 'blueprint.json |
+| -p, --package         | string                                           | Path of the 'package.json' file. Defaults to 'package.json'. |
+| --pkg.name            | string                                           | Name of the project. Used for the 'title' template. |
+| --pkg.contributors    | {name: string; email: string; url: string; img: string; info: string[];}[] | Contributors of the project. Used for the 'contributors' template. |
+| --pkg.license         | string                                           | License kind. Used for the 'license' template.   |
+| -o, --output          | string                                           | Path of the generated README file. Defaults to 'README.md'. |
+| -h, --help            |                                                  | Display this help message.                       |
+| -i, --input           | string                                           | The blueprint. Defaults to 'blueprint.md'.       |
+| --badges              | {alt: string, url: string, img: string}[]        | Badges. Used for the 'badges' template.          |
+| --text                | string                                           | Text describing your project. Used for the 'description' template. |
+| --demo                | string                                           | Demo url for your project. Used for the 'description' template. |
+| --lineBreak           | string                                           | The linebreak used in the generation of the README file. Defaults to 'rn' |
+| --tab                 | string                                           | The tab used in the generation of the README file. Defaults to 't' |
+| --placeholder         | [string, string]                                 | The placeholder syntax used when looking for templates in the blueprint. Defaults to '["{{", "}}"]. |
+| --line                | string                                           | The line style of the titles. Can also be an URL. Defaults to 'colored'. |
+| --templates           | {name: string, template: string}[]               | User created templates.                          |
+| -s, --silent          | boolean                                          | Whether the console output from the command should be silent. |
+| -d, --dry             | boolean                                          | Whether the command should run as dry. If dry, the output file is notgenerated but outputted to the console instead. |
+| --headingPrefix       | {[key: number]: string}                          | The prefix of the header tags. Defaults to '{1: "➤ ", 2: "➤ "}' |
+| --logo                | {src: string; alt?: string; width?: number; height?: number;} | The logo information. Used for the 'logo' template. |
+| --contributorsPerRow  | number                                           | The amount of contributors pr row when using the 'contributors' template. Defaults to '6' |
+| --documentationConfig | object                                           | Configuration object for automatic documentation template. |
+| --extend              | string                                           | Path to another configuration object that should be extended. |
+| --checkBrokenLinks    | boolean                                          | Checks all links for aliveness after the README file has been generated. |
+
 
 ### Configuration
 
@@ -315,10 +317,12 @@ The contributors template adds the list of contributors and looks like this:
 
 ## ➤ Contributors
 	
-|[<img alt="Andreas Mehlsen" src="https://avatars1.githubusercontent.com/u/6267397?s=460&v=4" width="100">](https://twitter.com/andreasmehlsen) | [<img alt="You?" src="https://joeschmoe.io/api/v1/random" width="100">](https://github.com/andreasbm/readme/blob/master/CONTRIBUTING.md)|
-|:---: | :---:|
-|[Andreas Mehlsen](https://twitter.com/andreasmehlsen) | [You?](https://github.com/andreasbm/readme/blob/master/CONTRIBUTING.md)|
-|🔥 | |
+
+| [<img alt="Andreas Mehlsen" src="https://avatars1.githubusercontent.com/u/6267397?s=460&v=4" width="100">](https://twitter.com/andreasmehlsen) | [<img alt="You?" src="https://joeschmoe.io/api/v1/random" width="100">](https://github.com/andreasbm/readme/blob/master/CONTRIBUTING.md) |
+|--------------------------------------------------|--------------------------------------------------|
+| [Andreas Mehlsen](https://twitter.com/andreasmehlsen) | [You?](https://github.com/andreasbm/readme/blob/master/CONTRIBUTING.md) |
+| 🔥                                               |                                                  |
+
 
 Use the `{{ template:contributors }}` placeholder to stamp it. Let's sa To use this template your are required to add the `contributors` array to your `package.json` file like this. Only the `name` field is required.
 
@@ -493,7 +497,7 @@ Oh! So are you ready to open Pandora's box? Let's do it.
 
 ### Check broken links
 
-Add the `checkBrokenLinks` field to your `blueprint.json` and you'll be notified about all broken links in your README file. This check use [check-links](https://www.npmjs.com/package/check-links) to check links for aliveness. This library memoizes results, so on any given run each URL will only be pinged once; subsequent checks will be returned from the cache.
+Add the `checkBrokenLinks` field to your `blueprint.json` and you'll be notified about all broken links in your README file. This check use [check-links](https://www.npmjs.com/package/check-links) to check links for aliveness.
 
 ```json
 {
@@ -557,10 +561,12 @@ If you have a 2D array it will be formatted as a table. This is very convenient 
 
 Then you can stamp it to your readme by writing `{{ properties }}` and it will be formatted as a table.
 
-| Attribute | Type | Description |
-| ------- | ------- | ------- |
-| **size** | 'medium', 'large' | Determines the size |
-| **active** | boolean | Whether the element is active or not |
+
+| Attribute  | Type              | Description                          |
+|------------|-------------------|--------------------------------------|
+| **size**   | 'medium', 'large' | Determines the size                  |
+| **active** | boolean           | Whether the element is active or not |
+
 
 You are welcome!
 
@@ -658,10 +664,12 @@ There are lot's of ways to support me! I would be so happy if you gave this repo
 
 ## ➤ Contributors
 	
-|[<img alt="Andreas Mehlsen" src="https://avatars1.githubusercontent.com/u/6267397?s=460&v=4" width="100">](https://twitter.com/andreasmehlsen) | [<img alt="You?" src="https://joeschmoe.io/api/v1/random" width="100">](https://github.com/andreasbm/readme/blob/master/CONTRIBUTING.md)|
-|:---: | :---:|
-|[Andreas Mehlsen](https://twitter.com/andreasmehlsen) | [You?](https://github.com/andreasbm/readme/blob/master/CONTRIBUTING.md)|
-|🔥 | |
+
+| [<img alt="Andreas Mehlsen" src="https://avatars1.githubusercontent.com/u/6267397?s=460&v=4" width="100">](https://twitter.com/andreasmehlsen) | [<img alt="You?" src="https://joeschmoe.io/api/v1/random" width="100">](https://github.com/andreasbm/readme/blob/master/CONTRIBUTING.md) |
+|--------------------------------------------------|--------------------------------------------------|
+| [Andreas Mehlsen](https://twitter.com/andreasmehlsen) | [You?](https://github.com/andreasbm/readme/blob/master/CONTRIBUTING.md) |
+| 🔥                                               |                                                  |
+
 
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#license)
 

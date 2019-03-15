@@ -2,6 +2,16 @@
 
 Oh! So are you ready to open Pandora's box? Let's do it.
 
+### Check broken links
+
+Add the `checkBrokenLinks` field to your `blueprint.json` and you'll be notified about all broken links in your README file.
+
+```json
+{
+  "checkBrokenLinks": true
+}
+```
+
 ### New template syntax
 
 If you are in the mood you can change the syntax used for matching with the templates. Let's say you want your placeholders to look like this instead `{[ template:title }]`. Then you'll need to add the `placeholder` array to your `blueprint.json` file with the new syntax being `["{[", "}]"]` like this.
@@ -15,7 +25,7 @@ If you are in the mood you can change the syntax used for matching with the temp
 
 ### Variables
 
-If you have a variable from your `blueprint.json` file you want to stamp to your readme just use the `{{ ... }}` syntax as usual without any scopes.
+If you have a variable from your `blueprint.json` file you want to stamp to your README file just use the `{{ ... }}` syntax as usual without any scopes.
 
 #### Objects
 

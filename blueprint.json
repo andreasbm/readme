@@ -14,7 +14,7 @@
 		"]]"
 	],
 	"documentationConfig": {
-		"output": "md",
+		"format": "md",
 		"debug": false,
 		"markdown": {
 			"titleLevel": 3
@@ -196,6 +196,11 @@
 			"--extend",
 			"string",
 			"Path to another configuration object that should be extended."
+		],
+		[
+			"--checkBrokenLinks",
+			"boolean",
+			"Whether all links should be checked after the README file has been generated."
 		]
 	]
 }

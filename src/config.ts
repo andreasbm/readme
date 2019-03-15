@@ -40,6 +40,7 @@ export const defaultConfig: IConfig = {
 	input: "blueprint.md",
 	package: "package.json",
 	output: "README.md",
+	checkBrokenLinks: false,
 	placeholder: ["{{", "}}"],
 	dry: false,
 	silent: false,
@@ -193,6 +194,11 @@ export const commandOptions: OptionDefinition[] = [
 		name: "extend",
 		description: `Path to another configuration object that should be extended.`,
 		type: String
+	},
+	{
+		name: "checkBrokenLinks",
+		description: `Whether all links should be checked after the README file has been generated.`,
+		type: Boolean
 	}
 ];
 

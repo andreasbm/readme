@@ -61,6 +61,7 @@
 		"readme": "cli.cjs.js"
 	},
 	"dependencies": {
+		"check-links": "^1.1.7",
 		"colors": "^1.3.3",
 		"command-line-usage": "^5.0.5",
 		"fs-extra": "^7.0.1",

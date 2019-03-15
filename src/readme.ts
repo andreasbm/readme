@@ -1,10 +1,13 @@
 import { green, red, yellow } from "colors";
+import checkLinks from "check-links";
 import commandLineUsage from "command-line-usage";
 import { resolve } from "path";
 import { defaultConfig, defaultConfigName, defaultGenerators, extendConfigWithDefaults, extendConfigWithExtendConfig, helpContent } from "./config";
 import { simpleTemplateGenerator } from "./generators";
 import { extractValues, fileExists, isFunction, loadConfig, loadPackage, readFile, replaceInString, validateObject, writeFile } from "./helpers";
 import { IConfig, IGenerator, IGeneratorParamsArgs, IGeneratorParamsError, Params, UserArgs } from "./model";
+
+
 
 /**
  * Generates a readme.
@@ -120,6 +123,24 @@ export async function generate ({config, configPath, generators}: {config: IConf
 
 	// Generate the readme
 	const readme = await generateReadme({config, blueprint, configPath, generators});
+
+	// Check broken links
+	if (config.checkBrokenLinks) {
+
+		// Find all links
+		const links = Array.from(readme.match(/(http|www)[A-Za-z\d-\._~:\/?#\[\]@!\$&'\*\+,;=]+/gm) || []);
+		console.log(green(`[readme] - Found "${links.length}" links. Checking all of them now!`));
+
+		// Check all links
+		const results = await checkLinks(links);
+
+		// Go through the results and notify the user about broken links
+		for (const [link, {status, statusCode}] of Object.entries(results)) {
+			if (status === "dead") {
+				console.log(red(`[readme] - The link "${link}" is dead. Responded with status code "${statusCode}".`));
+			}
+		}
+	}
 
 	// Write the file
 	if (!dry) {

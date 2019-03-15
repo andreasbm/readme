@@ -67,7 +67,7 @@
 		"fs-extra": "^7.0.1",
 		"minimist": "^1.2.0",
 		"path": "^0.12.7",
-		"web-component-analyzer": "0.0.27"
+		"web-component-analyzer": "0.0.30"
 	},
 	"devDependencies": {
 		"@types/command-line-usage": "^5.0.1",

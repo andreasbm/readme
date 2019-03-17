@@ -95,7 +95,7 @@ Let's start simple. In order to get values from your `package.json` file injecte
 ```json
 {
   "name": "@appnest/readme",
-  "version": "1.1.28"
+  "version": "1.2.0"
 }
 ```
 
@@ -108,7 +108,7 @@ Welcome to {{ pkg.name }}. This is version {{ pkg.version }}!
 When running `node_modules/.bin/readme generate` the file `README.md` will be generated with the following contents:
 
 ```markdown
-Welcome to @appnest/readme. This is version 1.1.28.
+Welcome to @appnest/readme. This is version 1.2.0.
 ```
 
 ### Usage
@@ -141,7 +141,7 @@ Run the `node_modules/.bin/readme generate` command and a README file will be ge
 | --contributorsPerRow  | number                                           | The amount of contributors pr row when using the 'contributors' template. Defaults to '6' |
 | --documentationConfig | object                                           | Configuration object for automatic documentation template. |
 | --extend              | string                                           | Path to another configuration object that should be extended. |
-| --checkBrokenLinks    | boolean                                          | Checks all links for aliveness after the README file has been generated. |
+| --checkLinks          | boolean                                          | Checks all links for aliveness after the README file has been generated. |
 
 
 ### Configuration
@@ -498,11 +498,11 @@ Oh! So are you ready to open Pandora's box? Let's do it.
 
 ### Check broken links
 
-Add the `checkBrokenLinks` field to your `blueprint.json` and you'll be notified about all broken links in your README file. This check use [check-links](https://www.npmjs.com/package/check-links) to check links for aliveness.
+Add the `checkLinks` field to your `blueprint.json` and you'll be notified about all broken links in your README file. This check use [check-links](https://www.npmjs.com/package/check-links) to check links for aliveness.
 
 ```json
 {
-  "checkBrokenLinks": true
+  "checkLinks": true
 }
 ```
 
@@ -529,7 +529,6 @@ Objects are formatted as a list with the keys being bold. If you for example wan
 * **colors**: ^1.3.3
 * **commander**: ^2.19.0
 * **fs-extra**: ^7.0.1
-* **minimist**: ^1.2.0
 * **path**: ^0.12.7
 * **web-component-analyzer**: 0.0.30
 

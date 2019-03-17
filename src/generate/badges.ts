@@ -1,4 +1,4 @@
-import { IBadge } from "./model";
+import { IBadge } from "../model";
 
 /**
  * Generate npm badges.

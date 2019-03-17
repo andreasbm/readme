@@ -1,12 +1,9 @@
 import { green, red, yellow } from "colors";
-import checkLinks from "check-links";
 import { resolve } from "path";
-import { defaultConfig, defaultConfigName, defaultDocumentationConfig, defaultGenerators, extendConfigWithDefaults, extendConfigWithExtendConfig } from "./config";
+import { defaultConfig, defaultConfigName, defaultGenerators, extendConfigWithDefaults, extendConfigWithExtendConfig } from "../config";
+import { checkLinksAliveness, extractValues, fileExists, isFunction, loadConfig, loadPackage, readFile, replaceInString, validateObject, writeFile } from "../helpers";
+import { IConfig, IGenerator, IGeneratorParamsArgs, IGeneratorParamsError, Options, Params } from "../model";
 import { simpleTemplateGenerator } from "./generators";
-import { extractValues, fileExists, isFunction, loadConfig, loadPackage, readFile, replaceInString, setValue, validateObject, writeFile } from "./helpers";
-import { IConfig, IGenerator, IGeneratorParamsArgs, IGeneratorParamsError, Params, Options } from "./model";
-import * as program from "commander";
-import pkg from "./../package.json";
 
 /**
  * Generates a readme.
@@ -124,21 +121,8 @@ export async function generate ({config, configPath, generators}: {config: IConf
 	const readme = await generateReadme({config, blueprint, configPath, generators});
 
 	// Check broken links
-	if (config.checkBrokenLinks) {
-
-		// Find all links
-		const links = Array.from(readme.match(/(http|www)[A-Za-z\d-\._~:\/?#\[\]@!\$&\+;=]+/gm) || []);
-		console.log(green(`[readme] - Found "${links.length}" links. Checking all of them now!`));
-
-		// Check all links
-		const results = await checkLinks(links);
-
-		// Go through the results and notify the user about broken links
-		for (const [link, {status, statusCode}] of Object.entries(results)) {
-			if (status === "dead") {
-				console.log(red(`[readme] - The link "${link}" is dead. Responded with status code "${statusCode}".`));
-			}
-		}
+	if (config.checkLinks) {
+		await checkLinksAliveness(readme);
 	}
 
 	// Write the file
@@ -173,53 +157,4 @@ export async function generateCommand (options: Options) {
 	// Extend the config with the package object
 	config.pkg = {...(loadPackage(config.package) || {}), ...config.pkg};
 	await generate({config, configPath, generators: defaultGenerators});
-}
-
-/**
- * Runs the cli.
- * @param args
- */
-export async function run (args: string[]) {
-	program
-		.version(pkg.version);
-
-	program
-		.command("generate")
-		.description(`Generates a README file.`)
-		.option(`--c --config <string>`, `Path of the configuration file. Defaults to '${defaultConfigName}'.`, defaultConfigName)
-		.option(`--p --package <string>`, `Path of the package file. Defaults to '${defaultConfig.package}'.`, defaultConfig.package)
-		.option(`--o, --output <string>`, `Path of the generated README file. Defaults to '${defaultConfig.output}'.`, defaultConfig.output)
-		.option(`--i, --input <string>`, `The blueprint. Defaults to '${defaultConfig.input}'.`, defaultConfig.input)
-		.option(`-d, --dry`, `Whether the command should run as dry. If dry, the output file is not generated but outputted to the console instead.`, defaultConfig.dry)
-		.option(`--badges <list>`, `Badges. Used for the 'badges' template.`)
-		.option(`--text <string>`, `Text describing your project. Used for the 'description' template.`)
-		.option(`--demo <string>`, `Demo url for your project. Used for the 'description' template.`)
-		.option(`--lineBreak <string>`, `The linebreak used in the generation of the README file. Defaults to '\\r\\n'`, defaultConfig.lineBreak)
-		.option(`--tab <string>`, `The tab used in the generation of the README file. Defaults to '\\t'`, defaultConfig.tab)
-		.option(`--placeholder <list>`, `The placeholder syntax used when looking for templates in the blueprint. Defaults to '\["\{\{", "\}\}"\]`, defaultConfig.placeholder)
-		.option(`--line <string>`, `The line style of the titles. Can also be an URL. Defaults to 'colored'.`, defaultConfig.line)
-		.option(`--templates <list>`, `User created templates.`, defaultConfig.templates)
-		.option(`--silent`, `Whether the console output from the command should be silent.`, defaultConfig.silent)
-		.option(`--headingPrefix <object>`, `The prefix of the header tags. Defaults to '\{1: "➤ ", 2: "➤ "\}'`, defaultConfig.headingPrefix)
-		.option(`--logo <object>`, `The logo information. Used for the 'logo' template.`)
-		.option(`--contributorsPerRow <integer>`, `The amount of contributors pr row when using the 'contributors' template. Defaults to '${defaultConfig.contributorsPerRow}'`, defaultConfig.contributorsPerRow)
-		.option(`--documentationConfig <object>`, `Configuration object for automatic documentation template.`, defaultDocumentationConfig)
-		.option(`--extend <string>`, `Path to another configuration object that should be extended.`)
-		.option(`--checkBrokenLinks`, `Checks all links for aliveness after the README file has been generated.`)
-		.option(`--pkg.name <string>`, `Contributors of the project. Used for the 'contributors' template.`)
-		.option(`--pkg.contributors <list>`, `Contributors of the project. Used for the 'contributors' template.`)
-		.option(`--pkg.license <license>`, `License kind. Used for the 'license' template.`)
-		.action( ()  => {
-			const options = program.opts();
-			generateCommand(options).then();
-		});
-
-	// Error on unknown commands
-	program.on("command:*", () => {
-		console.error("Invalid command: See --help for a list of available commands.");
-		process.exit(1);
-	});
-
-	// Parse the input
-	program.parse(args);
 }

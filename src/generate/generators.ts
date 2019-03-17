@@ -1,6 +1,6 @@
 import { resolve } from "path";
-import { fileExists, getBadges, getValue, isObject, placeholderRegexCallback, readFile } from "./helpers";
-import { BadgesTemplateArgs, ContributorsTemplateArgs, DescriptionTemplateArgs, IGenerator, IGeneratorParamsArgs, IConfig, IUserTemplate, LicenseTemplateArgs, LineTemplateArgs, LoadTemplateArgs, LogoTemplateArgs, MainTitleTemplateArgs, TableOfContentsTemplateArgs, TitleTemplateArgs, DocumentationTemplateArgs } from "./model";
+import { fileExists, getBadges, getValue, isObject, placeholderRegexCallback, readFile } from "../helpers";
+import { BadgesTemplateArgs, ContributorsTemplateArgs, DescriptionTemplateArgs, IGenerator, IGeneratorParamsArgs, IConfig, IUserTemplate, LicenseTemplateArgs, LineTemplateArgs, LoadTemplateArgs, LogoTemplateArgs, MainTitleTemplateArgs, TableOfContentsTemplateArgs, TitleTemplateArgs, DocumentationTemplateArgs } from "../model";
 import { badgesTemplate, bulletsTemplate, contributorsTemplate, descriptionTemplate, documentationTemplate, licenseTemplate, lineTemplate, logoTemplate, mainTitleTemplate, tableTemplate, titleTemplate, tocTemplate } from "./templates";
 
 /**

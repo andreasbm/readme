@@ -1,5 +1,5 @@
 import { WcaCliConfig } from "web-component-analyzer";
-import { generateBadges, generateContributors, generateDescription, generateDocumentation, generateInterpolate, generateLicense, generateLine, generateLoad, generateLogo, generateMainTitle, generateTitle, generateToc } from "./generators";
+import { generateBadges, generateContributors, generateDescription, generateDocumentation, generateInterpolate, generateLicense, generateLine, generateLoad, generateLogo, generateMainTitle, generateTitle, generateToc } from "./generate/generators";
 import { getValue, loadConfig, setValue } from "./helpers";
 import { IConfig, IGenerator, LineColor, Options } from "./model";
 
@@ -39,7 +39,7 @@ export const defaultConfig: IConfig = {
 	input: "blueprint.md",
 	package: "package.json",
 	output: "README.md",
-	checkBrokenLinks: false,
+	checkLinks: false,
 	placeholder: ["{{", "}}"],
 	dry: false,
 	silent: false,

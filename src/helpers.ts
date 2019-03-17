@@ -1,6 +1,8 @@
+import { green, red } from "colors";
 import { existsSync, outputFile, readFileSync } from "fs-extra";
 import { resolve } from "path";
-import { githubBadges, npmBadges, webcomponentsBadges } from "./badges";
+import { githubBadges, npmBadges, webcomponentsBadges } from "./generate/badges";
+import checkLinks from "check-links";
 import { IBadge, IConfig, IPackage } from "./model";
 
 export const URL_PATTERN = /^(?:(?:https?|ftp):\/\/)(?:\S+(?::\S*)?@)?(?:(?!10(?:\.\d{1,3}){3})(?!127(?:\.​\d{1,3}){3})(?!169\.254(?:\.\d{1,3}){2})(?!192\.168(?:\.\d{1,3}){2})(?!172\.(?:1[​6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1​,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00​a1-\uffff0-9]+-?)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]+-?)*[a-z\u​00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/[^\s]*)?$/i;
@@ -162,7 +164,7 @@ export function readFile (name: string): string | null {
 		return null;
 	}
 
-	return readFileSync(resolve(name)).toString("utf8");
+	return readFileSync(resolve(process.cwd(), name)).toString("utf8");
 }
 
 /**
@@ -285,3 +287,29 @@ export function loadConfig (configPath: string): IConfig | null {
 	return <IConfig>readJSONFile(configPath) || null;
 }
 
+/**
+ * Returns links from a text.
+ * @param text
+ */
+export function getLinks (text: string): string[] {
+	return Array.from(text.match(/(http|www)[A-Za-z\d-\._~:\/?#\[\]@!\$&\+;=]+/gm) || []);
+}
+
+/**
+ * Checks all links in the text for aliveness.
+ * @param text
+ */
+export async function checkLinksAliveness (text: string) {
+	const links = getLinks(text);
+	console.log(green(`[readme] - Found "${links.length}" link${links.length === 1 ? "" : `s`}. Checking all of them now!`));
+
+	// Check all links
+	const results = await checkLinks(links);
+
+	// Go through the results and notify the user about broken links
+	for (const [link, {status, statusCode}] of Object.entries(results)) {
+		if (status === "dead") {
+			console.log(red(`[readme] - The link "${link}" is dead. Responded with status code "${statusCode}".`));
+		}
+	}
+}

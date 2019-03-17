@@ -57,7 +57,7 @@ export interface IConfig {
 	text?: string;
 	demo?: string;
 	lineBreak: string;
-	checkBrokenLinks: boolean;
+	checkLinks: boolean;
 	tab: string;
 	silent: boolean;
 	dry: boolean;

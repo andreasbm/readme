@@ -198,7 +198,7 @@
 			"Path to another configuration object that should be extended."
 		],
 		[
-			"--checkBrokenLinks",
+			"--checkLinks",
 			"boolean",
 			"Checks all links for aliveness after the README file has been generated."
 		]

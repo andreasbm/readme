@@ -1,7 +1,4 @@
-import "./index";
-
-import argv from "minimist";
-import { run } from "./readme";
+import { run } from "./run";
 
 run(process.argv).catch(e => {
 	console.log(e);

@@ -115,7 +115,7 @@ export interface IContributor {
 	info?: string[];
 }
 
-export type UserArgs = {[key: string]: any};
+export type Options = {[key: string]: any};
 
 export type Bullet = string;
 export type License = string;

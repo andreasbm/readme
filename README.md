@@ -27,12 +27,17 @@
 * **Powerful**: Customize almost everything - add your own templates and variables if you like
 * **Awesome**: The tool you don't know you need before you have many different repositories that all need maintenance
 
+<details>
+<summary>📖 Table of Contents</summary>
+<br />
+
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#table-of-contents)
 
 ## ➤ Table of Contents
 
 * [➤ Installation](#-installation)
-* [➤ Getting Started](#-getting-started)
+* [➤ Getting Started (quick)](#-getting-started-quick)
+* [➤ Getting Started (slow)](#-getting-started-slow)
 	* [Blueprint](#blueprint)
 	* [Usage](#usage)
 	* [Configuration](#configuration)
@@ -71,6 +76,8 @@
 	* [How can I support you?](#how-can-i-support-you)
 * [➤ Contributors](#-contributors-1)
 * [➤ License](#-license-1)
+</details>
+
 
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#installation)
 
@@ -80,11 +87,25 @@
 npm install @appnest/readme -D
 ```
 
-[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#getting-started)
+If you don't want to install anything you can use the `npx @appnest/readme generate` command instead.
 
-## ➤ Getting Started
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#getting-started-quick)
 
-Spend a minute reading this getting started guide and you'll have the best README file in your town. Promise.
+## ➤ Getting Started (quick)
+
+This getting started guide is super quick! Follow these two steps and you will have turned your boring readme into a pretty one.
+
+1. Rename your current `README.md` file to `blueprint.md`.
+2. Run `npx @appnest/readme generate`
+
+That's it! You check out your freshly generated `README.md` file and enjoy the fruits of what you just did.
+
+
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#getting-started-slow)
+
+## ➤ Getting Started (slow)
+
+This getting started guide is a little bit longer, but will give you some superpowers. Spend a minute reading this getting started guide and you'll have the best README file in your town very soon.
 
 ### Blueprint
 
@@ -95,7 +116,7 @@ Let's start simple. In order to get values from your `package.json` file injecte
 ```json
 {
   "name": "@appnest/readme",
-  "version": "1.2.3"
+  "version": "1.2.4"
 }
 ```
 
@@ -108,7 +129,7 @@ Welcome to {{ pkg.name }}. This is version {{ pkg.version }}!
 When running `node_modules/.bin/readme generate` the file `README.md` will be generated with the following contents:
 
 ```markdown
-Welcome to @appnest/readme. This is version 1.2.3.
+Welcome to @appnest/readme. This is version 1.2.4.
 ```
 
 ### Usage
@@ -266,7 +287,8 @@ The table of contents template adds a table of contents and looks like this:
 
 * [➤ Table of Contents](#-table-of-contents)
 * [➤ Installation](#-installation)
-* [➤ Getting Started](#-getting-started)
+* [➤ Getting Started (quick)](#-getting-started-quick)
+* [➤ Getting Started (slow)](#-getting-started-slow)
 	* [Blueprint](#blueprint)
 	* [Usage](#usage)
 	* [Configuration](#configuration)
@@ -527,10 +549,10 @@ Objects are formatted as a list with the keys being bold. If you for example wan
 
 * **check-links**: ^1.1.8
 * **colors**: ^1.4.0
-* **commander**: ^3.0.2
+* **commander**: ^4.0.0
 * **fs-extra**: ^8.1.0
 * **path**: ^0.12.7
-* **web-component-analyzer**: 0.1.17
+* **web-component-analyzer**: 0.1.19
 
 #### 1D Arrays
 

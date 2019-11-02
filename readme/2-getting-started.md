@@ -1,6 +1,15 @@
-## Getting Started
+## Getting Started (quick)
 
-Spend a minute reading this getting started guide and you'll have the best README file in your town. Promise.
+This getting started guide is super quick! Follow these two steps and you will have turned your boring readme into a pretty one.
+
+1. Rename your current `README.md` file to `blueprint.md`.
+2. Run `npx [[ ids.npm ]] generate`
+
+That's it! You check out your freshly generated `README.md` file and enjoy the fruits of what you just did.
+
+## Getting Started (slow)
+
+This getting started guide is a little bit longer, but will give you some superpowers. Spend a minute reading this getting started guide and you'll have the best README file in your town very soon.
 
 ### Blueprint
 

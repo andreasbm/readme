@@ -63,16 +63,16 @@
 	"dependencies": {
 		"check-links": "^1.1.8",
 		"colors": "^1.4.0",
-		"commander": "^3.0.2",
+		"commander": "^4.0.0",
 		"fs-extra": "^8.1.0",
 		"path": "^0.12.7",
-		"web-component-analyzer": "0.1.17"
+		"web-component-analyzer": "0.1.19"
 	},
 	"devDependencies": {
 		"@types/fs-extra": "^8.0.1",
-		"@wessberg/rollup-plugin-ts": "^1.1.72",
+		"@wessberg/rollup-plugin-ts": "^1.1.73",
 		"rimraf": "^3.0.0",
-		"rollup": "^1.24.0",
+		"rollup": "^1.26.3",
 		"rollup-plugin-commonjs": "^10.1.0",
 		"rollup-plugin-json": "^4.0.0",
 		"rollup-plugin-node-resolve": "^5.2.0"

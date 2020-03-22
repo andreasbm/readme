@@ -1,6 +1,9 @@
-import { AnalyzeCliCommand } from "web-component-analyzer";
+import glob from "glob";
+import { analyzeText, transformAnalyzerResult } from "web-component-analyzer";
 import { getCleanTitle, getLicenseUrl, getTitle, getTitleLink, isValidURL, splitArrayIntoArrays } from "../helpers";
 import { BadgesTemplateArgs, BulletsTemplateArgs, ContributorsTemplateArgs, DemoTemplateArgs, DescriptionTemplateArgs, DocumentationTemplateArgs, LicenseTemplateArgs, LineColor, LineTemplateArgs, LogoTemplateArgs, MainTitleTemplateArgs, TableOfContentsTemplateArgs, TableTemplateArgs, TitleTemplateArgs } from "../model";
+
+const fs = require("fs");
 
 /**
  * Creates the template for the logo.
@@ -133,7 +136,7 @@ export function tableTemplate ({rows, config, centered}: TableTemplateArgs): str
 	 * Escape a text so it can be used in a markdown table
 	 * @param text
 	 */
-	function markdownEscapeTableCell(text: string): string {
+	function markdownEscapeTableCell (text: string): string {
 		return text.replace(/\n/g, "<br />").replace(/\|/g, "\\|");
 	}
 
@@ -237,7 +240,7 @@ export function contributorsTemplate ({contributors, config}: ContributorsTempla
 	
 ${rows.map(row => {
 
-	    // Compile the rows
+		// Compile the rows
 		const imgs = row.map(({img, url, name}) => img != null ? `[<img alt="${name}" src="${img}" width="${imageSize}">](${url})` : " ");
 		const names = row.map(({url, email, name}) => `[${name}](${url})`);
 		const emails = row.map(({url, email}) => email != null ? `[${email}](mailto:${email})` : "");
@@ -256,7 +259,7 @@ ${rows.map(row => {
 			emails,
 			...infos
 		];
-		
+
 		return tableTemplate({rows: content, config, centered: true});
 	}).join(config.lineBreak)}`;
 }
@@ -266,7 +269,26 @@ ${rows.map(row => {
  * @param glob
  * @param config
  */
-export function documentationTemplate ({glob, config}: DocumentationTemplateArgs): Promise<string> {
-	return new AnalyzeCliCommand().analyze(glob, config.documentationConfig);
+export async function documentationTemplate ({glob: globString, config}: DocumentationTemplateArgs): Promise<string> {
+
+	// Resolve all paths
+	const paths: string[] = await (new Promise((res, rej) => {
+		glob(globString, (err, paths) => {
+			err != null ? rej(err) : res(paths);
+		});
+	}));
+
+	// Read all files
+	const files = paths.map(path => ({
+		fileName: path,
+		text: fs.readFileSync(path, {encoding: "utf8"})
+	}));
+
+	// Analyze the text
+	const {results, program} = analyzeText(files);
+
+	// Turn the result into markdown
+	const format = "markdown";
+	return transformAnalyzerResult(format, results, program, config.documentationConfig);
 }
 

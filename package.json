@@ -61,18 +61,20 @@
 		"readme": "cli.cjs.js"
 	},
 	"dependencies": {
+		"@types/glob": "^7.1.1",
 		"check-links": "^1.1.8",
 		"colors": "^1.4.0",
-		"commander": "^4.0.0",
-		"fs-extra": "^8.1.0",
+		"commander": "^5.0.0",
+		"fs-extra": "^9.0.0",
+		"glob": "^7.1.6",
 		"path": "^0.12.7",
-		"web-component-analyzer": "0.1.19"
+		"web-component-analyzer": "1.0.3"
 	},
 	"devDependencies": {
-		"@types/fs-extra": "^8.0.1",
-		"@wessberg/rollup-plugin-ts": "^1.1.73",
-		"rimraf": "^3.0.0",
-		"rollup": "^1.26.3",
+		"@types/fs-extra": "^8.1.0",
+		"@wessberg/rollup-plugin-ts": "^1.2.21",
+		"rimraf": "^3.0.2",
+		"rollup": "^2.1.0",
 		"rollup-plugin-commonjs": "^10.1.0",
 		"rollup-plugin-json": "^4.0.0",
 		"rollup-plugin-node-resolve": "^5.2.0"

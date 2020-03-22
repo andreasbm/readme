@@ -1,4 +1,4 @@
-import { WcaCliConfig } from "web-component-analyzer";
+import { TransformerConfig } from "web-component-analyzer";
 import { generateBadges, generateContributors, generateDescription, generateDocumentation, generateInterpolate, generateLicense, generateLine, generateLoad, generateLogo, generateMainTitle, generateTitle, generateToc } from "./generate/generators";
 import { getValue, loadConfig, setValue } from "./helpers";
 import { IConfig, IGenerator, LineColor, Options } from "./model";
@@ -23,10 +23,8 @@ export const defaultGenerators: IGenerator<any>[] = [
 	generateToc
 ];
 
-export const defaultDocumentationConfig: WcaCliConfig = {
-	format: "md",
-	debug: false,
-	markdown: {titleLevel: 2},
+export const defaultDocumentationConfig: Partial<TransformerConfig> = {
+	markdown: {titleLevel: 2}
 };
 
 /**
@@ -58,8 +56,6 @@ export const defaultConfig: IConfig = {
 	pkg: {},
 	documentationConfig: defaultDocumentationConfig
 };
-
-
 
 
 /**

@@ -1,6 +1,4 @@
-// import { WcaCliConfig } from "web-component-analyzer";
-
-import { WcaCliConfig } from "web-component-analyzer";
+import { AnalyzerOptions, TransformerConfig } from "web-component-analyzer";
 
 export enum LineColor {
 	AQUA = "aqua",
@@ -69,7 +67,7 @@ export interface IConfig {
 	badges?: IBadge[];
 	contributorsPerRow: number;
 	pkg: IPackage;
-	documentationConfig: WcaCliConfig;
+	documentationConfig: Partial<TransformerConfig>;
 	extend?: string;
 }
 

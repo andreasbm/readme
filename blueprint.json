@@ -14,10 +14,8 @@
 		"]]"
 	],
 	"documentationConfig": {
-		"format": "md",
-		"debug": false,
 		"markdown": {
-			"titleLevel": 3
+			"titleLevel": 2
 		}
 	},
 	"ids": {

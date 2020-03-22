@@ -1,4 +1,5 @@
 import { green, red, yellow } from "colors";
+import { read } from "fs-extra";
 import { resolve } from "path";
 import { defaultConfig, defaultConfigName, defaultGenerators, extendConfigWithDefaults, extendConfigWithExtendConfig } from "../config";
 import { checkLinksAliveness, extractValues, fileExists, isFunction, loadConfig, loadPackage, readFile, replaceInString, validateObject, writeFile } from "../helpers";
@@ -118,7 +119,11 @@ export async function generate ({config, configPath, generators}: {config: IConf
 	}
 
 	// Generate the readme
-	const readme = await generateReadme({config, blueprint, configPath, generators});
+	let readme = await generateReadme({config, blueprint, configPath, generators});
+
+	// Add warning
+	const warning = `<!-- ⚠️ This README has been generated from the file(s) "${Array.isArray(config.input) ? config.input.join(", ") : config.input}" ⚠️-->`;
+	readme = `${warning}${readme}`;
 
 	// Check broken links
 	if (config.checkLinks) {

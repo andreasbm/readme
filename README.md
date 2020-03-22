@@ -1,4 +1,4 @@
-<p align="center">
+<!-- ⚠️ This README has been generated from the file(s) "blueprint.md" ⚠️--><p align="center">
   <img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/logo-shadow.png" alt="Logo" width="150" height="150" />
 </p>
 <h1 align="center">@appnest/readme</h1>
@@ -53,9 +53,9 @@
 * [➤ License](#-license)
 * [➤ Load markdown files](#-load-markdown-files)
 * [➤ Automatic documentation](#-automatic-documentation)
-	* [my-button](#my-button)
-		* [Properties](#properties)
-		* [Slots](#slots)
+* [➤ my-button](#-my-button)
+	* [Properties](#properties)
+	* [Slots](#slots)
 * [➤ A bit about this readme](#-a-bit-about-this-readme)
 * [➤ Custom templates](#-custom-templates)
 * [➤ Advanced!](#-advanced)
@@ -116,7 +116,7 @@ Let's start simple. In order to get values from your `package.json` file injecte
 ```json
 {
   "name": "@appnest/readme",
-  "version": "1.2.4"
+  "version": "1.2.5"
 }
 ```
 
@@ -129,7 +129,7 @@ Welcome to {{ pkg.name }}. This is version {{ pkg.version }}!
 When running `node_modules/.bin/readme generate` the file `README.md` will be generated with the following contents:
 
 ```markdown
-Welcome to @appnest/readme. This is version 1.2.4.
+Welcome to @appnest/readme. This is version 1.2.5.
 ```
 
 ### Usage
@@ -304,9 +304,9 @@ The table of contents template adds a table of contents and looks like this:
 * [➤ License](#-license)
 * [➤ Load markdown files](#-load-markdown-files)
 * [➤ Automatic documentation](#-automatic-documentation)
-	* [my-button](#my-button)
-		* [Properties](#properties)
-		* [Slots](#slots)
+* [➤ my-button](#-my-button)
+	* [Properties](#properties)
+	* [Slots](#slots)
 * [➤ A bit about this readme](#-a-bit-about-this-readme)
 * [➤ Custom templates](#-custom-templates)
 * [➤ Advanced!](#-advanced)
@@ -439,18 +439,21 @@ customElements.define("my-button", MyButton);
 
 Then you can get automatic documentation for the web component by simply writing `{{ doc:my-button.js }}` which will result in the following content.
 
-### my-button
+
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#my-button)
+
+## ➤ my-button
 
 Button used for clicking!
 
-#### Properties
+### Properties
 
 | Property   | Attribute  | Type      | Default  | Description           |
 |------------|------------|-----------|----------|-----------------------|
 | `disabled` | `disabled` | `boolean` | false    | Disables the element. |
 | `role`     | `role`     | `string`  | "button" | Role of the element.  |
 
-#### Slots
+### Slots
 
 | Name | Description     |
 |------|-----------------|
@@ -547,12 +550,14 @@ If you have a variable from your `blueprint.json` file you want to stamp to your
 
 Objects are formatted as a list with the keys being bold. If you for example want to stamp the `dependencies` field from your `package.json` file you write `{{ pkg.dependencies }}` and the dependencies will be stamped in a nice formatted way like this.
 
+* **@types/glob**: ^7.1.1
 * **check-links**: ^1.1.8
 * **colors**: ^1.4.0
-* **commander**: ^4.0.0
-* **fs-extra**: ^8.1.0
+* **commander**: ^5.0.0
+* **fs-extra**: ^9.0.0
+* **glob**: ^7.1.6
 * **path**: ^0.12.7
-* **web-component-analyzer**: 0.1.19
+* **web-component-analyzer**: 1.0.3
 
 #### 1D Arrays
 

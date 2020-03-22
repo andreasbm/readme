@@ -24,6 +24,7 @@ export const defaultGenerators: IGenerator<any>[] = [
 ];
 
 export const defaultDocumentationConfig: Partial<TransformerConfig> = {
+	visibility: "public",
 	markdown: {titleLevel: 2}
 };
 

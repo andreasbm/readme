@@ -116,7 +116,7 @@ Let's start simple. In order to get values from your `package.json` file injecte
 ```json
 {
   "name": "@appnest/readme",
-  "version": "1.2.5"
+  "version": "1.2.7"
 }
 ```
 
@@ -129,7 +129,7 @@ Welcome to {{ pkg.name }}. This is version {{ pkg.version }}!
 When running `node_modules/.bin/readme generate` the file `README.md` will be generated with the following contents:
 
 ```markdown
-Welcome to @appnest/readme. This is version 1.2.5.
+Welcome to @appnest/readme. This is version 1.2.7.
 ```
 
 ### Usage
@@ -550,14 +550,14 @@ If you have a variable from your `blueprint.json` file you want to stamp to your
 
 Objects are formatted as a list with the keys being bold. If you for example want to stamp the `dependencies` field from your `package.json` file you write `{{ pkg.dependencies }}` and the dependencies will be stamped in a nice formatted way like this.
 
-* **@types/glob**: ^7.1.1
+* **@types/glob**: ^7.1.4
 * **check-links**: ^1.1.8
 * **colors**: ^1.4.0
-* **commander**: ^5.0.0
-* **fs-extra**: ^9.0.0
-* **glob**: ^7.1.6
+* **commander**: ^8.2.0
+* **fs-extra**: ^10.0.0
+* **glob**: ^7.2.0
 * **path**: ^0.12.7
-* **web-component-analyzer**: 1.0.3
+* **web-component-analyzer**: 1.1.6
 
 #### 1D Arrays
 
